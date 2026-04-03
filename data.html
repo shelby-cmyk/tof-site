@@ -26,14 +26,102 @@
   html { scroll-behavior: auto; }
   body { font-family: var(--f); background: var(--midnight); color: var(--cream); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.75; }
 
-  /* ── HERO ── */
-  .hero { padding: 160px 48px 100px; position: relative; overflow: hidden; min-height: 520px; background: #040A24; }
-  .hero-content { position: relative; z-index: 1; max-width: 800px; }
-  .eyebrow { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.55); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
-  .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
-  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px, 5.5vw, 66px); font-weight: 700; line-height: 1.04; letter-spacing: -.03em; color: var(--cream); margin-bottom: 28px; text-transform: uppercase; }
-  .hero-sub { font-size: 17px; line-height: 1.75; color: rgba(221,227,241,.7); max-width: 660px; }
-  .tof-spine { color: var(--peri); font-style: normal; }
+  /* ── DATA HERO + FUNNEL (merged) ── */
+  .data-hero {
+    position: relative;
+    background: #040A24;
+    overflow: hidden;
+  }
+  .data-hero-inner {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 48px;
+    text-align: center;
+  }
+  .data-hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(36px, 5.5vw, 64px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -.04em;
+    color: #FCF8F0;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .data-hero .eyebrow {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(221,227,241,.5);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  .data-hero .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: #FF7C7C;
+  }
+  .funnel-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 900px;
+    gap: 48px;
+  }
+  .funnel-visual {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+  }
+  .funnel-detail {
+    text-align: center;
+    max-width: 560px;
+    will-change: opacity, transform;
+  }
+  .funnel-detail-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 1;
+    margin-bottom: 16px;
+    transition: color .4s;
+  }
+  .funnel-detail-name {
+    font-family: var(--f);
+    font-size: 26px;
+    font-weight: 600;
+    color: #FCF8F0;
+    letter-spacing: -.02em;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .funnel-detail-stat {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(221,227,241,.45);
+    letter-spacing: .06em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+  .funnel-detail-desc {
+    font-family: var(--f);
+    font-size: 17px;
+    color: rgba(221,227,241,.6);
+    line-height: 1.8;
+  }
+  .tof-spine { color: var(--cream); font-weight: 600; font-style: normal; }
+  #layer1 .tof-spine { color: var(--midnight); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -47,67 +135,20 @@
   .reveal-d2 { transition-delay: .2s; }
   .reveal-d3 { transition-delay: .3s; }
 
-  /* ── FUNNEL BANDS ── */
-  .funnel-section { padding: 0 48px 120px; position: relative; }
-  .funnel-meta { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.3); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 32px; text-align: center; }
-  .funnel-bands { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .band {
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-    padding: 48px 44px;
-    border-top: 2px solid;
-    cursor: default;
-    transition: background .22s;
-    position: relative;
-  }
-  .band:nth-child(1) { width: 100%; }
-  .band:nth-child(2) { width: 78%; }
-  .band:nth-child(3) { width: 56%; }
-  .band-peri  { background: rgba(221,227,241,.04); border-top-color: var(--peri); }
-  .band-peri:hover  { background: rgba(221,227,241,.07); }
-  .band-blue  { background: rgba(221,227,241,.03); border-top-color: #6B9FD4; }
-  .band-blue:hover  { background: rgba(221,227,241,.06); }
-  .band-coral { background: rgba(221,227,241,.02); border-top-color: var(--coral); }
-  .band-coral:hover { background: rgba(221,227,241,.05); }
-  .band-label {
-    font-family: var(--mono);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    line-height: 1.55;
-    margin-bottom: 12px;
-  }
-  .band-peri  .band-label { color: var(--peri); }
-  .band-blue  .band-label { color: #6B9FD4; }
-  .band-coral .band-label { color: var(--coral); }
-  .band-stat {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: rgba(221,227,241,.45);
-    line-height: 1.55;
-    margin-bottom: 8px;
-  }
-  .band-desc {
-    font-size: 15px;
-    color: rgba(221,227,241,.55);
-    line-height: 1.65;
-    max-width: 480px;
-  }
-
   /* ── SECTION BASE ── */
   .data-section {
     padding: 140px 48px;
     border-top: 1px solid rgba(221,227,241,.07);
     position: relative;
   }
-  .layer-mid { background: #0A1540; }
+  .layer-mid { background: #070F36; }
   .layer-deep { background: #040A24; }
   .section-eyebrow {
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .16em;
+    font-size: 12px;
+    letter-spacing: .18em;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: flex; align-items: center; gap: 10px;
   }
   .section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
@@ -120,7 +161,7 @@
   .ey-dim   { color: rgba(221,227,241,.42); }
   .ey-dim::before { background: rgba(221,227,241,.28); }
   .section-h2 {
-    font-size: clamp(44px, 5vw, 64px);
+    font-size: clamp(36px, 5vw, 56px);
     font-weight: 700;
     letter-spacing: -.03em;
     line-height: 1.06;
@@ -129,8 +170,8 @@
     max-width: 800px;
   }
   .section-body {
-    font-size: 16px;
-    line-height: 1.8;
+    font-size: 17px;
+    line-height: 1.85;
     color: rgba(221,227,241,.7);
     max-width: 700px;
     margin-bottom: 64px;
@@ -138,15 +179,39 @@
 
   /* ── LAYER 1 CREAM SECTION ── */
   #layer1 { background: var(--cream); }
-  #layer1 .section-eyebrow { color: var(--peri); }
-  #layer1 .section-eyebrow::before { background: var(--peri); }
+  #layer1 .section-eyebrow { color: var(--coral); }
+  #layer1 .section-eyebrow::before { background: var(--coral); }
   #layer1 .section-h2 { color: var(--midnight); }
-  #layer1 .section-body { color: rgba(7,15,54,.68); }
-  #layer1 .data-table { border-top-color: rgba(7,15,54,.1); }
-  #layer1 .data-row { border-bottom-color: rgba(7,15,54,.08); }
-  #layer1 .data-row-label { color: rgba(7,15,54,.6); }
-  #layer1 .data-row-val { color: var(--midnight); }
-  #layer1 .data-callout { background: var(--midnight); }
+  #layer1 .section-body { color: rgba(7,15,54,.65); }
+
+  /* ── LAYER 1 STAT GRID ── */
+  .l1-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(7,15,54,.08);
+    margin-top: 48px;
+  }
+  .l1-stat {
+    background: var(--cream);
+    padding: 36px 28px;
+  }
+  .l1-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    color: var(--midnight);
+    letter-spacing: -.04em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .l1-label {
+    font-size: 12px;
+    color: rgba(7,15,54,.5);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
 
   /* ── LAYER 1: DATA TABLE ── */
   .data-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start; }
@@ -171,68 +236,184 @@
   .dc-num { font-family: var(--mono); font-size: 60px; font-weight: 500; color: var(--cream); letter-spacing: -.04em; line-height: 1; margin-bottom: 20px; }
   .dc-body { font-size: 15px; color: rgba(221,227,241,.58); line-height: 1.72; }
 
-  /* ── LAYER 2: KEYWORD FEEDS ── */
-  .feeds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-  .feed-card {
-    background: rgba(221,227,241,.03);
-    border: 1px solid rgba(221,227,241,.07);
-    border-radius: 6px;
-    padding: 24px 22px;
+  /* ── LAYER 2: LIVE FEED TICKER ── */
+  .l2-header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+  .l2-stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(52px, 6vw, 80px);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -.04em;
+    line-height: 1;
+  }
+  .l2-stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(221,227,241,.4);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .l2-ticker-wrap {
     position: relative;
+    height: 280px;
     overflow: hidden;
-    transition: border-color .2s, background .2s;
+    border: 1px solid rgba(221,227,241,.06);
+    border-radius: 6px;
+    background: rgba(221,227,241,.02);
   }
-  .feed-card::after {
+  .l2-ticker-wrap::before,
+  .l2-ticker-wrap::after {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, #6B9FD4, transparent 70%);
-    opacity: 0;
-    transition: opacity .2s;
+    position: absolute;
+    left: 0; right: 0;
+    height: 60px;
+    z-index: 2;
+    pointer-events: none;
   }
-  .feed-card:hover { border-color: rgba(107,159,212,.25); background: rgba(33,95,176,.05); }
-  .feed-card:hover::after { opacity: 1; }
-  .feed-card.custom {
-    border-style: dashed;
-    border-color: rgba(221,227,241,.12);
-    background: transparent;
-    display: flex; flex-direction: column; justify-content: center;
+  .l2-ticker-wrap::before { top: 0; background: linear-gradient(to bottom, #070F36, transparent); }
+  .l2-ticker-wrap::after { bottom: 0; background: linear-gradient(to top, #070F36, transparent); }
+  .l2-ticker {
+    display: flex;
+    flex-direction: column;
+    animation: tickerScroll 20s linear infinite;
   }
-  .feed-card.custom:hover { border-color: rgba(221,227,241,.24); background: rgba(221,227,241,.02); }
-  .feed-card.custom::after { display: none; }
-  .feed-custom-label { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.32); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
-  .feed-title { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 8px; line-height: 1.3; }
+  @keyframes tickerScroll {
+    from { transform: translateY(0); }
+    to { transform: translateY(-50%); }
+  }
+  .l2-ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    border-bottom: 1px solid rgba(221,227,241,.04);
+    white-space: nowrap;
+  }
+  .l2-pulse {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #6B9FD4;
+    flex-shrink: 0;
+    animation: l2blink 2s ease-in-out infinite;
+  }
+  @keyframes l2blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .l2-feed-name {
+    font-size: 17px;
+    font-weight: 500;
+    color: rgba(221,227,241,.7);
+  }
+  .l2-feed-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: rgba(221,227,241,.25);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  .l2-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 16px 24px;
+    border: 1px dashed rgba(221,227,241,.12);
+    border-radius: 6px;
+    font-size: 13px;
+    color: rgba(221,227,241,.45);
+    transition: border-color .3s, color .3s;
+  }
+  .l2-custom:hover { border-color: rgba(221,227,241,.25); color: rgba(221,227,241,.7); }
+  .l2-custom a { color: var(--coral); text-decoration: none; font-weight: 600; }
   .feed-card.custom .feed-title { color: rgba(221,227,241,.45); }
   .feed-desc { font-size: 13px; color: rgba(221,227,241,.48); line-height: 1.6; }
 
-  /* ── LAYER 3: VERTICALS ── */
-  .verticals-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
-  .vpill {
-    font-size: 14px;
-    color: rgba(221,227,241,.68);
-    padding: 9px 18px;
-    border-radius: 4px;
-    border: 1px solid rgba(221,227,241,.12);
-    background: rgba(221,227,241,.04);
-    transition: all .2s;
-    line-height: 1;
+  /* ── LAYER 3: HIGH-INTENT ── */
+  #layer3 { text-align: center; }
+  #layer3 .section-eyebrow { justify-content: center; }
+  #layer3 .section-h2 { margin-left: auto; margin-right: auto; }
+  #layer3 .section-body { margin-left: auto; margin-right: auto; }
+  .l3-stat-block { margin: 64px 0 48px; }
+  .l3-big-stat {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(80px, 12vw, 140px);
+    font-weight: 700;
+    color: var(--coral);
+    letter-spacing: -.05em;
+    line-height: .85;
+    margin-bottom: 16px;
   }
-  .vpill:hover { border-color: rgba(221,227,241,.3); color: var(--cream); background: rgba(221,227,241,.08); }
+  .l3-big-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(221,227,241,.4);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .verticals-wrap { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 700px; margin: 0 auto; }
+  .vpill {
+    font-size: 13px;
+    color: rgba(221,227,241,.6);
+    padding: 11px 20px;
+    border-radius: 4px;
+    border: 1px solid rgba(221,227,241,.1);
+    background: rgba(221,227,241,.03);
+    transition: all .25s;
+    line-height: 1;
+    cursor: default;
+  }
+  .vpill:hover { border-color: rgba(221,227,241,.25); color: var(--cream); background: rgba(221,227,241,.06); }
   .vpill.more {
     border-style: dashed;
-    color: rgba(221,227,241,.38);
-    border-color: rgba(221,227,241,.1);
+    color: rgba(221,227,241,.3);
+    border-color: rgba(221,227,241,.08);
     background: transparent;
   }
-  .exclusivity-box {
-    margin-top: 44px;
-    background: rgba(33,95,176,.06);
-    border: 1px solid rgba(33,95,176,.2);
-    border-radius: 6px;
-    padding: 20px 28px;
-    display: flex; align-items: center; gap: 20px;
+  .l3-close {
+    margin-top: 80px;
+    padding-top: 56px;
+    border-top: 1px solid rgba(221,227,241,.06);
+    text-align: center;
   }
-  .excl-tag { font-family: var(--mono); font-size: 10px; color: #6B9FD4; letter-spacing: .12em; text-transform: uppercase; flex-shrink: 0; white-space: nowrap; }
-  .exclusivity-box p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.55; }
+  .l3-exclusive-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--coral);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .l3-exclusive-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--coral);
+    animation: l3pulse 2s ease-in-out infinite;
+  }
+  @keyframes l3pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .l3-close-headline {
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -.02em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .l3-close-sub {
+    font-size: 15px;
+    color: rgba(221,227,241,.5);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
 
   /* ── DETERMINISTIC ── */
   #deterministic {
@@ -338,7 +519,12 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
     .data-layout { grid-template-columns: 1fr; gap: 48px; }
-    .feeds-grid { grid-template-columns: repeat(2, 1fr); }
+    .l1-grid { grid-template-columns: repeat(2, 1fr); }
+    .l1-stat { padding: 24px 20px; }
+    .l2-header { grid-template-columns: 1fr; gap: 24px; }
+    .l2-ticker-wrap { height: 220px; }
+    .l3-big-stat { font-size: 72px; }
+    .l3-close-headline { font-size: 22px; }
     .det-arena { grid-template-columns: 1fr; }
     .det-divider { display: none; }
     .det-col.prob { border-left: 2px solid rgba(255,100,100,.3); }
@@ -346,19 +532,15 @@
     .det-col { padding: 40px 28px; }
   }
   @media (max-width: 900px) {
-    .hero { padding: 80px 24px 64px; }
-    .funnel-section { padding: 0 20px 80px; }
-    .band { padding: 32px 20px; }
-    .band:nth-child(1) { width: 100%; }
-    .band:nth-child(2) { width: 88%; }
-    .band:nth-child(3) { width: 76%; }
-    .band-stat { padding-left: 0; border-left: none; }
-    .band-desc { text-align: left; }
+    .data-hero-inner { padding: 80px 24px; }
+    .funnel-visual { max-width: 100%; }
+    .funnel-detail-num { font-size: 32px; }
+    .funnel-detail-name { font-size: 20px; }
+    .funnel-detail-desc { font-size: 15px; }
     .data-section { padding: 100px 24px; }
     .cta-section { padding: 88px 24px; }
   }
   @media (max-width: 600px) {
-    .feeds-grid { grid-template-columns: 1fr; }
     .exclusivity-box { flex-direction: column; align-items: flex-start; gap: 8px; }
   }
 
@@ -456,6 +638,90 @@
   /* ── PAGE TRANSITION ── */
   #page-transition { position: fixed; inset: 0; background: #070F36; z-index: 99990; transform-origin: top; pointer-events: none; }
 
+  /* ── SVG FUNNEL ── */
+  .funnel-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+  .funnel-layer {
+    transition: fill .5s ease, opacity .5s ease;
+    cursor: pointer;
+  }
+  .funnel-layer:not(.active) {
+    opacity: .2;
+  }
+  .funnel-layer.active {
+    opacity: 1;
+  }
+  .funnel-layer-stroke {
+    fill: none; stroke-width: 1.5; opacity: 0; transition: opacity .5s;
+  }
+  .funnel-layer-stroke.active { opacity: 1; }
+  .funnel-layer-stroke[data-layer="0"] { stroke: #DDE3F1; }
+  .funnel-layer-stroke[data-layer="1"] { stroke: #6B9FD4; }
+  .funnel-layer-stroke[data-layer="2"] { stroke: #FF7C7C; }
+  .funnel-label {
+    font-family: var(--mono);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .22em;
+    fill: rgba(221,227,241,.18);
+    transition: fill .4s;
+    pointer-events: none;
+  }
+  .funnel-label.active {
+    fill: rgba(252,248,240,.9);
+  }
+  .funnel-progress {
+    position: fixed;
+    right: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    z-index: 50;
+    opacity: 0;
+    transition: opacity .4s;
+  }
+  .funnel-progress.visible { opacity: 1; }
+  .funnel-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: 1px solid rgba(221,227,241,.2);
+    background: transparent;
+    transition: all .4s;
+  }
+  .funnel-dot.active { border-color: var(--cream); background: var(--cream); }
+  .funnel-dot[data-layer="0"].active { border-color: #DDE3F1; background: #DDE3F1; }
+  .funnel-dot[data-layer="1"].active { border-color: #6B9FD4; background: #6B9FD4; }
+  .funnel-dot[data-layer="2"].active { border-color: #FF7C7C; background: #FF7C7C; }
+  .funnel-connector {
+    width: 1px; height: 24px;
+    background: linear-gradient(to bottom, rgba(221,227,241,.15), transparent);
+    margin: 0 auto;
+  }
+
+  /* ── SLIDE-IN FORM PANEL ── */
+  .form-panel-overlay { position: fixed; inset: 0; background: rgba(4,10,36,.6); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity .35s; }
+  .form-panel-overlay.open { opacity: 1; pointer-events: auto; }
+  .form-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 460px; max-width: 90vw; background: #070F36; z-index: 9999; transform: translateX(100%); transition: transform .45s cubic-bezier(.4,0,.2,1); padding: 48px 36px; overflow-y: auto; display: flex; flex-direction: column; }
+  .form-panel.open { transform: translateX(0); }
+  .form-panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(221,227,241,.5); font-size: 24px; cursor: pointer; transition: color .2s; line-height: 1; padding: 4px; }
+  .form-panel-close:hover { color: var(--cream); }
+  .form-panel h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
+  .form-panel .panel-sub { font-size: 14px; color: rgba(221,227,241,.5); line-height: 1.65; margin-bottom: 32px; }
+  .form-panel .form { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .form-panel .form input { background: rgba(221,227,241,.05); border: 1px solid rgba(221,227,241,.15); border-radius: 4px; padding: 12px 16px; font-size: 14px; color: var(--cream); font-family: var(--f); outline: none; transition: border-color .2s; width: 100%; }
+  .form-panel .form input::placeholder { color: rgba(252,248,240,.35); }
+  .form-panel .form input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,124,124,.12); }
+  .form-panel .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-panel .form-submit { background: var(--coral); color: var(--midnight); border: none; border-radius: 4px; padding: 13px 28px; font-size: 13px; font-weight: 500; font-family: var(--f); cursor: pointer; transition: opacity .2s; width: 100%; text-align: center; }
+  .form-panel .form-submit:hover { opacity: .88; }
+  .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: rgba(221,227,241,.25); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
+
   /* ── WATERMARKS ── */
 </style>
 </head>
@@ -479,7 +745,7 @@
     <li><a href="#industries">Industries</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Let's talk</a>
+  <a href="#contact" class="nav-cta" data-open-form>Let's talk</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -493,77 +759,119 @@
   <a href="#contact" class="mobile-cta">Let's talk</a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <p class="eyebrow fade-up">The TOF Spine · Data architecture</p>
-    <h1 class="fade-up">Three signal layers.<br>Full funnel coverage.</h1>
-    <p class="hero-sub fade-up">The <span class="tof-spine">TOF Spine</span> isn't a single data product. It's a curated stack of three proprietary signal layers — assembled, verified, and activated by TOF across the full performance marketing funnel.</p>
+<!-- DATA HERO + FUNNEL -->
+<section class="data-hero">
+  <div class="data-hero-inner">
+    <p class="eyebrow">The TOF Spine · Data architecture</p>
+    <h1>Three signal layers.<br>Full funnel coverage.</h1>
+    <div class="funnel-stage">
+      <div class="funnel-visual">
+        <svg class="funnel-svg" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <!-- Inactive gradients -->
+            <linearGradient id="gPeri" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#DDE3F1" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".05"/>
+            </linearGradient>
+            <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6B9FD4" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#6B9FD4" stop-opacity=".05"/>
+            </linearGradient>
+            <linearGradient id="gCoral" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".14"/>
+              <stop offset="100%" stop-color="#FF7C7C" stop-opacity=".06"/>
+            </linearGradient>
+            <!-- Active gradients -->
+            <linearGradient id="gPeriA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#DDE3F1" stop-opacity=".45"/>
+              <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".15"/>
+            </linearGradient>
+            <linearGradient id="gBlueA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#6B9FD4" stop-opacity=".45"/>
+              <stop offset="100%" stop-color="#6B9FD4" stop-opacity=".15"/>
+            </linearGradient>
+            <linearGradient id="gCoralA" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#FF7C7C" stop-opacity=".18"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Permanent outer outline -->
+          <path fill="none" stroke="rgba(221,227,241,.1)" stroke-width="1"
+                d="M40,10 L560,10 L480,140 L420,260 L370,370 L230,370 L180,260 L120,140 Z"/>
+
+          <!-- Layer fills -->
+          <path class="funnel-layer" data-layer="0" fill="url(#gPeriA)"
+                d="M40,10 L560,10 L480,140 L120,140 Z"/>
+          <path class="funnel-layer" data-layer="1" fill="url(#gBlue)"
+                d="M120,140 L480,140 L420,260 L180,260 Z"/>
+          <path class="funnel-layer" data-layer="2" fill="url(#gCoral)"
+                d="M180,260 L420,260 L370,370 L230,370 Z"/>
+
+          <!-- Divider lines -->
+          <line x1="120" y1="140" x2="480" y2="140" stroke="rgba(221,227,241,.08)" stroke-width="0.75"/>
+          <line x1="180" y1="260" x2="420" y2="260" stroke="rgba(221,227,241,.08)" stroke-width="0.75"/>
+
+          <!-- Active layer strokes -->
+          <path class="funnel-layer-stroke active" data-layer="0" d="M40,10 L560,10 L480,140 L120,140 Z"/>
+          <path class="funnel-layer-stroke" data-layer="1" d="M120,140 L480,140 L420,260 L180,260 Z"/>
+          <path class="funnel-layer-stroke" data-layer="2" d="M180,260 L420,260 L370,370 L230,370 Z"/>
+
+          <!-- Labels -->
+          <text class="funnel-label active" data-layer="0" x="300" y="75" text-anchor="middle" dominant-baseline="middle">IDENTIFY</text>
+          <text class="funnel-label" data-layer="1" x="300" y="200" text-anchor="middle" dominant-baseline="middle">REACH</text>
+          <text class="funnel-label" data-layer="2" x="300" y="315" text-anchor="middle" dominant-baseline="middle">CONVERT</text>
+        </svg>
+      </div>
+      <div class="funnel-connector"></div>
+      <div class="funnel-detail">
+        <p class="funnel-detail-num" style="color:#DDE3F1;">01</p>
+        <p class="funnel-detail-name">In-Market Signals</p>
+        <p class="funnel-detail-stat">246M verified U.S. adults · 1.6T monthly events</p>
+        <p class="funnel-detail-desc">The source of truth layer. Who is in market, where they are, and what they want.</p>
+      </div>
+    </div>
+  </div>
+  <div class="funnel-progress" id="funnel-progress">
+    <div class="funnel-dot active" data-layer="0"></div>
+    <div class="funnel-dot" data-layer="1"></div>
+    <div class="funnel-dot" data-layer="2"></div>
   </div>
 </section>
-
-<!-- FUNNEL VISUALIZATION -->
-<div class="funnel-section">
-  <p class="funnel-meta reveal">Signal architecture — top to bottom of funnel</p>
-  <div class="funnel-bands">
-    <div class="band band-peri reveal reveal-d1">
-      <div class="band-label">Top of funnel · In-market consumer data</div>
-      <div class="band-stat">246M verified U.S. adults · 2T monthly events</div>
-      <div class="band-desc">The source of truth layer. Who is in market, where they are, and what they want.</div>
-    </div>
-    <div class="band band-blue reveal reveal-d2">
-      <div class="band-label">Middle funnel · Keyword custom audiences</div>
-      <div class="band-stat">Built from active search behavior · Custom or pre-built</div>
-      <div class="band-desc">People actively researching solutions right now — by vertical, offer, or brand.</div>
-    </div>
-    <div class="band band-coral reveal reveal-d3">
-      <div class="band-label">Bottom funnel · High-intent behavioral signals</div>
-      <div class="band-stat">30+ verticals · Exclusive TOF Spine activation</div>
-      <div class="band-desc">The closest signal to a buying decision available in performance marketing.</div>
-    </div>
-  </div>
-</div>
 
 <!-- LAYER 1: TOP OF FUNNEL -->
 <section class="data-section" id="layer1">
   <p class="section-eyebrow ey-peri reveal">Layer 01 — Top of funnel</p>
   <h2 class="section-h2 reveal">Know who's in market<br>before you spend.</h2>
-  <p class="section-body reveal">The foundation of the <span class="tof-spine">TOF Spine</span>. Authoritative in-market consumer data covering 246M verified U.S. adults across 25+ verticals. Financial signals, behavioral data, property intelligence, device graphs — unified into a single deterministic identity framework. This is the source of truth layer that everything else is built on.</p>
-  <div class="data-layout reveal">
-    <div class="data-table">
-      <div class="data-row">
-        <span class="data-row-label">Verified U.S. adults (PII)</span>
-        <span class="data-row-val">246M</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Residential addresses</span>
-        <span class="data-row-val">153M</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Financial insights (income, credit, spend)</span>
-        <span class="data-row-val">97% U.S. HH</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Active emails + phones</span>
-        <span class="data-row-val">400M+</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Mobile Ad ID pairs</span>
-        <span class="data-row-val">6B+</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Connected TV households</span>
-        <span class="data-row-val">90M+</span>
-      </div>
-      <div class="data-row">
-        <span class="data-row-label">Monthly consumer events</span>
-        <span class="data-row-val">2T</span>
-      </div>
+  <p class="section-body reveal">The foundation of the <span class="tof-spine">TOF Spine</span>. Person-level identity — not household guesses. 98% of U.S. adults, deterministically matched from 70+ primary sources. Offline-anchored, online-linked, zero inference. The source of truth layer that everything else is built on.</p>
+  <div class="l1-grid reveal">
+    <div class="l1-stat">
+      <p class="l1-num">246M</p>
+      <p class="l1-label">Verified U.S. Adults</p>
     </div>
-    <div class="data-callout">
-      <p class="dc-label">Monthly consumer events</p>
-      <p class="dc-num">2T</p>
-      <p class="dc-body">Financial, behavioral, property, device, and in-market signals — unified into a single deterministic identity framework. The most authoritative U.S. consumer data available for performance marketing.</p>
+    <div class="l1-stat">
+      <p class="l1-num">153M</p>
+      <p class="l1-label">Residential Addresses</p>
+    </div>
+    <div class="l1-stat">
+      <p class="l1-num">97%</p>
+      <p class="l1-label">U.S. Household Financial Coverage</p>
+    </div>
+    <div class="l1-stat">
+      <p class="l1-num">400M+</p>
+      <p class="l1-label">Active Emails + Phones</p>
+    </div>
+    <div class="l1-stat">
+      <p class="l1-num">6B+</p>
+      <p class="l1-label">Mobile Ad ID Pairs</p>
+    </div>
+    <div class="l1-stat">
+      <p class="l1-num">90M+</p>
+      <p class="l1-label">Connected TV Households</p>
+    </div>
+    <div class="l1-stat">
+      <p class="l1-num">1.6T</p>
+      <p class="l1-label">Monthly Consumer Events</p>
     </div>
   </div>
 </section>
@@ -571,54 +879,45 @@
 <!-- LAYER 2: KEYWORD CUSTOM AUDIENCES -->
 <section class="data-section layer-mid" id="layer2">
   <p class="section-eyebrow ey-blue reveal">Layer 02 — Middle funnel</p>
-  <h2 class="section-h2 reveal">Audiences built from what people<br>are actively searching for.</h2>
-  <p class="section-body reveal">The middle layer of the <span class="tof-spine">TOF Spine</span>. Keyword Custom Audiences are built from real search behavior around specific offers, brands, and verticals. Higher intent than behavioral signals alone — these are people actively researching solutions right now. Available as pre-built feeds or custom-built around your specific offer, vertical, or brand.</p>
-  <div class="feeds-grid reveal">
-    <div class="feed-card">
-      <div class="feed-title">Health Insurance</div>
-      <div class="feed-desc">Private health insurance carriers, enrollment, pricing, COBRA alternatives, marketplace plans</div>
+  <h2 class="section-h2 reveal">Built from real<br>search behavior.</h2>
+  <div class="l2-header reveal">
+    <div>
+      <p class="l2-stat-num">100+</p>
+      <p class="l2-stat-label">Daily Keyword Audience Feeds</p>
     </div>
-    <div class="feed-card">
-      <div class="feed-title">Tax Debt</div>
-      <div class="feed-desc">IRS settlement, offer in compromise, best companies</div>
+    <p class="section-body" style="margin-bottom:0;">Custom keyword audiences built from real consumer search behavior — across any vertical, any intent signal, any volume. Refreshed daily. Plug directly into your DSP for programmatic activation. If a consumer is searching for it, we can build a feed around it.</p>
+  </div>
+  <div class="l2-ticker-wrap reveal">
+    <div class="l2-ticker">
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Health Insurance</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Tax Debt</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Home Security</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Solar</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Reverse Mortgage</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Auto Loans</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Firearms &amp; Outdoor</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Debt Relief</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Mobile IV Therapy</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">GLP-1 / Weight Loss</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Solar Cancellation</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">SSDI</span><span class="l2-feed-tag">Live</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Health Insurance</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Tax Debt</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Home Security</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Solar</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Reverse Mortgage</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Auto Loans</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Firearms &amp; Outdoor</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Debt Relief</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Mobile IV Therapy</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">GLP-1 / Weight Loss</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">Solar Cancellation</span><span class="l2-feed-tag">Live</span></div>
+      <div class="l2-ticker-item"><span class="l2-pulse"></span><span class="l2-feed-name">SSDI</span><span class="l2-feed-tag">Live</span></div>
     </div>
-    <div class="feed-card">
-      <div class="feed-title">Home Security</div>
-      <div class="feed-desc">Alarm systems, home security options</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Solar</div>
-      <div class="feed-desc">No down payment solar, residential solar installation</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Reverse Mortgage</div>
-      <div class="feed-desc">Best lenders, HECM, compare and research</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Auto Loans</div>
-      <div class="feed-desc">Pre-approval, bad credit, guaranteed approval</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Firearms &amp; Outdoor</div>
-      <div class="feed-desc">NRA membership, firearm safety, hunting</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Debt Relief</div>
-      <div class="feed-desc">Settlement options, credit card consolidation, balance transfer</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">Mobile IV Therapy</div>
-      <div class="feed-desc">Mobile wellness, IV vitamin therapy, concierge health</div>
-    </div>
-    <div class="feed-card">
-      <div class="feed-title">GLP-1 / Weight Loss</div>
-      <div class="feed-desc">Weight loss medications, GLP-1 programs, prescription access</div>
-    </div>
-    <div class="feed-card custom">
-      <div class="feed-custom-label">Available on request</div>
-      <div class="feed-title">Custom Feed</div>
-      <div class="feed-desc">Built to order for any vertical, offer, or brand. Talk to our team.</div>
-    </div>
+  </div>
+  <div class="l2-custom reveal">
+    Need a custom feed? <a href="/#contact" data-open-form>Request access</a>
   </div>
 </section>
 
@@ -626,7 +925,11 @@
 <section class="data-section layer-deep" id="layer3">
   <p class="section-eyebrow ey-coral reveal">Layer 03 — Bottom funnel</p>
   <h2 class="section-h2 reveal">The closest signal to a buying decision<br>available in performance marketing.</h2>
-  <p class="section-body reveal">The deepest layer of the <span class="tof-spine">TOF Spine</span>. High-intent behavioral signals identify consumers at the exact moment of peak buying intent — across insurance, financial services, home services, and more. This is where the funnel closes. Available exclusively through <span class="tof-spine">TOF Spine</span> activation.</p>
+  <p class="section-body reveal">Consumers at the exact moment of buying decision — identified, verified, and activated exclusively through the <span class="tof-spine">TOF Spine</span>. This is where the funnel closes.</p>
+  <div class="l3-stat-block reveal">
+    <p class="l3-big-stat">0+</p>
+    <p class="l3-big-label">High-Intent Verticals</p>
+  </div>
   <div class="verticals-wrap reveal">
     <span class="vpill">Health Insurance (ACA/U65)</span>
     <span class="vpill">Medicare Advantage</span>
@@ -639,16 +942,18 @@
     <span class="vpill">Home Services — Solar</span>
     <span class="vpill">Debt Relief</span>
     <span class="vpill">Mortgage</span>
-    <span class="vpill more">+ 20 additional high-intent verticals</span>
+    <span class="vpill more">+ 60 more verticals</span>
   </div>
-  <div class="exclusivity-box reveal">
-    <span class="excl-tag">Exclusive access</span>
-    <p>Available through direct TOF partnership only. Not available as a self-serve product.</p>
+  <div class="l3-close reveal">
+    <p class="l3-exclusive-tag">Exclusive access</p>
+    <p class="l3-close-headline">This is what your competitors<br>don't have access to.</p>
+    <p class="l3-close-sub">High-Intent Data is activated through direct TOF partnership only. Not a self-serve product. Not available anywhere else.</p>
+    <a href="#" class="btn-coral" data-open-form style="font-size:14px;padding:16px 48px;">Request access</a>
   </div>
 </section>
 
 <!-- DETERMINISTIC VS PROBABILISTIC -->
-<section id="deterministic">
+<section id="deterministic" style="border-top:1px solid rgba(221,227,241,.08);">
   <p class="section-eyebrow ey-dim reveal">Identity methodology</p>
   <h2 class="section-h2 reveal">Your competitors are guessing.<br>You won't be.</h2>
   <div class="det-arena reveal">
@@ -686,7 +991,8 @@
   <p class="cta-eyebrow reveal">Get started</p>
   <h2 class="cta-h2 reveal">Ready to activate<br>the full funnel?</h2>
   <p class="cta-body reveal">Tell us your vertical, your channel, and your use case. We'll show you which layers of the <span class="tof-spine">TOF Spine</span> are right for you.</p>
-  <a href="contact.html" class="btn-coral reveal">Talk to our team</a>
+  <a href="/#contact" class="btn-coral reveal" data-open-form>Request access</a>
+  <p style="font-family:var(--mono);font-size:11px;color:var(--coral);letter-spacing:.06em;margin-top:20px;opacity:.85;" class="reveal">We guarantee 20% lift over your best-performing campaign — or you don't pay.</p>
 </section>
 
 <!-- FOOTER -->
@@ -697,7 +1003,7 @@
   <div class="footer-links">
     <a href="/privacy">Privacy policy</a>
     <a href="/terms">Terms of service</a>
-    <a href="mailto:info@tof.io">info@tof.io</a>
+    <a href="mailto:go@tof.io">go@tof.io</a>
   </div>
   <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
 </footer>
@@ -730,7 +1036,52 @@
     });
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // ── SCROLL-DRIVEN FUNNEL (GSAP ScrollTrigger) ──
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll', ScrollTrigger.update);
+
+  const dataHero = document.querySelector('.data-hero');
+
+  if (window.matchMedia('(min-width: 901px)').matches) {
+    ScrollTrigger.create({
+      trigger: dataHero,
+      start: 'top top',
+      end: '+=300%',
+      pin: true,
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
+        if (progress < 0.33) window.setLayer(0);
+        else if (progress < 0.66) window.setLayer(1);
+        else window.setLayer(2);
+      }
+    });
+  }
 </script>
+
+<!-- SLIDE-IN FORM PANEL -->
+<div class="form-panel-overlay" id="form-panel-overlay"></div>
+<div class="form-panel" id="form-panel">
+  <button class="form-panel-close" id="form-panel-close" aria-label="Close">×</button>
+  <h3>See what your<br>funnel is missing.</h3>
+  <p class="panel-sub">Tell us your use case. We'll show you what TOF looks like in your channel.</p>
+  <form class="form" action="https://formspree.io/f/xpqojbny" method="POST">
+    <input type="hidden" name="_next" value="https://tof.io">
+    <input type="hidden" name="_subject" value="New TOF Inquiry">
+    <input type="text" name="_gotcha" style="display:none">
+    <div class="form-row">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Work email" required>
+    </div>
+    <input type="text" name="company" placeholder="Company">
+    <input type="text" name="challenge" placeholder="What are you trying to solve?">
+    <button type="submit" class="form-submit">Request access</button>
+    <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
+    <p style="font-family:var(--mono);font-size:10px;color:var(--coral);letter-spacing:.06em;margin-top:8px;text-align:center;opacity:.85;">We guarantee 20% lift over your best-performing campaign — or you don't pay.</p>
+  </form>
+  <p class="panel-trust">Trusted by Retreaver · Boss.Leads · Permissionize · Klaive</p>
+</div>
 
 <!-- CURSOR -->
 <div id="cursor-icon" aria-hidden="true">
@@ -840,6 +1191,105 @@
       );
     });
   });
+</script>
+
+<script>
+// ── SVG FUNNEL LAYER CONTROL ──
+let currentLayer = -1;
+const funnelDetail = document.querySelector('.funnel-detail');
+const funnelProgress = document.getElementById('funnel-progress');
+
+window.setLayer = function(index) {
+  if (index === currentLayer) return;
+  currentLayer = index;
+
+  const layers = document.querySelectorAll('.funnel-layer');
+  const strokes = document.querySelectorAll('.funnel-layer-stroke');
+  const labels = document.querySelectorAll('.funnel-label');
+  const dots = document.querySelectorAll('.funnel-dot');
+  const gradMap = [['gPeri','gPeriA'], ['gBlue','gBlueA'], ['gCoral','gCoralA']];
+
+  layers.forEach((l, i) => {
+    const isActive = i === index;
+    l.classList.toggle('active', isActive);
+    l.setAttribute('fill', 'url(#' + (isActive ? gradMap[i][1] : gradMap[i][0]) + ')');
+  });
+  strokes.forEach((s, i) => s.classList.toggle('active', i === index));
+  labels.forEach((l, i) => l.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+  // Crossfade detail panel
+  const layerData = [
+    { num: '01', name: 'In-Market Signals', stat: '246M verified U.S. adults \u00b7 1.6T monthly events', desc: 'The source of truth layer. Who is in market, where they are, and what they want.', color: '#DDE3F1' },
+    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#6B9FD4' },
+    { num: '03', name: 'High-Intent Data', stat: '70+ verticals \u00b7 Exclusive TOF Spine activation', desc: 'The closest signal to a buying decision available in performance marketing.', color: '#FF7C7C' }
+  ];
+  const d = layerData[index];
+
+  gsap.to(funnelDetail, { opacity: 0, y: 8, duration: 0.15, ease: 'power2.in', onComplete: () => {
+    const num = document.querySelector('.funnel-detail-num');
+    const name = document.querySelector('.funnel-detail-name');
+    const stat = document.querySelector('.funnel-detail-stat');
+    const desc = document.querySelector('.funnel-detail-desc');
+    if (num) { num.textContent = d.num; num.style.color = d.color; }
+    if (name) name.textContent = d.name;
+    if (stat) stat.textContent = d.stat;
+    if (desc) desc.textContent = d.desc;
+    gsap.to(funnelDetail, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+  }});
+};
+
+// Show/hide progress dots when pinned
+if (funnelProgress) {
+  ScrollTrigger.create({
+    trigger: document.querySelector('.data-hero'),
+    start: 'top top',
+    end: '+=300%',
+    onEnter: () => funnelProgress.classList.add('visible'),
+    onLeave: () => funnelProgress.classList.remove('visible'),
+    onEnterBack: () => funnelProgress.classList.add('visible'),
+    onLeaveBack: () => funnelProgress.classList.remove('visible'),
+  });
+}
+
+window.setLayer(0);
+
+// ── LAYER 3 STAT COUNTER ──
+const l3Stat = document.querySelector('.l3-big-stat');
+if (l3Stat) {
+  const l3Obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      l3Obs.unobserve(l3Stat);
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: 70,
+        duration: 2,
+        ease: 'power2.out',
+        onUpdate() { l3Stat.textContent = Math.round(obj.val) + '+'; },
+        onComplete() { l3Stat.textContent = '70+'; }
+      });
+    });
+  }, { threshold: 0.3 });
+  l3Obs.observe(l3Stat);
+}
+
+// ── HOVER LISTENERS FOR SVG LAYERS ──
+document.querySelectorAll('.funnel-layer').forEach((l, i) => {
+  l.addEventListener('mouseenter', () => window.setLayer(i));
+});
+
+// ── SLIDE-IN FORM PANEL ──
+const panelOverlay = document.getElementById('form-panel-overlay');
+const panel = document.getElementById('form-panel');
+const panelClose = document.getElementById('form-panel-close');
+function openPanel() { panelOverlay.classList.add('open'); panel.classList.add('open'); lenis.stop(); }
+function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); lenis.start(); }
+document.querySelectorAll('[data-open-form]').forEach(btn => {
+  btn.addEventListener('click', e => { e.preventDefault(); openPanel(); });
+});
+panelClose.addEventListener('click', closePanel);
+panelOverlay.addEventListener('click', closePanel);
 </script>
 
 </body>
