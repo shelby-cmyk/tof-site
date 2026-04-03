@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TOF.io Solutions — Activate deterministic identity across Google, Meta, Amazon, TikTok, and 50+ DSPs and activation platforms.">
+<title>Solutions — TOF.io</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #070F36;
+    --blue: #215FB0;
+    --peri: #DDE3F1;
+    --cream: #FCF8F0;
+    --coral: #FF7C7C;
+    --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: auto; }
+  body { font-family: var(--f); background: var(--navy); color: var(--cream); -webkit-font-smoothing: antialiased; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: transparent; border-bottom: 1px solid transparent; height: 60px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
+    transition: background .4s, border-color .4s, backdrop-filter .4s;
+  }
+  nav.scrolled { background: rgba(7,15,54,.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: rgba(221,227,241,.07); }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; color: rgba(221,227,241,.78); text-decoration: none; letter-spacing: .01em; transition: color .2s; }
+  .nav-links a:hover { color: var(--peri); }
+  .nav-cta { font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 4px; background: var(--blue); color: var(--cream); text-decoration: none; transition: opacity .2s; }
+  .nav-cta:hover { opacity: .85; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 101; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(252,248,240,.8); transition: all .3s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-nav-overlay { position: fixed; inset: 0; z-index: 99; background: rgba(7,15,54,.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px; opacity: 0; pointer-events: none; transition: opacity .4s ease; }
+  .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+  .mobile-nav-overlay a { font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: -.02em; opacity: 0; transform: translateY(20px); }
+  .mobile-nav-overlay a:hover { color: var(--coral); }
+  .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--navy); opacity: 0; transform: translateY(20px); }
+
+  /* ── HERO ── */
+  .hero { padding: 160px 48px 100px; position: relative; overflow: hidden; }
+  .hero-content { max-width: 800px; }
+  .eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
+  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 5.5vw, 68px); font-weight: 700; line-height: 1.0; letter-spacing: -.04em; color: var(--cream); margin-bottom: 24px; }
+  .hero-sub { font-size: 17px; line-height: 1.7; color: rgba(221,227,241,.6); max-width: 560px; }
+
+  /* ── ACTIVATION ── */
+  .activation { padding: 100px 48px; position: relative; }
+  .activation-header { text-align: center; margin-bottom: 72px; }
+  .activation-header h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--cream); letter-spacing: -.03em; line-height: 1.08; margin-bottom: 12px; }
+  .activation-header p { font-size: 15px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto; }
+
+  .activation-visual { display: grid; grid-template-columns: 280px 1fr; gap: 0; max-width: 960px; margin: 0 auto; align-items: stretch; }
+
+  .activation-source {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 48px 32px; border: 1px solid rgba(221,227,241,.08); border-right: none;
+    border-radius: 8px 0 0 8px; position: relative;
+  }
+  .activation-source-icon { width: 64px; margin-bottom: 20px; opacity: .8; }
+  .activation-source-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
+  .activation-source-name { font-size: 18px; font-weight: 600; color: var(--cream); letter-spacing: -.01em; margin-bottom: 4px; }
+  .activation-source-desc { font-size: 12px; color: rgba(221,227,241,.4); text-align: center; line-height: 1.5; }
+
+  .activation-connector { position: absolute; right: -24px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; z-index: 2; }
+  .activation-connector-line { width: 24px; height: 1px; background: var(--coral); }
+  .activation-connector-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+
+  .activation-grid-wrap { border: 1px solid rgba(221,227,241,.08); border-radius: 0 8px 8px 0; padding: 4px; }
+  .activation-grid-label { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(221,227,241,.3); padding: 12px 16px 8px; }
+  .activation-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(221,227,241,.05); }
+  .activation-platform {
+    background: var(--navy); padding: 24px 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 500; color: rgba(221,227,241,.6); letter-spacing: -.01em;
+    transition: color .2s, background .2s;
+  }
+  .activation-platform:hover { color: var(--cream); background: rgba(221,227,241,.04); }
+
+  /* ── DATA PARTNERS ── */
+  .data-partners { padding: 80px 48px; border-top: 1px solid rgba(221,227,241,.06); }
+  .data-partners-header { text-align: center; margin-bottom: 48px; }
+  .data-partners-header h3 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; margin-bottom: 8px; }
+  .data-partners-header p { font-size: 14px; color: rgba(221,227,241,.45); }
+  .data-partners-grid { display: flex; align-items: center; justify-content: center; gap: 56px; flex-wrap: wrap; }
+  .data-partner { font-size: 20px; font-weight: 500; color: rgba(221,227,241,.3); letter-spacing: -.01em; transition: color .3s; }
+  .data-partner:hover { color: rgba(221,227,241,.6); }
+
+  /* ── CTA ── */
+  .cta-section { padding: 100px 48px; background: #040A24; text-align: center; }
+  .cta-section h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: var(--cream); letter-spacing: -.03em; margin-bottom: 20px; }
+  .cta-section p { font-size: 15px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto 40px; }
+  .cta-btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 44px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
+  .cta-btn:hover { opacity: .88; }
+
+  /* ── FOOTER ── */
+  footer { padding: 22px 48px; background: #FCF8F0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(7,15,54,.08); flex-wrap: wrap; gap: 16px; }
+  footer > * { position: relative; z-index: 1; }
+  .footer-logo img { height: 13px; width: auto; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; color: rgba(7,15,54,.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: rgba(7,15,54,.75); }
+  .footer-right { font-size: 11px; color: rgba(7,15,54,.30); }
+
+  /* ── REVEALS ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── GRAIN ── */
+  body::after { content: ''; position: fixed; inset: -200%; width: 400%; height: 400%; pointer-events: none; z-index: 99997; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; animation: grain 0.8s steps(1) infinite; }
+  @keyframes grain { 0%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)} 30%{transform:translate(-1%,4%)} 40%{transform:translate(4%,-2%)} 50%{transform:translate(-3%,3%)} 60%{transform:translate(2%,-4%)} 70%{transform:translate(-4%,1%)} 80%{transform:translate(1%,3%)} 90%{transform:translate(3%,-1%)} 100%{transform:translate(-2%,2%)} }
+
+  /* ── PRELOADER ── */
+  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
+  #preloader-logo { width: clamp(160px, 22vw, 280px); animation: preloaderFade 0.5s ease 0.1s forwards; opacity: 0; }
+  #preloader-logo img { width: 100%; display: block; }
+  @keyframes preloaderFade { to { opacity: 1; } }
+  @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
+
+  /* ── CURSOR ── */
+  @media (pointer: fine) { * { cursor: none !important; } }
+  #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
+  #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
+
+  /* ── PAGE TRANSITION ── */
+  #page-transition { position: fixed; inset: 0; background: var(--navy); z-index: 99990; transform-origin: top; pointer-events: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 120px 20px 60px; }
+    .hero h1 { font-size: clamp(32px, 9vw, 48px); }
+    .activation { padding: 60px 20px; }
+    .activation-header { margin-bottom: 48px; }
+    .activation-visual { grid-template-columns: 1fr; }
+    .activation-source { border-radius: 8px 8px 0 0; border-right: 1px solid rgba(221,227,241,.08); border-bottom: none; padding: 36px 24px; }
+    .activation-connector { display: none; }
+    .activation-grid-wrap { border-radius: 0 0 8px 8px; }
+    .activation-grid { grid-template-columns: repeat(2, 1fr); }
+    .data-partners { padding: 48px 20px; }
+    .data-partners-grid { gap: 28px; }
+    .data-partner { font-size: 16px; }
+    .cta-section { padding: 60px 20px; }
+    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div id="preloader-logo">
+    <img src="Top of Funnel logo-01.svg" alt="TOF.io">
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-02.svg" height="44" alt="TOF.io">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/data.html">Data</a></li>
+    <li><a href="/solutions.html" class="active">Solutions</a></li>
+    <li><a href="/#contact">Contact</a></li>
+  </ul>
+  <a href="/#contact" class="nav-cta">Let's talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <a href="/">Home</a>
+  <a href="/data.html">Data</a>
+  <a href="/solutions.html">Solutions</a>
+  <a href="/#contact">Contact</a>
+  <a href="/#contact" class="mobile-cta">Let's talk</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Solutions · Activation & deployment</p>
+    <h1>Enhance & activate<br>your campaigns.</h1>
+    <p class="hero-sub">Deploy TOF Identity Spine data across every major platform and activation channel — from programmatic DSPs to social, search, and CTV.</p>
+  </div>
+</section>
+
+<!-- ACTIVATION VISUAL -->
+<section class="activation">
+  <div class="activation-header reveal">
+    <h2>One source. Every channel.</h2>
+    <p>TOF Identity Spine feeds deterministic identity data into the platforms your campaigns already run on.</p>
+  </div>
+
+  <div class="activation-visual reveal">
+    <div class="activation-source">
+      <img class="activation-source-icon" src="Top of Funnel logo-04.svg" alt="TOF">
+      <p class="activation-source-label">Data source</p>
+      <p class="activation-source-name">TOF Identity Spine</p>
+      <p class="activation-source-desc">98% U.S. adult coverage<br>1.6T monthly consumer events</p>
+      <div class="activation-connector">
+        <div class="activation-connector-line"></div>
+        <div class="activation-connector-dot"></div>
+      </div>
+    </div>
+
+    <div class="activation-grid-wrap">
+      <p class="activation-grid-label">Activation channels</p>
+      <div class="activation-grid">
+        <div class="activation-platform">Google</div>
+        <div class="activation-platform">Amazon</div>
+        <div class="activation-platform">Yahoo</div>
+        <div class="activation-platform">The Trade Desk</div>
+        <div class="activation-platform">Meta</div>
+        <div class="activation-platform">Instagram</div>
+        <div class="activation-platform">TikTok</div>
+        <div class="activation-platform">Snapchat</div>
+        <div class="activation-platform">Facebook</div>
+        <div class="activation-platform">LiveRamp</div>
+        <div class="activation-platform">StackAdapt</div>
+        <div class="activation-platform">Basis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DATA PARTNERS -->
+<section class="data-partners">
+  <div class="data-partners-header reveal">
+    <h3>Marketplace partners</h3>
+    <p>Integrated with leading data marketplaces and onboarding platforms.</p>
+  </div>
+  <div class="data-partners-grid reveal">
+    <span class="data-partner">LiveRamp</span>
+    <span class="data-partner">Snowflake</span>
+    <span class="data-partner">AWS Data Exchange</span>
+    <span class="data-partner">Oracle</span>
+    <span class="data-partner">Lotame</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2 class="">Ready to activate<br>the full funnel?</h2>
+  <p class="">Tell us your use case. We'll show you what TOF looks like in your channel.</p>
+  <a href="/#contact" class="cta-btn reveal">Request access</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
+  </a>
+  <div class="footer-links">
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms of service</a>
+    <a href="mailto:go@tof.io">go@tof.io</a>
+  </div>
+  <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+  const lenis = new Lenis({ duration: 0.6, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true, wheelMultiplier: 1.4, touchMultiplier: 2, infinite: false });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+
+  // Preloader
+  const preloader = document.getElementById('preloader');
+  const preloaderLogo = document.getElementById('preloader-logo');
+  gsap.timeline()
+    .to(preloaderLogo, { opacity: 1, duration: 0.5, ease: 'power3.out' })
+    .to(preloaderLogo, { duration: 0.3 })
+    .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
+  setTimeout(() => { if (preloader && preloader.parentNode) preloader.remove(); }, 3000);
+
+  // Nav scroll
+  window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+
+  // Mobile nav
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = mobileNav.querySelectorAll('a');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    if (isOpen) { gsap.fromTo(mobileLinks, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', delay: 0.15 }); lenis.stop(); }
+    else { gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 }); lenis.start(); }
+  });
+
+  // Reveals
+  const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); ro.unobserve(e.target); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // Platform stagger
+  const platforms = document.querySelectorAll('.activation-platform');
+  gsap.set(platforms, { opacity: 0, y: 12 });
+  const platObs = new IntersectionObserver(entries => { entries.forEach(entry => { if (!entry.isIntersecting) return; platObs.unobserve(entry.target); gsap.to(platforms, { opacity: 1, y: 0, duration: 0.45, stagger: 0.04, ease: 'power3.out' }); }); }, { threshold: 0.2 });
+  platObs.observe(document.querySelector('.activation-grid'));
+
+  // Page transition
+  const overlay = document.getElementById('page-transition');
+  gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    link.addEventListener('click', e => { e.preventDefault(); gsap.fromTo(overlay, { scaleY: 0, transformOrigin: 'bottom' }, { scaleY: 1, duration: 0.7, ease: 'power3.inOut', onComplete: () => window.location.href = href }); });
+  });
+</script>
+
+<!-- CURSOR -->
+<div id="cursor-icon" aria-hidden="true">
+  <svg viewBox="0 0 502.28 627.91" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FF7C7C" fill-rule="evenodd" d="M376.77,461.35c0,22.52-18.42,40.94-40.94,40.94h-170.77c-10.85,0-20.75-4.47-27.91-11.63-7.16-7.16-11.58-17-11.58-27.86V165.06c0-16.28,10.01-30.37,24.16-36.41,2.35-1.01,4.81-1.74,7.38-2.3,2.57-.5,5.2-.78,7.94-.78h3.7c22.61,0,40.93-18.33,40.93-40.93v-43.7c0-22.61-18.32-40.94-40.93-40.94h-5.49c-23.21,0-40.55,18.91-39.43,42.12,1.57,33-8.56,57.5-29.92,70.7-2.85,1.79-5.87,3.36-9.12,4.7-11.72,4.92-26,7.16-42.79,6.35C19,122.76,0,141.76,0,164.79v299.63c0,22.43,18.57,40.94,41,39.66,12.25-.67,23.16.45,32.66,3.24,34.06,10.01,50.68,40.66,50.12,80.88-.28,21.81,17.68,39.71,39.49,39.71h176.47c22.2,0,39.1-18.12,38.76-40.33-.28-20.25,4.19-37.98,13.03-51.85,13.26-20.73,36.24-32.82,67.69-31.46,23.33,1.01,43.06-16.9,43.06-40.26v-108.79c0-22.61-18.33-40.94-40.94-40.94h-43.65c-22.61,0-40.93,18.33-40.93,40.94v106.12ZM439.53,125.57c-24.61,0-40.78-11.52-50.28-28.97-8.17-15.16-11.3-34.73-10.51-55.26.89-22.71-16.67-41.34-39.43-41.34h-54.49c-22.61,0-40.94,18.33-40.94,40.94v43.7c0,22.6,18.33,40.93,40.94,40.93h51.03c22.52,0,40.94,18.42,40.94,40.93v72.68c0,22.61,18.32,40.94,40.93,40.94h43.65c22.6,0,40.93-18.33,40.93-40.94v-50.8c0-34.57-28.25-62.81-62.76-62.81"/>
+  </svg>
+</div>
+<div id="cursor-ring" aria-hidden="true"></div>
+
+<script>
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const icon = document.getElementById('cursor-icon');
+    const ring = document.getElementById('cursor-ring');
+    const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
+    const iy = gsap.quickTo(icon, 'y', { duration: 0.12, ease: 'power3.out' });
+    const rx = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3.out' });
+    const ry = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3.out' });
+    let visible = false;
+    window.addEventListener('mousemove', e => {
+      ix(e.clientX - 12); iy(e.clientY - 15); rx(e.clientX - 24); ry(e.clientY - 24);
+      if (!visible) { gsap.to([icon, ring], { opacity: 1, duration: 0.4 }); visible = true; }
+    });
+    window.addEventListener('mouseleave', () => { gsap.to([icon, ring], { opacity: 0, duration: 0.3 }); visible = false; });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 1.6, borderColor: 'rgba(255,124,124,.45)', duration: 0.3 }); gsap.to(icon, { scale: 0.75, duration: 0.3 }); });
+      el.addEventListener('mouseleave', () => { gsap.to(ring, { scale: 1, borderColor: 'rgba(252,248,240,.22)', duration: 0.3 }); gsap.to(icon, { scale: 1, duration: 0.3 }); });
+    });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TOF Spine data architecture — three proprietary signal layers across the full performance marketing funnel.">
+<title>Data — TOF.io</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #070F36;
+    --navy: #070F36;
+    --cream: #FCF8F0;
+    --peri: #DDE3F1;
+    --coral: #FF7C7C;
+    --blue: #215FB0;
+    --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: auto; }
+  body { font-family: var(--f); background: var(--midnight); color: var(--cream); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.75; }
+
+  /* ── HERO ── */
+  .hero { padding: 160px 48px 100px; position: relative; overflow: hidden; min-height: 520px; background: #040A24; }
+  .hero-content { position: relative; z-index: 1; max-width: 800px; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.55); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
+  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px, 5.5vw, 66px); font-weight: 700; line-height: 1.04; letter-spacing: -.03em; color: var(--cream); margin-bottom: 28px; text-transform: uppercase; }
+  .hero-sub { font-size: 17px; line-height: 1.75; color: rgba(221,227,241,.7); max-width: 660px; }
+  .tof-spine { color: var(--peri); font-style: normal; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp .7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: .1s; }
+  .fade-up:nth-child(2) { animation-delay: .25s; }
+  .fade-up:nth-child(3) { animation-delay: .4s; }
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: .1s; }
+  .reveal-d2 { transition-delay: .2s; }
+  .reveal-d3 { transition-delay: .3s; }
+
+  /* ── FUNNEL BANDS ── */
+  .funnel-section { padding: 0 48px 120px; position: relative; }
+  .funnel-meta { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.3); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 32px; text-align: center; }
+  .funnel-bands { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .band {
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    padding: 48px 44px;
+    border-top: 2px solid;
+    cursor: default;
+    transition: background .22s;
+    position: relative;
+  }
+  .band:nth-child(1) { width: 100%; }
+  .band:nth-child(2) { width: 78%; }
+  .band:nth-child(3) { width: 56%; }
+  .band-peri  { background: rgba(221,227,241,.04); border-top-color: var(--peri); }
+  .band-peri:hover  { background: rgba(221,227,241,.07); }
+  .band-blue  { background: rgba(221,227,241,.03); border-top-color: #6B9FD4; }
+  .band-blue:hover  { background: rgba(221,227,241,.06); }
+  .band-coral { background: rgba(221,227,241,.02); border-top-color: var(--coral); }
+  .band-coral:hover { background: rgba(221,227,241,.05); }
+  .band-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .band-peri  .band-label { color: var(--peri); }
+  .band-blue  .band-label { color: #6B9FD4; }
+  .band-coral .band-label { color: var(--coral); }
+  .band-stat {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: rgba(221,227,241,.45);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .band-desc {
+    font-size: 15px;
+    color: rgba(221,227,241,.55);
+    line-height: 1.65;
+    max-width: 480px;
+  }
+
+  /* ── SECTION BASE ── */
+  .data-section {
+    padding: 140px 48px;
+    border-top: 1px solid rgba(221,227,241,.07);
+    position: relative;
+  }
+  .layer-mid { background: #0A1540; }
+  .layer-deep { background: #040A24; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
+  .ey-peri  { color: rgba(221,227,241,.65); }
+  .ey-peri::before  { background: var(--peri); }
+  .ey-blue  { color: #6B9FD4; }
+  .ey-blue::before  { background: #6B9FD4; }
+  .ey-coral { color: rgba(221,227,241,.55); }
+  .ey-coral::before { background: rgba(221,227,241,.3); }
+  .ey-dim   { color: rgba(221,227,241,.42); }
+  .ey-dim::before { background: rgba(221,227,241,.28); }
+  .section-h2 {
+    font-size: clamp(44px, 5vw, 64px);
+    font-weight: 700;
+    letter-spacing: -.03em;
+    line-height: 1.06;
+    color: var(--cream);
+    margin-bottom: 24px;
+    max-width: 800px;
+  }
+  .section-body {
+    font-size: 16px;
+    line-height: 1.8;
+    color: rgba(221,227,241,.7);
+    max-width: 700px;
+    margin-bottom: 64px;
+  }
+
+  /* ── LAYER 1 CREAM SECTION ── */
+  #layer1 { background: var(--cream); }
+  #layer1 .section-eyebrow { color: var(--peri); }
+  #layer1 .section-eyebrow::before { background: var(--peri); }
+  #layer1 .section-h2 { color: var(--midnight); }
+  #layer1 .section-body { color: rgba(7,15,54,.68); }
+  #layer1 .data-table { border-top-color: rgba(7,15,54,.1); }
+  #layer1 .data-row { border-bottom-color: rgba(7,15,54,.08); }
+  #layer1 .data-row-label { color: rgba(7,15,54,.6); }
+  #layer1 .data-row-val { color: var(--midnight); }
+  #layer1 .data-callout { background: var(--midnight); }
+
+  /* ── LAYER 1: DATA TABLE ── */
+  .data-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start; }
+  .data-table { border-top: 1px solid rgba(221,227,241,.08); }
+  .data-row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(221,227,241,.06); gap: 24px; }
+  .data-row-label { font-size: 15px; color: rgba(221,227,241,.58); }
+  .data-row-val { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--peri); letter-spacing: -.01em; white-space: nowrap; }
+  .data-callout {
+    background: rgba(221,227,241,.03);
+    border: 1px solid rgba(221,227,241,.08);
+    border-radius: 6px;
+    padding: 44px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .data-callout::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--peri), transparent 70%);
+  }
+  .dc-label { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.38); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
+  .dc-num { font-family: var(--mono); font-size: 60px; font-weight: 500; color: var(--cream); letter-spacing: -.04em; line-height: 1; margin-bottom: 20px; }
+  .dc-body { font-size: 15px; color: rgba(221,227,241,.58); line-height: 1.72; }
+
+  /* ── LAYER 2: KEYWORD FEEDS ── */
+  .feeds-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .feed-card {
+    background: rgba(221,227,241,.03);
+    border: 1px solid rgba(221,227,241,.07);
+    border-radius: 6px;
+    padding: 24px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s, background .2s;
+  }
+  .feed-card::after {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, #6B9FD4, transparent 70%);
+    opacity: 0;
+    transition: opacity .2s;
+  }
+  .feed-card:hover { border-color: rgba(107,159,212,.25); background: rgba(33,95,176,.05); }
+  .feed-card:hover::after { opacity: 1; }
+  .feed-card.custom {
+    border-style: dashed;
+    border-color: rgba(221,227,241,.12);
+    background: transparent;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .feed-card.custom:hover { border-color: rgba(221,227,241,.24); background: rgba(221,227,241,.02); }
+  .feed-card.custom::after { display: none; }
+  .feed-custom-label { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.32); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 8px; }
+  .feed-title { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 8px; line-height: 1.3; }
+  .feed-card.custom .feed-title { color: rgba(221,227,241,.45); }
+  .feed-desc { font-size: 13px; color: rgba(221,227,241,.48); line-height: 1.6; }
+
+  /* ── LAYER 3: VERTICALS ── */
+  .verticals-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .vpill {
+    font-size: 14px;
+    color: rgba(221,227,241,.68);
+    padding: 9px 18px;
+    border-radius: 4px;
+    border: 1px solid rgba(221,227,241,.12);
+    background: rgba(221,227,241,.04);
+    transition: all .2s;
+    line-height: 1;
+  }
+  .vpill:hover { border-color: rgba(221,227,241,.3); color: var(--cream); background: rgba(221,227,241,.08); }
+  .vpill.more {
+    border-style: dashed;
+    color: rgba(221,227,241,.38);
+    border-color: rgba(221,227,241,.1);
+    background: transparent;
+  }
+  .exclusivity-box {
+    margin-top: 44px;
+    background: rgba(33,95,176,.06);
+    border: 1px solid rgba(33,95,176,.2);
+    border-radius: 6px;
+    padding: 20px 28px;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .excl-tag { font-family: var(--mono); font-size: 10px; color: #6B9FD4; letter-spacing: .12em; text-transform: uppercase; flex-shrink: 0; white-space: nowrap; }
+  .exclusivity-box p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.55; }
+
+  /* ── DETERMINISTIC ── */
+  #deterministic {
+    padding: 160px 48px;
+    background: #040A24;
+    text-align: left;
+  }
+  #deterministic .section-eyebrow { margin-bottom: 24px; }
+  #deterministic .section-h2 {
+    font-size: clamp(52px, 5.5vw, 72px);
+    margin-bottom: 64px;
+    line-height: 1.02;
+    max-width: 820px;
+  }
+  .det-arena {
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr;
+    gap: 0;
+  }
+  .det-divider {
+    background: linear-gradient(to bottom, #6E7180 0%, #DDE3F1 100%);
+    width: 1px;
+    opacity: 0.4;
+    align-self: stretch;
+    min-height: 480px;
+  }
+  /* LEFT — probabilistic */
+  .det-col { padding: 52px 48px; }
+  .det-col.prob {
+    background: rgba(221,227,241,0.02);
+    border-left: 2px solid rgba(110,113,128,0.3);
+  }
+  /* RIGHT — deterministic */
+  .det-col.det {
+    background: rgba(221,227,241,0.06);
+    border-left: 3px solid #DDE3F1;
+  }
+  /* badge labels */
+  .det-badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+  .det-badge.prob {
+    color: rgba(255,100,100,.8);
+    background: rgba(255,100,100,.08);
+    border: 1px solid rgba(255,100,100,.2);
+  }
+  .det-badge.det {
+    color: #6B9FD4;
+    background: rgba(33,95,176,.1);
+    border: 1px solid rgba(33,95,176,.25);
+  }
+  /* column headers */
+  .det-col h3 {
+    letter-spacing: -.025em;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .det-col.prob h3 { font-size: 26px; color: #6E7180; font-weight: 600; }
+  .det-col.det  h3 { font-size: 30px; color: var(--cream); font-weight: 700; }
+  /* body copy */
+  .det-col > p { font-size: 16px; line-height: 1.72; margin-bottom: 28px; }
+  .det-col.prob > p { color: rgba(221,227,241,.4); }
+  .det-col.det  > p { color: #9DA2B3; }
+  /* bullets */
+  .det-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .det-bullets li { font-size: 15px; line-height: 1.6; }
+  .det-col.prob .det-bullets li { color: rgba(221,227,241,.4); }
+  .det-col.det  .det-bullets li { color: rgba(221,227,241,.82); }
+  /* callout */
+  .det-callout {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-top: 64px;
+    letter-spacing: -0.02em;
+  }
+  .det-callout span { color: var(--coral); }
+
+  /* ── CTA ── */
+  .cta-section { padding: 140px 48px; border-top: 1px solid rgba(221,227,241,.07); text-align: center; position: relative; overflow: hidden; }
+  .cta-section::before {
+    content: '';
+    position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(33,95,176,.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cta-eyebrow { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.42); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .cta-eyebrow::before, .cta-eyebrow::after { content: ''; display: inline-block; width: 20px; height: 1px; background: rgba(221,227,241,.3); }
+  .cta-h2 { font-size: clamp(44px, 5vw, 64px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; color: var(--cream); margin-bottom: 20px; }
+  .cta-body { font-size: 17px; line-height: 1.75; color: rgba(221,227,241,.62); max-width: 520px; margin: 0 auto 44px; }
+  .btn-coral { font-size: 13px; font-weight: 600; padding: 14px 32px; border-radius: 6px; background: var(--coral); color: var(--midnight); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; display: inline-block; }
+  .btn-coral:hover { opacity: .88; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .data-layout { grid-template-columns: 1fr; gap: 48px; }
+    .feeds-grid { grid-template-columns: repeat(2, 1fr); }
+    .det-arena { grid-template-columns: 1fr; }
+    .det-divider { display: none; }
+    .det-col.prob { border-left: 2px solid rgba(255,100,100,.3); }
+    .det-col.det { border-left: 3px solid #DDE3F1; border-top: none; }
+    .det-col { padding: 40px 28px; }
+  }
+  @media (max-width: 900px) {
+    .hero { padding: 80px 24px 64px; }
+    .funnel-section { padding: 0 20px 80px; }
+    .band { padding: 32px 20px; }
+    .band:nth-child(1) { width: 100%; }
+    .band:nth-child(2) { width: 88%; }
+    .band:nth-child(3) { width: 76%; }
+    .band-stat { padding-left: 0; border-left: none; }
+    .band-desc { text-align: left; }
+    .data-section { padding: 100px 24px; }
+    .cta-section { padding: 88px 24px; }
+  }
+  @media (max-width: 600px) {
+    .feeds-grid { grid-template-columns: 1fr; }
+    .exclusivity-box { flex-direction: column; align-items: flex-start; gap: 8px; }
+  }
+
+  /* ── NAV (from index.html) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    transition: background .4s, border-color .4s, backdrop-filter .4s;
+  }
+  nav.scrolled {
+    background: rgba(7,15,54,.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: rgba(221,227,241,.07);
+  }
+  .nav-logo img { height: 44px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; color: rgba(221,227,241,.78); text-decoration: none; letter-spacing: .01em; transition: color .2s; }
+  .nav-links a:hover { color: var(--peri); }
+  .nav-cta { font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 4px; background: rgba(221,227,241,0.15); color: var(--cream); text-decoration: none; transition: opacity .2s; }
+  .nav-cta:hover { opacity: .85; }
+
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 101; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(252,248,240,.8); transition: all .3s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .mobile-nav-overlay {
+    position: fixed; inset: 0; z-index: 99;
+    background: rgba(7,15,54,.97);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px;
+    opacity: 0; pointer-events: none; transition: opacity .4s ease;
+  }
+  .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+  .mobile-nav-overlay a { font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: -.02em; opacity: 0; transform: translateY(20px); }
+  .mobile-nav-overlay a:hover { color: var(--coral); }
+  .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--midnight); opacity: 0; transform: translateY(20px); }
+  @media (max-width: 900px) { nav { padding: 0 24px; } .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
+
+  /* ── FOOTER (from index.html) ── */
+  footer { padding: 22px 48px; background: #FCF8F0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(7,15,54,.08); flex-wrap: wrap; gap: 16px; position: relative; overflow: hidden; }
+  footer > *:not(svg) { position: relative; z-index: 1; }
+  .footer-logo img { height: 13px; width: auto; opacity: 1; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; color: rgba(7,15,54,.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: rgba(7,15,54,.75); }
+  .footer-right { font-size: 11px; color: rgba(7,15,54,.30); }
+
+  /* ── GRAIN TEXTURE ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    pointer-events: none;
+    z-index: 99997;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: grain 0.8s steps(1) infinite;
+  }
+  @keyframes grain {
+    0%  { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -3%); }
+    20% { transform: translate(3%, 1%); }
+    30% { transform: translate(-1%, 4%); }
+    40% { transform: translate(4%, -2%); }
+    50% { transform: translate(-3%, 3%); }
+    60% { transform: translate(2%, -4%); }
+    70% { transform: translate(-4%, 1%); }
+    80% { transform: translate(1%, 3%); }
+    90% { transform: translate(3%, -1%); }
+    100%{ transform: translate(-2%, 2%); }
+  }
+
+  /* ── PRELOADER ── */
+  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
+  #preloader-logo { width: clamp(160px, 22vw, 280px); opacity: 0; animation: preloaderFade 0.5s ease 0.1s forwards; }
+  #preloader-logo img { width: 100%; display: block; }
+  @keyframes preloaderFade { to { opacity: 1; } }
+  @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
+
+  /* ── CUSTOM CURSOR ── */
+  @media (pointer: fine) { * { cursor: none !important; } }
+  #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
+  #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
+
+  /* ── PAGE TRANSITION ── */
+  #page-transition { position: fixed; inset: 0; background: #070F36; z-index: 99990; transform-origin: top; pointer-events: none; }
+
+  /* ── WATERMARKS ── */
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div id="preloader-logo">
+    <img src="Top of Funnel logo-01.svg" alt="TOF.io">
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-02.svg" height="44" alt="TOF.io">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <a href="/">Home</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#data">Data</a>
+  <a href="#industries">Industries</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="mobile-cta">Let's talk</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow fade-up">The TOF Spine · Data architecture</p>
+    <h1 class="fade-up">Three signal layers.<br>Full funnel coverage.</h1>
+    <p class="hero-sub fade-up">The <span class="tof-spine">TOF Spine</span> isn't a single data product. It's a curated stack of three proprietary signal layers — assembled, verified, and activated by TOF across the full performance marketing funnel.</p>
+  </div>
+</section>
+
+<!-- FUNNEL VISUALIZATION -->
+<div class="funnel-section">
+  <p class="funnel-meta reveal">Signal architecture — top to bottom of funnel</p>
+  <div class="funnel-bands">
+    <div class="band band-peri reveal reveal-d1">
+      <div class="band-label">Top of funnel · In-market consumer data</div>
+      <div class="band-stat">246M verified U.S. adults · 2T monthly events</div>
+      <div class="band-desc">The source of truth layer. Who is in market, where they are, and what they want.</div>
+    </div>
+    <div class="band band-blue reveal reveal-d2">
+      <div class="band-label">Middle funnel · Keyword custom audiences</div>
+      <div class="band-stat">Built from active search behavior · Custom or pre-built</div>
+      <div class="band-desc">People actively researching solutions right now — by vertical, offer, or brand.</div>
+    </div>
+    <div class="band band-coral reveal reveal-d3">
+      <div class="band-label">Bottom funnel · High-intent behavioral signals</div>
+      <div class="band-stat">30+ verticals · Exclusive TOF Spine activation</div>
+      <div class="band-desc">The closest signal to a buying decision available in performance marketing.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LAYER 1: TOP OF FUNNEL -->
+<section class="data-section" id="layer1">
+  <p class="section-eyebrow ey-peri reveal">Layer 01 — Top of funnel</p>
+  <h2 class="section-h2 reveal">Know who's in market<br>before you spend.</h2>
+  <p class="section-body reveal">The foundation of the <span class="tof-spine">TOF Spine</span>. Authoritative in-market consumer data covering 246M verified U.S. adults across 25+ verticals. Financial signals, behavioral data, property intelligence, device graphs — unified into a single deterministic identity framework. This is the source of truth layer that everything else is built on.</p>
+  <div class="data-layout reveal">
+    <div class="data-table">
+      <div class="data-row">
+        <span class="data-row-label">Verified U.S. adults (PII)</span>
+        <span class="data-row-val">246M</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Residential addresses</span>
+        <span class="data-row-val">153M</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Financial insights (income, credit, spend)</span>
+        <span class="data-row-val">97% U.S. HH</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Active emails + phones</span>
+        <span class="data-row-val">400M+</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Mobile Ad ID pairs</span>
+        <span class="data-row-val">6B+</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Connected TV households</span>
+        <span class="data-row-val">90M+</span>
+      </div>
+      <div class="data-row">
+        <span class="data-row-label">Monthly consumer events</span>
+        <span class="data-row-val">2T</span>
+      </div>
+    </div>
+    <div class="data-callout">
+      <p class="dc-label">Monthly consumer events</p>
+      <p class="dc-num">2T</p>
+      <p class="dc-body">Financial, behavioral, property, device, and in-market signals — unified into a single deterministic identity framework. The most authoritative U.S. consumer data available for performance marketing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 2: KEYWORD CUSTOM AUDIENCES -->
+<section class="data-section layer-mid" id="layer2">
+  <p class="section-eyebrow ey-blue reveal">Layer 02 — Middle funnel</p>
+  <h2 class="section-h2 reveal">Audiences built from what people<br>are actively searching for.</h2>
+  <p class="section-body reveal">The middle layer of the <span class="tof-spine">TOF Spine</span>. Keyword Custom Audiences are built from real search behavior around specific offers, brands, and verticals. Higher intent than behavioral signals alone — these are people actively researching solutions right now. Available as pre-built feeds or custom-built around your specific offer, vertical, or brand.</p>
+  <div class="feeds-grid reveal">
+    <div class="feed-card">
+      <div class="feed-title">Health Insurance</div>
+      <div class="feed-desc">Private health insurance carriers, enrollment, pricing, COBRA alternatives, marketplace plans</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Tax Debt</div>
+      <div class="feed-desc">IRS settlement, offer in compromise, best companies</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Home Security</div>
+      <div class="feed-desc">Alarm systems, home security options</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Solar</div>
+      <div class="feed-desc">No down payment solar, residential solar installation</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Reverse Mortgage</div>
+      <div class="feed-desc">Best lenders, HECM, compare and research</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Auto Loans</div>
+      <div class="feed-desc">Pre-approval, bad credit, guaranteed approval</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Firearms &amp; Outdoor</div>
+      <div class="feed-desc">NRA membership, firearm safety, hunting</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Debt Relief</div>
+      <div class="feed-desc">Settlement options, credit card consolidation, balance transfer</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">Mobile IV Therapy</div>
+      <div class="feed-desc">Mobile wellness, IV vitamin therapy, concierge health</div>
+    </div>
+    <div class="feed-card">
+      <div class="feed-title">GLP-1 / Weight Loss</div>
+      <div class="feed-desc">Weight loss medications, GLP-1 programs, prescription access</div>
+    </div>
+    <div class="feed-card custom">
+      <div class="feed-custom-label">Available on request</div>
+      <div class="feed-title">Custom Feed</div>
+      <div class="feed-desc">Built to order for any vertical, offer, or brand. Talk to our team.</div>
+    </div>
+  </div>
+</section>
+
+<!-- LAYER 3: HIGH-INTENT BEHAVIORAL SIGNALS -->
+<section class="data-section layer-deep" id="layer3">
+  <p class="section-eyebrow ey-coral reveal">Layer 03 — Bottom funnel</p>
+  <h2 class="section-h2 reveal">The closest signal to a buying decision<br>available in performance marketing.</h2>
+  <p class="section-body reveal">The deepest layer of the <span class="tof-spine">TOF Spine</span>. High-intent behavioral signals identify consumers at the exact moment of peak buying intent — across insurance, financial services, home services, and more. This is where the funnel closes. Available exclusively through <span class="tof-spine">TOF Spine</span> activation.</p>
+  <div class="verticals-wrap reveal">
+    <span class="vpill">Health Insurance (ACA/U65)</span>
+    <span class="vpill">Medicare Advantage</span>
+    <span class="vpill">Auto Insurance</span>
+    <span class="vpill">Final Expense</span>
+    <span class="vpill">Home Services — Windows</span>
+    <span class="vpill">Home Services — HVAC</span>
+    <span class="vpill">Home Services — Plumbing</span>
+    <span class="vpill">Home Services — Roofing</span>
+    <span class="vpill">Home Services — Solar</span>
+    <span class="vpill">Debt Relief</span>
+    <span class="vpill">Mortgage</span>
+    <span class="vpill more">+ 20 additional high-intent verticals</span>
+  </div>
+  <div class="exclusivity-box reveal">
+    <span class="excl-tag">Exclusive access</span>
+    <p>Available through direct TOF partnership only. Not available as a self-serve product.</p>
+  </div>
+</section>
+
+<!-- DETERMINISTIC VS PROBABILISTIC -->
+<section id="deterministic">
+  <p class="section-eyebrow ey-dim reveal">Identity methodology</p>
+  <h2 class="section-h2 reveal">Your competitors are guessing.<br>You won't be.</h2>
+  <div class="det-arena reveal">
+    <div class="det-col prob">
+      <div class="det-badge prob">Probabilistic</div>
+      <h3>Inferred identity</h3>
+      <p>Modeled from behavioral signals and statistical likelihood. Accurate enough for awareness — not for performance.</p>
+      <ul class="det-bullets">
+        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Identity inferred from patterns, not verified</li>
+        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Match rates degrade over time</li>
+        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Lookalike audiences amplify inaccuracy</li>
+        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>No persistent identity across channels</li>
+        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>You're buying a probability, not a person</li>
+      </ul>
+    </div>
+    <div class="det-divider"></div>
+    <div class="det-col det">
+      <div class="det-badge det">Deterministic · TOF Identity Spine</div>
+      <h3>Verified identity</h3>
+      <p>Built on persistent, verified records tied to real individuals. The foundation every audience is anchored in.</p>
+      <ul class="det-bullets">
+        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Identity verified from authoritative primary sources</li>
+        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Persistent across channels and devices</li>
+        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Deterministic foundation — build any audience type on top</li>
+        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Continuously refreshed from 70+ primary sources</li>
+        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>You're reaching the person, not a model of them</li>
+      </ul>
+    </div>
+  </div>
+  <p class="det-callout reveal">70+ primary sources. <span style="color:#FF7C7C;">Zero inference.</span></p>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <p class="cta-eyebrow reveal">Get started</p>
+  <h2 class="cta-h2 reveal">Ready to activate<br>the full funnel?</h2>
+  <p class="cta-body reveal">Tell us your vertical, your channel, and your use case. We'll show you which layers of the <span class="tof-spine">TOF Spine</span> are right for you.</p>
+  <a href="contact.html" class="btn-coral reveal">Talk to our team</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="footer-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
+  </a>
+  <div class="footer-links">
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms of service</a>
+    <a href="mailto:info@tof.io">info@tof.io</a>
+  </div>
+  <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 0.6,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1.4,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+</script>
+<script>
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      ro.unobserve(e.target);
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+
+<!-- CURSOR -->
+<div id="cursor-icon" aria-hidden="true">
+  <svg viewBox="0 0 502.28 627.91" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FF7C7C" fill-rule="evenodd" d="M376.77,461.35c0,22.52-18.42,40.94-40.94,40.94h-170.77c-10.85,0-20.75-4.47-27.91-11.63-7.16-7.16-11.58-17-11.58-27.86V165.06c0-16.28,10.01-30.37,24.16-36.41,2.35-1.01,4.81-1.74,7.38-2.3,2.57-.5,5.2-.78,7.94-.78h3.7c22.61,0,40.93-18.33,40.93-40.93v-43.7c0-22.61-18.32-40.94-40.93-40.94h-5.49c-23.21,0-40.55,18.91-39.43,42.12,1.57,33-8.56,57.5-29.92,70.7-2.85,1.79-5.87,3.36-9.12,4.7-11.72,4.92-26,7.16-42.79,6.35C19,122.76,0,141.76,0,164.79v299.63c0,22.43,18.57,40.94,41,39.66,12.25-.67,23.16.45,32.66,3.24,34.06,10.01,50.68,40.66,50.12,80.88-.28,21.81,17.68,39.71,39.49,39.71h176.47c22.2,0,39.1-18.12,38.76-40.33-.28-20.25,4.19-37.98,13.03-51.85,13.26-20.73,36.24-32.82,67.69-31.46,23.33,1.01,43.06-16.9,43.06-40.26v-108.79c0-22.61-18.33-40.94-40.94-40.94h-43.65c-22.61,0-40.93,18.33-40.93,40.94v106.12ZM439.53,125.57c-24.61,0-40.78-11.52-50.28-28.97-8.17-15.16-11.3-34.73-10.51-55.26.89-22.71-16.67-41.34-39.43-41.34h-54.49c-22.61,0-40.94,18.33-40.94,40.94v43.7c0,22.6,18.33,40.93,40.94,40.93h51.03c22.52,0,40.94,18.42,40.94,40.93v72.68c0,22.61,18.32,40.94,40.93,40.94h43.65c22.6,0,40.93-18.33,40.93-40.94v-50.8c0-34.57-28.25-62.81-62.76-62.81"/>
+  </svg>
+</div>
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="page-transition" aria-hidden="true"></div>
+
+<script>
+  // ── PRELOADER ──
+  const preloader = document.getElementById('preloader');
+  const preloaderLogo = document.getElementById('preloader-logo');
+  gsap.timeline()
+    .to(preloaderLogo, { opacity: 1, duration: 0.5, ease: 'power3.out' })
+    .to(preloaderLogo, { duration: 0.3 })
+    .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
+
+  // ── CUSTOM CURSOR ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const icon = document.getElementById('cursor-icon');
+    const ring = document.getElementById('cursor-ring');
+    const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
+    const iy = gsap.quickTo(icon, 'y', { duration: 0.12, ease: 'power3.out' });
+    const rx = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3.out' });
+    const ry = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3.out' });
+    let visible = false;
+    window.addEventListener('mousemove', e => {
+      ix(e.clientX - 12); iy(e.clientY - 15);
+      rx(e.clientX - 24); ry(e.clientY - 24);
+      if (!visible) { gsap.to([icon, ring], { opacity: 1, duration: 0.4 }); visible = true; }
+    });
+    window.addEventListener('mouseleave', () => {
+      gsap.to([icon, ring], { opacity: 0, duration: 0.3 }); visible = false;
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(ring, { scale: 1.6, borderColor: 'rgba(255,124,124,.45)', duration: 0.3 });
+        gsap.to(icon, { scale: 0.75, duration: 0.3 });
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(ring, { scale: 1, borderColor: 'rgba(252,248,240,.22)', duration: 0.3 });
+        gsap.to(icon, { scale: 1, duration: 0.3 });
+      });
+    });
+  }
+
+  // ── MOBILE NAV ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = mobileNav.querySelectorAll('a');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    if (isOpen) {
+      gsap.fromTo(mobileLinks, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', delay: 0.15 });
+      lenis.stop();
+    } else {
+      gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 });
+      lenis.start();
+    }
+  });
+  mobileLinks.forEach(link => {
+    if (link.getAttribute('href').startsWith('#')) {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.2 });
+        lenis.start();
+      });
+    }
+  });
+
+  // ── NAV SCROLL STATE ──
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ── MAGNETIC BUTTONS ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.nav-cta, a[class*="btn"], button').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        gsap.to(btn, { x: x * 0.28, y: y * 0.22, duration: 0.4, ease: 'power3.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+  }
+
+  // ── PAGE TRANSITION ──
+  const overlay = document.getElementById('page-transition');
+  gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      gsap.fromTo(overlay,
+        { scaleY: 0, transformOrigin: 'bottom' },
+        { scaleY: 1, duration: 0.7, ease: 'power3.inOut', onComplete: () => window.location.href = href }
+      );
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TOF.io — The data layer performance marketing is built on. 98% U.S. adult coverage. 1.6T monthly consumer events. Deterministic identity infrastructure for the full funnel.">
+<meta property="og:title" content="TOF.io — The Data Layer Performance Runs On">
+<meta property="og:description" content="98% U.S. adult coverage. 1.6T monthly consumer events. TOF Identity Spine is the deterministic data infrastructure underneath your acquisition, monetization, and retention.">
+<meta property="og:type" content="website">
+<title>TOF.io — The Data Layer Performance Runs On</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #070F36;
+    --blue: #215FB0;
+    --peri: #DDE3F1;
+    --cream: #FCF8F0;
+    --coral: #FF7C7C;
+    --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: auto; }
+  body { font-family: var(--f); background: #070F36; color: var(--cream); -webkit-font-smoothing: antialiased; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    transition: background .4s, border-color .4s, backdrop-filter .4s;
+  }
+  nav.scrolled {
+    background: rgba(7,15,54,.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom-color: rgba(221,227,241,.07);
+  }
+  .nav-logo img { height: 28px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; color: rgba(221,227,241,.78); text-decoration: none; letter-spacing: .01em; transition: color .2s; }
+  .nav-links a:hover { color: var(--peri); }
+  .nav-cta { font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 4px; background: var(--blue); color: var(--cream); text-decoration: none; transition: opacity .2s; }
+  .nav-cta:hover { opacity: .85; }
+
+  /* ── HERO ── */
+  .hero { position: relative; overflow: hidden; min-height: 100vh; background: #040A24; display: flex; align-items: center; justify-content: center; padding: 60px 48px; }
+  .hero-content { position: relative; z-index: 1; text-align: center; max-width: 960px; }
+  .hero-icon-wrap { margin-bottom: 36px; display: flex; justify-content: center; }
+  #hero-3d { width: 100px; height: 100px; }
+  .eyebrow { font-size: 11px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
+  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(56px, 8.5vw, 110px); font-weight: 700; line-height: 0.92; letter-spacing: -.045em; color: #FCF8F0; margin-bottom: 48px; text-transform: uppercase; }
+  .hero h1 em { color: #DDE3F1; font-style: normal; }
+  .hero-rule { width: 48px; height: 2px; background: var(--coral); margin: 0 auto 40px; }
+  .hero-stat { font-family: var(--mono); font-size: 12px; color: rgba(221,227,241,.4); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 56px; }
+  .hero-stat-num { color: var(--cream); font-weight: 500; }
+  .hero-cta { font-size: 14px; padding: 16px 48px; border-radius: 4px; letter-spacing: .02em; }
+  .cta-row { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+  /* ── MARQUEE ── */
+  .marquee-wrap { overflow: hidden; background: #070F36; border-top: 1px solid rgba(221,227,241,.07); border-bottom: 1px solid rgba(221,227,241,.07); padding: 14px 0; position: relative; }
+  .marquee-wrap::before, .marquee-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+  .marquee-wrap::before { left: 0; background: linear-gradient(to right, #070F36, transparent); }
+  .marquee-wrap::after { right: 0; background: linear-gradient(to left, #070F36, transparent); }
+  .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item { font-family: var(--mono); font-size: 11px; color: rgba(252,248,240,.72); letter-spacing: .1em; text-transform: uppercase; padding: 0 32px; white-space: nowrap; }
+  .marquee-item.hi { color: var(--coral); }
+  .marquee-sep { color: rgba(252,248,240,.2); padding: 0 8px; }
+
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  /* ── PILLAR HOVER GLOW ── */
+  .pillar-block:hover { background: rgba(221,227,241,.06); }
+  .pillar-block::after { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .3s; pointer-events: none; }
+  .pillar-block.acquire::after { background: radial-gradient(ellipse at top left, rgba(255,124,124,.06) 0%, transparent 70%); }
+  .pillar-block.monetize::after { background: radial-gradient(ellipse at top left, rgba(33,95,176,.07) 0%, transparent 70%); }
+  .pillar-block.retain::after { background: radial-gradient(ellipse at top left, rgba(221,227,241,.05) 0%, transparent 70%); }
+  .pillar-block:hover::after { opacity: 1; }
+  .btn-primary { font-size: 13px; font-weight: 600; padding: 13px 30px; border-radius: 3px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; }
+  .btn-primary:hover { opacity: .88; }
+
+  /* ── PARTNERS ── */
+  .partners { padding: 80px 48px; position: relative; overflow: hidden; }
+  .partners-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(221,227,241,.40); margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); display: inline-block; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+  .partners-logos { display: flex; align-items: center; justify-content: center; gap: 72px; flex-wrap: wrap; }
+  .partner-name { font-size: 28px; font-weight: 500; color: rgba(221,227,241,.35); letter-spacing: -.02em; transition: color .3s; }
+  .partner-name:hover { color: rgba(221,227,241,.65); }
+  .partner-divider { display: none; }
+  .partner-logo-wrap { display: flex; align-items: center; }
+
+  /* ── SECTIONS ── */
+  section { padding: 88px 48px; position: relative; }
+  .sec-eyebrow { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .sec-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
+  .sec-eyebrow.coral { color: var(--coral); }
+  .sec-eyebrow.coral::before { background: var(--coral); }
+  .sec-eyebrow.blue { color: var(--blue); }
+  .sec-eyebrow.blue::before { background: var(--blue); }
+  .sec-h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 20px; }
+  .sec-h2.light { color: var(--cream); }
+  .sec-h2.dark { color: var(--navy); }
+  .sec-body { font-size: 15px; line-height: 1.75; max-width: 560px; margin-bottom: 48px; font-weight: 400; }
+  .sec-body.light { color: rgba(221,227,241,.80); }
+  .sec-body.dark { color: rgba(7,15,54,.72); }
+  .section-grid-line { position: absolute; top: 0; left: 48px; right: 48px; height: 1px; background: rgba(221,227,241,.06); }
+
+  /* ── THREE PILLARS ── */
+  .pillars-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.07); position: relative; overflow: hidden; }
+  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 0; }
+  .pillar-block { background: rgba(221,227,241,.03); padding: 56px 36px; position: relative; overflow: hidden; border-top: 2px solid transparent; transition: background .35s; }
+  .pillar-block.acquire { border-top-color: var(--coral); }
+  .pillar-block.monetize { border-top-color: var(--blue); }
+  .pillar-block.retain { border-top-color: var(--peri); }
+  .pillar-big-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px, 5vw, 72px); font-weight: 700; letter-spacing: -.04em; line-height: 1; margin-bottom: 24px; }
+  .pillar-block.acquire .pillar-big-num { color: rgba(255,124,124,.15); }
+  .pillar-block.monetize .pillar-big-num { color: rgba(33,95,176,.2); }
+  .pillar-block.retain .pillar-big-num { color: rgba(221,227,241,.1); }
+  .pillar-num { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
+  .pillar-block.acquire .pillar-num { color: var(--coral); }
+  .pillar-block.monetize .pillar-num { color: var(--blue); }
+  .pillar-block.retain .pillar-num { color: var(--peri); opacity: .7; }
+  .pillar-h { font-size: 24px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.15; }
+  .pillar-body { font-size: 14px; line-height: 1.75; color: rgba(221,227,241,.65); margin-bottom: 0; }
+
+  /* ── PROBLEM SECTION ── */
+  .problem-section { background: #FCF8F0; border-top: 1px solid rgba(7,15,54,.06); }
+  .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 48px; }
+  .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 8px; padding: 36px 32px; background: transparent; transition: border-color .3s, box-shadow .3s; }
+  .problem-card:hover { border-color: rgba(7,15,54,.18); box-shadow: 0 4px 24px rgba(7,15,54,.04); }
+  .problem-q { font-size: 17px; font-weight: 600; color: rgba(7,15,54,.88); margin-bottom: 12px; line-height: 1.3; letter-spacing: -.01em; }
+  .problem-a { font-size: 14px; color: rgba(7,15,54,.55); line-height: 1.7; }
+
+  /* ── DATA ── */
+  .data-section { background: var(--peri); position: relative; padding: 88px 48px; }
+  .data-header { margin-bottom: 48px; }
+  .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(7,15,54,.08); }
+  .data-stat {
+    background: var(--peri);
+    padding: 40px 32px;
+  }
+  .data-stat-num {
+    font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 4vw, 52px);
+    font-weight: 700; color: var(--navy);
+    letter-spacing: -.04em; line-height: 1; margin-bottom: 10px;
+  }
+  .data-stat-label {
+    font-size: 12px; color: rgba(7,15,54,.5);
+    line-height: 1.5;
+    letter-spacing: .04em; text-transform: uppercase;
+  }
+
+  /* ── INDUSTRIES ── */
+  .industries-section { background: var(--cream); }
+  .ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
+  .ind-card { padding: 28px 24px; border-radius: 6px; border: 1px solid rgba(7,15,54,.08); transition: border-color .3s, box-shadow .3s; }
+  .ind-card:hover { border-color: rgba(7,15,54,.18); box-shadow: 0 4px 20px rgba(7,15,54,.04); }
+  .ind-card-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; letter-spacing: -.01em; }
+  .ind-card-desc { font-size: 12px; color: rgba(7,15,54,.5); line-height: 1.6; }
+
+
+
+  /* ── TAGLINE ── */
+  .tagline-section { background: #040A24; padding: 100px 48px 88px; position: relative; overflow: hidden; }
+  .tagline-top { text-align: center; margin-bottom: 64px; }
+  .tagline-text { font-size: clamp(42px, 5.5vw, 72px); font-weight: 600; letter-spacing: -.03em; color: var(--cream); line-height: 1.05; }
+  .tagline-text .fade { color: var(--peri); opacity: .4; display: block; margin-top: 12px; font-size: clamp(56px, 8.5vw, 130px); font-weight: 700; letter-spacing: -.025em; line-height: 0.98; }
+  .brand-story { max-width: 640px; margin: 0 auto 48px; text-align: center; }
+  .brand-story p { font-size: 16px; line-height: 1.85; color: rgba(221,227,241,.55); }
+  .brand-story .spine { font-weight: 600; color: var(--cream); }
+  .brand-story .closer { display: block; margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--coral); letter-spacing: -.01em; line-height: 1.5; }
+  .tagline-cta { text-align: center; }
+  .tagline-cta a { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 44px; border-radius: 4px; background: var(--coral); color: #040A24; text-decoration: none; transition: opacity .2s; letter-spacing: .01em; }
+  .tagline-cta a:hover { opacity: .88; }
+  @media (max-width: 900px) {
+    .tagline-section { padding: 72px 20px 64px; }
+    .tagline-top { margin-bottom: 40px; }
+    .brand-story { margin-bottom: 36px; }
+    .brand-story p { font-size: 15px; }
+    .tagline-cta a { width: 100%; text-align: center; }
+  }
+
+  /* ── CONTACT ── */
+  .contact-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.07); padding: 100px 48px; position: relative; overflow: hidden; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .contact-left h2 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; color: #FCF8F0; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 20px; }
+  .contact-left p { font-size: 14px; color: rgba(252,248,240,.65); line-height: 1.72; margin-bottom: 32px; }
+  .contact-detail { display: flex; flex-direction: column; gap: 10px; }
+  .contact-detail-item { font-size: 13px; color: rgba(252,248,240,.50); }
+  .contact-detail-item a { color: var(--coral); text-decoration: none; }
+  .contact-detail-item a:hover { color: var(--coral); opacity: .8; }
+  .form { display: flex; flex-direction: column; gap: 12px; }
+  .form input, .form select { background: rgba(221,227,241,.05); border: 1px solid rgba(221,227,241,.15); border-radius: 4px; padding: 12px 16px; font-size: 14px; color: var(--cream); font-family: var(--f); outline: none; transition: border-color .2s; width: 100%; }
+  .form input::placeholder { color: rgba(252,248,240,.35); }
+  .form input:focus, .form select:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,124,124,.12); }
+  .form select { color: rgba(252,248,240,.78); appearance: none; }
+  .form select option { background: var(--navy); color: var(--cream); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit { background: var(--coral); color: var(--navy); border: none; border-radius: 4px; padding: 13px 28px; font-size: 13px; font-weight: 500; font-family: var(--f); cursor: pointer; transition: opacity .2s; align-self: flex-start; letter-spacing: .01em; }
+  .form-submit:hover { opacity: .88; }
+
+  /* ── WATERMARKS ── */
+  .wm { position: absolute; pointer-events: none; z-index: 0; }
+  .wm-pillars { top: 50%; right: 48px; transform: translateY(-50%); width: 280px; opacity: .025; }
+  .wm-data { top: 50%; right: 48px; transform: translateY(-50%); width: 260px; opacity: .035; }
+  .wm-contact { top: 50%; left: 48px; transform: translateY(-50%); width: 260px; opacity: .025; }
+  .wm-footer { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; opacity: .025; }
+
+  /* ── FOOTER ── */
+  footer { padding: 22px 48px; background: #FCF8F0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(7,15,54,.08); flex-wrap: wrap; gap: 16px; position: relative; overflow: hidden; }
+  footer > *:not(svg) { position: relative; z-index: 1; }
+  .footer-logo img { height: 13px; width: auto; opacity: 1; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 11px; color: rgba(7,15,54,.45); text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: rgba(7,15,54,.75); }
+  .footer-right { font-size: 11px; color: rgba(7,15,54,.30); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-up { opacity: 0; animation: fadeUp .7s ease forwards; }
+  .fade-up:nth-child(1) { animation-delay: .1s; }
+  .fade-up:nth-child(2) { animation-delay: .2s; }
+  .fade-up:nth-child(3) { animation-delay: .3s; }
+  .fade-up:nth-child(4) { animation-delay: .4s; }
+  .fade-up:nth-child(5) { animation-delay: .5s; }
+  .fade-up:nth-child(6) { animation-delay: .6s; }
+
+  /* ── GRAIN TEXTURE ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    pointer-events: none;
+    z-index: 99997;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: grain 0.8s steps(1) infinite;
+  }
+  @keyframes grain {
+    0%  { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -3%); }
+    20% { transform: translate(3%, 1%); }
+    30% { transform: translate(-1%, 4%); }
+    40% { transform: translate(4%, -2%); }
+    50% { transform: translate(-3%, 3%); }
+    60% { transform: translate(2%, -4%); }
+    70% { transform: translate(-4%, 1%); }
+    80% { transform: translate(1%, 3%); }
+    90% { transform: translate(3%, -1%); }
+    100%{ transform: translate(-2%, 2%); }
+  }
+
+  /* ── SLIDE-IN FORM PANEL ── */
+  .form-panel-overlay { position: fixed; inset: 0; background: rgba(4,10,36,.6); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity .35s; }
+  .form-panel-overlay.open { opacity: 1; pointer-events: auto; }
+  .form-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 460px; max-width: 90vw; background: #070F36; z-index: 9999; transform: translateX(100%); transition: transform .45s cubic-bezier(.4,0,.2,1); padding: 48px 36px; overflow-y: auto; display: flex; flex-direction: column; }
+  .form-panel.open { transform: translateX(0); }
+  .form-panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(221,227,241,.5); font-size: 24px; cursor: pointer; transition: color .2s; line-height: 1; padding: 4px; }
+  .form-panel-close:hover { color: var(--cream); }
+  .form-panel h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
+  .form-panel .panel-sub { font-size: 14px; color: rgba(221,227,241,.5); line-height: 1.65; margin-bottom: 32px; }
+  .form-panel .form { flex: 1; }
+  .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: rgba(221,227,241,.25); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
+
+  /* ── SCROLL INDICATOR ── */
+  .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; opacity: 0; }
+  .scroll-cue span { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(221,227,241,.35); }
+  .scroll-cue-line { width: 1px; height: 32px; position: relative; overflow: hidden; }
+  .scroll-cue-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 1px; height: 100%; background: var(--coral); animation: scrollLine 1.8s ease-in-out infinite; }
+  @keyframes scrollLine { 0% { top: -100%; } 50% { top: 100%; } 100% { top: 100%; } }
+
+  /* ── HERO ENTRANCE ── */
+  #hero-eyebrow { opacity: 0; }
+  #hero-stat, .cta-row { opacity: 0; }
+
+  /* ── SPLITTYPE REVEALS ── */
+  .sec-h2 .word { overflow: hidden; display: inline-block; vertical-align: bottom; padding-bottom: 0.08em; }
+  .sec-h2 .word > * { display: inline-block; transform: translateY(110%); }
+
+  /* ── MAGNETIC BUTTONS ── */
+  .btn-primary, .btn-ghost, .form-submit, .nav-cta { will-change: transform; }
+
+  /* ── CUSTOM CURSOR ── */
+  @media (pointer: fine) { * { cursor: none !important; } }
+  #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
+  #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
+
+  /* ── PRELOADER ── */
+  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; }
+  #preloader-logo { width: clamp(160px, 22vw, 280px); opacity: 0; }
+  #preloader-logo img { width: 100%; display: block; }
+
+  /* ── PAGE TRANSITION ── */
+  #page-transition { position: fixed; inset: 0; background: #070F36; z-index: 99990; transform-origin: top; pointer-events: none; }
+
+  /* ── HAMBURGER ── */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 101; }
+  .hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(252,248,240,.8); transition: all .3s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── MOBILE NAV OVERLAY ── */
+  .mobile-nav-overlay {
+    position: fixed; inset: 0; z-index: 99;
+    background: rgba(7,15,54,.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 12px;
+    opacity: 0; pointer-events: none;
+    transition: opacity .4s ease;
+  }
+  .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
+  .mobile-nav-overlay a {
+    font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--cream);
+    text-decoration: none; letter-spacing: -.02em;
+    opacity: 0; transform: translateY(20px);
+    transition: color .2s;
+  }
+  .mobile-nav-overlay a:hover { color: var(--coral); }
+  .mobile-nav-overlay .mobile-cta {
+    margin-top: 24px; font-size: 13px; font-weight: 600;
+    padding: 14px 36px; border-radius: 4px;
+    background: var(--coral); color: var(--navy);
+    opacity: 0; transform: translateY(20px);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .pillars-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .compliance-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    /* Nav */
+    nav { padding: 0 20px; height: 56px; }
+    .nav-logo img { height: 36px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+
+    /* Hero */
+    .hero { padding: 60px 20px; min-height: 100vh; }
+    #hero-3d { width: 72px; height: 72px; }
+    .hero-icon-wrap { margin-bottom: 20px; }
+    .hero h1 { font-size: clamp(36px, 11vw, 56px); margin-bottom: 32px; }
+    .hero-stat { font-size: 10px; margin-bottom: 40px; letter-spacing: .06em; }
+    .hero-bg { width: 500px; }
+    .cta-row { margin-bottom: 0; gap: 10px; }
+    .btn-primary { font-size: 13px; padding: 14px 32px; }
+    .hero-bg { width: 400px; right: -60px; opacity: .02; }
+    .scroll-cue { display: none; }
+
+    /* Marquee */
+    .marquee-wrap { padding: 10px 0; }
+    .marquee-wrap::before, .marquee-wrap::after { width: 60px; }
+    .marquee-item { font-size: 10px; padding: 0 20px; }
+
+    /* Sections general */
+    section { padding: 60px 20px; }
+    .sec-h2 { font-size: clamp(28px, 8vw, 40px); margin-bottom: 14px; }
+    .sec-body { font-size: 14px; margin-bottom: 32px; }
+    .sec-eyebrow { font-size: 9px; margin-bottom: 12px; }
+
+    /* Pillars */
+    .pillars-section { padding: 60px 20px; }
+    .pillar-h { font-size: 18px; }
+    .pillar-body { font-size: 12px; }
+    .pillar-list li { font-size: 11px; }
+
+    /* Partners */
+    .partners { padding: 48px 20px; }
+    .partners-label { margin-bottom: 32px; font-size: 9px; }
+    .partners-logos { gap: 24px; }
+    .partner-name { font-size: 20px; }
+
+    /* Problem */
+    .problem-section { padding: 60px 20px; }
+    .problem-grid { grid-template-columns: 1fr; gap: 10px; }
+    .problem-card { padding: 20px 18px; }
+    .problem-q { font-size: 13px; }
+    .problem-a { font-size: 11px; }
+
+    /* Data */
+    .data-section { padding: 60px 20px; }
+    .data-grid { grid-template-columns: repeat(2, 1fr); }
+    .data-stat { padding: 28px 20px; }
+    .data-stat-num { font-size: 32px; }
+
+    /* Industries */
+    .industries-section { padding: 60px 20px; }
+    .ind-grid { grid-template-columns: 1fr; gap: 8px; }
+    .ind-card { padding: 20px 20px; }
+    .ind-card-name { font-size: 14px; }
+
+    /* Tagline */
+    .tagline-section { min-height: auto; }
+    .tagline-top { padding: 80px 20px 40px; }
+    .tagline-text { font-size: clamp(28px, 8vw, 42px); }
+    .tagline-text .fade { font-size: clamp(36px, 10vw, 56px); }
+    .tagline-rule { margin: 36px auto; width: 40px; }
+    .brand-story { grid-template-columns: 1fr; gap: 20px; padding: 0 20px 60px; }
+    .brand-story .pivot { font-size: clamp(18px, 5vw, 24px); }
+    .brand-story-left, .brand-story-right { font-size: 14px; }
+    .tagline-cta { padding: 0 20px 60px; }
+    .tagline-cta a { width: 100%; text-align: center; padding: 14px 28px; }
+    .tagline-watermark { width: 500px; }
+
+    /* Contact */
+    .contact-section { padding: 60px 20px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .contact-left h2 { font-size: clamp(26px, 7vw, 36px); }
+    .contact-left p { font-size: 14px; }
+    .form input, .form select { font-size: 16px; padding: 14px 16px; }
+    .form-submit { width: 100%; text-align: center; padding: 14px 28px; }
+    .form-row { grid-template-columns: 1fr; }
+
+    /* Footer */
+    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .footer-links { gap: 16px; }
+
+    /* Cards */
+    .cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- PRELOADER -->
+<div id="preloader">
+  <div id="preloader-logo">
+    <img src="Top of Funnel logo-01.svg" alt="TOF.io">
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-02.svg" height="44" alt="TOF.io">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta" data-open-form>Let's talk</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav">
+  <a href="#solutions">Solutions</a>
+  <a href="#data">Data</a>
+  <a href="#industries">Industries</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="mobile-cta" data-open-form>Let's talk</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-icon-wrap" id="hero-icon">
+      <canvas id="hero-3d" width="300" height="300"></canvas>
+    </div>
+    <p class="eyebrow" id="hero-eyebrow">Deterministic identity · Built to convert</p>
+    <h1 class="fade-up" id="hero-headline"><span class="cursor"></span></h1>
+    <div class="hero-rule"></div>
+    <p class="hero-stat" id="hero-stat"><span class="hero-stat-num">98%</span> U.S. adult coverage. <span class="hero-stat-num">1.6T</span> monthly consumer events. <span class="hero-stat-num">TOF</span> full funnel coverage.</p>
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary hero-cta" data-open-form>Request access</a>
+    </div>
+  </div>
+  <div class="scroll-cue" id="scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-cue-line"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marquee">
+    <span class="marquee-item hi">TOF.io</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Lead generation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Pay-per-call</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Affiliate</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Programmatic</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Data monetization</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">CPA networks</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Market makers</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Audience reactivation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Deterministic identity</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Yield over reach</span><span class="marquee-sep">·</span>
+    <span class="marquee-item hi">TOF.io</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Lead generation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Pay-per-call</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Affiliate</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Programmatic</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Data monetization</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">CPA networks</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Market makers</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Audience reactivation</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Deterministic identity</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Yield over reach</span><span class="marquee-sep">·</span>
+  </div>
+</div>
+
+<!-- THREE PILLARS -->
+<section class="pillars-section" id="solutions">
+  <div class="section-grid-line"></div>
+  <p class="sec-eyebrow coral" style="margin-bottom:12px;">What we power</p>
+  <h2 class="sec-h2 light" style="margin-bottom:48px;">One infrastructure.<br>Three revenue outcomes.</h2>
+  <div class="pillars-grid">
+    <div class="pillar-block acquire">
+      <p class="pillar-big-num">01</p>
+      <p class="pillar-num">Identify</p>
+      <h3 class="pillar-h">Know exactly who is in market</h3>
+      <p class="pillar-body">The foundation of the TOF Identity Spine. 98% of U.S. adults across 25+ verticals — deterministic identity, not modeled assumptions.</p>
+    </div>
+    <div class="pillar-block monetize">
+      <p class="pillar-big-num">02</p>
+      <p class="pillar-num">Reach</p>
+      <h3 class="pillar-h">Activate across every channel</h3>
+      <p class="pillar-body">Keyword Custom Audiences built from real search behavior. Deploy across lead gen, pay-per-call, affiliate, programmatic, DSP, and CTV — all anchored in verified identity.</p>
+    </div>
+    <div class="pillar-block retain">
+      <p class="pillar-big-num">03</p>
+      <p class="pillar-num">Convert</p>
+      <h3 class="pillar-h">Close with the highest-intent signal available</h3>
+      <p class="pillar-body">High-intent behavioral signals at the exact moment of buying decision. The closest data to a conversion available in performance marketing — exclusively through TOF Identity Spine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERS -->
+<div class="partners">
+  <p class="partners-label"><span class="pulse-dot"></span>Trusted by leaders in performance marketing<span class="pulse-dot"></span></p>
+  <div class="partners-logos">
+    <span class="partner-name">Retreaver</span>
+    <span class="partner-divider"></span>
+    <span class="partner-name">Boss.Leads</span>
+    <span class="partner-divider"></span>
+    <span class="partner-name">Permissionize</span>
+    <span class="partner-divider"></span>
+    <div class="partner-logo-wrap">
+      <svg width="140" height="32" viewBox="0 0 120 27" fill="none" xmlns="http://www.w3.org/2000/svg" style="opacity:.35;transition:opacity .3s;" onmouseover="this.style.opacity='.65'" onmouseout="this.style.opacity='.35'">
+        <g clip-path="url(#kclip)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M26.1774 13C26.1774 24.699 24.8675 26 13.178 26C1.32969 26 0 24.699 0 13C0 1.30102 1.30984 0 13.178 0C24.8675 0 26.1774 1.30102 26.1774 13ZM24.2324 13C24.2324 10.2108 24.163 8.04243 23.8653 6.35707C23.647 5.0758 23.3295 4.12971 22.6845 3.47922C22.0295 2.82873 21.0868 2.51334 19.8067 2.29651C18.1297 2.01069 15.9565 1.94164 13.178 1.94164C10.3499 1.94164 8.14698 2.01069 6.44019 2.29651C5.14025 2.52319 4.17766 2.83854 3.52273 3.48904C2.85788 4.13953 2.54037 5.07586 2.32206 6.36698C2.02437 8.04249 1.95489 10.2108 1.95489 13C1.95489 15.7892 2.02437 17.9477 2.32206 19.633C2.54037 20.9143 2.8678 21.8605 3.52273 22.511C4.18759 23.1615 5.14021 23.4768 6.45007 23.7035C8.15686 23.9893 10.3499 24.0584 13.178 24.0584C15.9565 24.0584 18.1297 23.9893 19.8067 23.7035C21.0868 23.4768 22.0295 23.1713 22.6845 22.5208C23.3295 21.8703 23.647 20.9242 23.8653 19.6429C24.163 17.9576 24.2324 15.7892 24.2324 13Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M8.2076 15.9909C8.2076 15.6508 8.00215 15.3496 7.68906 15.2233C6.88677 14.9026 5.37025 14.3 4.65601 14.0182C4.4212 13.9211 4.26465 13.6975 4.26465 13.4448C4.26465 13.1728 4.26465 12.823 4.26465 12.5509C4.26465 12.2982 4.4212 12.0747 4.65601 11.9775C5.37025 11.6957 6.88677 11.0932 7.68906 10.7725C8.00215 10.6461 8.2076 10.3449 8.2076 10.0145C8.2076 9.27601 8.2076 7.98358 8.2076 7.21588C8.2076 7.05068 8.27612 6.88551 8.39353 6.7689C8.51094 6.65229 8.66748 6.59391 8.83381 6.59391C9.03928 6.59391 9.25447 6.59391 9.45993 6.59391C9.62626 6.59391 9.78281 6.65229 9.90021 6.7689C10.0176 6.88551 10.0861 7.05068 10.0861 7.21588C10.0861 8.14878 10.0861 9.8202 10.0861 9.8202C10.0861 9.8202 17.6394 6.81745 19.8115 5.95258C20.1344 5.82625 20.4963 5.98169 20.6235 6.30238C20.7018 6.48701 20.78 6.69112 20.8583 6.87576C20.917 7.03124 20.917 7.2062 20.8583 7.35196C20.7898 7.50745 20.6627 7.624 20.5061 7.68231C18.5884 8.45001 12.4343 10.8891 10.6047 11.6179C10.2916 11.7443 10.0861 12.0456 10.0861 12.3857C10.0861 12.7549 10.0861 13.2408 10.0861 13.6101C10.0861 13.9502 10.2916 14.2515 10.6047 14.3778C12.4343 15.1066 18.5884 17.5458 20.5061 18.3135C20.6627 18.3718 20.7898 18.4883 20.8583 18.6438C20.917 18.7993 20.917 18.9645 20.8583 19.12C20.78 19.3047 20.7018 19.5088 20.6235 19.6934C20.4963 20.0141 20.1344 20.1695 19.8115 20.0432C17.6394 19.1783 10.0861 16.1756 10.0861 16.1756C10.0861 16.1756 10.0861 17.847 10.0861 18.7896C10.0861 18.9548 10.0176 19.1103 9.90021 19.2269C9.78281 19.3435 9.62626 19.4116 9.45993 19.4116C9.25447 19.4116 9.03928 19.4116 8.83381 19.4116C8.66748 19.4116 8.51094 19.3435 8.39353 19.2269C8.27612 19.1103 8.2076 18.9548 8.2076 18.7896C8.2076 18.0219 8.2076 16.7197 8.2076 15.9909ZM8.2076 12.4051L6.30955 12.9979L8.2076 13.5906V12.4051Z" fill="white"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M37.0913 14.3628C36.8332 14.1243 36.7864 13.8636 37.0913 13.5658L43.8048 7.4557H46.8272L39.4985 13.9643L47.1214 20.7385H44.099L37.0913 14.3628ZM36.3731 20.7385H34.2334V2.14258H36.3731V20.7385ZM53.7546 21.0042C52.0428 21.0042 50.7322 20.6277 49.8228 19.8751C48.9134 19.1224 48.4588 18.1173 48.4588 16.8599C48.4588 15.5493 48.9094 14.5089 49.8095 13.7385C50.7095 12.9681 52.0522 12.5829 53.8349 12.5829H58.7831V12.2375C58.7831 11.2457 58.4487 10.4886 57.78 9.96615C57.1114 9.44361 56.1793 9.18247 54.985 9.18247C52.7557 9.18247 51.4544 9.89084 51.0799 11.3077H48.9402C49.0285 10.1388 49.5861 9.16028 50.6119 8.37222C51.6363 7.58401 53.0953 7.19005 54.985 7.19005C56.8212 7.19005 58.2709 7.63714 59.3314 8.53161C60.3919 9.42594 60.9228 10.6612 60.9228 12.2375V20.7385H59.0933L58.7991 19.1711C58.7991 19.1711 58.763 18.9839 58.5958 19.1711C58.1679 19.6493 57.526 20.0744 56.6701 20.4463C55.8142 20.8182 54.8419 21.0042 53.7546 21.0042ZM53.8081 19.0118C55.3768 19.0118 56.5992 18.6619 57.4725 17.9624C58.3458 17.2628 58.7831 16.2932 58.7831 15.0535V14.5753H53.5942C52.6126 14.5753 51.869 14.7833 51.3608 15.1996C50.8526 15.6157 50.5985 16.1692 50.5985 16.8599C50.5985 17.4975 50.87 18.0155 51.4143 18.414C51.9586 18.8125 52.7556 19.0118 53.8081 19.0118ZM67.4758 20.7385H65.3361V2.52817H67.4758V20.7385ZM74.0288 20.7385H71.8891V7.4557H74.0288V20.7385ZM74.0288 4.50917H71.8891V2.52817H74.0288V4.50917ZM78.1144 26.0516V7.4557H79.9867L80.198 9.28873C80.2154 9.37746 80.305 9.40615 80.4146 9.28873C81.7159 7.88952 83.3381 7.19005 85.2826 7.19005C86.4942 7.19005 87.627 7.48665 88.6794 8.07999C89.7306 8.6732 91.9359 10.6513 91.9359 14.0971C91.9359 17.5428 89.7306 19.5209 88.6794 20.1142C87.627 20.7074 86.4942 21.0042 85.2826 21.0042C83.3381 21.0042 81.7159 20.3046 80.4146 18.9055C80.3344 18.8195 80.2555 18.867 80.2542 18.9533V26.0516H78.1144ZM85.1221 19.0118C85.978 19.0118 86.7751 18.808 87.516 18.4007C88.2555 17.9934 89.7961 16.7021 89.7961 14.0971C89.7961 11.492 88.2555 10.2007 87.516 9.79348C86.7751 9.38609 85.978 9.18247 85.1221 9.18247C84.2662 9.18247 83.4678 9.38609 82.7283 9.79348C81.9874 10.2007 81.3909 10.7808 80.9362 11.5335C80.4815 12.2861 80.2542 13.1407 80.2542 14.0971C80.2542 15.0535 80.4815 15.908 80.9362 16.6607C81.3909 17.4133 81.9874 17.9934 82.7283 18.4007C83.4678 18.808 84.2662 19.0118 85.1221 19.0118ZM101.625 21.0042C100.358 21.0042 99.3795 20.7031 98.3016 20.1009C97.2224 19.4987 94.7309 17.5279 94.7309 14.0971C94.7309 10.2641 97.2398 8.6732 98.3551 8.07999C99.4692 7.48665 100.502 7.19005 101.839 7.19005C103.158 7.19005 104.154 7.46446 105.216 8.01358C106.276 8.56255 108.626 10.46 108.626 13.5924C108.626 14.2299 108.581 14.7258 108.492 15.08H96.8707C97.0673 16.2311 97.633 17.1742 98.5691 17.9093C99.5053 18.6442 100.395 19.0118 101.625 19.0118C104.245 19.0118 105.443 17.6214 105.87 17.0193H108.171C107.6 18.2059 106.096 21.0042 101.625 21.0042ZM106.486 13.0876C106.486 11.6685 105.249 9.18247 101.839 9.18247C98.5584 9.18247 96.8707 11.3494 96.8707 13.0876H106.486ZM111.969 20.7385V7.4557H113.791L114.032 8.78399C114.032 8.78399 114.106 8.96782 114.243 8.78399C114.581 8.32347 114.938 7.98701 115.313 7.77449C115.687 7.56196 116.167 7.4557 116.757 7.4557H120V9.44813H117.051C116.123 9.44813 115.401 9.70488 114.885 10.2185C114.367 10.732 114.109 11.4493 114.109 12.3703V20.7385H111.969Z" fill="white"/>
+        </g>
+        <defs><clipPath id="kclip"><rect width="120" height="27" fill="white"/></clipPath></defs>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM SECTION -->
+<section class="problem-section">
+  <div class="section-grid-line" style="background:rgba(7,15,54,.08);"></div>
+  <p class="sec-eyebrow coral">Why operators choose TOF</p>
+  <h2 class="sec-h2 dark">Built for the problems<br>that cost you revenue.</h2>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <p class="problem-q">Your data is stale. Ours isn't.</p>
+      <p class="problem-a">TOF pulls from 70+ authoritative primary sources — continuously updated, continuously verified. No scraped lists. No recycled snapshots. Fresh, validated identity you can actually act on.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-q">You're spending on modeled assumptions.</p>
+      <p class="problem-a">TOF resolves real individuals — not lookalikes, not probabilistic clusters. 254M third-party verified identities matched across every channel. Ranked #1 for accuracy by Truthset.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-q">Another tool to manage isn't the answer.</p>
+      <p class="problem-a">TOF is the identity layer that sits inside your existing lead flows, call routing, DSPs, and programmatic activation — not on top of them. No migration. No rip-and-replace.</p>
+    </div>
+    <div class="problem-card">
+      <p class="problem-q">Wasted impressions are eating your margin.</p>
+      <p class="problem-a">Verified identity at the top of every funnel means higher match rates, better audience quality, and measurable economic outcomes. Less spend. More conversions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DATA -->
+<section class="data-section" id="data">
+  <div class="data-header">
+    <p class="sec-eyebrow blue">The data layer</p>
+    <h2 class="sec-h2 dark">Curated from 70+ sources.<br>Built for precision.</h2>
+  </div>
+  <div class="data-grid">
+    <div class="data-stat">
+      <p class="data-stat-num">98%</p>
+      <p class="data-stat-label">U.S. Adult Coverage</p>
+    </div>
+    <div class="data-stat">
+      <p class="data-stat-num" data-count="47" data-suffix="K+">47K+</p>
+      <p class="data-stat-label">In-Market Signal Topics</p>
+    </div>
+    <div class="data-stat">
+      <p class="data-stat-num" data-count="6" data-suffix="B+">6B+</p>
+      <p class="data-stat-label">Device &amp; MAID Pairs</p>
+    </div>
+    <div class="data-stat">
+      <p class="data-stat-num" data-count="100" data-suffix="+">100+</p>
+      <p class="data-stat-label">Daily Keyword Audience Feeds</p>
+    </div>
+    <div class="data-stat">
+      <p class="data-stat-num" data-count="70" data-suffix="+">70+</p>
+      <p class="data-stat-label">High-Intent Data Feeds</p>
+    </div>
+    <div class="data-stat">
+      <p class="data-stat-num" data-count="1.6" data-suffix="T">1.6T</p>
+      <p class="data-stat-label">Monthly Consumer Events</p>
+    </div>
+  </div>
+  <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(7,15,54,.08);text-align:center;">
+    <p style="font-family:var(--mono);font-size:10px;color:rgba(7,15,54,.4);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;">Activate everywhere</p>
+    <p style="font-size:15px;color:rgba(7,15,54,.5);letter-spacing:-.01em;">Google · Amazon · Meta · Instagram · TikTok · Yahoo · LiveRamp · and 50+ DSPs</p>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries-section" id="industries">
+  <div class="section-grid-line" style="background:rgba(7,15,54,.08);"></div>
+  <p class="sec-eyebrow blue">Industries</p>
+  <h2 class="sec-h2 dark">Your vertical.<br>Our infrastructure.</h2>
+  <div class="ind-grid">
+    <div class="ind-card">
+      <p class="ind-card-name">Insurance</p>
+      <p class="ind-card-desc">Medicare, ACA, life, auto, final expense — reach verified in-market consumers at the moment of decision.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Financial Services</p>
+      <p class="ind-card-desc">Debt, lending, credit repair, tax — 97% household financial coverage with predictive intent models.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Health &amp; Wellness</p>
+      <p class="ind-card-desc">GLP-1, telehealth, wellness, PERS — 1,000+ health conditions mapped to deterministic identity.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Real Estate</p>
+      <p class="ind-card-desc">Home buyers, sellers, movers — 170M properties with assessor-grade data linked to consumer identity.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Automotive</p>
+      <p class="ind-card-desc">154M VIN-level records — identify in-market auto shoppers by make, model, and purchase timeline.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Retail &amp; eComm</p>
+      <p class="ind-card-desc">Purchase intent, brand affinity, spending power — audience segments built from real behavior, not modeled assumptions.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Home Services</p>
+      <p class="ind-card-desc">Solar, HVAC, roofing, pest control, windows — live high-intent signals from consumers actively searching.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Travel</p>
+      <p class="ind-card-desc">Travel intent, booking behavior, loyalty segments — reach travelers before they commit.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Hospitality</p>
+      <p class="ind-card-desc">Dining, lodging, entertainment — local and national audience activation tied to verified identity.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Investments</p>
+      <p class="ind-card-desc">High-net-worth targeting, financial durability scores, accredited investor signals.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Education</p>
+      <p class="ind-card-desc">Online, trade, higher ed — reach prospective students at the moment of active research.</p>
+    </div>
+    <div class="ind-card">
+      <p class="ind-card-name">Telecommunications</p>
+      <p class="ind-card-desc">Device ownership, carrier data, upgrade intent — precision targeting at the subscriber level.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINE -->
+<section class="tagline-section">
+  <div class="tagline-top">
+    <p class="tagline-text">We kept the acronym.<br><span class="fade">Outgrew everything else.</span></p>
+  </div>
+  <div class="brand-story">
+    <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
+    <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.<span class="closer">One identity layer. Every channel. Full funnel.</span></p>
+  </div>
+  <div class="tagline-cta">
+    <a href="#contact" data-open-form>See what's underneath →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <img class="wm wm-contact" src="Top of Funnel logo-04.svg" alt="" aria-hidden="true">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <p class="sec-eyebrow coral">Let's build</p>
+      <h2>See what your<br>funnel is missing.</h2>
+      <p>Tell us about your use case. We'll show you what TOF looks like in your channel — and what it does for your revenue.</p>
+      <p class="contact-detail-item" style="margin-top:24px;">Email: <a href="mailto:go@tof.io">go@tof.io</a></p>
+    </div>
+    <div>
+      <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Trusted by Retreaver · Boss.Leads · Permissionize · Klaive</p>
+      <form class="form" action="https://formspree.io/f/xpqojbny" method="POST">
+        <input type="hidden" name="_next" value="https://tof.io">
+        <input type="hidden" name="_subject" value="New TOF Inquiry">
+        <input type="text" name="_gotcha" style="display:none">
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Work email" required>
+        </div>
+        <input type="text" name="company" placeholder="Company">
+        <input type="text" name="challenge" placeholder="What are you trying to solve?">
+        <button type="submit" class="form-submit">Request access</button>
+        <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <svg class="wm wm-footer" viewBox="0 0 885.8 360" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path fill="#070F36" fill-rule="evenodd" d="M545.13,264.51c0,12.91-10.56,23.47-23.47,23.47h-97.9c-6.22,0-11.9-2.57-16-6.67-4.1-4.1-6.64-9.75-6.64-15.97V94.65c0-9.33,5.74-17.41,13.85-20.88,1.35-.58,2.76-.99,4.23-1.31,1.48-.29,2.98-.45,4.55-.45h2.12c12.96,0,23.47-10.51,23.47-23.47v-25.06C449.34,10.53,438.84.02,425.88.02h-3.15c-13.31,0-23.25,10.84-22.61,24.15.9,18.92-4.91,32.96-17.16,40.53-1.64,1.03-3.37,1.92-5.23,2.69-6.72,2.82-14.9,4.1-24.53,3.64-13.18-.64-24.08,10.26-24.08,23.46v171.78c0,12.86,10.65,23.47,23.5,22.74,7.02-.38,13.28.26,18.73,1.86,19.53,5.74,29.05,23.31,28.73,46.37-.16,12.51,10.13,22.77,22.64,22.77h101.17c12.73,0,22.41-10.39,22.22-23.12-.16-11.61,2.41-21.77,7.47-29.73,7.6-11.89,20.78-18.81,38.81-18.03,13.37.58,24.68-9.69,24.68-23.08v-62.37c0-12.96-10.51-23.47-23.47-23.47h-25.02c-12.96,0-23.47,10.51-23.47,23.47v60.84ZM581.11,72.01c-14.11,0-23.38-6.61-28.83-16.61-4.68-8.69-6.48-19.91-6.03-31.68.51-13.02-9.56-23.7-22.61-23.7h-31.24c-12.96,0-23.47,10.51-23.47,23.47v25.06c0,12.96,10.51,23.47,23.47,23.47h29.25c12.91,0,23.47,10.56,23.47,23.47v41.67c0,12.96,10.51,23.47,23.47,23.47h25.02c12.96,0,23.47-10.51,23.47-23.47v-29.12c0-19.82-16.19-36.01-35.98-36.01"/>
+    <path fill="#070F36" d="M885.8,187.62v27.51c0,12.54-10.13,22.67-22.64,22.67h-98.44c-8.59,0-16.07,4.78-19.91,11.83-1.73,3.21-2.73,6.89-2.73,10.81v76.9c0,12.44-10.2,22.64-22.67,22.64h-27.64c-12.51,0-22.67-10.13-22.67-22.64v-77.63c0-12.51,10.16-22.64,22.67-22.64h27.64c12.54,0,22.67-10.13,22.67-22.67v-26.49c0-12.63-10.33-22.83-22.96-22.67l-33.13.45c-9.33,0-16.9-7.57-16.9-16.9v-73.02c0-12.51,10.16-22.64,22.67-22.64h40.05c16.1,0,30.17-13.21,28.92-29.6-.99-12.92,9.65-23.54,22.61-23.54h86.58c3.94,0,7.66,1.48,10.39,4.3,2.82,2.69,4.26,6.41,4.26,10.39v34.05c0,12.51-10.13,22.67-22.64,22.67h-97.23c-5.48,0-10.49,1.92-14.4,5.16-5.03,4.17-8.24,10.45-8.24,17.48v48.26c0,3.91.99,7.6,2.73,10.81,3.85,7.05,11.32,11.83,19.91,11.83h98.44c12.51,0,22.64,10.17,22.64,22.67"/>
+    <path fill="#070F36" d="M286.32,0h-70.77c-12.19,0-22.03,9.88-22.03,22.03v.29c0,12.63-10.33,14.76-22.96,14.76h-32.13c-12.63,0-22.96-2.13-22.96-14.76v-.29c0-12.15-9.84-22.03-22.03-22.03H22.67C10.13,0,0,10.13,0,22.64v27.58c0,12.51,10.13,22.64,22.67,22.64h61.47c5.26,0,10.23,1.19,14.65,3.33,11.38,5.48,19.21,17.09,19.21,30.53v228.89c0,12.51,10.13,22.64,22.64,22.64h27.71c12.51,0,22.64-10.13,22.64-22.64V106.72c0-13.44,7.82-25.04,19.21-30.53,4.43-2.15,9.4-3.33,14.65-3.33h61.47c12.54,0,22.67-10.13,22.67-22.64v-27.58c0-12.51-10.13-22.64-22.67-22.64"/>
+  </svg>
+  <a href="/" class="footer-logo" aria-label="TOF.io">
+    <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
+  </a>
+  <div class="footer-links">
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms of service</a>
+    <a href="mailto:info@tof.io">info@tof.io</a>
+  </div>
+  <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
+</footer>
+
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160/examples/jsm/"}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
+<script>
+  const lenis = new Lenis({
+    duration: 0.6,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+    wheelMultiplier: 1.4,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+</script>
+<script>
+  // ── 3D TOF ICON ── (loaded as module below)
+
+  // ── HERO HEADLINE + ENTRANCE ──
+  document.getElementById('hero-headline').innerHTML = 'The data layer<br>performance runs on.';
+
+  gsap.set('#hero-icon',       { opacity: 0, scale: 0.7 });
+  gsap.set('#hero-eyebrow',   { opacity: 0, x: -20 });
+  gsap.set('#hero-headline',  { opacity: 0, y: 24 });
+  gsap.set('.hero-rule',      { scaleX: 0, transformOrigin: 'center' });
+  gsap.set('#hero-stat',      { opacity: 0, y: 20 });
+  gsap.set('.cta-row',        { opacity: 0, y: 24 });
+
+  gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 })
+    .to('#hero-icon',     { opacity: 1, scale: 1, duration: 0.9 })
+    .to('#hero-eyebrow',  { opacity: 1, x: 0, duration: 0.7 }, '-=0.4')
+    .to('#hero-headline', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
+    .to('.hero-rule',     { scaleX: 1, duration: 0.7, ease: 'power2.inOut' }, '-=0.3')
+    .to('#hero-stat',     { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
+    .to('.cta-row',       { opacity: 1, y: 0, duration: 0.7 }, '-=0.35');
+
+  // ── OBSERVERS ──
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.classList.add('in');
+      ro.unobserve(e.target);
+    });
+  }, { threshold: .12 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  const so = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)';
+      so.unobserve(e.target);
+    });
+  }, { threshold: .08 });
+  document.querySelectorAll('.pillar-block,.problem-card,.data-row,.ind-pill,.partner-name').forEach((el, i) => {
+    el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
+    el.style.transition = `opacity .6s ease ${i*.05}s,transform .6s ease ${i*.05}s`;
+    so.observe(el);
+  });
+
+</script>
+
+<!-- SLIDE-IN FORM PANEL -->
+<div class="form-panel-overlay" id="form-panel-overlay"></div>
+<div class="form-panel" id="form-panel">
+  <button class="form-panel-close" id="form-panel-close" aria-label="Close">×</button>
+  <h3>See what your<br>funnel is missing.</h3>
+  <p class="panel-sub">Tell us your use case. We'll show you what TOF looks like in your channel.</p>
+  <form class="form" action="https://formspree.io/f/xpqojbny" method="POST">
+    <input type="hidden" name="_next" value="https://tof.io">
+    <input type="hidden" name="_subject" value="New TOF Inquiry">
+    <input type="text" name="_gotcha" style="display:none">
+    <div class="form-row">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Work email" required>
+    </div>
+    <input type="text" name="company" placeholder="Company">
+    <input type="text" name="challenge" placeholder="What are you trying to solve?">
+    <button type="submit" class="form-submit" style="width:100%;text-align:center;">Request access</button>
+    <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
+  </form>
+  <p class="panel-trust">Trusted by Retreaver · Boss.Leads · Permissionize · Klaive</p>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-icon" aria-hidden="true">
+  <svg viewBox="0 0 502.28 627.91" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#FF7C7C" fill-rule="evenodd" d="M376.77,461.35c0,22.52-18.42,40.94-40.94,40.94h-170.77c-10.85,0-20.75-4.47-27.91-11.63-7.16-7.16-11.58-17-11.58-27.86V165.06c0-16.28,10.01-30.37,24.16-36.41,2.35-1.01,4.81-1.74,7.38-2.3,2.57-.5,5.2-.78,7.94-.78h3.7c22.61,0,40.93-18.33,40.93-40.93v-43.7c0-22.61-18.32-40.94-40.93-40.94h-5.49c-23.21,0-40.55,18.91-39.43,42.12,1.57,33-8.56,57.5-29.92,70.7-2.85,1.79-5.87,3.36-9.12,4.7-11.72,4.92-26,7.16-42.79,6.35C19,122.76,0,141.76,0,164.79v299.63c0,22.43,18.57,40.94,41,39.66,12.25-.67,23.16.45,32.66,3.24,34.06,10.01,50.68,40.66,50.12,80.88-.28,21.81,17.68,39.71,39.49,39.71h176.47c22.2,0,39.1-18.12,38.76-40.33-.28-20.25,4.19-37.98,13.03-51.85,13.26-20.73,36.24-32.82,67.69-31.46,23.33,1.01,43.06-16.9,43.06-40.26v-108.79c0-22.61-18.33-40.94-40.94-40.94h-43.65c-22.61,0-40.93,18.33-40.93,40.94v106.12ZM439.53,125.57c-24.61,0-40.78-11.52-50.28-28.97-8.17-15.16-11.3-34.73-10.51-55.26.89-22.71-16.67-41.34-39.43-41.34h-54.49c-22.61,0-40.94,18.33-40.94,40.94v43.7c0,22.6,18.33,40.93,40.94,40.93h51.03c22.52,0,40.94,18.42,40.94,40.93v72.68c0,22.61,18.32,40.94,40.93,40.94h43.65c22.6,0,40.93-18.33,40.93-40.94v-50.8c0-34.57-28.25-62.81-62.76-62.81"/>
+  </svg>
+</div>
+<div id="cursor-ring" aria-hidden="true"></div>
+<div id="page-transition" aria-hidden="true"></div>
+
+<script>
+  // ── MOBILE NAV ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  const mobileLinks = mobileNav.querySelectorAll('a');
+  hamburger.addEventListener('click', () => {
+    const isOpen = hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    if (isOpen) {
+      gsap.fromTo(mobileLinks, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', delay: 0.15 });
+      lenis.stop();
+    } else {
+      gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 });
+      lenis.start();
+    }
+  });
+  mobileLinks.forEach(link => {
+    if (link.getAttribute('href').startsWith('#')) {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileNav.classList.remove('open');
+        gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.2 });
+        lenis.start();
+      });
+    }
+  });
+
+  // ── NAV SCROLL STATE ──
+  const navEl = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    navEl.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  // ── SCROLL CUE ──
+  const scrollCue = document.getElementById('scroll-cue');
+  // Fade in after hero entrance lands, fade out once user scrolls
+  gsap.to(scrollCue, { opacity: 1, duration: 0.8, delay: 2.5 });
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 80 && scrollCue.style.opacity !== '0') {
+      gsap.to(scrollCue, { opacity: 0, duration: 0.4 });
+    }
+  }, { passive: true });
+
+  // ── CONTACT SECTION REVEAL ──
+  const contactSec = document.querySelector('.contact-section');
+  const contactH2 = contactSec.querySelector('h2');
+  const contactP = contactSec.querySelector('.contact-left p');
+  const contactDetail = contactSec.querySelector('.contact-detail');
+  const contactForm = contactSec.querySelector('.form');
+  gsap.set([contactH2, contactP, contactDetail], { opacity: 0, y: 28 });
+  gsap.set(contactForm, { opacity: 0, y: 20 });
+  const contactObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      contactObs.unobserve(contactSec);
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .to(contactH2,     { opacity: 1, y: 0, duration: 0.85 })
+        .to(contactP,      { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
+        .to(contactDetail, { opacity: 1, y: 0, duration: 0.6 }, '-=0.4')
+        .to(contactForm,   { opacity: 1, y: 0, duration: 0.75 }, '-=0.35');
+    });
+  }, { threshold: 0.2 });
+  contactObs.observe(contactSec);
+
+  // ── PILLAR CARDS REVEAL ──
+  const pillarBlocks = document.querySelectorAll('.pillar-block');
+  gsap.set(pillarBlocks, { opacity: 0, y: 40 });
+  const pillarObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      pillarObs.unobserve(entry.target);
+      gsap.to(pillarBlocks, { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' });
+    });
+  }, { threshold: 0.15 });
+  pillarObs.observe(document.querySelector('.pillars-grid'));
+
+  // ── PROBLEM CARDS REVEAL ──
+  const probCards = document.querySelectorAll('.problem-card');
+  gsap.set(probCards, { opacity: 0, y: 24 });
+  const probObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      probObs.unobserve(entry.target);
+      gsap.to(probCards, { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: 'power3.out' });
+    });
+  }, { threshold: 0.2 });
+  const probSection = document.querySelector('.problem-section');
+  if (probSection) probObs.observe(probSection);
+
+  // ── INDUSTRIES CARDS REVEAL ──
+  const indCards = document.querySelectorAll('.ind-card');
+  gsap.set(indCards, { opacity: 0, y: 20 });
+  const indObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      indObs.unobserve(entry.target);
+      gsap.to(indCards, { opacity: 1, y: 0, duration: 0.55, stagger: 0.05, ease: 'power3.out' });
+    });
+  }, { threshold: 0.15 });
+  const indSection = document.querySelector('.industries-section');
+  if (indSection) indObs.observe(indSection);
+
+  // ── TAGLINE SECTION REVEAL ──
+  const tagSec = document.querySelector('.tagline-section');
+  const tagText = document.querySelector('.tagline-text');
+  const tagFade = document.querySelector('.tagline-text .fade');
+  const tagStory = document.querySelector('.brand-story');
+  const tagCta = document.querySelector('.tagline-cta');
+
+  gsap.set(tagText, { opacity: 0, y: 30 });
+  gsap.set(tagFade, { opacity: 0, y: 40 });
+  gsap.set(tagStory, { opacity: 0, y: 24 });
+  gsap.set(tagCta, { opacity: 0, y: 16 });
+
+  const tagObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      tagObs.unobserve(tagSec);
+      gsap.timeline({ defaults: { ease: 'power3.out' } })
+        .to(tagText,  { opacity: 1, y: 0, duration: 0.8 })
+        .to(tagFade,  { opacity: 1, y: 0, duration: 0.9 }, '-=0.35')
+        .to(tagStory, { opacity: 1, y: 0, duration: 0.75 }, '-=0.4')
+        .to(tagCta,   { opacity: 1, y: 0, duration: 0.55 }, '-=0.35');
+    });
+  }, { threshold: 0.15 });
+  tagObs.observe(tagSec);
+
+  // ── PARTNER STAGGER REVEAL ──
+  const partnersSection = document.querySelector('.partners');
+  const partnerEls = document.querySelectorAll('.partner-name, .partner-divider, .partner-logo-wrap');
+  gsap.set(partnerEls, { opacity: 0, y: 14 });
+  const partnerObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      partnerObs.unobserve(partnersSection);
+      gsap.to(partnerEls, { opacity: (i, el) => el.classList.contains('partner-divider') ? 1 : 0.6, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+    });
+  }, { threshold: 0.3 });
+  partnerObs.observe(partnersSection);
+
+  // ── DATA STATS STAGGER ──
+  const dataStats = document.querySelectorAll('.data-stat');
+  gsap.set(dataStats, { opacity: 0, y: 24 });
+  const dataObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      dataObs.unobserve(entry.target);
+      gsap.to(dataStats, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+    });
+  }, { threshold: 0.2 });
+  dataObs.observe(document.querySelector('.data-grid'));
+
+  // ── SPLITTYPE HEADLINE REVEALS ──
+  document.querySelectorAll('.sec-h2').forEach(el => {
+    const split = new SplitType(el, { types: 'words', wordClass: 'word' });
+    split.words.forEach(word => {
+      const inner = document.createElement('span');
+      inner.innerHTML = word.innerHTML;
+      word.innerHTML = '';
+      word.appendChild(inner);
+    });
+    const inners = split.words.map(w => w.querySelector('span'));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        observer.unobserve(el);
+        gsap.to(inners, {
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          stagger: 0.07,
+        });
+      });
+    }, { threshold: 0.3 });
+    observer.observe(el);
+  });
+
+  // ── PRELOADER ──
+  const preloader = document.getElementById('preloader');
+  const preloaderLogo = document.getElementById('preloader-logo');
+  gsap.timeline()
+    .to(preloaderLogo, { opacity: 1, duration: 0.5, ease: 'power3.out' })
+    .to(preloaderLogo, { duration: 0.3 })
+    .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
+
+  // ── MAGNETIC BUTTONS ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.btn-primary, .btn-ghost, .form-submit, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        gsap.to(btn, { x: x * 0.28, y: y * 0.22, duration: 0.4, ease: 'power3.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+  }
+
+  // ── STAT COUNTERS ──
+  const countEls = document.querySelectorAll('[data-count]');
+  const countObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      countObserver.unobserve(el);
+      const obj = { val: 0 };
+      gsap.to(obj, {
+        val: target,
+        duration: 1.8,
+        ease: 'power2.out',
+        onUpdate() { el.textContent = Math.round(obj.val) + suffix; },
+        onComplete() { el.textContent = target + suffix; }
+      });
+    });
+  }, { threshold: 0.2 });
+  countEls.forEach(el => countObserver.observe(el));
+
+  // ── CUSTOM CURSOR ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const icon = document.getElementById('cursor-icon');
+    const ring = document.getElementById('cursor-ring');
+    const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
+    const iy = gsap.quickTo(icon, 'y', { duration: 0.12, ease: 'power3.out' });
+    const rx = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3.out' });
+    const ry = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3.out' });
+    let visible = false;
+    window.addEventListener('mousemove', e => {
+      ix(e.clientX - 12); iy(e.clientY - 15);
+      rx(e.clientX - 24); ry(e.clientY - 24);
+      if (!visible) { gsap.to([icon, ring], { opacity: 1, duration: 0.4 }); visible = true; }
+    });
+    window.addEventListener('mouseleave', () => {
+      gsap.to([icon, ring], { opacity: 0, duration: 0.3 }); visible = false;
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        gsap.to(ring, { scale: 1.6, borderColor: 'rgba(255,124,124,.45)', duration: 0.3 });
+        gsap.to(icon, { scale: 0.75, duration: 0.3 });
+      });
+      el.addEventListener('mouseleave', () => {
+        gsap.to(ring, { scale: 1, borderColor: 'rgba(252,248,240,.22)', duration: 0.3 });
+        gsap.to(icon, { scale: 1, duration: 0.3 });
+      });
+    });
+  }
+
+  // ── PAGE TRANSITION ──
+  const overlay = document.getElementById('page-transition');
+  gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      gsap.fromTo(overlay,
+        { scaleY: 0, transformOrigin: 'bottom' },
+        { scaleY: 1, duration: 0.7, ease: 'power3.inOut', onComplete: () => window.location.href = href }
+      );
+    });
+  });
+
+  // ── SLIDE-IN FORM PANEL ──
+  const panelOverlay = document.getElementById('form-panel-overlay');
+  const panel = document.getElementById('form-panel');
+  const panelClose = document.getElementById('form-panel-close');
+
+  function openPanel() {
+    panelOverlay.classList.add('open');
+    panel.classList.add('open');
+    lenis.stop();
+  }
+  function closePanel() {
+    panelOverlay.classList.remove('open');
+    panel.classList.remove('open');
+    lenis.start();
+  }
+
+  document.querySelectorAll('[data-open-form]').forEach(btn => {
+    btn.addEventListener('click', e => { e.preventDefault(); openPanel(); });
+  });
+  panelClose.addEventListener('click', closePanel);
+  panelOverlay.addEventListener('click', closePanel);
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
+
+const canvas = document.getElementById('hero-3d');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.setSize(300, 300);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.2;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+camera.position.set(0, 0, 6);
+
+scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+const key = new THREE.DirectionalLight(0xffffff, 1.0);
+key.position.set(4, 5, 6);
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xFF7C7C, 0.5);
+rim.position.set(-4, -2, 3);
+scene.add(rim);
+const fill = new THREE.PointLight(0xDDE3F1, 0.6, 20);
+fill.position.set(0, 6, 4);
+scene.add(fill);
+
+const loader = new SVGLoader();
+loader.load('Top of Funnel logo-04.svg', function(data) {
+  const group = new THREE.Group();
+  const mat = new THREE.MeshStandardMaterial({
+    color: 0xDDE3F1,
+    metalness: 0.3,
+    roughness: 0.3,
+    emissive: 0xFF7C7C,
+    emissiveIntensity: 0.03,
+    side: THREE.DoubleSide,
+  });
+
+  // Only use the first path (the O icon)
+  const path = data.paths[0];
+  const shapes = SVGLoader.createShapes(path);
+  shapes.forEach(shape => {
+    const geo = new THREE.ExtrudeGeometry(shape, {
+      depth: 25,
+      bevelEnabled: true,
+      bevelThickness: 3,
+      bevelSize: 2,
+      bevelSegments: 3,
+    });
+    group.add(new THREE.Mesh(geo, mat));
+  });
+
+  // Center and scale
+  const box = new THREE.Box3().setFromObject(group);
+  const c = box.getCenter(new THREE.Vector3());
+  const s = box.getSize(new THREE.Vector3());
+  const sc = 3.0 / Math.max(s.x, s.y);
+  group.scale.set(sc, -sc, sc);
+  group.position.set(-c.x * sc, c.y * sc, -12.5 * sc);
+  // Reset position to exact center
+  group.position.set(0, 0, 0);
+  const box2 = new THREE.Box3().setFromObject(group);
+  const center2 = box2.getCenter(new THREE.Vector3());
+  group.position.set(-center2.x, -center2.y, -center2.z);
+
+  const pivot = new THREE.Group();
+  pivot.add(group);
+  scene.add(pivot);
+
+  let t = 0;
+  function animate() {
+    requestAnimationFrame(animate);
+    t += 0.008;
+    pivot.rotation.y = Math.sin(t) * 0.7;
+    pivot.rotation.x = Math.sin(t * 0.6) * 0.08;
+    renderer.render(scene, camera);
+  }
+  animate();
+});
+
+// Fallback render loop in case SVG takes a moment
+renderer.render(scene, camera);
+</script>
+</body>
+</html>

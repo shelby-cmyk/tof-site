@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — TOF.io</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --navy: #070F36;
+  --cream: #FCF8F0;
+  --peri: #DDE3F1;
+  --coral: #FF7C7C;
+  --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: auto; }
+body { font-family: var(--f); background: var(--cream); color: var(--navy); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(252,248,240,.92);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(7,15,54,.06);
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+}
+.nav-logo img { height: 28px; width: auto; display: block; }
+.nav-back { font-size: 13px; color: rgba(7,15,54,.5); text-decoration: none; transition: color .2s; letter-spacing: .01em; }
+.nav-back:hover { color: var(--navy); }
+
+.legal-hero {
+  padding: 140px 48px 60px;
+  max-width: 800px; margin: 0 auto;
+}
+.legal-hero .tag {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--coral); margin-bottom: 16px; display: block;
+}
+.legal-hero h1 {
+  font-size: clamp(36px, 5vw, 56px); font-weight: 700;
+  letter-spacing: -.03em; line-height: 1.05; margin-bottom: 12px;
+}
+.legal-hero .hero-meta {
+  font-family: var(--mono); font-size: 11px;
+  color: rgba(7,15,54,.4); letter-spacing: .04em;
+}
+
+.content-section { max-width: 800px; margin: 0 auto; padding: 0 48px 100px; }
+.content-inner { display: flex; gap: 48px; }
+.toc { position: sticky; top: 80px; flex-shrink: 0; width: 200px; align-self: flex-start; }
+.toc-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(7,15,54,.4); margin-bottom: 12px; }
+.toc ul { list-style: none; }
+.toc li { margin-bottom: 6px; }
+.toc a { font-size: 12px; color: rgba(7,15,54,.5); text-decoration: none; transition: color .2s; }
+.toc a:hover { color: var(--navy); }
+.prose { flex: 1; min-width: 0; }
+.prose h2 { font-size: 20px; font-weight: 600; margin: 44px 0 12px; letter-spacing: -.01em; }
+.prose h3 { font-size: 15px; font-weight: 600; margin: 28px 0 8px; }
+.prose p { font-size: 15px; line-height: 1.8; color: rgba(7,15,54,.65); margin-bottom: 16px; }
+.prose ul { margin: 0 0 16px 20px; }
+.prose li { font-size: 14px; color: rgba(7,15,54,.6); line-height: 1.7; margin-bottom: 4px; }
+.prose a { color: var(--coral); text-decoration: none; }
+.prose a:hover { text-decoration: underline; }
+.callout { background: rgba(7,15,54,.03); border-left: 2px solid var(--coral); padding: 20px 24px; margin: 24px 0; border-radius: 0 4px 4px 0; }
+.callout p { margin-bottom: 0; }
+
+footer {
+  padding: 22px 48px; background: var(--cream);
+  display: flex; justify-content: space-between; align-items: center;
+  border-top: 1px solid rgba(7,15,54,.08);
+  flex-wrap: wrap; gap: 16px;
+}
+.footer-logo img { height: 13px; width: auto; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 11px; color: rgba(7,15,54,.45); text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: rgba(7,15,54,.75); }
+.footer-right { font-size: 11px; color: rgba(7,15,54,.30); }
+
+body::after {
+  content: ''; position: fixed; inset: -200%; width: 400%; height: 400%;
+  pointer-events: none; z-index: 99997; opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  animation: grain 0.8s steps(1) infinite;
+}
+@keyframes grain { 0%{transform:translate(0,0)} 25%{transform:translate(-2%,-3%)} 50%{transform:translate(3%,1%)} 75%{transform:translate(-1%,4%)} 100%{transform:translate(2%,-2%)} }
+
+@media (max-width: 900px) {
+  nav { padding: 0 24px; }
+  .legal-hero { padding: 120px 24px 48px; }
+  .content-section { padding: 0 24px 80px; }
+  .content-inner { flex-direction: column; gap: 24px; }
+  .toc { position: static; width: 100%; }
+  footer { padding: 20px 24px; }
+}
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo" aria-label="TOF.io">
+      <img src="Top of Funnel logo-01.svg" height="28" alt="TOF.io">
+    </a>
+    <a href="/" class="nav-back">&larr; Back to home</a>
+  </nav>
+
+  <div class="legal-hero">
+    <span class="tag">Legal</span>
+    <h1>Terms of Service</h1>
+    <p class="hero-meta">Effective Date: January 1, 2025 &middot; Last Updated: January 1, 2025</p>
+  </div>
+
+  <section class="content-section">
+    <div class="content-inner">
+
+      <!-- TABLE OF CONTENTS -->
+      <nav class="toc" aria-label="Table of contents">
+        <div class="toc-label">On this page</div>
+        <ul>
+          <li><a href="#acceptance">Acceptance of Terms</a></li>
+          <li><a href="#services">The Services</a></li>
+          <li><a href="#accounts">Accounts</a></li>
+          <li><a href="#acceptable-use">Acceptable Use</a></li>
+          <li><a href="#data-use">Data Use &amp; Restrictions</a></li>
+          <li><a href="#ip">Intellectual Property</a></li>
+          <li><a href="#confidentiality">Confidentiality</a></li>
+          <li><a href="#fees">Fees &amp; Payment</a></li>
+          <li><a href="#term-termination">Term &amp; Termination</a></li>
+          <li><a href="#warranties">Warranties &amp; Disclaimers</a></li>
+          <li><a href="#liability">Limitation of Liability</a></li>
+          <li><a href="#indemnification">Indemnification</a></li>
+          <li><a href="#disputes">Dispute Resolution</a></li>
+          <li><a href="#general">General Provisions</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- PROSE -->
+      <div class="prose">
+
+        <h2 id="acceptance">1. Acceptance of Terms</h2>
+        <p>These Terms of Service ("Terms") constitute a legally binding agreement between you or the entity you represent ("Customer," "you," or "your") and TOF.io, Inc. ("TOF," "we," "our," or "us") governing your access to and use of the TOF platform, APIs, data products, and related services (collectively, the "Services").</p>
+        <p>By accessing or using the Services, creating an account, or clicking "I agree" (or similar), you agree to be bound by these Terms. If you are agreeing on behalf of an organization, you represent that you have authority to bind that organization. If you do not agree, do not use the Services.</p>
+        <div class="callout">
+          <p><strong>Enterprise customers</strong> with a separately executed Master Services Agreement or Data License Agreement: those agreements govern your use of the Services to the extent they conflict with these Terms.</p>
+        </div>
+
+        <h2 id="services">2. The Services</h2>
+        <p>TOF provides a data platform that includes identity resolution, data enrichment, audience segmentation, campaign activation, and related services. The specific Services available to you depend on the subscription plan or order form you have executed with TOF.</p>
+        <p>We reserve the right to modify, suspend, or discontinue any aspect of the Services at any time, with or without notice, though we will use reasonable efforts to provide advance notice of material changes to paid subscribers.</p>
+
+        <h2 id="accounts">3. Accounts</h2>
+        <h3>Registration</h3>
+        <p>To access the Services, you must create an account and provide accurate, complete, and current information. You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account.</p>
+        <h3>Authorized Users</h3>
+        <p>You may grant access to the Services to employees and contractors acting on your behalf ("Authorized Users"), subject to any seat or user limits in your subscription. You are responsible for ensuring all Authorized Users comply with these Terms.</p>
+        <h3>Account Security</h3>
+        <p>You must notify us immediately at <a href="mailto:security@tof.io">security@tof.io</a> if you suspect unauthorized access to your account. We are not liable for any loss or damage arising from unauthorized account access where you have not notified us promptly.</p>
+
+        <h2 id="acceptable-use">4. Acceptable Use</h2>
+        <p>You agree to use the Services only for lawful purposes and in compliance with these Terms. You may not:</p>
+        <ul>
+          <li>Use the Services to violate any applicable law, regulation, or third-party rights</li>
+          <li>Attempt to gain unauthorized access to any part of the Services or TOF systems</li>
+          <li>Use the Services to transmit malware, spam, or other harmful code</li>
+          <li>Reverse engineer, decompile, or disassemble any component of the Services</li>
+          <li>Resell, sublicense, or distribute data obtained through the Services except as expressly permitted</li>
+          <li>Use the Services in a manner that unreasonably burdens TOF infrastructure</li>
+          <li>Misrepresent your identity or affiliation in connection with the Services</li>
+        </ul>
+
+        <h2 id="data-use">5. Data Use &amp; Restrictions</h2>
+        <h3>Permitted Use</h3>
+        <p>Data accessed through the Services ("TOF Data") may only be used for the purposes expressly authorized in your subscription plan or order form. Permitted uses generally include marketing, advertising targeting, identity verification, and analytics within your own business operations.</p>
+        <h3>Prohibited Uses</h3>
+        <p>You may not use TOF Data for:</p>
+        <ul>
+          <li>Employment screening, tenant screening, or other purposes governed by the FCRA</li>
+          <li>Determining eligibility for credit, insurance, or housing</li>
+          <li>Any purpose that discriminates on the basis of protected characteristics</li>
+          <li>Surveillance, stalking, or harassment of individuals</li>
+          <li>Building competitive data products or services</li>
+          <li>Any purpose that violates CCPA, GDPR, HIPAA, or other applicable privacy law</li>
+        </ul>
+        <h3>Your Data</h3>
+        <p>You retain all rights to data you upload, submit, or provide to TOF ("Customer Data"). You grant TOF a limited license to process Customer Data solely to provide the Services. TOF will not use Customer Data for any other purpose without your consent.</p>
+
+        <h2 id="ip">6. Intellectual Property</h2>
+        <p>TOF retains all right, title, and interest in and to the Services, including all software, algorithms, models, interfaces, and documentation. Nothing in these Terms transfers any ownership rights in the Services to you.</p>
+        <p>Subject to your compliance with these Terms and payment of applicable fees, TOF grants you a limited, non-exclusive, non-transferable, revocable license to access and use the Services during your subscription term.</p>
+        <p>You retain ownership of all Customer Data and any derivatives created solely from Customer Data without use of TOF's proprietary models or data.</p>
+
+        <h2 id="confidentiality">7. Confidentiality</h2>
+        <p>Each party may disclose to the other certain confidential or proprietary information ("Confidential Information"). The receiving party agrees to: (a) hold Confidential Information in strict confidence using at least the same care it uses for its own confidential information (but no less than reasonable care); (b) not disclose Confidential Information to any third party without prior written consent; and (c) use Confidential Information only for purposes of performing obligations or exercising rights under these Terms.</p>
+        <p>API keys, pricing, and non-public platform features are considered TOF Confidential Information. Customer Data is considered Customer Confidential Information.</p>
+
+        <h2 id="fees">8. Fees &amp; Payment</h2>
+        <p>Fees for the Services are set forth in your order form or subscription plan. Unless otherwise stated, fees are due in advance and are non-refundable. TOF reserves the right to suspend access to the Services if payment is not received within 30 days of the due date.</p>
+        <p>TOF may adjust pricing with 60 days' written notice prior to the start of a renewal term. Continued use of the Services after the effective date of a price change constitutes acceptance of the new pricing.</p>
+        <p>You are responsible for all taxes, duties, and government charges arising from your use of the Services, excluding taxes on TOF's net income.</p>
+
+        <h2 id="term-termination">9. Term &amp; Termination</h2>
+        <p>These Terms are effective from the date you first access the Services and continue until terminated. Your subscription term is specified in your order form; subscriptions automatically renew unless either party provides written notice of non-renewal at least 30 days before the end of the then-current term.</p>
+        <p>Either party may terminate for material breach upon 30 days' written notice if the breach is not cured within the notice period. TOF may terminate or suspend your access immediately if you breach the Acceptable Use or Data Use restrictions in Sections 4 or 5.</p>
+        <p>Upon termination, your right to access the Services ceases immediately. Sections that by their nature should survive termination (including confidentiality, IP, disclaimers, limitation of liability, and dispute resolution) will survive.</p>
+
+        <h2 id="warranties">10. Warranties &amp; Disclaimers</h2>
+        <p>TOF warrants that the Services will perform materially in accordance with applicable documentation during your subscription term. As your sole remedy for breach of this warranty, TOF will use reasonable efforts to correct material non-conformities or, if correction is not feasible, provide a pro-rated refund for the affected period.</p>
+        <p><strong>Except as expressly stated above, the Services are provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, non-infringement, or accuracy of data. TOF does not warrant that the Services will be uninterrupted, error-free, or that any specific results will be obtained from use of the Services.</strong></p>
+
+        <h2 id="liability">11. Limitation of Liability</h2>
+        <p><strong>To the maximum extent permitted by law, neither party will be liable to the other for any indirect, incidental, special, consequential, or punitive damages, or for any loss of profits, revenue, data, business opportunity, or goodwill, arising out of or related to these Terms or the Services, even if the party has been advised of the possibility of such damages.</strong></p>
+        <p><strong>TOF's total cumulative liability to you for all claims arising out of or related to these Terms or the Services will not exceed the greater of (a) the fees paid by you in the 12 months preceding the claim, or (b) $1,000 USD.</strong></p>
+
+        <h2 id="indemnification">12. Indemnification</h2>
+        <p>You agree to indemnify, defend, and hold harmless TOF and its officers, directors, employees, and agents from and against any claims, liabilities, damages, judgments, awards, losses, costs, expenses, and fees (including reasonable attorneys' fees) arising out of or relating to: (a) your violation of these Terms; (b) your use of the Services in violation of applicable law; (c) your Customer Data; or (d) any claim by a third party arising from your use of TOF Data in violation of these Terms.</p>
+
+        <h2 id="disputes">13. Dispute Resolution</h2>
+        <h3>Governing Law</h3>
+        <p>These Terms are governed by the laws of the State of New York, without regard to its conflict of law provisions.</p>
+        <h3>Informal Resolution</h3>
+        <p>Before initiating formal proceedings, the parties agree to first attempt to resolve disputes informally by contacting legal@tof.io. If the dispute is not resolved within 30 days, either party may proceed to binding arbitration.</p>
+        <h3>Arbitration</h3>
+        <p>Any dispute not resolved informally will be settled by binding arbitration administered by JAMS in New York, NY, under its Streamlined Arbitration Rules. The arbitrator's award will be final and may be entered as a judgment in any court of competent jurisdiction. Claims must be brought in an individual capacity; class actions are not permitted.</p>
+
+        <h2 id="general">14. General Provisions</h2>
+        <ul>
+          <li><strong>Entire Agreement:</strong> These Terms, together with any applicable order form or enterprise agreement, constitute the entire agreement between the parties regarding the Services.</li>
+          <li><strong>Amendments:</strong> TOF may update these Terms with 30 days' notice. Continued use after the effective date constitutes acceptance.</li>
+          <li><strong>Waiver:</strong> Failure to enforce any provision does not constitute a waiver of future enforcement rights.</li>
+          <li><strong>Severability:</strong> If any provision is found unenforceable, the remaining provisions remain in full force.</li>
+          <li><strong>Assignment:</strong> You may not assign these Terms without TOF's prior written consent. TOF may assign these Terms in connection with a merger, acquisition, or sale of assets.</li>
+          <li><strong>Force Majeure:</strong> Neither party is liable for delays or failures caused by circumstances beyond their reasonable control.</li>
+          <li><strong>Notices:</strong> Legal notices to TOF should be sent to legal@tof.io and by mail to the address below.</li>
+        </ul>
+
+        <h2 id="contact">15. Contact</h2>
+        <p>Questions about these Terms should be directed to:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:legal@tof.io">legal@tof.io</a></li>
+          <li><strong>Mail:</strong> TOF.io, Inc. · Attn: Legal · 228 Park Ave S, Suite 580 · New York, NY 10003</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <a href="/" class="footer-logo" aria-label="TOF.io">
+      <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
+    </a>
+    <div class="footer-links">
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms of service</a>
+      <a href="mailto:info@tof.io">info@tof.io</a>
+    </div>
+    <span class="footer-right">&copy; 2026 TOF.io &mdash; All rights reserved.</span>
+  </footer>
+
+</body>
+</html>
