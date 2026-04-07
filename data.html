@@ -605,8 +605,6 @@
     .cta-h2 { font-size: clamp(28px, 8vw, 44px); }
     .btn-coral { width: 100%; text-align: center; }
 
-    /* Footer */
-    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
   /* ── NAV (from index.html) ── */
@@ -652,6 +650,9 @@
   .footer-links a { font-size: 11px; color: rgba(7,15,54,.45); text-decoration: none; transition: color .2s; }
   .footer-links a:hover { color: rgba(7,15,54,.75); }
   .footer-right { font-size: 11px; color: rgba(7,15,54,.30); }
+  @media (max-width: 900px) {
+    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
 
   /* ── GRAIN TEXTURE ── */
   body::after {
@@ -813,7 +814,7 @@
   <a href="solutions.html">Solutions</a>
   <a href="data.html">Data</a>
   <a href="#" data-open-form>Contact</a>
-  <a href="#" class="mobile-cta" data-open-form>Let's talk</a>
+  <a href="#" class="mobile-cta" data-open-form>Request access</a>
 </div>
 
 <!-- DATA HERO + FUNNEL -->
@@ -1027,8 +1028,8 @@
     <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
   </a>
   <div class="footer-links">
-    <a href="/privacy">Privacy policy</a>
-    <a href="/terms">Terms of service</a>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="terms.html">Terms of service</a>
     <a href="mailto:go@tof.io">go@tof.io</a>
   </div>
   <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
