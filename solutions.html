@@ -416,6 +416,7 @@
   // Page transition
   const overlay = document.getElementById('page-transition');
   gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
+  window.addEventListener('pageshow', e => { if (e.persisted) { overlay.style.transform = 'scaleY(0)'; } });
   document.querySelectorAll('a[href]').forEach(link => {
     const href = link.getAttribute('href');
     if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.hasAttribute('data-open-form')) return;
