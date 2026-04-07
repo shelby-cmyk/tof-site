@@ -70,6 +70,21 @@
     height: 1px;
     background: #FF7C7C;
   }
+  .proof-badge {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: -.01em;
+    margin-bottom: 12px;
+  }
+  .proof-sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(221,227,241,.35);
+    margin-bottom: 48px;
+  }
   .funnel-stage {
     display: flex;
     flex-direction: column;
@@ -541,35 +556,67 @@
     .det-col { padding: 40px 28px; }
   }
   @media (max-width: 900px) {
-    .data-hero-inner { padding: 80px 24px; }
+    .funnel-progress { display: none; }
+
+    /* Hero + Funnel */
+    .data-hero-inner { padding: 80px 20px; }
+    .data-hero h1 { font-size: clamp(28px, 9vw, 44px); margin-bottom: 32px; }
+    .proof-badge { font-size: 14px; }
+    .proof-sub { font-size: 10px; }
     .funnel-visual { max-width: 100%; }
+    .funnel-stage { gap: 32px; }
     .funnel-detail-num { font-size: 32px; }
     .funnel-detail-name { font-size: 20px; }
-    .funnel-detail-desc { font-size: 15px; }
-    .data-section { padding: 100px 24px; }
-    .cta-section { padding: 88px 24px; }
-  }
-  @media (max-width: 600px) {
-    .exclusivity-box { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .funnel-detail-stat { font-size: 10px; }
+    .funnel-detail-desc { font-size: 14px; }
+
+    /* Sections */
+    .data-section { padding: 80px 20px; }
+    .section-h2 { font-size: clamp(28px, 8vw, 40px); }
+    .section-body { font-size: 15px; margin-bottom: 40px; }
+
+    /* Layer 1 */
+    .l1-grid { grid-template-columns: repeat(2, 1fr); }
+    .l1-stat { padding: 24px 20px; }
+    .l1-num { font-size: 32px; }
+
+    /* Layer 2 */
+    .l2-header { gap: 20px; }
+    .l2-stat-num { font-size: 48px; }
+    .l2-ticker-wrap { height: 220px; }
+    .l2-feed-name { font-size: 15px; }
+
+    /* Layer 3 */
+    .l3-big-stat { font-size: 72px; }
+    .l3-close-headline { font-size: 22px; }
+    .verticals-wrap { gap: 6px; }
+    .vpill { font-size: 12px; padding: 9px 16px; }
+
+    /* Deterministic */
+    .det-arena { grid-template-columns: 1fr; }
+    .det-divider { display: none; }
+    .det-col.prob { border-left: 2px solid rgba(255,100,100,.3); padding-left: 20px; }
+    .det-col.det { border-left: 3px solid #DDE3F1; border-top: none; padding-left: 20px; }
+    #deterministic { padding: 80px 20px; }
+    #deterministic .section-h2 { font-size: clamp(28px, 8vw, 44px); }
+
+    /* CTA */
+    .cta-section { padding: 80px 20px; }
+    .cta-h2 { font-size: clamp(28px, 8vw, 44px); }
+    .btn-coral { width: 100%; text-align: center; }
+
+    /* Footer */
+    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 
   /* ── NAV (from index.html) ── */
   nav {
     position: sticky; top: 0; z-index: 100;
     background: #070F36;
-    border-bottom: none;
+    border-bottom: 1px solid rgba(221,227,241,.06);
     height: 60px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
-  }
-  nav::before {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    bottom: 100%;
-    height: 40px;
-    background: linear-gradient(to top, #070F36, transparent);
-    pointer-events: none;
   }
   .nav-logo img { height: 44px; width: auto; display: block; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -775,6 +822,9 @@
   <div class="data-hero-inner">
     <p class="eyebrow">The TOF Spine · Data architecture</p>
     <h1>Three signal layers.<br>Full funnel coverage.</h1>
+    <div style="width:40px;height:2px;background:var(--coral);margin:0 auto 28px;"></div>
+    <p class="proof-badge">Built on the #1 ranked identity dataset in the U.S.</p>
+    <p class="proof-sub">Third-party verified · Independently certified · Deterministic</p>
     <div class="funnel-stage">
       <div class="funnel-visual">
         <svg class="funnel-svg" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
@@ -963,39 +1013,6 @@
   </div>
 </section>
 
-<!-- DETERMINISTIC VS PROBABILISTIC -->
-<section id="deterministic" style="border-top:1px solid rgba(221,227,241,.08);">
-  <p class="section-eyebrow ey-dim reveal">Identity methodology</p>
-  <h2 class="section-h2 reveal">Your competitors are guessing.<br>You won't be.</h2>
-  <div class="det-arena reveal">
-    <div class="det-col prob">
-      <div class="det-badge prob">Probabilistic</div>
-      <h3>Inferred identity</h3>
-      <p>Modeled from behavioral signals and statistical likelihood. Accurate enough for awareness — not for performance.</p>
-      <ul class="det-bullets">
-        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Identity inferred from patterns, not verified</li>
-        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Match rates degrade over time</li>
-        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>Lookalike audiences amplify inaccuracy</li>
-        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>No persistent identity across channels</li>
-        <li><span style="color:rgba(255,124,124,0.3);margin-right:8px;">✕</span>You're buying a probability, not a person</li>
-      </ul>
-    </div>
-    <div class="det-divider"></div>
-    <div class="det-col det">
-      <div class="det-badge det">Deterministic · TOF Identity Spine</div>
-      <h3>Verified identity</h3>
-      <p>Built on persistent, verified records tied to real individuals. The foundation every audience is anchored in.</p>
-      <ul class="det-bullets">
-        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Identity verified from authoritative primary sources</li>
-        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Persistent across channels and devices</li>
-        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Deterministic foundation — build any audience type on top</li>
-        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>Continuously refreshed from 70+ primary sources</li>
-        <li><span style="color:#DDE3F1;margin-right:8px;">→</span>You're reaching the person, not a model of them</li>
-      </ul>
-    </div>
-  </div>
-  <p class="det-callout reveal">70+ primary sources. <span style="color:#FF7C7C;">Zero inference.</span></p>
-</section>
 
 <!-- CTA -->
 <section class="cta-section">
@@ -1003,7 +1020,6 @@
   <h2 class="cta-h2 reveal">Ready to activate<br>the full funnel?</h2>
   <p class="cta-body reveal">Tell us your vertical, your channel, and your use case. We'll show you which layers of the <span class="tof-spine">TOF Spine</span> are right for you.</p>
   <a href="/#contact" class="btn-coral reveal" data-open-form>Request access</a>
-  <p style="font-family:var(--mono);font-size:11px;color:var(--coral);letter-spacing:.06em;margin-top:20px;opacity:.85;" class="reveal">We guarantee 20% lift over your best-performing campaign — or you don't pay.</p>
 </section>
 
 <!-- FOOTER -->
@@ -1089,9 +1105,8 @@
     <input type="text" name="challenge" placeholder="What are you trying to solve?">
     <button type="submit" class="form-submit">Request access</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
-    <p style="font-family:var(--mono);font-size:10px;color:var(--coral);letter-spacing:.06em;margin-top:8px;text-align:center;opacity:.85;">We guarantee 20% lift over your best-performing campaign — or you don't pay.</p>
   </form>
-  <p class="panel-trust">Trusted by Retreaver · Boss.Leads · Permissionize · Klaive</p>
+  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
 </div>
 
 <!-- CURSOR -->
@@ -1251,7 +1266,7 @@ window.setLayer = function(index) {
 };
 
 // Show/hide progress dots when pinned
-if (funnelProgress) {
+if (funnelProgress && window.matchMedia('(min-width: 901px)').matches) {
   ScrollTrigger.create({
     trigger: document.querySelector('.data-hero'),
     start: 'top top',

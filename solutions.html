@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TOF.io Solutions — Activate deterministic identity across Google, Meta, Amazon, TikTok, and 50+ DSPs and activation platforms.">
+<meta name="description" content="TOF.io Solutions — Deploy deterministic identity across programmatic, DSP, social, CTV, and direct activation channels.">
 <title>Solutions — TOF.io</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -25,18 +25,12 @@
   body { font-family: var(--f); background: var(--navy); color: var(--cream); -webkit-font-smoothing: antialiased; }
 
   /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    background: transparent; border-bottom: 1px solid transparent; height: 60px;
-    display: flex; align-items: center; justify-content: space-between; padding: 0 48px;
-    transition: background .4s, border-color .4s, backdrop-filter .4s;
-  }
-  nav.scrolled { background: rgba(7,15,54,.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom-color: rgba(221,227,241,.07); }
-  .nav-logo img { height: 28px; width: auto; display: block; }
+  nav { position: sticky; top: 0; z-index: 100; background: #070F36; border-bottom: 1px solid rgba(221,227,241,.06); height: 60px; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; }
+  .nav-logo img { height: 44px; width: auto; display: block; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 13px; color: rgba(221,227,241,.78); text-decoration: none; letter-spacing: .01em; transition: color .2s; }
   .nav-links a:hover { color: var(--peri); }
-  .nav-cta { font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 4px; background: var(--blue); color: var(--cream); text-decoration: none; transition: opacity .2s; }
+  .nav-cta { font-size: 12px; font-weight: 500; padding: 8px 18px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
   .nav-cta:hover { opacity: .85; }
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; z-index: 101; }
   .hamburger span { display: block; width: 22px; height: 1.5px; background: rgba(252,248,240,.8); transition: all .3s ease; }
@@ -50,60 +44,68 @@
   .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--navy); opacity: 0; transform: translateY(20px); }
 
   /* ── HERO ── */
-  .hero { padding: 160px 48px 100px; position: relative; overflow: hidden; }
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 60px 48px; background: #040A24; text-align: center; }
   .hero-content { max-width: 800px; }
-  .eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
-  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(40px, 5.5vw, 68px); font-weight: 700; line-height: 1.0; letter-spacing: -.04em; color: var(--cream); margin-bottom: 24px; }
-  .hero-sub { font-size: 17px; line-height: 1.7; color: rgba(221,227,241,.6); max-width: 560px; }
+  .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(44px, 7vw, 90px); font-weight: 700; line-height: 0.95; letter-spacing: -.045em; color: var(--cream); margin-bottom: 32px; text-transform: uppercase; }
+  .hero-sub { font-size: 17px; line-height: 1.75; color: rgba(221,227,241,.55); max-width: 520px; margin: 0 auto 40px; }
+  .hero-cta { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 44px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
+  .hero-cta:hover { opacity: .88; }
 
-  /* ── ACTIVATION ── */
-  .activation { padding: 100px 48px; position: relative; }
-  .activation-header { text-align: center; margin-bottom: 72px; }
-  .activation-header h2 { font-size: clamp(32px, 4vw, 48px); font-weight: 700; color: var(--cream); letter-spacing: -.03em; line-height: 1.08; margin-bottom: 12px; }
-  .activation-header p { font-size: 15px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto; }
+  /* ── SECTIONS ── */
+  section { padding: 100px 48px; }
+  .sec-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+  .sec-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
+  .sec-eyebrow.coral { color: var(--coral); }
+  .sec-eyebrow.coral::before { background: var(--coral); }
+  .sec-h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 20px; color: var(--cream); }
 
-  .activation-visual { display: grid; grid-template-columns: 280px 1fr; gap: 0; max-width: 960px; margin: 0 auto; align-items: stretch; }
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--navy); text-align: center; }
+  .how-header { margin-bottom: 64px; }
+  .how-header .sec-eyebrow { justify-content: center; }
+  .how-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(221,227,241,.05); max-width: 1000px; margin: 0 auto; }
+  .how-step { background: var(--navy); padding: 40px 28px; text-align: center; }
+  .how-step-num { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: rgba(221,227,241,.08); letter-spacing: -.03em; margin-bottom: 16px; }
+  .how-step h3 { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .how-step p { font-size: 13px; color: rgba(221,227,241,.5); line-height: 1.65; }
 
-  .activation-source {
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 48px 32px; border: 1px solid rgba(221,227,241,.08); border-right: none;
-    border-radius: 8px 0 0 8px; position: relative;
-  }
-  .activation-source-icon { width: 64px; margin-bottom: 20px; opacity: .8; }
-  .activation-source-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
-  .activation-source-name { font-size: 18px; font-weight: 600; color: var(--cream); letter-spacing: -.01em; margin-bottom: 4px; }
-  .activation-source-desc { font-size: 12px; color: rgba(221,227,241,.4); text-align: center; line-height: 1.5; }
+  /* ── CHANNELS ── */
+  .channels { background: #040A24; text-align: center; }
+  .channels-header { margin-bottom: 64px; }
+  .channels-header .sec-eyebrow { justify-content: center; }
+  .channels-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .channel-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; margin: 0 auto; text-align: left; }
+  .channel-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 20px; }
+  .channel-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .channel-list li { font-size: 15px; color: rgba(221,227,241,.6); padding-left: 16px; position: relative; }
+  .channel-list li::before { content: '→'; position: absolute; left: 0; color: rgba(221,227,241,.2); font-size: 12px; }
 
-  .activation-connector { position: absolute; right: -24px; top: 50%; transform: translateY(-50%); display: flex; align-items: center; z-index: 2; }
-  .activation-connector-line { width: 24px; height: 1px; background: var(--coral); }
-  .activation-connector-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+  /* ── USE CASES ── */
+  .use-cases { background: var(--cream); }
+  .use-cases .sec-h2 { color: var(--navy); }
+  .use-cases .sec-eyebrow { color: var(--coral); justify-content: center; }
+  .use-cases .sec-eyebrow::before { background: var(--coral); }
+  .use-cases-header { text-align: center; margin-bottom: 64px; }
+  .use-cases-header p { font-size: 16px; color: rgba(7,15,54,.55); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
+  .case-card { padding: 32px 28px; border: 1px solid rgba(7,15,54,.08); border-radius: 6px; transition: border-color .3s; }
+  .case-card:hover { border-color: rgba(7,15,54,.18); }
+  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .case-card p { font-size: 14px; color: rgba(7,15,54,.55); line-height: 1.7; }
 
-  .activation-grid-wrap { border: 1px solid rgba(221,227,241,.08); border-radius: 0 8px 8px 0; padding: 4px; }
-  .activation-grid-label { font-family: var(--mono); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(221,227,241,.3); padding: 12px 16px 8px; }
-  .activation-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(221,227,241,.05); }
-  .activation-platform {
-    background: var(--navy); padding: 24px 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 13px; font-weight: 500; color: rgba(221,227,241,.6); letter-spacing: -.01em;
-    transition: color .2s, background .2s;
-  }
-  .activation-platform:hover { color: var(--cream); background: rgba(221,227,241,.04); }
-
-  /* ── DATA PARTNERS ── */
-  .data-partners { padding: 80px 48px; border-top: 1px solid rgba(221,227,241,.06); }
-  .data-partners-header { text-align: center; margin-bottom: 48px; }
-  .data-partners-header h3 { font-size: clamp(24px, 3vw, 36px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; margin-bottom: 8px; }
-  .data-partners-header p { font-size: 14px; color: rgba(221,227,241,.45); }
-  .data-partners-grid { display: flex; align-items: center; justify-content: center; gap: 56px; flex-wrap: wrap; }
-  .data-partner { font-size: 20px; font-weight: 500; color: rgba(221,227,241,.3); letter-spacing: -.01em; transition: color .3s; }
-  .data-partner:hover { color: rgba(221,227,241,.6); }
+  /* ── PROOF ── */
+  .proof { background: var(--navy); text-align: center; border-top: 1px solid rgba(221,227,241,.06); }
+  .proof-line { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .proof-sub { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.35); letter-spacing: .08em; text-transform: uppercase; }
 
   /* ── CTA ── */
-  .cta-section { padding: 100px 48px; background: #040A24; text-align: center; }
-  .cta-section h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 700; color: var(--cream); letter-spacing: -.03em; margin-bottom: 20px; }
-  .cta-section p { font-size: 15px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto 40px; }
-  .cta-btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 44px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
+  .cta-section { background: #040A24; text-align: center; padding: 120px 48px; }
+  .cta-section .sec-h2 { margin-left: auto; margin-right: auto; max-width: 600px; }
+  .cta-sub { font-size: 16px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+  .cta-btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 48px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
   .cta-btn:hover { opacity: .88; }
 
   /* ── FOOTER ── */
@@ -130,38 +132,42 @@
   @keyframes preloaderFade { to { opacity: 1; } }
   @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
-  /* ── CURSOR ── */
-  @media (pointer: fine) { * { cursor: none !important; } }
-  #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
-  #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
-
-  /* ── PAGE TRANSITION ── */
-  #page-transition { position: fixed; inset: 0; background: var(--navy); z-index: 99990; transform-origin: top; pointer-events: none; }
+  /* ── SLIDE-IN FORM ── */
+  .form-panel-overlay { position: fixed; inset: 0; background: rgba(4,10,36,.6); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity .35s; }
+  .form-panel-overlay.open { opacity: 1; pointer-events: auto; }
+  .form-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 460px; max-width: 90vw; background: #070F36; z-index: 9999; transform: translateX(100%); transition: transform .45s cubic-bezier(.4,0,.2,1); padding: 48px 36px; overflow-y: auto; display: flex; flex-direction: column; }
+  .form-panel.open { transform: translateX(0); }
+  .form-panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(221,227,241,.5); font-size: 24px; cursor: pointer; transition: color .2s; line-height: 1; padding: 4px; }
+  .form-panel-close:hover { color: var(--cream); }
+  .form-panel h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
+  .form-panel .panel-sub { font-size: 14px; color: rgba(221,227,241,.5); line-height: 1.65; margin-bottom: 32px; }
+  .form-panel .form { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+  .form-panel .form input { background: rgba(221,227,241,.05); border: 1px solid rgba(221,227,241,.15); border-radius: 4px; padding: 12px 16px; font-size: 14px; color: var(--cream); font-family: var(--f); outline: none; transition: border-color .2s; width: 100%; }
+  .form-panel .form input::placeholder { color: rgba(252,248,240,.35); }
+  .form-panel .form input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,124,124,.12); }
+  .form-panel .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-panel .form-submit { background: var(--coral); color: var(--navy); border: none; border-radius: 4px; padding: 13px 28px; font-size: 13px; font-weight: 500; font-family: var(--f); cursor: pointer; transition: opacity .2s; width: 100%; text-align: center; }
+  .form-panel .form-submit:hover { opacity: .88; }
+  .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: rgba(221,227,241,.25); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 0 20px; }
+    nav { padding: 0 20px; height: 56px; }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
-    .hero { padding: 120px 20px 60px; }
-    .hero h1 { font-size: clamp(32px, 9vw, 48px); }
-    .activation { padding: 60px 20px; }
-    .activation-header { margin-bottom: 48px; }
-    .activation-visual { grid-template-columns: 1fr; }
-    .activation-source { border-radius: 8px 8px 0 0; border-right: 1px solid rgba(221,227,241,.08); border-bottom: none; padding: 36px 24px; }
-    .activation-connector { display: none; }
-    .activation-grid-wrap { border-radius: 0 0 8px 8px; }
-    .activation-grid { grid-template-columns: repeat(2, 1fr); }
-    .data-partners { padding: 48px 20px; }
-    .data-partners-grid { gap: 28px; }
-    .data-partner { font-size: 16px; }
-    .cta-section { padding: 60px 20px; }
-    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; }
+    .hero { padding: 60px 20px; }
+    .hero h1 { font-size: clamp(32px, 10vw, 52px); }
+    section { padding: 64px 20px; }
+    .how-steps { grid-template-columns: repeat(2, 1fr); }
+    .channel-groups { grid-template-columns: 1fr; gap: 36px; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .cta-section { padding: 80px 20px; }
+    .cta-btn { width: 100%; text-align: center; }
+    footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
 </head>
 <body>
-
 
 <!-- PRELOADER -->
 <div id="preloader">
@@ -177,91 +183,155 @@
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li><a href="/data.html">Data</a></li>
-    <li><a href="/solutions.html" class="active">Solutions</a></li>
+    <li><a href="data.html">Data</a></li>
+    <li><a href="solutions.html" style="color:var(--peri);">Solutions</a></li>
     <li><a href="/#contact">Contact</a></li>
   </ul>
-  <a href="/#contact" class="nav-cta">Let's talk</a>
+  <a href="#" class="nav-cta" data-open-form>Request access</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav">
   <a href="/">Home</a>
-  <a href="/data.html">Data</a>
-  <a href="/solutions.html">Solutions</a>
+  <a href="data.html">Data</a>
+  <a href="solutions.html">Solutions</a>
   <a href="/#contact">Contact</a>
-  <a href="/#contact" class="mobile-cta">Let's talk</a>
+  <a href="#" class="mobile-cta" data-open-form>Request access</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <p class="eyebrow">Solutions · Activation & deployment</p>
-    <h1>Enhance & activate<br>your campaigns.</h1>
-    <p class="hero-sub">Deploy TOF Identity Spine data across every major platform and activation channel — from programmatic DSPs to social, search, and CTV.</p>
+    <p class="eyebrow">Solutions · How TOF deploys</p>
+    <h1>Your stack.<br>Our layer.</h1>
+    <p class="hero-sub">TOF Identity Spine isn't a platform you log into. It's the infrastructure layer underneath your existing activation — plugged in, always on, invisible until you see the results.</p>
+    <a href="#" class="hero-cta" data-open-form>Request access</a>
   </div>
 </section>
 
-<!-- ACTIVATION VISUAL -->
-<section class="activation">
-  <div class="activation-header reveal">
-    <h2>One source. Every channel.</h2>
-    <p>TOF Identity Spine feeds deterministic identity data into the platforms your campaigns already run on.</p>
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="how-header reveal">
+    <p class="sec-eyebrow coral">How it works</p>
+    <h2 class="sec-h2">Four steps. No migration.</h2>
+    <p>TOF plugs into what you already run. No rip-and-replace. No new dashboards. No learning curve.</p>
   </div>
-
-  <div class="activation-visual reveal">
-    <div class="activation-source">
-      <img class="activation-source-icon" src="Top of Funnel logo-04.svg" alt="TOF">
-      <p class="activation-source-label">Data source</p>
-      <p class="activation-source-name">TOF Identity Spine</p>
-      <p class="activation-source-desc">98% U.S. adult coverage<br>1.6T monthly consumer events</p>
-      <div class="activation-connector">
-        <div class="activation-connector-line"></div>
-        <div class="activation-connector-dot"></div>
-      </div>
+  <div class="how-steps">
+    <div class="how-step reveal">
+      <p class="how-step-num">01</p>
+      <h3>Tell us your vertical</h3>
+      <p>Insurance, financial services, home services, auto — we map the right data layers to your channel.</p>
     </div>
-
-    <div class="activation-grid-wrap">
-      <p class="activation-grid-label">Activation channels</p>
-      <div class="activation-grid">
-        <div class="activation-platform">Google</div>
-        <div class="activation-platform">Amazon</div>
-        <div class="activation-platform">Yahoo</div>
-        <div class="activation-platform">The Trade Desk</div>
-        <div class="activation-platform">Meta</div>
-        <div class="activation-platform">Instagram</div>
-        <div class="activation-platform">TikTok</div>
-        <div class="activation-platform">Snapchat</div>
-        <div class="activation-platform">Facebook</div>
-        <div class="activation-platform">LiveRamp</div>
-        <div class="activation-platform">StackAdapt</div>
-        <div class="activation-platform">Basis</div>
-      </div>
+    <div class="how-step reveal">
+      <p class="how-step-num">02</p>
+      <h3>We build your audiences</h3>
+      <p>Custom Keyword Audiences and High-Intent feeds built specifically for your offers and campaigns.</p>
+    </div>
+    <div class="how-step reveal">
+      <p class="how-step-num">03</p>
+      <h3>Activate through your DSP</h3>
+      <p>Audiences deploy directly into your existing programmatic stack — Google, The Trade Desk, Meta, or any DSP.</p>
+    </div>
+    <div class="how-step reveal">
+      <p class="how-step-num">04</p>
+      <h3>Measure and optimize</h3>
+      <p>Deterministic match rates, conversion attribution, and continuous audience refresh from 70+ sources.</p>
     </div>
   </div>
 </section>
 
-<!-- DATA PARTNERS -->
-<section class="data-partners">
-  <div class="data-partners-header reveal">
-    <h3>Marketplace partners</h3>
-    <p>Integrated with leading data marketplaces and onboarding platforms.</p>
+<!-- CHANNELS -->
+<section class="channels">
+  <div class="channels-header reveal">
+    <p class="sec-eyebrow coral">Activation channels</p>
+    <h2 class="sec-h2">Everywhere your campaigns run.</h2>
+    <p>TOF data activates across every major platform and channel — programmatic, social, search, CTV, and direct.</p>
   </div>
-  <div class="data-partners-grid reveal">
-    <span class="data-partner">LiveRamp</span>
-    <span class="data-partner">Snowflake</span>
-    <span class="data-partner">AWS Data Exchange</span>
-    <span class="data-partner">Oracle</span>
-    <span class="data-partner">Lotame</span>
+  <div class="channel-groups">
+    <div class="reveal">
+      <p class="channel-group-label">Programmatic & DSP</p>
+      <ul class="channel-list">
+        <li>Google DV360</li>
+        <li>The Trade Desk</li>
+        <li>Amazon DSP</li>
+        <li>StackAdapt</li>
+        <li>Basis</li>
+        <li>Yahoo DSP</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <p class="channel-group-label">Social & Search</p>
+      <ul class="channel-list">
+        <li>Meta / Facebook</li>
+        <li>Instagram</li>
+        <li>TikTok</li>
+        <li>Snapchat</li>
+        <li>Google Ads</li>
+        <li>YouTube</li>
+      </ul>
+    </div>
+    <div class="reveal">
+      <p class="channel-group-label">Data & Onboarding</p>
+      <ul class="channel-list">
+        <li>LiveRamp</li>
+        <li>Snowflake</li>
+        <li>AWS Data Exchange</li>
+        <li>Direct API</li>
+        <li>Custom feeds</li>
+        <li>CTV / OTT</li>
+      </ul>
+    </div>
   </div>
+</section>
+
+<!-- USE CASES -->
+<section class="use-cases">
+  <div class="use-cases-header reveal">
+    <p class="sec-eyebrow coral">Use cases</p>
+    <h2 class="sec-h2" style="color:var(--navy);">How operators use TOF.</h2>
+    <p>From lead gen to CTV, here's how performance marketers deploy the TOF Identity Spine.</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <h3>Lead Generation</h3>
+      <p>Deterministic identity at the top of every lead flow. Know your audience before the spend — not after.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Pay-Per-Call</h3>
+      <p>Verified consumer intent driving inbound calls. Higher contact rates, lower cost per acquisition.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Programmatic Activation</h3>
+      <p>Custom audiences deployed directly into your DSP. Real search behavior, not modeled assumptions.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>CTV & Streaming</h3>
+      <p>90M+ connected TV households matched to deterministic identity. Reach real people on the big screen.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Data Monetization</h3>
+      <p>Turn first-party data into revenue. Enrich, extend, and activate existing audiences through the TOF Spine.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Customer Reactivation</h3>
+      <p>Identify lapsed customers with verified signals. Re-engage with deterministic precision, not guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof">
+  <p class="proof-line reveal">Built on the #1 ranked identity dataset in the U.S.</p>
+  <p class="proof-sub reveal">Third-party verified · Independently certified · Deterministic</p>
 </section>
 
 <!-- CTA -->
 <section class="cta-section">
-  <h2 class="">Ready to activate<br>the full funnel?</h2>
-  <p class="">Tell us your use case. We'll show you what TOF looks like in your channel.</p>
-  <a href="/#contact" class="cta-btn reveal">Request access</a>
+  <p class="sec-eyebrow coral reveal" style="justify-content:center;">Let's build</p>
+  <h2 class="sec-h2 reveal">See what your funnel<br>is missing.</h2>
+  <p class="cta-sub reveal">Tell us your use case. We'll show you what TOF looks like in your channel — and what it does for your revenue.</p>
+  <a href="#" class="cta-btn reveal" data-open-form>Request access</a>
 </section>
 
 <!-- FOOTER -->
@@ -270,12 +340,34 @@
     <img src="Top of Funnel logo-01.svg" height="13" alt="TOF.io">
   </a>
   <div class="footer-links">
-    <a href="/privacy">Privacy policy</a>
-    <a href="/terms">Terms of service</a>
+    <a href="privacy.html">Privacy policy</a>
+    <a href="terms.html">Terms of service</a>
     <a href="mailto:go@tof.io">go@tof.io</a>
   </div>
   <span class="footer-right">© 2026 TOF.io — All rights reserved.</span>
 </footer>
+
+<!-- SLIDE-IN FORM PANEL -->
+<div class="form-panel-overlay" id="form-panel-overlay"></div>
+<div class="form-panel" id="form-panel">
+  <button class="form-panel-close" id="form-panel-close" aria-label="Close">×</button>
+  <h3>See what your<br>funnel is missing.</h3>
+  <p class="panel-sub">Tell us your use case. We'll show you what TOF looks like in your channel.</p>
+  <form class="form" action="https://formspree.io/f/xpqojbny" method="POST">
+    <input type="hidden" name="_next" value="https://tof.io">
+    <input type="hidden" name="_subject" value="New TOF Inquiry">
+    <input type="text" name="_gotcha" style="display:none">
+    <div class="form-row">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Work email" required>
+    </div>
+    <input type="text" name="company" placeholder="Company">
+    <input type="text" name="challenge" placeholder="What are you trying to solve?">
+    <button type="submit" class="form-submit">Request access</button>
+    <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
+  </form>
+  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
+</div>
 
 <!-- SCRIPTS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -285,17 +377,9 @@
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 
-  // Preloader
-  const preloader = document.getElementById('preloader');
-  const preloaderLogo = document.getElementById('preloader-logo');
-  gsap.timeline()
-    .to(preloaderLogo, { opacity: 1, duration: 0.5, ease: 'power3.out' })
-    .to(preloaderLogo, { duration: 0.3 })
-    .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
-  setTimeout(() => { if (preloader && preloader.parentNode) preloader.remove(); }, 3000);
-
-  // Nav scroll
-  window.addEventListener('scroll', () => { document.querySelector('nav').classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
+  // Reveals
+  const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); ro.unobserve(e.target); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
   // Mobile nav
   const hamburger = document.getElementById('hamburger');
@@ -308,53 +392,15 @@
     else { gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 }); lenis.start(); }
   });
 
-  // Reveals
-  const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); ro.unobserve(e.target); }); }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
-
-  // Platform stagger
-  const platforms = document.querySelectorAll('.activation-platform');
-  gsap.set(platforms, { opacity: 0, y: 12 });
-  const platObs = new IntersectionObserver(entries => { entries.forEach(entry => { if (!entry.isIntersecting) return; platObs.unobserve(entry.target); gsap.to(platforms, { opacity: 1, y: 0, duration: 0.45, stagger: 0.04, ease: 'power3.out' }); }); }, { threshold: 0.2 });
-  platObs.observe(document.querySelector('.activation-grid'));
-
-  // Page transition
-  const overlay = document.getElementById('page-transition');
-  gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-    link.addEventListener('click', e => { e.preventDefault(); gsap.fromTo(overlay, { scaleY: 0, transformOrigin: 'bottom' }, { scaleY: 1, duration: 0.7, ease: 'power3.inOut', onComplete: () => window.location.href = href }); });
-  });
-</script>
-
-<!-- CURSOR -->
-<div id="cursor-icon" aria-hidden="true">
-  <svg viewBox="0 0 502.28 627.91" xmlns="http://www.w3.org/2000/svg">
-    <path fill="#FF7C7C" fill-rule="evenodd" d="M376.77,461.35c0,22.52-18.42,40.94-40.94,40.94h-170.77c-10.85,0-20.75-4.47-27.91-11.63-7.16-7.16-11.58-17-11.58-27.86V165.06c0-16.28,10.01-30.37,24.16-36.41,2.35-1.01,4.81-1.74,7.38-2.3,2.57-.5,5.2-.78,7.94-.78h3.7c22.61,0,40.93-18.33,40.93-40.93v-43.7c0-22.61-18.32-40.94-40.93-40.94h-5.49c-23.21,0-40.55,18.91-39.43,42.12,1.57,33-8.56,57.5-29.92,70.7-2.85,1.79-5.87,3.36-9.12,4.7-11.72,4.92-26,7.16-42.79,6.35C19,122.76,0,141.76,0,164.79v299.63c0,22.43,18.57,40.94,41,39.66,12.25-.67,23.16.45,32.66,3.24,34.06,10.01,50.68,40.66,50.12,80.88-.28,21.81,17.68,39.71,39.49,39.71h176.47c22.2,0,39.1-18.12,38.76-40.33-.28-20.25,4.19-37.98,13.03-51.85,13.26-20.73,36.24-32.82,67.69-31.46,23.33,1.01,43.06-16.9,43.06-40.26v-108.79c0-22.61-18.33-40.94-40.94-40.94h-43.65c-22.61,0-40.93,18.33-40.93,40.94v106.12ZM439.53,125.57c-24.61,0-40.78-11.52-50.28-28.97-8.17-15.16-11.3-34.73-10.51-55.26.89-22.71-16.67-41.34-39.43-41.34h-54.49c-22.61,0-40.94,18.33-40.94,40.94v43.7c0,22.6,18.33,40.93,40.94,40.93h51.03c22.52,0,40.94,18.42,40.94,40.93v72.68c0,22.61,18.32,40.94,40.93,40.94h43.65c22.6,0,40.93-18.33,40.93-40.94v-50.8c0-34.57-28.25-62.81-62.76-62.81"/>
-  </svg>
-</div>
-<div id="cursor-ring" aria-hidden="true"></div>
-
-<script>
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const icon = document.getElementById('cursor-icon');
-    const ring = document.getElementById('cursor-ring');
-    const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
-    const iy = gsap.quickTo(icon, 'y', { duration: 0.12, ease: 'power3.out' });
-    const rx = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3.out' });
-    const ry = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3.out' });
-    let visible = false;
-    window.addEventListener('mousemove', e => {
-      ix(e.clientX - 12); iy(e.clientY - 15); rx(e.clientX - 24); ry(e.clientY - 24);
-      if (!visible) { gsap.to([icon, ring], { opacity: 1, duration: 0.4 }); visible = true; }
-    });
-    window.addEventListener('mouseleave', () => { gsap.to([icon, ring], { opacity: 0, duration: 0.3 }); visible = false; });
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => { gsap.to(ring, { scale: 1.6, borderColor: 'rgba(255,124,124,.45)', duration: 0.3 }); gsap.to(icon, { scale: 0.75, duration: 0.3 }); });
-      el.addEventListener('mouseleave', () => { gsap.to(ring, { scale: 1, borderColor: 'rgba(252,248,240,.22)', duration: 0.3 }); gsap.to(icon, { scale: 1, duration: 0.3 }); });
-    });
-  }
+  // Slide-in form panel
+  const panelOverlay = document.getElementById('form-panel-overlay');
+  const panel = document.getElementById('form-panel');
+  const panelClose = document.getElementById('form-panel-close');
+  function openPanel() { panelOverlay.classList.add('open'); panel.classList.add('open'); lenis.stop(); }
+  function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); lenis.start(); }
+  document.querySelectorAll('[data-open-form]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openPanel(); }); });
+  panelClose.addEventListener('click', closePanel);
+  panelOverlay.addEventListener('click', closePanel);
 </script>
 
 </body>
