@@ -242,6 +242,9 @@
   .fade-up:nth-child(5) { animation-delay: .5s; }
   .fade-up:nth-child(6) { animation-delay: .6s; }
 
+  /* ── SR-ONLY ── */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
   /* ── GRAIN TEXTURE ── */
   body::after {
     content: '';
@@ -791,13 +794,13 @@
   <form class="form" action="https://formspree.io/f/xpqojbny" method="POST">
     <input type="hidden" name="_next" value="https://tof.io">
     <input type="hidden" name="_subject" value="New TOF Inquiry">
-    <input type="text" name="_gotcha" style="display:none">
+    <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true">
     <div class="form-row">
-      <input type="text" name="name" placeholder="Your name" required>
-      <input type="email" name="email" placeholder="Work email" required>
+      <div><label for="panel-name" class="sr-only">Your name</label><input type="text" id="panel-name" name="name" placeholder="Your name" required autocomplete="name"></div>
+      <div><label for="panel-email" class="sr-only">Work email</label><input type="email" id="panel-email" name="email" placeholder="Work email" required autocomplete="email"></div>
     </div>
-    <input type="text" name="company" placeholder="Company">
-    <input type="text" name="challenge" placeholder="What are you trying to solve?">
+    <label for="panel-company" class="sr-only">Company</label><input type="text" id="panel-company" name="company" placeholder="Company" autocomplete="organization">
+    <label for="panel-challenge" class="sr-only">What are you trying to solve?</label><input type="text" id="panel-challenge" name="challenge" placeholder="What are you trying to solve?">
     <button type="submit" class="form-submit" style="width:100%;text-align:center;">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
@@ -1045,15 +1048,22 @@
   const panel = document.getElementById('form-panel');
   const panelClose = document.getElementById('form-panel-close');
 
+  let panelTrigger = null;
+  panel.setAttribute('role', 'dialog');
+  panel.setAttribute('aria-modal', 'true');
   function openPanel() {
+    panelTrigger = document.activeElement;
     panelOverlay.classList.add('open');
     panel.classList.add('open');
     lenis.stop();
+    const firstInput = panel.querySelector('input[name="name"]');
+    if (firstInput) setTimeout(() => firstInput.focus(), 100);
   }
   function closePanel() {
     panelOverlay.classList.remove('open');
     panel.classList.remove('open');
     lenis.start();
+    if (panelTrigger) panelTrigger.focus();
   }
 
   document.querySelectorAll('[data-open-form]').forEach(btn => {
@@ -1061,7 +1071,15 @@
   });
   panelClose.addEventListener('click', closePanel);
   panelOverlay.addEventListener('click', closePanel);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closePanel();
+    if (e.key === 'Tab' && panel.classList.contains('open')) {
+      const focusable = panel.querySelectorAll('input:not([type="hidden"]):not([tabindex="-1"]), button, a[href]');
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
 </script>
 <script type="module">
 import * as THREE from 'three';
