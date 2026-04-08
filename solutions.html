@@ -76,38 +76,42 @@
   .how-step p { font-size: 13px; color: rgba(221,227,241,.5); line-height: 1.65; }
 
   /* ── CHANNELS ── */
-  .channels { background: #040A24; text-align: center; }
+  .channels { background: var(--peri); text-align: center; }
   .channels-header { margin-bottom: 64px; }
+  .channels .sec-h2 { color: var(--navy); }
+  .channels .sec-eyebrow { color: var(--navy); }
+  .channels .sec-eyebrow::before { background: var(--navy); }
   .channels-header .sec-eyebrow { justify-content: center; }
-  .channels-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .channels-header p { font-size: 16px; color: rgba(7,15,54,.55); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
   .channel-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; margin: 0 auto; text-align: left; }
-  .channel-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 20px; }
+  .channel-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); opacity: .5; margin-bottom: 20px; }
   .channel-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .channel-list li { font-size: 15px; color: rgba(221,227,241,.6); padding-left: 16px; position: relative; }
-  .channel-list li::before { content: '→'; position: absolute; left: 0; color: rgba(221,227,241,.2); font-size: 12px; }
+  .channel-list li { font-size: 15px; color: rgba(7,15,54,.6); padding-left: 16px; position: relative; }
+  .channel-list li::before { content: '→'; position: absolute; left: 0; color: rgba(7,15,54,.25); font-size: 12px; }
 
   /* ── USE CASES ── */
-  .use-cases { background: var(--cream); }
-  .use-cases .sec-h2 { color: var(--navy); }
+  .use-cases { background: var(--navy); }
   .use-cases .sec-eyebrow { color: var(--coral); justify-content: center; }
   .use-cases .sec-eyebrow::before { background: var(--coral); }
   .use-cases-header { text-align: center; margin-bottom: 64px; }
-  .use-cases-header p { font-size: 16px; color: rgba(7,15,54,.55); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .use-cases-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
   .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
-  .case-card { padding: 32px 28px; border: 1px solid rgba(7,15,54,.08); border-radius: 6px; transition: border-color .3s; }
-  .case-card:hover { border-color: rgba(7,15,54,.18); }
-  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
-  .case-card p { font-size: 14px; color: rgba(7,15,54,.55); line-height: 1.7; }
+  .case-card { padding: 32px 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s; }
+  .case-card:hover { border-color: rgba(221,227,241,.18); }
+  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
 
   /* ── PROOF ── */
-  .proof { background: var(--navy); text-align: center; border-top: 1px solid rgba(221,227,241,.06); }
+  .proof { background: #040A24; text-align: center; border-top: 1px solid rgba(221,227,241,.06); }
   .proof-line { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--cream); margin-bottom: 8px; }
   .proof-sub { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.35); letter-spacing: .08em; text-transform: uppercase; }
 
   /* ── CTA ── */
-  .cta-section { background: #040A24; text-align: center; padding: 120px 48px; }
-  .cta-section .sec-h2 { margin-left: auto; margin-right: auto; max-width: 600px; }
-  .cta-sub { font-size: 16px; color: rgba(221,227,241,.5); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+  .cta-section { background: var(--cream); text-align: center; padding: 120px 48px; border-top: 1px solid rgba(7,15,54,.08); }
+  .cta-section .sec-h2 { margin-left: auto; margin-right: auto; max-width: 600px; color: var(--navy); }
+  .cta-section .sec-eyebrow { color: var(--coral); }
+  .cta-section .sec-eyebrow::before { background: var(--coral); }
+  .cta-sub { font-size: 16px; color: rgba(7,15,54,.55); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
   .cta-btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 48px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
   .cta-btn:hover { opacity: .88; }
 
@@ -298,7 +302,7 @@
 <section class="use-cases">
   <div class="use-cases-header reveal">
     <p class="sec-eyebrow coral">Use cases</p>
-    <h2 class="sec-h2" style="color:var(--navy);">How operators use TOF.</h2>
+    <h2 class="sec-h2">How operators use TOF.</h2>
     <p>From lead gen to CTV, here's how performance marketers deploy the TOF Identity Spine.</p>
   </div>
   <div class="cases-grid">
