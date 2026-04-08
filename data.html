@@ -40,6 +40,8 @@
     background: #040A24;
     overflow: hidden;
   }
+  .data-hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; z-index: 0; }
+  @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
   .data-hero-inner {
     min-height: 100vh;
     display: flex;
@@ -48,6 +50,8 @@
     justify-content: center;
     padding: 80px 48px 120px;
     text-align: center;
+    position: relative;
+    z-index: 1;
   }
   .data-hero h1 {
     font-family: 'Space Grotesk', sans-serif;
