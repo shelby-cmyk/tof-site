@@ -600,7 +600,7 @@
     </div>
     <div class="data-stat">
       <p class="data-stat-num" data-count="70" data-suffix="+">70+</p>
-      <p class="data-stat-label">High-Intent Data Feeds</p>
+      <p class="data-stat-label">High-Intent Verticals</p>
     </div>
     <div class="data-stat">
       <p class="data-stat-num" data-count="1.6" data-suffix="T">1.6T</p>
@@ -721,7 +721,6 @@
 
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160/examples/jsm/"}}</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script>
@@ -802,7 +801,7 @@
     <button type="submit" class="form-submit" style="width:100%;text-align:center;">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
-  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
+  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello · Boss Leads</p>
 </div>
 
 <!-- CURSOR -->
@@ -839,12 +838,6 @@
       });
     }
   });
-
-  // ── NAV SCROLL STATE ──
-  const navEl = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    navEl.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
 
   // ── SCROLL CUE ──
   const scrollCue = document.getElementById('scroll-cue');
@@ -1007,7 +1000,10 @@
         val: target,
         duration: 1.8,
         ease: 'power2.out',
-        onUpdate() { el.textContent = Math.round(obj.val) + suffix; },
+        onUpdate() {
+          const isDecimal = target % 1 !== 0;
+          el.textContent = (isDecimal ? obj.val.toFixed(1) : Math.round(obj.val)) + suffix;
+        },
         onComplete() { el.textContent = target + suffix; }
       });
     });

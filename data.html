@@ -532,7 +532,7 @@
     .det-col { padding: 40px 28px; }
   }
   @media (max-width: 900px) {
-    .funnel-progress { display: none; }
+    .funnel-progress { display: flex; position: static; flex-direction: row; gap: 12px; justify-content: center; margin-top: 20px; opacity: 1; }
 
     /* Hero + Funnel */
     .data-hero-inner { padding: 80px 20px; }
@@ -1093,7 +1093,7 @@
     <button type="submit" class="form-submit">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
-  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
+  <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello · Boss Leads</p>
 </div>
 
 <!-- CURSOR -->
@@ -1267,9 +1267,26 @@ if (l3Stat) {
   l3Obs.observe(l3Stat);
 }
 
-// ── HOVER LISTENERS FOR SVG LAYERS ──
+// ── HOVER + TAP LISTENERS FOR SVG LAYERS ──
 document.querySelectorAll('.funnel-layer').forEach((l, i) => {
   l.addEventListener('mouseenter', () => window.setLayer(i));
+  l.addEventListener('click', () => window.setLayer(i));
+  l.style.cursor = 'pointer';
+});
+
+// ── MOBILE: TAP FUNNEL DETAIL TO CYCLE LAYERS ──
+if (window.matchMedia('(max-width: 900px)').matches && funnelDetail) {
+  funnelDetail.style.cursor = 'pointer';
+  funnelDetail.addEventListener('click', () => {
+    const next = (currentLayer + 1) % 3;
+    window.setLayer(next);
+  });
+}
+
+// ── MOBILE: TAP DOTS TO SWITCH LAYERS ──
+document.querySelectorAll('.funnel-dot').forEach((dot, i) => {
+  dot.addEventListener('click', () => window.setLayer(i));
+  dot.style.cursor = 'pointer';
 });
 
 // ── SLIDE-IN FORM PANEL ──
