@@ -74,19 +74,6 @@
   .how .case-card h3 { color: var(--cream); }
   .how .case-card p { color: rgba(221,227,241,.55); }
 
-  /* ── CHANNELS ── */
-  .channels { background: var(--peri); text-align: center; }
-  .channels-header { margin-bottom: 64px; }
-  .channels .sec-h2 { color: var(--navy); }
-  .channels .sec-eyebrow { color: var(--navy); }
-  .channels .sec-eyebrow::before { background: var(--navy); }
-  .channels-header .sec-eyebrow { justify-content: center; }
-  .channels-header p { font-size: 16px; color: rgba(7,15,54,.55); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
-  .channel-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; max-width: 900px; margin: 0 auto; text-align: left; }
-  .channel-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); opacity: .5; margin-bottom: 20px; }
-  .channel-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .channel-list li { font-size: 15px; color: rgba(7,15,54,.6); padding-left: 16px; position: relative; }
-  .channel-list li::before { content: '→'; position: absolute; left: 0; color: rgba(7,15,54,.25); font-size: 12px; }
 
   /* ── SOLUTION CARDS ── */
   .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
@@ -94,6 +81,7 @@
   .case-card:hover { border-color: rgba(221,227,241,.18); }
   .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
   .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
+  .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.3); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
 
   /* ── PROOF ── */
   .proof { background: #040A24; text-align: center; border-top: 1px solid rgba(221,227,241,.06); }
@@ -166,7 +154,6 @@
     .hero h1 { font-size: clamp(32px, 10vw, 52px); }
     section { padding: 64px 20px; }
     .cases-grid { grid-template-columns: 1fr; }
-    .channel-groups { grid-template-columns: 1fr; gap: 36px; }
     .cases-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 80px 20px; }
     .cta-btn { width: 100%; text-align: center; }
@@ -228,70 +215,32 @@
     <div class="case-card reveal">
       <h3>Affiliates</h3>
       <p>You need audiences that convert — not impressions that vanish. TOF gives you deterministic identity so you're driving real, verified consumers to offers. Not guesses. Not lookalikes. People.</p>
+      <p class="card-channels">Direct API · Custom feeds · LiveRamp</p>
     </div>
     <div class="case-card reveal">
       <h3>Advertisers</h3>
       <p>You're spending budget and need to know it's reaching verified consumers. TOF is the identity data underneath your campaigns — 98% U.S. adult coverage, matched deterministically across every channel.</p>
+      <p class="card-channels">Google DV360 · The Trade Desk · Meta · Google Ads · CTV/OTT</p>
     </div>
     <div class="case-card reveal">
       <h3>Publishers</h3>
       <p>You have audiences. You need to monetize them. TOF enriches your data with deterministic identity to increase yield — turning existing inventory into higher-value, verified impressions.</p>
+      <p class="card-channels">LiveRamp · Snowflake · AWS Data Exchange · Direct API</p>
     </div>
     <div class="case-card reveal">
       <h3>Programmatic / DSP</h3>
       <p>Custom Keyword Audiences built from real consumer search behavior, delivered directly into your DSP. Refreshed daily. 47K+ in-market signal topics. Real intent, not modeled assumptions.</p>
+      <p class="card-channels">Google DV360 · The Trade Desk · Amazon DSP · StackAdapt · Basis · Yahoo DSP</p>
     </div>
     <div class="case-card reveal">
       <h3>Pay-Per-Call</h3>
       <p>Verified consumer intent before the call happens. TOF identifies who's in-market across 70+ verticals — higher contact rates, lower cost per acquisition, calls that actually convert.</p>
+      <p class="card-channels">Direct API · Custom feeds</p>
     </div>
     <div class="case-card reveal">
       <h3>Data Reactivation</h3>
       <p>Your existing data has gone stale. TOF appends and enriches with fresh deterministic signals from 70+ primary sources — turning dead records into live, verified identity.</p>
-    </div>
-  </div>
-</section>
-
-<!-- CHANNELS -->
-<section class="channels">
-  <div class="channels-header reveal">
-    <p class="sec-eyebrow coral" style="justify-content:center;">Where the data goes</p>
-    <h2 class="sec-h2">Every channel. One source.</h2>
-    <p>TOF identity data activates across every major channel — programmatic, social, search, CTV, and direct.</p>
-  </div>
-  <div class="channel-groups">
-    <div class="reveal">
-      <p class="channel-group-label">Programmatic & DSP</p>
-      <ul class="channel-list">
-        <li>Google DV360</li>
-        <li>The Trade Desk</li>
-        <li>Amazon DSP</li>
-        <li>StackAdapt</li>
-        <li>Basis</li>
-        <li>Yahoo DSP</li>
-      </ul>
-    </div>
-    <div class="reveal">
-      <p class="channel-group-label">Social & Search</p>
-      <ul class="channel-list">
-        <li>Meta / Facebook</li>
-        <li>Instagram</li>
-        <li>TikTok</li>
-        <li>Snapchat</li>
-        <li>Google Ads</li>
-        <li>YouTube</li>
-      </ul>
-    </div>
-    <div class="reveal">
-      <p class="channel-group-label">Data & Delivery</p>
-      <ul class="channel-list">
-        <li>LiveRamp</li>
-        <li>Snowflake</li>
-        <li>AWS Data Exchange</li>
-        <li>Direct API</li>
-        <li>Custom feeds</li>
-        <li>CTV / OTT</li>
-      </ul>
+      <p class="card-channels">Snowflake · AWS Data Exchange · LiveRamp · Direct API</p>
     </div>
   </div>
 </section>
@@ -353,11 +302,35 @@
   function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
   requestAnimationFrame(raf);
 
-  // Reveals
+  // ── HERO ENTRANCE ──
+  const heroEyebrow = document.querySelector('.hero .eyebrow');
+  const heroH1 = document.querySelector('.hero h1');
+  const heroSub = document.querySelector('.hero-sub');
+  const heroCta = document.querySelector('.hero-cta');
+  gsap.set([heroEyebrow, heroH1, heroSub, heroCta], { opacity: 0, y: 24 });
+  gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 })
+    .to(heroEyebrow, { opacity: 1, y: 0, duration: 0.7 })
+    .to(heroH1,      { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
+    .to(heroSub,     { opacity: 1, y: 0, duration: 0.7 }, '-=0.35')
+    .to(heroCta,     { opacity: 1, y: 0, duration: 0.6 }, '-=0.3');
+
+  // ── REVEALS ──
   const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); ro.unobserve(e.target); }); }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
 
-  // Mobile nav
+  // ── BUYER CARD STAGGER ──
+  const caseCards = document.querySelectorAll('.case-card');
+  gsap.set(caseCards, { opacity: 0, y: 32 });
+  const cardObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      cardObs.unobserve(entry.target);
+      gsap.to(caseCards, { opacity: 1, y: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out' });
+    });
+  }, { threshold: 0.15 });
+  cardObs.observe(document.querySelector('.cases-grid'));
+
+  // ── MOBILE NAV ──
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');
   const mobileLinks = mobileNav.querySelectorAll('a');
@@ -368,7 +341,7 @@
     else { gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 }); lenis.start(); }
   });
 
-  // Slide-in form panel
+  // ── SLIDE-IN FORM PANEL ──
   const panelOverlay = document.getElementById('form-panel-overlay');
   const panel = document.getElementById('form-panel');
   const panelClose = document.getElementById('form-panel-close');
@@ -377,6 +350,21 @@
   document.querySelectorAll('[data-open-form]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openPanel(); }); });
   panelClose.addEventListener('click', closePanel);
   panelOverlay.addEventListener('click', closePanel);
+
+  // ── MAGNETIC BUTTONS ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.hero-cta, .cta-btn, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        gsap.to(btn, { x: x * 0.28, y: y * 0.22, duration: 0.4, ease: 'power3.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+  }
 
 </script>
 
