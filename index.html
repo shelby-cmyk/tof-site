@@ -16,7 +16,6 @@
 <style>
   :root {
     --navy: #070F36;
-    --blue: #215FB0;
     --peri: #DDE3F1;
     --cream: #FCF8F0;
     --coral: #FF7C7C;
@@ -81,7 +80,7 @@
   .pillar-block:hover { background: rgba(221,227,241,.06); }
   .pillar-block::after { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .3s; pointer-events: none; }
   .pillar-block.acquire::after { background: radial-gradient(ellipse at top left, rgba(255,124,124,.06) 0%, transparent 70%); }
-  .pillar-block.monetize::after { background: radial-gradient(ellipse at top left, rgba(33,95,176,.07) 0%, transparent 70%); }
+  .pillar-block.monetize::after { background: radial-gradient(ellipse at top left, rgba(221,227,241,.07) 0%, transparent 70%); }
   .pillar-block.retain::after { background: radial-gradient(ellipse at top left, rgba(221,227,241,.05) 0%, transparent 70%); }
   .pillar-block:hover::after { opacity: 1; }
   .btn-primary { font-size: 13px; font-weight: 600; padding: 13px 30px; border-radius: 3px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; }
@@ -104,8 +103,8 @@
   .sec-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
   .sec-eyebrow.coral { color: var(--coral); }
   .sec-eyebrow.coral::before { background: var(--coral); }
-  .sec-eyebrow.blue { color: var(--blue); }
-  .sec-eyebrow.blue::before { background: var(--blue); }
+  .sec-eyebrow.blue { color: var(--peri); }
+  .sec-eyebrow.blue::before { background: var(--peri); }
   .sec-h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 20px; }
   .sec-h2.light { color: var(--cream); }
   .sec-h2.dark { color: var(--navy); }
@@ -119,15 +118,15 @@
   .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 0; }
   .pillar-block { background: rgba(221,227,241,.03); padding: 56px 36px; position: relative; overflow: hidden; border-top: 2px solid transparent; transition: background .35s; }
   .pillar-block.acquire { border-top-color: var(--coral); }
-  .pillar-block.monetize { border-top-color: var(--blue); }
+  .pillar-block.monetize { border-top-color: var(--peri); }
   .pillar-block.retain { border-top-color: var(--peri); }
   .pillar-big-num { font-family: 'Space Grotesk', sans-serif; font-size: clamp(48px, 5vw, 72px); font-weight: 700; letter-spacing: -.04em; line-height: 1; margin-bottom: 24px; }
   .pillar-block.acquire .pillar-big-num { color: rgba(255,124,124,.15); }
-  .pillar-block.monetize .pillar-big-num { color: rgba(33,95,176,.2); }
+  .pillar-block.monetize .pillar-big-num { color: rgba(221,227,241,.2); }
   .pillar-block.retain .pillar-big-num { color: rgba(221,227,241,.1); }
   .pillar-num { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
   .pillar-block.acquire .pillar-num { color: var(--coral); }
-  .pillar-block.monetize .pillar-num { color: var(--blue); }
+  .pillar-block.monetize .pillar-num { color: var(--peri); }
   .pillar-block.retain .pillar-num { color: var(--peri); opacity: .7; }
   .pillar-h { font-size: 24px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.15; }
   .pillar-body { font-size: 14px; line-height: 1.75; color: rgba(221,227,241,.65); margin-bottom: 0; }
