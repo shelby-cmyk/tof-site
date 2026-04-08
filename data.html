@@ -608,10 +608,23 @@
   nav {
     position: sticky; top: 0; z-index: 100;
     background: #070F36;
-    border-bottom: 1px solid rgba(221,227,241,.06);
+    border-bottom: none;
     height: 60px;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 48px;
+  }
+  nav::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 60px;
+    background: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+    z-index: 99;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.5), transparent);
   }
   .nav-logo img { height: 44px; width: auto; display: block; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
