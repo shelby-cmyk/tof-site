@@ -719,32 +719,13 @@
   </div>
 </section>
 
-<!-- WHAT HAPPENS NEXT -->
+<!-- CONTACT -->
 <section class="contact-section" id="contact">
   <img class="wm wm-contact" src="tof-logo-04.svg" alt="" aria-hidden="true">
-  <div class="contact-left" style="text-align:center; max-width:680px; margin:0 auto;">
+  <div class="contact-left" style="text-align:center; max-width:600px; margin:0 auto;">
     <p class="sec-eyebrow coral" style="justify-content:center;">See under the hood</p>
-    <h2>What happens when<br>you reach out.</h2>
-    <p style="max-width:480px; margin:0 auto 56px;">No demo queue. No long sales cycle. Just a conversation about your data, your channel, and what TOF looks like in your stack.</p>
-  </div>
-  <div class="next-steps">
-    <div class="next-step reveal">
-      <span class="next-step-num">01</span>
-      <h3>Tell us your vertical and channel</h3>
-      <p>Insurance, lending, home services — whatever you run. We'll map the TOF Identity Spine to your use case.</p>
-    </div>
-    <div class="next-step reveal">
-      <span class="next-step-num">02</span>
-      <h3>We show you the data</h3>
-      <p>Real coverage numbers for your vertical. Real signal depth. No pitch deck — just the layer underneath your funnel.</p>
-    </div>
-    <div class="next-step reveal">
-      <span class="next-step-num">03</span>
-      <h3>You activate</h3>
-      <p>TOF plugs into your existing flows — DSP, call routing, direct feed, API. You're live in days, not quarters. Want to test first? We can do that too.</p>
-    </div>
-  </div>
-  <div style="text-align:center; margin-top:56px;" class="reveal">
+    <h2>See what your funnel<br>is missing.</h2>
+    <p style="max-width:480px; margin:0 auto 48px;">Tell us your vertical and your channel. We'll show you the coverage, the signals, and what TOF looks like in your stack.</p>
     <a href="#" class="btn-primary" data-open-form>Request access</a>
     <p class="contact-detail-item" style="margin-top:20px;">or email us directly: <a href="mailto:go@tof.io">go@tof.io</a></p>
   </div>
@@ -905,13 +886,12 @@
     }
   }, { passive: true });
 
-  // ── CONTACT / WHAT HAPPENS NEXT REVEAL ──
+  // ── CONTACT SECTION REVEAL ──
   const contactSec = document.querySelector('.contact-section');
   const contactH2 = contactSec.querySelector('h2');
   const contactP = contactSec.querySelector('.contact-left p');
-  const nextSteps = contactSec.querySelectorAll('.next-step');
-  gsap.set([contactH2, contactP], { opacity: 0, y: 28 });
-  gsap.set(nextSteps, { opacity: 0, y: 24 });
+  const contactCta = contactSec.querySelector('.btn-primary');
+  gsap.set([contactH2, contactP, contactCta], { opacity: 0, y: 28 });
   const contactObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -919,9 +899,9 @@
       gsap.timeline({ defaults: { ease: 'power3.out' } })
         .to(contactH2,  { opacity: 1, y: 0, duration: 0.85 })
         .to(contactP,   { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
-        .to(nextSteps,  { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 }, '-=0.3');
+        .to(contactCta, { opacity: 1, y: 0, duration: 0.6 }, '-=0.35');
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.2 });
   contactObs.observe(contactSec);
 
   // ── PILLAR CARDS REVEAL ──
