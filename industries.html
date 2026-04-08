@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Industries — TOF.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --midnight: #070F36;
+      --cream: #FCF8F0;
+      --peri: #DDE3F1;
+      --coral: #FF7C7C;
+      --graphite: #6E7180;
+      --space: #9DA2B3;
+      --steel: #BCBFCC;
+      --smoke: #D3D6E0;
+      --cloud: #EDEFF7;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--midnight); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+
+    /* HERO */
+    .hero { background: var(--midnight); position: relative; overflow: hidden; padding: 104px 24px 88px; text-align: center; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(221,227,241,0.08) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .hero::after { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(33,95,176,0.18) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+    .tag { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--peri); opacity: 0.7; letter-spacing: 0.08em; margin-bottom: 24px; display: inline-block; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--cream); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 20px; }
+    .hero p { font-size: clamp(1rem, 1.8vw, 1.125rem); color: rgba(252,248,240,0.72); max-width: 540px; margin: 0 auto; line-height: 1.7; }
+
+    /* SECTIONS */
+    section { padding: 112px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--peri); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-size: clamp(2.5rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; color: var(--midnight); margin-bottom: 16px; }
+    .section-sub { font-size: 1.0625rem; color: var(--graphite); max-width: 520px; line-height: 1.8; }
+
+    /* INDUSTRY CARDS */
+    .industries-section { background: var(--cream); }
+    .industries-header { margin-bottom: 56px; }
+    .industry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .ind-card {
+      background: #fff;
+      border: 1px solid var(--peri);
+      border-radius: 6px;
+      padding: 36px 28px;
+      transition: box-shadow 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .ind-card:hover { box-shadow: 0 12px 40px rgba(7,15,54,0.09); transform: translateY(-4px); }
+    .ind-emoji {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+      line-height: 1;
+    }
+    .ind-card h3 {
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--midnight);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .ind-card p {
+      font-size: 0.9375rem;
+      color: var(--graphite);
+      line-height: 1.72;
+      margin-bottom: 20px;
+    }
+    .ind-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .ind-pill {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--peri);
+      background: rgba(221,227,241,0.2);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .ind-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--peri);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .ind-card-link:hover { gap: 10px; }
+
+    /* CASE STUDY */
+    .case-study { background: var(--cloud); }
+    .cs-header { margin-bottom: 48px; }
+    .cs-card {
+      background: var(--midnight);
+      border-radius: 6px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+    }
+    .cs-content {
+      padding: 56px 48px;
+    }
+    .cs-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--peri);
+      opacity: 0.7;
+      margin-bottom: 16px;
+    }
+    .cs-content h3 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--cream);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .cs-content p {
+      font-size: 1.0625rem;
+      color: rgba(252,248,240,0.65);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .btn-outline-cream {
+      border: 1.5px solid rgba(252,248,240,0.3);
+      color: var(--cream);
+      padding: 12px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline-cream:hover { border-color: var(--cream); background: rgba(252,248,240,0.06); }
+    .cs-metrics {
+      background: rgba(221,227,241,0.06);
+      padding: 56px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 36px;
+      border-left: 1px solid rgba(221,227,241,0.1);
+    }
+    .cs-metric {}
+    .cs-metric-num {
+      font-family: var(--font-mono);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.04em;
+      margin-bottom: 4px;
+    }
+    .cs-metric-num span { color: var(--peri); }
+    .cs-metric-label {
+      font-size: 0.875rem;
+      color: rgba(252,248,240,0.45);
+    }
+
+    /* CTA */
+    .cta-section { background: var(--midnight); text-align: center; padding: 88px 24px; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; bottom: -100px; right: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(33,95,176,0.14) 0%, transparent 65%); }
+    .cta-section .tag { color: var(--peri); opacity: 0.65; margin-bottom: 20px; }
+    .cta-section h2 { color: var(--cream); margin-bottom: 16px; }
+    .cta-section p { color: rgba(252,248,240,0.62); max-width: 480px; margin: 0 auto 40px; font-size: 1.0625rem; }
+    .btn-coral { background: var(--coral); color: var(--midnight); padding: 16px 40px; border-radius: 6px; font-weight: 700; font-size: 1rem; text-decoration: none; transition: opacity 0.2s; display: inline-block; }
+    .btn-coral:hover { opacity: .85; }
+
+    @media (max-width: 960px) {
+      .industry-grid { grid-template-columns: repeat(2, 1fr); }
+      .cs-card { grid-template-columns: 1fr; }
+      .cs-metrics { border-left: none; border-top: 1px solid rgba(221,227,241,0.1); flex-direction: row; flex-wrap: wrap; gap: 24px; }
+    }
+    @media (max-width: 600px) {
+      .industry-grid { grid-template-columns: 1fr; }
+      .cs-content { padding: 36px 28px; }
+      .cs-metrics { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="siteNav">
+    <a href="/" class="nav-logo-wrap" aria-label="TOF.io">
+      <img src="tof-logo-02.svg" height="28" alt="TOF.io">
+    </a>
+    <ul class="nav-links">
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="data.html">Data</a></li>
+      <li><a href="industries.html" class="active">Industries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta-link">Let's talk</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="solutions.html">Solutions</a>
+    <a href="data.html">Data</a>
+    <a href="industries.html" class="active">Industries</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta">Let's talk</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="tag">[ INDUSTRIES ]</span>
+      <h1>Built for the Industries<br>That Move Fast.</h1>
+      <p>Sector-specific data, tailored compliance postures, and pre-built audience templates for the verticals where precision matters most.</p>
+    </div>
+  </section>
+
+  <section class="industries-section">
+    <div class="section-inner">
+      <div class="industries-header">
+        <div class="section-tag">Verticals</div>
+        <h2>Your Industry. Our Expertise.</h2>
+        <p class="section-sub">TOF deploys purpose-built data models for each vertical — not a one-size-fits-all approach.</p>
+      </div>
+      <div class="industry-grid">
+        <div class="ind-card">
+          <span class="ind-emoji">🏦</span>
+          <h3>Financial Services</h3>
+          <p>Identify high-value prospects, reduce fraud at onboarding, and meet compliance requirements — all with data that doesn't cross regulated lines.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">Wealth Targeting</span>
+            <span class="ind-pill">Fraud Signals</span>
+            <span class="ind-pill">FCRA Compliant</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+        <div class="ind-card">
+          <span class="ind-emoji">🛍️</span>
+          <h3>Retail &amp; E-Commerce</h3>
+          <p>Connect online and offline customer journeys, recover lost carts, and personalize at scale — across every channel your shoppers use.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">Purchase Intent</span>
+            <span class="ind-pill">Cart Recovery</span>
+            <span class="ind-pill">Omnichannel</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+        <div class="ind-card">
+          <span class="ind-emoji">🏥</span>
+          <h3>Healthcare</h3>
+          <p>Find patients, healthcare professionals, and caregivers with HIPAA-aligned data practices and privacy-safe targeting methodologies.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">HCP Targeting</span>
+            <span class="ind-pill">HIPAA Aligned</span>
+            <span class="ind-pill">DTC Health</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+        <div class="ind-card">
+          <span class="ind-emoji">🏡</span>
+          <h3>Real Estate</h3>
+          <p>Target first-time buyers, movers, and investors with pinpoint accuracy — using home ownership, mortgage, and life event signals.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">Mover Targeting</span>
+            <span class="ind-pill">Life Events</span>
+            <span class="ind-pill">Propensity Models</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+        <div class="ind-card">
+          <span class="ind-emoji">🚗</span>
+          <h3>Automotive</h3>
+          <p>Reach in-market car buyers across every stage of the purchase journey — from initial research to test drive scheduling to financing.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">In-Market Buyers</span>
+            <span class="ind-pill">OEM Segments</span>
+            <span class="ind-pill">Service Triggers</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+        <div class="ind-card">
+          <span class="ind-emoji">🎬</span>
+          <h3>Media &amp; Entertainment</h3>
+          <p>Grow subscriptions, reduce churn, and find audiences who convert — by matching behavioral signals with content affinities and streaming patterns.</p>
+          <div class="ind-pills">
+            <span class="ind-pill">Subscriber Growth</span>
+            <span class="ind-pill">Churn Prediction</span>
+            <span class="ind-pill">Content Affinity</span>
+          </div>
+          <a href="contact.html" class="ind-card-link">Talk to a specialist →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="case-study">
+    <div class="section-inner">
+      <div class="cs-header">
+        <div class="section-tag">Case Study</div>
+        <h2>See TOF in Action</h2>
+        <p class="section-sub">Real results from a real customer — numbers that move the needle.</p>
+      </div>
+      <div class="cs-card">
+        <div class="cs-content">
+          <div class="cs-tag">[ RETAIL &amp; E-COMMERCE ]</div>
+          <h3>How Meridian Retail Reduced CAC by 42% with TOF Identity Resolution</h3>
+          <p>Meridian's growth team was spending aggressively across paid channels but couldn't connect their offline purchase data to digital audiences. TOF resolved their CRM against our consumer graph in 48 hours, unlocking suppression and lookalike audiences that cut wasted spend in half.</p>
+          <a href="contact.html" class="btn-outline-cream">Read the Full Case Study</a>
+        </div>
+        <div class="cs-metrics">
+          <div class="cs-metric">
+            <div class="cs-metric-num"><span>42%</span></div>
+            <div class="cs-metric-label">Reduction in Customer Acquisition Cost</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric-num"><span>3.8×</span></div>
+            <div class="cs-metric-label">Return on Ad Spend</div>
+          </div>
+          <div class="cs-metric">
+            <div class="cs-metric-num"><span>91%</span></div>
+            <div class="cs-metric-label">CRM Match Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div style="position:relative;z-index:1;">
+      <span class="tag">[ YOUR INDUSTRY ]</span>
+      <h2>Don't See Your Vertical?</h2>
+      <p>TOF works across every industry that relies on consumer data. Talk to our team about a custom solution for your use case.</p>
+      <a href="contact.html" class="btn-coral">Talk to Our Team</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a href="/" aria-label="TOF.io">
+      <img src="tof-logo-02.svg" class="footer-logo-img" alt="TOF.io">
+    </a>
+    <ul class="footer-links">
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="data.html">Data</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 TOF.io — All rights reserved.</span>
+  </footer>
+
+  <script src="node_modules/split-type/umd/index.js"></script>
+  <script type="module" src="animations.js"></script>
+</body>
+</html>

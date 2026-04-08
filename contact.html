@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — TOF.io</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --midnight: #070F36;
+      --cream: #FCF8F0;
+      --peri: #DDE3F1;
+      --coral: #FF7C7C;
+      --graphite: #6E7180;
+      --space: #9DA2B3;
+      --steel: #BCBFCC;
+      --smoke: #D3D6E0;
+      --cloud: #EDEFF7;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); background: var(--cream); color: var(--midnight); font-size: 16px; line-height: 1.75; overflow-x: hidden; }
+
+    /* HERO */
+    .hero { background: var(--midnight); position: relative; overflow: hidden; padding: 88px 24px 72px; text-align: center; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: radial-gradient(circle, rgba(221,227,241,0.08) 1px, transparent 1px); background-size: 32px 32px; pointer-events: none; }
+    .hero::after { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(33,95,176,0.18) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .tag { font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 600; color: var(--peri); opacity: 0.7; letter-spacing: 0.08em; margin-bottom: 24px; display: inline-block; }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 3.25rem); font-weight: 700; color: var(--cream); line-height: 1.15; letter-spacing: -0.03em; margin-bottom: 16px; }
+    .hero p { font-size: 1.0625rem; color: rgba(252,248,240,0.65); line-height: 1.7; }
+
+    /* CONTACT SECTION */
+    .contact-section { background: var(--cream); padding: 80px 24px 96px; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
+
+    /* FORM */
+    .form-wrap {
+      background: #fff;
+      border: 1px solid var(--peri);
+      border-radius: 6px;
+      padding: 48px 44px;
+    }
+    .form-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--midnight);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+    .form-sub {
+      font-size: 1rem;
+      color: var(--graphite);
+      margin-bottom: 36px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group { margin-bottom: 16px; display: flex; flex-direction: column; }
+    .form-group label {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--graphite);
+      margin-bottom: 6px;
+      letter-spacing: 0.01em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      color: var(--midnight);
+      background: var(--cream);
+      border: 1.5px solid var(--peri);
+      border-radius: 6px;
+      padding: 12px 16px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--peri);
+      box-shadow: 0 0 0 3px rgba(221,227,241,0.3);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: var(--smoke); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23070F36' stroke-opacity='0.4' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+    .form-group select option { color: var(--midnight); }
+    .submit-btn {
+      width: 100%;
+      background: var(--coral);
+      color: var(--midnight);
+      border: none;
+      border-radius: 6px;
+      padding: 15px 24px;
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .submit-btn:hover { opacity: .85; }
+    .form-privacy {
+      font-size: 0.75rem;
+      color: var(--smoke);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.5;
+    }
+    .form-privacy a { color: var(--peri); text-decoration: none; }
+
+    /* SUCCESS MESSAGE */
+    .success-msg {
+      display: none;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-top: 16px;
+      font-size: 0.9375rem;
+      color: #166534;
+    }
+
+    /* CONTACT INFO */
+    .contact-info { display: flex; flex-direction: column; gap: 32px; }
+    .contact-info-header .section-tag { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600; color: var(--peri); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; }
+    .contact-info-header h2 { font-size: 1.75rem; font-weight: 700; color: var(--midnight); letter-spacing: -0.03em; margin-bottom: 12px; }
+    .contact-info-header p { font-size: 1rem; color: var(--graphite); line-height: 1.8; }
+    .contact-channels { display: flex; flex-direction: column; gap: 16px; }
+    .channel {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: #fff;
+      border: 1px solid var(--peri);
+      border-radius: 12px;
+      padding: 18px 20px;
+      text-decoration: none;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .channel:hover { box-shadow: 0 6px 24px rgba(7,15,54,0.07); transform: translateY(-2px); }
+    .channel-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: var(--peri);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .channel-content {}
+    .channel-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--smoke);
+      margin-bottom: 2px;
+    }
+    .channel-val {
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--midnight);
+    }
+    .channel-sub {
+      font-size: 0.8125rem;
+      color: var(--smoke);
+      margin-top: 2px;
+    }
+    .why-tof {
+      background: var(--cream);
+      border: 1px solid var(--peri);
+      border-radius: 6px;
+      padding: 28px 28px;
+    }
+    .why-tof h4 {
+      font-size: 0.875rem;
+      font-weight: 700;
+      color: var(--midnight);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+    .why-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .why-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9375rem;
+      color: rgba(7,15,54,0.68);
+      line-height: 1.6;
+    }
+    .why-list li::before {
+      content: '→';
+      color: var(--peri);
+      opacity: 0.6;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 540px) {
+      .form-wrap { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="site-nav" id="siteNav">
+    <a href="/" class="nav-logo-wrap" aria-label="TOF.io">
+      <img src="tof-logo-02.svg" height="28" alt="TOF.io">
+    </a>
+    <ul class="nav-links">
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="data.html">Data</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta-link active">Let's talk</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="solutions.html">Solutions</a>
+    <a href="data.html">Data</a>
+    <a href="industries.html">Industries</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="mobile-cta active">Let's talk</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="tag">[ CONTACT ]</span>
+      <h1>Let's Build Something Together.</h1>
+      <p>Tell us about your use case and we'll get back to you within one business day.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <!-- FORM -->
+      <div class="form-wrap">
+        <div class="form-title">Get in Touch</div>
+        <div class="form-sub">Fill out the form and a TOF solutions specialist will reach out shortly.</div>
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" placeholder="Alex" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" placeholder="Mercer" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Work Email *</label>
+            <input type="email" id="email" name="email" placeholder="alex@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company *</label>
+            <input type="text" id="company" name="company" placeholder="Acme Corp" required />
+          </div>
+          <div class="form-group">
+            <label for="useCase">Primary Use Case *</label>
+            <select id="useCase" name="useCase" required>
+              <option value="" disabled selected>Select a use case...</option>
+              <option value="identity">Identity Resolution</option>
+              <option value="enrichment">Data Enrichment</option>
+              <option value="audience">Audience Targeting</option>
+              <option value="activation">Campaign Activation</option>
+              <option value="api">API / Data Licensing</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us More</label>
+            <textarea id="message" name="message" placeholder="Describe your use case, data volumes, current challenges, or anything else that would help us prepare for our conversation..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message →</button>
+          <p class="form-privacy">By submitting, you agree to our <a href="privacy.html">Privacy Policy</a>. We'll never share your info.</p>
+          <div class="success-msg" id="successMsg">
+            ✓ Message sent! A member of our team will reach out within 1 business day.
+          </div>
+        </form>
+      </div>
+
+      <!-- CONTACT INFO -->
+      <div class="contact-info">
+        <div class="contact-info-header">
+          <div class="section-tag">Reach Out</div>
+          <h2>We're Here to Help</h2>
+          <p>Whether you're evaluating TOF for the first time or ready to get started today, our team is ready to assist.</p>
+        </div>
+
+        <div class="contact-channels">
+          <a href="mailto:hello@tof.io" class="channel">
+            <div class="channel-icon">✉️</div>
+            <div class="channel-content">
+              <div class="channel-label">Email</div>
+              <div class="channel-val">hello@tof.io</div>
+              <div class="channel-sub">We respond within 1 business day</div>
+            </div>
+          </a>
+          <a href="#" class="channel">
+            <div class="channel-icon">📅</div>
+            <div class="channel-content">
+              <div class="channel-label">Schedule a Call</div>
+              <div class="channel-val">Book on Calendly</div>
+              <div class="channel-sub">30-min intro call with a solutions specialist</div>
+            </div>
+          </a>
+          <a href="#" class="channel">
+            <div class="channel-icon">📍</div>
+            <div class="channel-content">
+              <div class="channel-label">Office</div>
+              <div class="channel-val">228 Park Ave S, Suite 580</div>
+              <div class="channel-sub">New York, NY 10003</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="why-tof">
+          <h4>Why Teams Choose TOF</h4>
+          <ul class="why-list">
+            <li>95%+ match rate on customer lists — industry-leading accuracy</li>
+            <li>Onboard in days, not months — real-time API access from day one</li>
+            <li>300M+ US consumer profiles with daily refresh cycles</li>
+            <li>2,000+ attributes across identity, behavioral, intent, and financial</li>
+            <li>50+ direct integrations — activate to any platform you already use</li>
+            <li>CCPA & GDPR compliant with built-in consent management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <a href="/" aria-label="TOF.io">
+      <img src="tof-logo-02.svg" class="footer-logo-img" alt="TOF.io">
+    </a>
+    <ul class="footer-links">
+      <li><a href="solutions.html">Solutions</a></li>
+      <li><a href="data.html">Data</a></li>
+      <li><a href="industries.html">Industries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <span class="footer-copy">© 2026 TOF.io — All rights reserved.</span>
+  </footer>
+
+  <script src="node_modules/split-type/umd/index.js"></script>
+  <script type="module" src="animations.js"></script>
+</body>
+</html>
