@@ -51,8 +51,8 @@
 
   /* ── HERO ── */
   .hero { position: relative; overflow: hidden; min-height: 100vh; background: #040A24; display: flex; align-items: center; justify-content: center; padding: 60px 48px; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(13,21,64,.6) 0%, transparent 60%), radial-gradient(ellipse at 70% 80%, rgba(7,15,54,.8) 0%, transparent 50%); animation: heroShift 12s ease-in-out infinite alternate; }
-  @keyframes heroShift { 0% { opacity: .6; } 50% { opacity: 1; } 100% { opacity: .6; } }
+  .hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; }
+  @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
   .hero-content { position: relative; z-index: 1; text-align: center; max-width: 960px; }
   .hero-icon-wrap { margin-bottom: 36px; display: flex; justify-content: center; }
   #hero-3d { width: 100px; height: 100px; }
