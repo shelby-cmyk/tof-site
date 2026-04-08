@@ -69,11 +69,11 @@
   .how-header { margin-bottom: 64px; }
   .how-header .sec-eyebrow { justify-content: center; }
   .how-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
-  .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(221,227,241,.05); max-width: 1000px; margin: 0 auto; }
-  .how-step { background: var(--navy); padding: 40px 28px; text-align: center; }
-  .how-step-num { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: rgba(221,227,241,.08); letter-spacing: -.03em; margin-bottom: 16px; }
-  .how-step h3 { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
-  .how-step p { font-size: 13px; color: rgba(221,227,241,.5); line-height: 1.65; }
+  .how .cases-grid { max-width: 1000px; margin: 0 auto; }
+  .how .case-card { border-color: rgba(221,227,241,.08); }
+  .how .case-card:hover { border-color: rgba(221,227,241,.18); }
+  .how .case-card h3 { color: var(--cream); }
+  .how .case-card p { color: rgba(221,227,241,.55); }
 
   /* ── CHANNELS ── */
   .channels { background: var(--peri); text-align: center; }
@@ -89,16 +89,11 @@
   .channel-list li { font-size: 15px; color: rgba(7,15,54,.6); padding-left: 16px; position: relative; }
   .channel-list li::before { content: '→'; position: absolute; left: 0; color: rgba(7,15,54,.25); font-size: 12px; }
 
-  /* ── USE CASES ── */
-  .use-cases { background: var(--navy); }
-  .use-cases .sec-eyebrow { color: var(--coral); justify-content: center; }
-  .use-cases .sec-eyebrow::before { background: var(--coral); }
-  .use-cases-header { text-align: center; margin-bottom: 64px; }
-  .use-cases-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  /* ── SOLUTION CARDS ── */
   .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
   .case-card { padding: 32px 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s; }
   .case-card:hover { border-color: rgba(221,227,241,.18); }
-  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
+  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
   .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
 
   /* ── PROOF ── */
@@ -171,7 +166,7 @@
     .hero { padding: 60px 20px; }
     .hero h1 { font-size: clamp(32px, 10vw, 52px); }
     section { padding: 64px 20px; }
-    .how-steps { grid-template-columns: repeat(2, 1fr); }
+    .cases-grid { grid-template-columns: 1fr; }
     .channel-groups { grid-template-columns: 1fr; gap: 36px; }
     .cases-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 80px 20px; }
@@ -223,33 +218,37 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
+<!-- SOLUTIONS BY BUYER TYPE -->
 <section class="how">
   <div class="how-header reveal">
-    <p class="sec-eyebrow coral">How it works</p>
-    <h2 class="sec-h2">How we work.</h2>
-    <p>You tell us the vertical. We deliver the data. Your campaigns perform.</p>
+    <p class="sec-eyebrow coral">Solutions</p>
+    <h2 class="sec-h2">Your channel. Our data.</h2>
+    <p>Every operator runs a different model. Here's how TOF delivers for each one.</p>
   </div>
-  <div class="how-steps">
-    <div class="how-step reveal">
-      <p class="how-step-num">01</p>
-      <h3>Tell us your vertical</h3>
-      <p>Insurance, financial services, home services, auto — we map the right identity data to your market.</p>
+  <div class="cases-grid" style="max-width:1000px;">
+    <div class="case-card reveal">
+      <h3>Affiliates</h3>
+      <p>You need audiences that convert — not impressions that vanish. TOF gives you deterministic identity so you're driving real, verified consumers to offers. Not guesses. Not lookalikes. People.</p>
     </div>
-    <div class="how-step reveal">
-      <p class="how-step-num">02</p>
-      <h3>We build your audiences</h3>
-      <p>Custom Keyword Audiences and High-Intent feeds built specifically for your offers and campaigns.</p>
+    <div class="case-card reveal">
+      <h3>Advertisers</h3>
+      <p>You're spending budget and need to know it's reaching verified consumers. TOF is the identity data underneath your campaigns — 98% U.S. adult coverage, matched deterministically across every channel.</p>
     </div>
-    <div class="how-step reveal">
-      <p class="how-step-num">03</p>
-      <h3>Deploy across every channel</h3>
-      <p>Data delivered directly into your programmatic, social, search, and CTV campaigns.</p>
+    <div class="case-card reveal">
+      <h3>Publishers</h3>
+      <p>You have audiences. You need to monetize them. TOF enriches your data with deterministic identity to increase yield — turning existing inventory into higher-value, verified impressions.</p>
     </div>
-    <div class="how-step reveal">
-      <p class="how-step-num">04</p>
-      <h3>Measure and scale</h3>
-      <p>Deterministic match rates, verified conversions, and continuous data refresh from 70+ primary sources.</p>
+    <div class="case-card reveal">
+      <h3>Programmatic / DSP</h3>
+      <p>Custom Keyword Audiences built from real consumer search behavior, delivered directly into your DSP. Refreshed daily. 47K+ in-market signal topics. Real intent, not modeled assumptions.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Pay-Per-Call</h3>
+      <p>Verified consumer intent before the call happens. TOF identifies who's in-market across 70+ verticals — higher contact rates, lower cost per acquisition, calls that actually convert.</p>
+    </div>
+    <div class="case-card reveal">
+      <h3>Data Reactivation</h3>
+      <p>Your existing data has gone stale. TOF appends and enriches with fresh deterministic signals from 70+ primary sources — turning dead records into live, actionable identity.</p>
     </div>
   </div>
 </section>
@@ -257,8 +256,8 @@
 <!-- CHANNELS -->
 <section class="channels">
   <div class="channels-header reveal">
-    <p class="sec-eyebrow coral">Activation channels</p>
-    <h2 class="sec-h2">Where the data goes.</h2>
+    <p class="sec-eyebrow coral" style="justify-content:center;">Where the data goes</p>
+    <h2 class="sec-h2">Every channel. One source.</h2>
     <p>TOF identity data deploys across every major channel — programmatic, social, search, CTV, and direct.</p>
   </div>
   <div class="channel-groups">
@@ -294,41 +293,6 @@
         <li>Custom feeds</li>
         <li>CTV / OTT</li>
       </ul>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASES -->
-<section class="use-cases">
-  <div class="use-cases-header reveal">
-    <p class="sec-eyebrow coral">Use cases</p>
-    <h2 class="sec-h2">How operators use TOF.</h2>
-    <p>From lead gen to CTV — deterministic identity data powering every channel.</p>
-  </div>
-  <div class="cases-grid">
-    <div class="case-card reveal">
-      <h3>Lead Generation</h3>
-      <p>Deterministic identity at the top of every lead flow. Know your audience before the spend — not after.</p>
-    </div>
-    <div class="case-card reveal">
-      <h3>Pay-Per-Call</h3>
-      <p>Verified consumer intent driving inbound calls. Higher contact rates, lower cost per acquisition.</p>
-    </div>
-    <div class="case-card reveal">
-      <h3>Programmatic Activation</h3>
-      <p>Custom audiences deployed directly into your DSP. Real search behavior, not modeled assumptions.</p>
-    </div>
-    <div class="case-card reveal">
-      <h3>CTV & Streaming</h3>
-      <p>90M+ connected TV households matched to deterministic identity. Reach real people on the big screen.</p>
-    </div>
-    <div class="case-card reveal">
-      <h3>Data Monetization</h3>
-      <p>Turn first-party data into revenue. Enrich, extend, and activate existing audiences with deterministic identity.</p>
-    </div>
-    <div class="case-card reveal">
-      <h3>Customer Reactivation</h3>
-      <p>Identify lapsed customers with verified signals. Re-engage with deterministic precision, not guesswork.</p>
     </div>
   </div>
 </section>
