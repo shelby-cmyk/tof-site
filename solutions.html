@@ -95,9 +95,9 @@
   .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.55); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
 
   /* ── PROOF ── */
-  .proof { background: #040A24; text-align: center; border-top: 1px solid rgba(221,227,241,.06); }
-  .proof-line { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--cream); margin-bottom: 8px; }
-  .proof-sub { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.5); letter-spacing: .08em; text-transform: uppercase; }
+  .proof { background: var(--peri); text-align: center; border-top: 1px solid rgba(7,15,54,.06); }
+  .proof-line { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .proof-sub { font-family: var(--mono); font-size: 11px; color: rgba(7,15,54,.45); letter-spacing: .08em; text-transform: uppercase; }
 
   /* ── CTA ── */
   .cta-section { background: var(--cream); text-align: center; padding: 120px 48px; border-top: 1px solid rgba(7,15,54,.08); }
@@ -161,7 +161,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 0 20px; height: 56px; }
+    nav { padding: 0 20px; height: 56px; box-shadow: 0 2px 12px rgba(7,15,54,.3); }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
     .hero { padding: 60px 20px; }

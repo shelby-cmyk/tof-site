@@ -81,11 +81,14 @@
   .cat-card.open { border-color: rgba(255,124,124,.25); }
 
   /* ── FEEDS ── */
-  .feeds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .feed-card { padding: 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s, transform .3s; }
-  .feed-card:hover { border-color: rgba(221,227,241,.18); transform: translateY(-2px); }
-  .feed-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
-  .feed-card p { font-size: 13px; color: rgba(221,227,241,.5); line-height: 1.65; }
+  .feeds-section { background: var(--peri); padding: 80px 48px; }
+  .feeds-section .catalog-section-title { color: var(--coral); }
+  .feeds-section h2 { color: var(--navy); }
+  .feeds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .feed-card { padding: 28px; border: 1px solid rgba(7,15,54,.08); border-radius: 6px; transition: border-color .3s, transform .3s; background: rgba(252,248,240,.5); }
+  .feed-card:hover { border-color: rgba(7,15,54,.18); transform: translateY(-2px); }
+  .feed-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .feed-card p { font-size: 13px; color: rgba(7,15,54,.55); line-height: 1.65; }
   .feed-tag { font-family: var(--mono); font-size: 9px; color: var(--coral); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
 
   /* ── CTA ── */
@@ -129,7 +132,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    nav { padding: 0 20px; height: 56px; }
+    nav { padding: 0 20px; height: 56px; box-shadow: 0 2px 12px rgba(7,15,54,.3); }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
     .catalog-hero { padding: 100px 20px 60px; }
@@ -137,6 +140,7 @@
     .stat-num { font-size: 28px; }
     .catalog { padding: 48px 20px; }
     .cat-grid { grid-template-columns: 1fr; }
+    .feeds-section { padding: 60px 20px; }
     .feeds-grid { grid-template-columns: 1fr; }
     .catalog-cta { padding: 60px 20px; }
     footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
@@ -336,8 +340,11 @@
     <p style="font-size:15px; color:rgba(221,227,241,.5); line-height:1.7; max-width:640px;">Business intent signals covering software, SaaS, fintech, cybersecurity, marketing technology, healthcare IT, cloud infrastructure, manufacturing, logistics, and thousands more. Refreshed daily.</p>
   </div>
 
-  <!-- FEED TYPES -->
-  <div class="catalog-section reveal">
+</div>
+
+<!-- DATA PRODUCTS (peri) -->
+<div class="feeds-section">
+  <div class="catalog-section reveal" style="max-width:1100px; margin:0 auto;">
     <p class="catalog-section-title">Data Products</p>
     <h2>How the data reaches you.</h2>
     <div class="feeds-grid">
@@ -517,6 +524,11 @@
   hamburger.addEventListener('click', () => {
     const isOpen = hamburger.classList.toggle('open');
     mobileNav.classList.toggle('open');
+    if (isOpen) {
+      gsap.fromTo(mobileLinks, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.07, ease: 'power3.out', delay: 0.15 });
+    } else {
+      gsap.to(mobileLinks, { opacity: 0, y: 20, duration: 0.25 });
+    }
   });
 
   // ── CUSTOM CURSOR ──
