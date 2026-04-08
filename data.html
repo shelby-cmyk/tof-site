@@ -778,7 +778,7 @@
     <li><a href="data.html" style="color:var(--peri);">Data</a></li>
     <li><a href="#" data-open-form>Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta" data-open-form>Request access</a>
+  <a href="#contact" class="nav-cta" data-open-form>Talk to us</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -788,7 +788,7 @@
   <a href="solutions.html">Solutions</a>
   <a href="data.html">Data</a>
   <a href="#" data-open-form>Contact</a>
-  <a href="#" class="mobile-cta" data-open-form>Request access</a>
+  <a href="#" class="mobile-cta" data-open-form>Talk to us</a>
 </div>
 
 <!-- DATA HERO + FUNNEL -->
@@ -952,7 +952,7 @@
     </div>
   </div>
   <div class="l2-custom reveal">
-    Need a custom feed? <a href="index.html#contact" data-open-form>Request access</a>
+    Need a custom feed? <a href="index.html#contact" data-open-form>Talk to us</a>
   </div>
 </section>
 
@@ -983,7 +983,7 @@
     <p class="l3-exclusive-tag">Exclusive access</p>
     <p class="l3-close-headline">They're buying modeled. You're buying deterministic.<br>That's the gap.</p>
     <p class="l3-close-sub">High-Intent Data is activated through direct TOF partnership only. Not a self-serve product. Not available anywhere else.</p>
-    <a href="#" class="btn-coral" data-open-form style="font-size:14px;padding:16px 48px;">Request access</a>
+    <a href="#" class="btn-coral" data-open-form style="font-size:14px;padding:16px 48px;">Talk to us</a>
   </div>
 </section>
 
@@ -1003,7 +1003,7 @@
   <p class="cta-eyebrow reveal">See under the hood</p>
   <h2 class="cta-h2 reveal">Ready to activate<br>the full funnel?</h2>
   <p class="cta-body reveal">Tell us your vertical, your channel, and your use case. We'll show you which layers of the <span class="tof-spine">TOF Identity Spine</span> are right for you.</p>
-  <a href="index.html#contact" class="btn-coral reveal" data-open-form>Request access</a>
+  <a href="index.html#contact" class="btn-coral reveal" data-open-form>Talk to us</a>
 </section>
 
 <!-- FOOTER -->
@@ -1086,7 +1086,7 @@
     </div>
     <input type="text" name="company" placeholder="Company">
     <input type="text" name="challenge" placeholder="What are you trying to solve?">
-    <button type="submit" class="form-submit">Request access</button>
+    <button type="submit" class="form-submit">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
   <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
@@ -1279,6 +1279,7 @@ document.querySelectorAll('[data-open-form]').forEach(btn => {
 });
 panelClose.addEventListener('click', closePanel);
 panelOverlay.addEventListener('click', closePanel);
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 </script>
 
 </body>

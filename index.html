@@ -111,13 +111,6 @@
   .sec-eyebrow.peri { color: var(--peri); }
   .sec-eyebrow.peri::before { background: var(--peri); }
 
-  /* ── TESTIMONIAL ── */
-  .testimonial-section { background: #040A24; padding: 80px 48px; border-top: 1px solid rgba(221,227,241,.06); }
-  .testimonial-wrap { max-width: 720px; margin: 0 auto; text-align: center; }
-  .testimonial-quote { font-size: clamp(20px, 3vw, 28px); font-weight: 400; color: var(--cream); line-height: 1.55; letter-spacing: -.01em; font-style: normal; margin-bottom: 32px; }
-  .testimonial-attr { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .testimonial-name { font-size: 14px; font-weight: 600; color: var(--cream); }
-  .testimonial-role { font-family: var(--mono); font-size: 11px; color: rgba(221,227,241,.4); letter-spacing: .06em; }
   .sec-h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 20px; }
   .sec-h2.light { color: var(--cream); }
   .sec-h2.dark { color: var(--navy); }
@@ -173,11 +166,11 @@
 
   /* ── INDUSTRIES ── */
   .industries-section { background: var(--cream); }
-  .ind-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 48px; }
-  .ind-card { padding: 28px 24px; border-radius: 6px; border: 1px solid rgba(7,15,54,.08); transition: border-color .3s, box-shadow .3s; }
-  .ind-card:hover { border-color: rgba(7,15,54,.18); box-shadow: 0 4px 20px rgba(7,15,54,.04); }
-  .ind-card-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; letter-spacing: -.01em; }
-  .ind-card-desc { font-size: 12px; color: rgba(7,15,54,.5); line-height: 1.6; }
+  .ind-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 56px; }
+  .ind-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(7,15,54,.4); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(7,15,54,.08); }
+  .ind-group-list { display: flex; flex-direction: column; gap: 16px; }
+  .ind-item-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; letter-spacing: -.01em; }
+  .ind-item-desc { font-size: 12px; color: rgba(7,15,54,.5); line-height: 1.6; }
 
 
 
@@ -409,9 +402,7 @@
 
     /* Industries */
     .industries-section { padding: 60px 20px; }
-    .ind-grid { grid-template-columns: 1fr; gap: 8px; }
-    .ind-card { padding: 20px 20px; }
-    .ind-card-name { font-size: 14px; }
+    .ind-groups { grid-template-columns: 1fr; gap: 36px; }
 
     /* Tagline */
     .tagline-section { min-height: auto; }
@@ -422,9 +413,6 @@
     .tagline-cta { padding: 0 20px 60px; }
     .tagline-cta a { width: 100%; text-align: center; padding: 14px 28px; }
 
-    /* Testimonial */
-    .testimonial-section { padding: 60px 20px; }
-    .testimonial-quote { font-size: 18px; }
     /* Contact / What happens next */
     .contact-section { padding: 60px 20px; }
     .contact-left h2 { font-size: clamp(26px, 7vw, 36px); }
@@ -461,7 +449,7 @@
     <li><a href="data.html">Data</a></li>
     <li><a href="#contact" data-open-form>Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta" data-open-form>Request access</a>
+  <a href="#contact" class="nav-cta" data-open-form>Talk to us</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -471,7 +459,7 @@
   <a href="solutions.html">Solutions</a>
   <a href="data.html">Data</a>
   <a href="#contact" data-open-form>Contact</a>
-  <a href="#" class="mobile-cta" data-open-form>Request access</a>
+  <a href="#" class="mobile-cta" data-open-form>Talk to us</a>
 </div>
 
 <!-- HERO -->
@@ -485,7 +473,7 @@
     <div class="hero-rule"></div>
     <p class="hero-stat" id="hero-stat">Deterministic identity. Every channel. Full funnel.</p>
     <div class="cta-row">
-      <a href="#contact" class="btn-primary hero-cta" data-open-form>Request access</a>
+      <a href="#contact" class="btn-primary hero-cta" data-open-form>Talk to us</a>
     </div>
   </div>
   <div class="scroll-cue" id="scroll-cue">
@@ -584,16 +572,6 @@
   </div>
 </section>
 
-<!-- TESTIMONIAL -->
-<section class="testimonial-section">
-  <div class="testimonial-wrap reveal">
-    <blockquote class="testimonial-quote">"We switched our identity layer to TOF and saw a 42% increase in match rates within the first 30 days. The data quality isn't even close to what we were getting before."</blockquote>
-    <div class="testimonial-attr">
-      <p class="testimonial-name">Jordan Mitchell</p>
-      <p class="testimonial-role">VP of Growth, Performance Network</p>
-    </div>
-  </div>
-</section>
 
 <!-- DATA -->
 <section class="data-section" id="data">
@@ -640,54 +618,65 @@
   <div class="section-grid-line" style="background:rgba(7,15,54,.08);"></div>
   <p class="sec-eyebrow peri">Industries</p>
   <h2 class="sec-h2 dark">Your vertical.<br>Our infrastructure.</h2>
-  <div class="ind-grid">
-    <div class="ind-card">
-      <p class="ind-card-name">Insurance</p>
-      <p class="ind-card-desc">Medicare, ACA, life, auto, final expense — reach verified in-market consumers at the moment of decision.</p>
+  <div class="ind-groups">
+    <div class="reveal">
+      <p class="ind-group-label">Financial &amp; Insurance</p>
+      <div class="ind-group-list">
+        <div>
+          <p class="ind-item-name">Insurance</p>
+          <p class="ind-item-desc">Medicare, ACA, life, auto, final expense — verified in-market consumers at the moment of decision.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Financial Services</p>
+          <p class="ind-item-desc">Debt, lending, credit repair, tax — 97% household financial coverage with deterministic intent signals.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Investments</p>
+          <p class="ind-item-desc">High-net-worth targeting, financial durability scores, accredited investor signals.</p>
+        </div>
+      </div>
     </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Financial Services</p>
-      <p class="ind-card-desc">Debt, lending, credit repair, tax — 97% household financial coverage with deterministic intent signals.</p>
+    <div class="reveal">
+      <p class="ind-group-label">Health &amp; Home</p>
+      <div class="ind-group-list">
+        <div>
+          <p class="ind-item-name">Health &amp; Wellness</p>
+          <p class="ind-item-desc">GLP-1, telehealth, wellness, PERS — 1,000+ health conditions mapped to deterministic identity.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Home Services</p>
+          <p class="ind-item-desc">Solar, HVAC, roofing, pest control, windows — live high-intent signals from consumers actively searching.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Real Estate</p>
+          <p class="ind-item-desc">Home buyers, sellers, movers — 170M properties with assessor-grade data linked to consumer identity.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Automotive</p>
+          <p class="ind-item-desc">154M VIN-level records — in-market auto shoppers by make, model, and purchase timeline.</p>
+        </div>
+      </div>
     </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Health &amp; Wellness</p>
-      <p class="ind-card-desc">GLP-1, telehealth, wellness, PERS — 1,000+ health conditions mapped to deterministic identity.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Real Estate</p>
-      <p class="ind-card-desc">Home buyers, sellers, movers — 170M properties with assessor-grade data linked to consumer identity.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Automotive</p>
-      <p class="ind-card-desc">154M VIN-level records — identify in-market auto shoppers by make, model, and purchase timeline.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Retail &amp; eComm</p>
-      <p class="ind-card-desc">Purchase intent, brand affinity, spending power — audience segments built from real behavior, not modeled assumptions.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Home Services</p>
-      <p class="ind-card-desc">Solar, HVAC, roofing, pest control, windows — live high-intent signals from consumers actively searching.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Travel</p>
-      <p class="ind-card-desc">Travel intent, booking behavior, loyalty segments — reach travelers before they commit.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Hospitality</p>
-      <p class="ind-card-desc">Dining, lodging, entertainment — local and national audience activation tied to verified identity.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Investments</p>
-      <p class="ind-card-desc">High-net-worth targeting, financial durability scores, accredited investor signals.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Education</p>
-      <p class="ind-card-desc">Online, trade, higher ed — reach prospective students at the moment of active research.</p>
-    </div>
-    <div class="ind-card">
-      <p class="ind-card-name">Telecommunications</p>
-      <p class="ind-card-desc">Device ownership, carrier data, upgrade intent — precision targeting at the subscriber level.</p>
+    <div class="reveal">
+      <p class="ind-group-label">Consumer &amp; Commerce</p>
+      <div class="ind-group-list">
+        <div>
+          <p class="ind-item-name">Retail &amp; eComm</p>
+          <p class="ind-item-desc">Purchase intent, brand affinity, spending power — segments built from real behavior, not modeled assumptions.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Education</p>
+          <p class="ind-item-desc">Online, trade, higher ed — prospective students at the moment of active research.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Travel &amp; Hospitality</p>
+          <p class="ind-item-desc">Travel intent, booking behavior, dining, lodging — local and national activation tied to verified identity.</p>
+        </div>
+        <div>
+          <p class="ind-item-name">Telecommunications</p>
+          <p class="ind-item-desc">Device ownership, carrier data, upgrade intent — precision targeting at the subscriber level.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -713,7 +702,7 @@
     <p class="sec-eyebrow coral" style="justify-content:center;">See under the hood</p>
     <h2>See what your funnel<br>is missing.</h2>
     <p style="max-width:480px; margin:0 auto 48px;">Tell us your vertical and your channel. We'll show you the coverage, the signals, and what TOF looks like in your stack.</p>
-    <a href="#" class="btn-primary" data-open-form>Request access</a>
+    <a href="#" class="btn-primary" data-open-form>Talk to us</a>
     <p class="contact-detail-item" style="margin-top:20px;">or email us directly: <a href="mailto:go@tof.io">go@tof.io</a></p>
   </div>
 </section>
@@ -792,7 +781,7 @@
       so.unobserve(e.target);
     });
   }, { threshold: .08 });
-  document.querySelectorAll('.pillar-block,.problem-card,.data-row,.ind-pill,.partner-name').forEach((el, i) => {
+  document.querySelectorAll('.pillar-block,.problem-card,.data-row,.partner-name').forEach((el, i) => {
     el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
     el.style.transition = `opacity .6s ease ${i*.05}s,transform .6s ease ${i*.05}s`;
     so.observe(el);
@@ -816,7 +805,7 @@
     </div>
     <input type="text" name="company" placeholder="Company">
     <input type="text" name="challenge" placeholder="What are you trying to solve?">
-    <button type="submit" class="form-submit" style="width:100%;text-align:center;">Request access</button>
+    <button type="submit" class="form-submit" style="width:100%;text-align:center;">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
   <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
@@ -917,7 +906,7 @@
   if (probSection) probObs.observe(probSection);
 
   // ── INDUSTRIES CARDS REVEAL ──
-  const indCards = document.querySelectorAll('.ind-card');
+  const indCards = document.querySelectorAll('.ind-groups > .reveal');
   gsap.set(indCards, { opacity: 0, y: 20 });
   const indObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -1099,6 +1088,7 @@
   });
   panelClose.addEventListener('click', closePanel);
   panelOverlay.addEventListener('click', closePanel);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 </script>
 <script type="module">
 import * as THREE from 'three';

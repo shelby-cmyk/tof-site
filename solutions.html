@@ -185,7 +185,7 @@
     <li><a href="data.html">Data</a></li>
     <li><a href="#" data-open-form>Contact</a></li>
   </ul>
-  <a href="#" class="nav-cta" data-open-form>Request access</a>
+  <a href="#" class="nav-cta" data-open-form>Talk to us</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -195,7 +195,7 @@
   <a href="solutions.html">Solutions</a>
   <a href="data.html">Data</a>
   <a href="#" data-open-form>Contact</a>
-  <a href="#" class="mobile-cta" data-open-form>Request access</a>
+  <a href="#" class="mobile-cta" data-open-form>Talk to us</a>
 </div>
 
 <!-- HERO -->
@@ -204,7 +204,7 @@
     <p class="eyebrow">Deterministic identity · Built to convert</p>
     <h1>Identify. Reach.<br>Convert.</h1>
     <p class="hero-sub">98% U.S. adult coverage. 1.6T monthly consumer events. 70+ high-intent verticals. One identity layer — activated across every channel your campaigns run on.</p>
-    <a href="#" class="hero-cta" data-open-form>Request access</a>
+    <a href="#" class="hero-cta" data-open-form>Talk to us</a>
   </div>
 </section>
 
@@ -260,7 +260,7 @@
   <p class="sec-eyebrow coral reveal" style="justify-content:center;">Let's build</p>
   <h2 class="sec-h2 reveal">See what your funnel<br>is missing.</h2>
   <p class="cta-sub reveal">Tell us your use case. We'll show you what TOF looks like in your channel — and what it does for your revenue.</p>
-  <a href="#" class="cta-btn reveal" data-open-form>Request access</a>
+  <a href="#" class="cta-btn reveal" data-open-form>Talk to us</a>
 </section>
 
 <!-- FOOTER -->
@@ -292,7 +292,7 @@
     </div>
     <input type="text" name="company" placeholder="Company">
     <input type="text" name="challenge" placeholder="What are you trying to solve?">
-    <button type="submit" class="form-submit">Request access</button>
+    <button type="submit" class="form-submit">Talk to us</button>
     <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
   <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello</p>
@@ -354,6 +354,7 @@
   document.querySelectorAll('[data-open-form]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openPanel(); }); });
   panelClose.addEventListener('click', closePanel);
   panelOverlay.addEventListener('click', closePanel);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanel(); });
 
   // ── MAGNETIC BUTTONS ──
   if (window.matchMedia('(pointer: fine)').matches) {
