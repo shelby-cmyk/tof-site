@@ -691,8 +691,6 @@
   #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
   #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
 
-  /* ── PAGE TRANSITION ── */
-  #page-transition { position: fixed; inset: 0; background: #070F36; z-index: 99990; transform-origin: top; pointer-events: none; transform: scaleY(0); }
 
   /* ── SVG FUNNEL ── */
   .funnel-svg {
@@ -1123,7 +1121,6 @@
   </svg>
 </div>
 <div id="cursor-ring" aria-hidden="true"></div>
-<div id="page-transition" aria-hidden="true"></div>
 
 <script>
   // ── PRELOADER ──
@@ -1210,21 +1207,6 @@
     });
   }
 
-  // ── PAGE TRANSITION ──
-  const overlay = document.getElementById('page-transition');
-  gsap.fromTo(overlay, { scaleY: 1 }, { scaleY: 0, duration: 0.9, ease: 'power3.inOut', transformOrigin: 'top', delay: 0.05 });
-  window.addEventListener('pageshow', e => { if (e.persisted) { overlay.style.transform = 'scaleY(0)'; } });
-  document.querySelectorAll('a[href]').forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      gsap.fromTo(overlay,
-        { scaleY: 0, transformOrigin: 'bottom' },
-        { scaleY: 1, duration: 0.7, ease: 'power3.inOut', onComplete: () => window.location.href = href }
-      );
-    });
-  });
 </script>
 
 <script>
