@@ -98,10 +98,16 @@
 
   /* ── PARTNERS ── */
   .partners { padding: 80px 48px; position: relative; overflow: hidden; }
+  .partners::before, .partners::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+  .partners::before { left: 0; background: linear-gradient(to right, #070F36, transparent); }
+  .partners::after { right: 0; background: linear-gradient(to left, #070F36, transparent); }
   .partners-label { font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: rgba(221,227,241,.40); margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); display: inline-block; animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
-  .partners-logos { display: flex; align-items: center; justify-content: center; gap: 72px; flex-wrap: wrap; }
+  .partners-logos { display: flex; align-items: center; width: max-content; animation: partnerScroll 30s linear infinite; }
+  .partners-logos:hover { animation-play-state: paused; }
+  .partners-logos img { margin: 0 48px; flex-shrink: 0; }
+  @keyframes partnerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .partner-name { font-size: 28px; font-weight: 500; color: rgba(221,227,241,.35); letter-spacing: -.02em; transition: color .3s; }
   .partner-name:hover { color: rgba(221,227,241,.65); }
   .partner-divider { display: none; }
@@ -392,9 +398,7 @@
     /* Partners */
     .partners { padding: 48px 20px; }
     .partners-label { margin-bottom: 32px; font-size: 9px; }
-    .partners-logos { gap: 36px; }
-    .partners-logos img[alt="Retreaver"] { height: 18px !important; }
-    .partners-logos img[alt="Kaliper"] { height: 28px !important; }
+    .partners::before, .partners::after { width: 60px; }
     .partner-name { font-size: 20px; }
 
     /* Problem */
@@ -554,12 +558,19 @@
 <div class="partners">
   <p class="partners-label"><span class="pulse-dot"></span>Trusted by data-driven teams<span class="pulse-dot"></span></p>
   <div class="partners-logos">
-    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.4;transition:opacity .3s;filter:brightness(0) invert(1);" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
-    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.4;transition:opacity .3s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
-    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.4;transition:opacity .3s;filter:brightness(0) invert(1);" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
-    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.4;transition:opacity .3s;filter:brightness(0) invert(1);" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
-    <img src="kwca-logo.webp" alt="Keyword Custom Audience" height="38" style="opacity:.4;transition:opacity .3s;" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
-    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.4;transition:opacity .3s;filter:brightness(0) invert(1);" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='.4'">
+    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.5;">
+    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="kwca-logo.webp" alt="Keyword Custom Audience" height="38" style="opacity:.5;">
+    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.5;filter:brightness(0) invert(1);">
+    <!-- Duplicate for seamless loop -->
+    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.5;">
+    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="kwca-logo.webp" alt="Keyword Custom Audience" height="38" style="opacity:.5;">
+    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.5;filter:brightness(0) invert(1);">
   </div>
 </div>
 
@@ -945,19 +956,6 @@
     });
   }, { threshold: 0.15 });
   tagObs.observe(tagSec);
-
-  // ── PARTNER STAGGER REVEAL ──
-  const partnersSection = document.querySelector('.partners');
-  const partnerEls = document.querySelectorAll('.partner-name, .partner-divider, .partner-logo-wrap');
-  gsap.set(partnerEls, { opacity: 0, y: 14 });
-  const partnerObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      partnerObs.unobserve(partnersSection);
-      gsap.to(partnerEls, { opacity: (i, el) => el.classList.contains('partner-divider') ? 1 : 0.6, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
-    });
-  }, { threshold: 0.3 });
-  partnerObs.observe(partnersSection);
 
   // ── DATA STATS STAGGER ──
   const dataStats = document.querySelectorAll('.data-stat');
