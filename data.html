@@ -236,29 +236,6 @@
     line-height: 1.4;
   }
 
-  /* ── LAYER 1: DATA TABLE ── */
-  .data-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: start; }
-  .data-table { border-top: 1px solid rgba(221,227,241,.08); }
-  .data-row { display: flex; justify-content: space-between; align-items: baseline; padding: 18px 0; border-bottom: 1px solid rgba(221,227,241,.06); gap: 24px; }
-  .data-row-label { font-size: 15px; color: rgba(221,227,241,.58); }
-  .data-row-val { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--peri); letter-spacing: -.01em; white-space: nowrap; }
-  .data-callout {
-    background: rgba(221,227,241,.03);
-    border: 1px solid rgba(221,227,241,.08);
-    border-radius: 6px;
-    padding: 44px 40px;
-    position: relative;
-    overflow: hidden;
-  }
-  .data-callout::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--peri), transparent 70%);
-  }
-  .dc-label { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.38); letter-spacing: .14em; text-transform: uppercase; margin-bottom: 16px; }
-  .dc-num { font-family: var(--mono); font-size: 60px; font-weight: 500; color: var(--cream); letter-spacing: -.04em; line-height: 1; margin-bottom: 20px; }
-  .dc-body { font-size: 15px; color: rgba(221,227,241,.58); line-height: 1.72; }
-
   /* ── LAYER 2: LIVE FEED TICKER ── */
   .l2-header {
     display: flex;
@@ -358,8 +335,6 @@
   }
   .l2-custom:hover { border-color: rgba(221,227,241,.25); color: rgba(221,227,241,.7); }
   .l2-custom a { color: var(--coral); text-decoration: none; font-weight: 600; }
-  .feed-card.custom .feed-title { color: rgba(221,227,241,.45); }
-  .feed-desc { font-size: 13px; color: rgba(221,227,241,.48); line-height: 1.6; }
 
   /* ── LAYER 3: HIGH-INTENT ── */
   #layer3 { text-align: center; }
@@ -538,7 +513,6 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    .data-layout { grid-template-columns: 1fr; gap: 48px; }
     .l1-grid { grid-template-columns: repeat(2, 1fr); }
     .l1-stat { padding: 24px 20px; }
     .l2-header { gap: 20px; }
