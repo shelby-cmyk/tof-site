@@ -22,7 +22,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --midnight: #070F36;
     --navy: #070F36;
     --cream: #FCF8F0;
     --peri: #DDE3F1;
@@ -33,7 +32,7 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: auto; }
-  body { font-family: var(--f); background: var(--midnight); color: var(--cream); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.75; }
+  body { font-family: var(--f); background: var(--navy); color: var(--cream); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.75; }
 
   /* ── DATA HERO + FUNNEL (merged) ── */
   .data-hero {
@@ -146,7 +145,7 @@
     line-height: 1.8;
   }
   .tof-spine { color: var(--cream); font-weight: 600; font-style: normal; }
-  #layer1 .tof-spine { color: var(--midnight); }
+  #layer1 .tof-spine { color: var(--navy); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -207,9 +206,9 @@
 
   /* ── LAYER 1 CREAM SECTION ── */
   #layer1 { background: var(--peri); text-align: center; }
-  #layer1 .section-eyebrow { color: var(--midnight); justify-content: center; }
-  #layer1 .section-eyebrow::before { background: var(--midnight); }
-  #layer1 .section-h2 { color: var(--midnight); margin-left: auto; margin-right: auto; }
+  #layer1 .section-eyebrow { color: var(--navy); justify-content: center; }
+  #layer1 .section-eyebrow::before { background: var(--navy); }
+  #layer1 .section-h2 { color: var(--navy); margin-left: auto; margin-right: auto; }
   #layer1 .section-body { color: rgba(7,15,54,.6); margin-left: auto; margin-right: auto; }
 
   /* ── LAYER 1 STAT GRID ── */
@@ -231,7 +230,7 @@
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(32px, 3.5vw, 48px);
     font-weight: 700;
-    color: var(--midnight);
+    color: var(--navy);
     letter-spacing: -.04em;
     line-height: 1;
     margin-bottom: 10px;
@@ -429,10 +428,10 @@
   .cta-section { padding: 120px 48px; border-top: 1px solid rgba(7,15,54,.08); text-align: center; background: var(--cream); }
   .cta-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--coral); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; justify-content: center; gap: 12px; }
   .cta-eyebrow::before, .cta-eyebrow::after { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
-  .cta-h2 { font-size: clamp(44px, 5vw, 64px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; color: var(--midnight); margin-bottom: 20px; }
+  .cta-h2 { font-size: clamp(44px, 5vw, 64px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; color: var(--navy); margin-bottom: 20px; }
   .cta-body { font-size: 17px; line-height: 1.75; color: rgba(7,15,54,.6); max-width: 520px; margin: 0 auto 44px; }
-  .cta-section .tof-spine { color: var(--midnight); }
-  .btn-coral { font-size: 13px; font-weight: 600; padding: 14px 32px; border-radius: 6px; background: var(--coral); color: var(--midnight); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; display: inline-block; }
+  .cta-section .tof-spine { color: var(--navy); }
+  .btn-coral { font-size: 13px; font-weight: 600; padding: 14px 32px; border-radius: 6px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; display: inline-block; }
   .btn-coral:hover { opacity: .88; }
 
   /* ── RESPONSIVE ── */
@@ -504,7 +503,7 @@
   .nav-links { display: flex; gap: 32px; list-style: none; }
   .nav-links a { font-size: 14px; color: rgba(221,227,241,.65); text-decoration: none; letter-spacing: .01em; transition: color .2s; font-weight: 400; }
   .nav-links a:hover { color: var(--peri); }
-  .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 22px; border-radius: 4px; background: var(--coral); color: var(--midnight); text-decoration: none; transition: opacity .2s; letter-spacing: .01em; margin-left: 16px; }
+  .nav-cta { font-size: 12px; font-weight: 600; padding: 9px 22px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .01em; margin-left: 16px; }
   .nav-cta:hover { opacity: .85; }
 
   /* ── HAMBURGER ── */
@@ -523,7 +522,7 @@
   .mobile-nav-overlay.open { opacity: 1; pointer-events: auto; }
   .mobile-nav-overlay a { font-size: clamp(28px, 5vw, 40px); font-weight: 600; color: var(--cream); text-decoration: none; letter-spacing: -.02em; opacity: 0; transform: translateY(20px); }
   .mobile-nav-overlay a:hover { color: var(--coral); }
-  .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--midnight); opacity: 0; transform: translateY(20px); }
+  .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--navy); opacity: 0; transform: translateY(20px); }
   @media (max-width: 900px) { nav { padding: 0 20px; height: 56px; } .nav-links, .nav-cta { display: none; } .hamburger { display: flex; } }
 
   /* ── FOOTER (from index.html) ── */
@@ -662,7 +661,7 @@
   .form-panel .form input::placeholder { color: rgba(252,248,240,.35); }
   .form-panel .form input:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(255,124,124,.12); }
   .form-panel .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-panel .form-submit { background: var(--coral); color: var(--midnight); border: none; border-radius: 4px; padding: 13px 28px; font-size: 13px; font-weight: 500; font-family: var(--f); cursor: pointer; transition: opacity .2s; width: 100%; text-align: center; }
+  .form-panel .form-submit { background: var(--coral); color: var(--navy); border: none; border-radius: 4px; padding: 13px 28px; font-size: 13px; font-weight: 500; font-family: var(--f); cursor: pointer; transition: opacity .2s; width: 100%; text-align: center; }
   .form-panel .form-submit:hover { opacity: .88; }
   .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: rgba(221,227,241,.25); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
 
