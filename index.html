@@ -292,14 +292,16 @@
   .btn-primary, .btn-ghost, .form-submit, .nav-cta { will-change: transform; }
 
   /* ── CUSTOM CURSOR ── */
-  @media (pointer: fine) { * { cursor: none !important; } }
+  .custom-cursor, .custom-cursor * { cursor: none !important; }
   #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
   #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
 
   /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; }
-  #preloader-logo { width: clamp(160px, 22vw, 280px); opacity: 0; }
+  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
+  #preloader-logo { width: clamp(160px, 22vw, 280px); animation: preloaderFade 0.5s ease 0.1s forwards; opacity: 0; }
   #preloader-logo img { width: 100%; display: block; }
+  @keyframes preloaderFade { to { opacity: 1; } }
+  @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
   /* ── PAGE TRANSITION ── */
 
@@ -1053,6 +1055,7 @@
 
   // ── CUSTOM CURSOR ──
   if (window.matchMedia('(pointer: fine)').matches) {
+    document.documentElement.classList.add('custom-cursor');
     const icon = document.getElementById('cursor-icon');
     const ring = document.getElementById('cursor-ring');
     const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
