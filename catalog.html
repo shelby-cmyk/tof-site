@@ -49,7 +49,10 @@
   .mobile-nav-overlay .mobile-cta { margin-top: 24px; font-size: 13px; font-weight: 600; padding: 14px 36px; border-radius: 4px; background: var(--coral); color: var(--navy); opacity: 0; transform: translateY(20px); }
 
   /* ── HERO ── */
-  .catalog-hero { background: #040A24; padding: 140px 48px 80px; text-align: center; }
+  .catalog-hero { background: #040A24; padding: 140px 48px 80px; text-align: center; position: relative; overflow: hidden; }
+  .catalog-hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; }
+  @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
+  .catalog-hero > * { position: relative; z-index: 1; }
   .catalog-hero .eyebrow { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .catalog-hero .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
   .catalog-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(44px, 7vw, 90px); font-weight: 700; line-height: 0.95; letter-spacing: -.045em; color: var(--cream); margin-bottom: 24px; text-transform: uppercase; }
@@ -68,9 +71,10 @@
   .catalog-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; margin-bottom: 32px; }
 
   .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-  .cat-card { padding: 24px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; cursor: pointer; transition: border-color .3s, transform .3s; }
-  .cat-card:hover { border-color: rgba(221,227,241,.2); transform: translateY(-2px); }
-  .cat-card-name { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 6px; }
+  .cat-card { padding: 24px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; cursor: pointer; transition: border-color .3s, transform .3s, box-shadow .3s; }
+  .cat-card:hover { border-color: rgba(221,227,241,.2); transform: translateY(-2px); box-shadow: 0 6px 24px rgba(7,15,54,.15); }
+  .cat-card:hover .cat-card-name { color: var(--coral); }
+  .cat-card-name { font-size: 15px; font-weight: 600; color: var(--cream); margin-bottom: 6px; transition: color .25s; }
   .cat-card-meta { font-family: var(--mono); font-size: 10px; color: rgba(221,227,241,.35); letter-spacing: .06em; }
   .cat-card-subs { font-size: 12px; color: rgba(221,227,241,.4); margin-top: 10px; line-height: 1.6; display: none; }
   .cat-card.open .cat-card-subs { display: block; }
@@ -78,7 +82,8 @@
 
   /* ── FEEDS ── */
   .feeds-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-  .feed-card { padding: 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; }
+  .feed-card { padding: 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s, transform .3s; }
+  .feed-card:hover { border-color: rgba(221,227,241,.18); transform: translateY(-2px); }
   .feed-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
   .feed-card p { font-size: 13px; color: rgba(221,227,241,.5); line-height: 1.65; }
   .feed-tag { font-family: var(--mono); font-size: 9px; color: var(--coral); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; }
@@ -105,6 +110,10 @@
   /* ── GRAIN ── */
   body::after { content: ''; position: fixed; inset: -200%; width: 400%; height: 400%; pointer-events: none; z-index: 99997; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; animation: grain 0.8s steps(1) infinite; }
   @keyframes grain { 0%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)} 30%{transform:translate(-1%,4%)} 40%{transform:translate(4%,-2%)} 50%{transform:translate(-3%,3%)} 60%{transform:translate(2%,-4%)} 70%{transform:translate(-4%,1%)} 80%{transform:translate(1%,3%)} 90%{transform:translate(3%,-1%)} 100%{transform:translate(-2%,2%)} }
+
+  /* ── REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
 
   /* ── PRELOADER ── */
   #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
@@ -206,7 +215,7 @@
 
 <!-- CONSUMER SIGNALS -->
 <div class="catalog">
-  <div class="catalog-section">
+  <div class="catalog-section reveal">
     <p class="catalog-section-title">Consumer Intent Signals</p>
     <h2>26 categories. 9,400+ signals. Every vertical.</h2>
     <div class="cat-grid">
@@ -321,14 +330,14 @@
   </div>
 
   <!-- B2B SIGNALS -->
-  <div class="catalog-section">
+  <div class="catalog-section reveal">
     <p class="catalog-section-title">Business Intelligence Signals</p>
     <h2>37,500+ B2B signals. Every industry.</h2>
     <p style="font-size:15px; color:rgba(221,227,241,.5); line-height:1.7; max-width:640px;">Business intent signals covering software, SaaS, fintech, cybersecurity, marketing technology, healthcare IT, cloud infrastructure, manufacturing, logistics, and thousands more. Refreshed daily.</p>
   </div>
 
   <!-- FEED TYPES -->
-  <div class="catalog-section">
+  <div class="catalog-section reveal">
     <p class="catalog-section-title">Data Products</p>
     <h2>How the data reaches you.</h2>
     <div class="feeds-grid">
@@ -414,7 +423,74 @@
   .form-panel input:focus { border-color: var(--coral) !important; box-shadow: 0 0 0 3px rgba(255,124,124,.12); }
 </style>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
+  // ── HERO ENTRANCE ──
+  const heroEyebrow = document.querySelector('.catalog-hero .eyebrow');
+  const heroH1 = document.querySelector('.catalog-hero h1');
+  const heroP = document.querySelector('.catalog-hero p');
+  gsap.set([heroEyebrow, heroH1, heroP], { opacity: 0, y: 24 });
+  gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.3 })
+    .to(heroEyebrow, { opacity: 1, y: 0, duration: 0.7 })
+    .to(heroH1, { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
+    .to(heroP, { opacity: 1, y: 0, duration: 0.7 }, '-=0.35');
+
+  // ── STAT BAR STAGGER ──
+  const statItems = document.querySelectorAll('.stat-item');
+  gsap.set(statItems, { opacity: 0, y: 20 });
+  const statObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      statObs.unobserve(entry.target);
+      gsap.to(statItems, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: 'power3.out' });
+    });
+  }, { threshold: 0.3 });
+  statObs.observe(document.querySelector('.stats-bar'));
+
+  // ── CATEGORY CARD STAGGER ──
+  const catCards = document.querySelectorAll('.cat-card');
+  gsap.set(catCards, { opacity: 0, y: 24 });
+  const catObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      catObs.unobserve(entry.target);
+      gsap.to(catCards, { opacity: 1, y: 0, duration: 0.5, stagger: 0.04, ease: 'power3.out' });
+    });
+  }, { threshold: 0.1 });
+  catObs.observe(document.querySelector('.cat-grid'));
+
+  // ── FEED CARD STAGGER ──
+  const feedCards = document.querySelectorAll('.feed-card');
+  gsap.set(feedCards, { opacity: 0, y: 24 });
+  const feedObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      feedObs.unobserve(entry.target);
+      gsap.to(feedCards, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' });
+    });
+  }, { threshold: 0.15 });
+  feedObs.observe(document.querySelector('.feeds-grid'));
+
+  // ── MAGNETIC BUTTONS ──
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.btn-primary, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width / 2);
+        const y = e.clientY - (r.top + r.height / 2);
+        gsap.to(btn, { x: x * 0.28, y: y * 0.22, duration: 0.4, ease: 'power3.out' });
+      });
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
+      });
+    });
+  }
+
+  // ── SECTION REVEALS ──
+  const ro = new IntersectionObserver(entries => { entries.forEach(e => { if (!e.isIntersecting) return; e.target.classList.add('in'); ro.unobserve(e.target); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+  // ── FORM PANEL ──
   const panelOverlay = document.getElementById('form-panel-overlay');
   const panel = document.getElementById('form-panel');
   const panelClose = document.getElementById('form-panel-close');
