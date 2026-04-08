@@ -77,15 +77,16 @@
   .how-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
   .how .cases-grid { max-width: 1000px; margin: 0 auto; }
   .how .case-card { border-color: rgba(221,227,241,.08); }
-  .how .case-card:hover { border-color: rgba(221,227,241,.18); }
   .how .case-card h3 { color: var(--cream); }
   .how .case-card p { color: rgba(221,227,241,.55); }
 
 
   /* ── SOLUTION CARDS ── */
   .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 800px; margin: 0 auto; }
-  .case-card { padding: 32px 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s; }
-  .case-card:hover { border-color: rgba(221,227,241,.18); }
+  .case-card { padding: 32px 28px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s, transform .3s, box-shadow .3s; }
+  .case-card:hover { border-color: rgba(221,227,241,.2); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(7,15,54,.2); }
+  .case-card h3 { transition: color .25s; }
+  .case-card:hover h3 { color: var(--coral); }
   .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
   .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
   .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.55); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
