@@ -180,8 +180,8 @@
   .section-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
   .ey-peri  { color: rgba(221,227,241,.65); }
   .ey-peri::before  { background: var(--peri); }
-  .ey-blue  { color: #6B9FD4; }
-  .ey-blue::before  { background: #6B9FD4; }
+  .ey-blue  { color: #DDE3F1; }
+  .ey-blue::before  { background: #DDE3F1; }
   .ey-coral { color: rgba(221,227,241,.55); }
   .ey-coral::before { background: rgba(221,227,241,.3); }
   .ey-dim   { color: rgba(221,227,241,.42); }
@@ -307,7 +307,7 @@
   .l2-pulse {
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: #6B9FD4;
+    background: #DDE3F1;
     flex-shrink: 0;
     animation: l2blink 2s ease-in-out infinite;
   }
@@ -600,7 +600,7 @@
   }
   .funnel-layer-stroke.active { opacity: 1; }
   .funnel-layer-stroke[data-layer="0"] { stroke: #DDE3F1; }
-  .funnel-layer-stroke[data-layer="1"] { stroke: #6B9FD4; }
+  .funnel-layer-stroke[data-layer="1"] { stroke: #DDE3F1; }
   .funnel-layer-stroke[data-layer="2"] { stroke: #FF7C7C; }
   .funnel-label {
     font-family: var(--mono);
@@ -637,7 +637,7 @@
   }
   .funnel-dot.active { border-color: var(--cream); background: var(--cream); }
   .funnel-dot[data-layer="0"].active { border-color: #DDE3F1; background: #DDE3F1; }
-  .funnel-dot[data-layer="1"].active { border-color: #6B9FD4; background: #6B9FD4; }
+  .funnel-dot[data-layer="1"].active { border-color: #DDE3F1; background: #DDE3F1; }
   .funnel-dot[data-layer="2"].active { border-color: #FF7C7C; background: #FF7C7C; }
   .funnel-connector {
     width: 1px; height: 24px;
@@ -718,8 +718,8 @@
               <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".05"/>
             </linearGradient>
             <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#6B9FD4" stop-opacity=".12"/>
-              <stop offset="100%" stop-color="#6B9FD4" stop-opacity=".05"/>
+              <stop offset="0%" stop-color="#DDE3F1" stop-opacity=".12"/>
+              <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".05"/>
             </linearGradient>
             <linearGradient id="gCoral" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".14"/>
@@ -731,8 +731,8 @@
               <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".15"/>
             </linearGradient>
             <linearGradient id="gBlueA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#6B9FD4" stop-opacity=".45"/>
-              <stop offset="100%" stop-color="#6B9FD4" stop-opacity=".15"/>
+              <stop offset="0%" stop-color="#DDE3F1" stop-opacity=".45"/>
+              <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".15"/>
             </linearGradient>
             <linearGradient id="gCoralA" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".5"/>
@@ -1122,7 +1122,7 @@ window.setLayer = function(index) {
   // Crossfade detail panel
   const layerData = [
     { num: '01', name: 'In-Market Signals', stat: '98% U.S. population \u00b7 1.6T monthly events', desc: 'The source of truth layer. Who is in market, where they are, and what they want.', color: '#DDE3F1' },
-    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#6B9FD4' },
+    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#DDE3F1' },
     { num: '03', name: 'High-Intent Data', stat: '70+ verticals \u00b7 Exclusive TOF Identity Spine activation', desc: 'The closest signal to a buying decision available in performance marketing.', color: '#FF7C7C' }
   ];
   const d = layerData[index];
