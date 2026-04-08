@@ -191,9 +191,6 @@
   .brand-story p { font-size: 16px; line-height: 1.85; color: rgba(221,227,241,.55); }
   .brand-story .spine { font-weight: 600; color: var(--cream); }
   .brand-story .closer { display: block; margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--coral); letter-spacing: -.01em; line-height: 1.5; }
-  .tagline-cta { text-align: center; }
-  .tagline-cta a { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 44px; border-radius: 4px; background: var(--coral); color: #040A24; text-decoration: none; transition: opacity .2s; letter-spacing: .01em; }
-  .tagline-cta a:hover { opacity: .88; }
   @media (max-width: 900px) {
     .tagline-section { padding: 72px 20px 64px; }
     .tagline-top { margin-bottom: 40px; }
@@ -203,7 +200,6 @@
   }
 
   /* ── CONTACT ── */
-  .contact-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.07); padding: 100px 48px; position: relative; overflow: hidden; }
   .contact-left h2 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; color: #FCF8F0; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 20px; }
   .contact-left p { font-size: 14px; color: rgba(252,248,240,.65); line-height: 1.72; margin-bottom: 32px; }
   .contact-detail { display: flex; flex-direction: column; gap: 10px; }
@@ -418,11 +414,8 @@
     .tagline-text { font-size: clamp(28px, 8vw, 42px); }
     .tagline-text .fade { font-size: clamp(36px, 10vw, 56px); }
     .brand-story { padding: 0 20px 60px; }
-    .tagline-cta { padding: 0 20px 60px; }
-    .tagline-cta a { width: 100%; text-align: center; padding: 14px 28px; }
 
     /* Contact / What happens next */
-    .contact-section { padding: 60px 20px; }
     .contact-left h2 { font-size: clamp(26px, 7vw, 36px); }
     .contact-left p { font-size: 14px; }
     .form input, .form select { font-size: 16px; padding: 14px 16px; }
@@ -690,27 +683,16 @@
   </div>
 </section>
 
-<!-- TAGLINE -->
-<section class="tagline-section">
+<!-- CLOSE -->
+<section class="tagline-section" id="contact">
   <div class="tagline-top">
     <p class="tagline-text">We kept the acronym.<br><span class="fade">Outgrew the name.</span></p>
   </div>
   <div class="brand-story">
     <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
-    <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.<span class="closer">One identity layer. Every channel. Full funnel.</span></p>
+    <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.</p>
   </div>
-  <div class="tagline-cta">
-    <a href="#contact" data-open-form>See what's underneath →</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <img class="wm wm-contact" src="tof-logo-04.svg" alt="" aria-hidden="true">
-  <div class="contact-left" style="text-align:center; max-width:600px; margin:0 auto;">
-    <p class="sec-eyebrow coral" style="justify-content:center;">See under the hood</p>
-    <h2>See what your funnel<br>is missing.</h2>
-    <p style="max-width:480px; margin:0 auto 48px;">Tell us your vertical and your channel. We'll show you the coverage, the signals, and what TOF looks like in your stack.</p>
+  <div style="text-align:center; padding-top:48px;">
     <a href="#" class="btn-primary" data-open-form>Talk to us</a>
     <p class="contact-detail-item" style="margin-top:20px;">or email us directly: <a href="mailto:go@tof.io">go@tof.io</a></p>
   </div>
@@ -871,23 +853,6 @@
     }
   }, { passive: true });
 
-  // ── CONTACT SECTION REVEAL ──
-  const contactSec = document.querySelector('.contact-section');
-  const contactH2 = contactSec.querySelector('h2');
-  const contactP = contactSec.querySelector('.contact-left p');
-  const contactCta = contactSec.querySelector('.btn-primary');
-  gsap.set([contactH2, contactP, contactCta], { opacity: 0, y: 28 });
-  const contactObs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      contactObs.unobserve(contactSec);
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
-        .to(contactH2,  { opacity: 1, y: 0, duration: 0.85 })
-        .to(contactP,   { opacity: 1, y: 0, duration: 0.7 }, '-=0.5')
-        .to(contactCta, { opacity: 1, y: 0, duration: 0.6 }, '-=0.35');
-    });
-  }, { threshold: 0.2 });
-  contactObs.observe(contactSec);
 
   // ── PILLAR CARDS REVEAL ──
   const pillarBlocks = document.querySelectorAll('.pillar-block');
@@ -932,22 +897,22 @@
   const tagText = document.querySelector('.tagline-text');
   const tagFade = document.querySelector('.tagline-text .fade');
   const tagStory = document.querySelector('.brand-story');
-  const tagCta = document.querySelector('.tagline-cta');
+  const tagCta = tagSec.querySelector('.btn-primary');
 
   gsap.set(tagText, { opacity: 0, y: 30 });
   gsap.set(tagFade, { opacity: 0, y: 40 });
   gsap.set(tagStory, { opacity: 0, y: 24 });
-  gsap.set(tagCta, { opacity: 0, y: 16 });
+  if (tagCta) gsap.set(tagCta, { opacity: 0, y: 16 });
 
   const tagObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       tagObs.unobserve(tagSec);
-      gsap.timeline({ defaults: { ease: 'power3.out' } })
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
         .to(tagText,  { opacity: 1, y: 0, duration: 0.8 })
         .to(tagFade,  { opacity: 1, y: 0, duration: 0.9 }, '-=0.35')
-        .to(tagStory, { opacity: 1, y: 0, duration: 0.75 }, '-=0.4')
-        .to(tagCta,   { opacity: 1, y: 0, duration: 0.55 }, '-=0.35');
+        .to(tagStory, { opacity: 1, y: 0, duration: 0.75 }, '-=0.4');
+      if (tagCta) tl.to(tagCta, { opacity: 1, y: 0, duration: 0.55 }, '-=0.35');
     });
   }, { threshold: 0.15 });
   tagObs.observe(tagSec);
