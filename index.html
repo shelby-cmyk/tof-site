@@ -476,7 +476,7 @@
       <canvas id="hero-3d" width="300" height="300"></canvas>
     </div>
     <p class="eyebrow" id="hero-eyebrow">Deterministic identity · Built to convert</p>
-    <h1 class="fade-up" id="hero-headline"><span class="cursor"></span></h1>
+    <h1 class="fade-up" id="hero-headline">The data layer<br>performance runs on.</h1>
     <div class="hero-rule"></div>
     <p class="hero-stat" id="hero-stat"><span class="hero-stat-num">98%</span> U.S. adult coverage. <span class="hero-stat-num">1.6T</span> monthly consumer events. <span class="hero-stat-num">TOF</span> full funnel coverage.</p>
     <div class="cta-row">
@@ -631,7 +631,7 @@
     </div>
     <div class="ind-card">
       <p class="ind-card-name">Financial Services</p>
-      <p class="ind-card-desc">Debt, lending, credit repair, tax — 97% household financial coverage with predictive intent models.</p>
+      <p class="ind-card-desc">Debt, lending, credit repair, tax — 97% household financial coverage with deterministic intent signals.</p>
     </div>
     <div class="ind-card">
       <p class="ind-card-name">Health &amp; Wellness</p>
@@ -698,7 +698,9 @@
       <p class="sec-eyebrow coral">Let's build</p>
       <h2>See what your<br>funnel is missing.</h2>
       <p>Tell us about your use case. We'll show you what TOF looks like in your channel — and what it does for your revenue.</p>
-      <p class="contact-detail-item" style="margin-top:24px;">Email: <a href="mailto:go@tof.io">go@tof.io</a></p>
+      <div class="contact-detail" style="margin-top:24px;">
+        <p class="contact-detail-item">Email: <a href="mailto:go@tof.io">go@tof.io</a></p>
+      </div>
     </div>
     <div>
       <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Trusted by Retreaver · Kaliper · Brello</p>
@@ -761,8 +763,6 @@
   // ── 3D TOF ICON ── (loaded as module below)
 
   // ── HERO HEADLINE + ENTRANCE ──
-  document.getElementById('hero-headline').innerHTML = 'The data layer<br>performance runs on.';
-
   gsap.set('#hero-icon',       { opacity: 0, scale: 0.7 });
   gsap.set('#hero-eyebrow',   { opacity: 0, x: -20 });
   gsap.set('#hero-headline',  { opacity: 0, y: 24 });

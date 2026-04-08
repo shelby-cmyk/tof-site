@@ -688,7 +688,7 @@
   @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
   /* ── CUSTOM CURSOR ── */
-  @media (pointer: fine) { * { cursor: none !important; } }
+  .custom-cursor, .custom-cursor * { cursor: none !important; }
   #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
   #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
 
@@ -984,7 +984,7 @@
   <h2 class="section-h2 reveal">The closest signal to a buying decision available in performance marketing.</h2>
   <p class="section-body reveal">Consumers at the exact moment of buying decision — identified, verified, and activated exclusively through the <span class="tof-spine">TOF Identity Spine</span>. This is where the funnel closes.</p>
   <div class="l3-stat-block reveal">
-    <p class="l3-big-stat">0+</p>
+    <p class="l3-big-stat" data-count-target="70">70+</p>
     <p class="l3-big-label">High-Intent Verticals</p>
   </div>
   <div class="verticals-wrap reveal">
@@ -1044,7 +1044,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js"></script>
 <script>
   const lenis = new Lenis({
     duration: 0.6,
@@ -1134,6 +1133,7 @@
 
   // ── CUSTOM CURSOR ──
   if (window.matchMedia('(pointer: fine)').matches) {
+    document.documentElement.classList.add('custom-cursor');
     const icon = document.getElementById('cursor-icon');
     const ring = document.getElementById('cursor-ring');
     const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
@@ -1186,12 +1186,6 @@
       });
     }
   });
-
-  // ── NAV SCROLL STATE ──
-  const navEl = document.querySelector('nav');
-  window.addEventListener('scroll', () => {
-    navEl.classList.toggle('scrolled', window.scrollY > 40);
-  }, { passive: true });
 
   // ── MAGNETIC BUTTONS ──
   if (window.matchMedia('(pointer: fine)').matches) {

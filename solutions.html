@@ -135,7 +135,7 @@
   @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
   /* ── CURSOR ── */
-  @media (pointer: fine) { * { cursor: none !important; } }
+  .custom-cursor, .custom-cursor * { cursor: none !important; }
   #cursor-icon { position: fixed; top: 0; left: 0; width: 24px; pointer-events: none; z-index: 99999; opacity: 0; will-change: transform; }
   #cursor-ring { position: fixed; top: 0; left: 0; width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(252,248,240,.22); pointer-events: none; z-index: 99998; opacity: 0; will-change: transform; }
 
@@ -392,6 +392,7 @@
 <script>
   // Cursor
   if (window.matchMedia('(pointer: fine)').matches) {
+    document.documentElement.classList.add('custom-cursor');
     const icon = document.getElementById('cursor-icon');
     const ring = document.getElementById('cursor-ring');
     const ix = gsap.quickTo(icon, 'x', { duration: 0.12, ease: 'power3.out' });
