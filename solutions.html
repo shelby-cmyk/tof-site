@@ -7,11 +7,13 @@
 <meta property="og:title" content="Solutions — TOF">
 <meta property="og:description" content="Your stack. Our layer. Activate TOF Identity Spine across every channel your campaigns run on.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://shelby-cmyk.github.io/tof-site/og-image.png">
+<meta property="og:url" content="https://tof.io/solutions.html">
+<meta property="og:image" content="https://tof.io/og-image.png">
+<link rel="canonical" href="https://tof.io/solutions.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Solutions — TOF">
 <meta name="twitter:description" content="Activate deterministic identity across programmatic, DSP, social, CTV, and direct channels.">
-<meta name="twitter:image" content="https://shelby-cmyk.github.io/tof-site/og-image.png">
+<meta name="twitter:image" content="https://tof.io/og-image.png">
 <title>Solutions — TOF</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -116,6 +118,7 @@
   .reveal.in { opacity: 1; transform: translateY(0); }
 
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  :focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
   /* ── GRAIN ── */
   body::after { content: ''; position: fixed; inset: -200%; width: 400%; height: 400%; pointer-events: none; z-index: 99997; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 180px 180px; animation: grain 0.8s steps(1) infinite; }
@@ -166,8 +169,12 @@
     footer { padding: 20px 20px; flex-direction: column; align-items: flex-start; gap: 12px; }
   }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Solutions — TOF","url":"https://tof.io/solutions.html","description":"Activate deterministic identity across programmatic, DSP, social, CTV, and direct channels.","isPartOf":{"@type":"WebSite","name":"TOF","url":"https://tof.io"}}
+</script>
 </head>
 <body>
+<a href="#main-content" class="sr-only" style="position:absolute;top:-100px;left:0;background:var(--coral);color:var(--navy);padding:8px 16px;z-index:99999;font-size:14px;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
 
 <!-- PRELOADER -->
 <div id="preloader">
@@ -203,7 +210,7 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="hero-content">
     <p class="eyebrow">Deterministic identity · Built to convert</p>
     <h1>Identify. Reach.<br>Convert.</h1>

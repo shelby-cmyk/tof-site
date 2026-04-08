@@ -7,11 +7,13 @@
 <meta property="og:title" content="TOF — The Identity Layer Performance Runs On">
 <meta property="og:description" content="98% U.S. adult coverage. 1.6T monthly consumer events. TOF Identity Spine is the deterministic data infrastructure underneath your acquisition, monetization, and retention.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://shelby-cmyk.github.io/tof-site/og-image.png">
+<meta property="og:url" content="https://tof.io/">
+<meta property="og:image" content="https://tof.io/og-image.png">
+<link rel="canonical" href="https://tof.io/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TOF — The Identity Layer Performance Runs On">
 <meta name="twitter:description" content="98% U.S. adult coverage. 1.6T monthly consumer events. Deterministic identity infrastructure for the full funnel.">
-<meta name="twitter:image" content="https://shelby-cmyk.github.io/tof-site/og-image.png">
+<meta name="twitter:image" content="https://tof.io/og-image.png">
 <title>TOF — The Identity Layer Performance Runs On</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
@@ -244,6 +246,7 @@
 
   /* ── SR-ONLY ── */
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  :focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
 
   /* ── GRAIN TEXTURE ── */
   body::after {
@@ -432,8 +435,12 @@
     /* Cards */
   }
 </style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"TOF","url":"https://tof.io","logo":"https://tof.io/tof-logo-01.svg","description":"The identity layer performance runs on. Deterministic identity infrastructure for the full funnel.","contactPoint":{"@type":"ContactPoint","email":"go@tof.io","contactType":"sales"}}
+</script>
 </head>
 <body>
+<a href="#main-content" class="sr-only" style="position:absolute;top:-100px;left:0;background:var(--coral);color:var(--navy);padding:8px 16px;z-index:99999;font-size:14px;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
 
 <!-- PRELOADER -->
 <div id="preloader">
@@ -469,7 +476,7 @@
 </div>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="hero-content">
     <div class="hero-icon-wrap" id="hero-icon">
       <canvas id="hero-3d" width="300" height="300"></canvas>
@@ -489,7 +496,7 @@
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-wrap">
+<div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track" id="marquee">
     <span class="marquee-item hi">TOF</span><span class="marquee-sep">·</span>
     <span class="marquee-item">Lead generation</span><span class="marquee-sep">·</span>
