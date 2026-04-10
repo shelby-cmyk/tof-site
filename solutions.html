@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TOF Solutions — Activate deterministic identity across programmatic, DSP, social, CTV, and direct channels.">
-<meta property="og:title" content="Solutions — TOF">
-<meta property="og:description" content="Your stack. Our layer. Activate TOF Identity Spine across every channel your campaigns run on.">
+<meta name="description" content="TOF for affiliates, advertisers, programmatic, pay-per-call, publishers, and data reactivation. Six buyer types. Six different funnels. One identity infrastructure underneath.">
+<meta property="og:title" content="Solutions — Built for How You Buy">
+<meta property="og:description" content="Six buyer types. Six different funnels. One identity infrastructure. See how TOF fits your stack.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tof.io/solutions.html">
 <meta property="og:image" content="https://tof.io/og-image.png">
 <link rel="canonical" href="https://tof.io/solutions.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Solutions — TOF">
-<meta name="twitter:description" content="Activate deterministic identity across programmatic, DSP, social, CTV, and direct channels.">
+<meta name="twitter:title" content="Solutions — Built for How You Buy">
+<meta name="twitter:description" content="Six buyer types. Six different funnels. One identity infrastructure underneath.">
 <meta name="twitter:image" content="https://tof.io/og-image.png">
 <title>Solutions — TOF</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
@@ -96,6 +96,20 @@
   .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
   .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.55); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
 
+  /* ── WHY TOF ── */
+  .why-tof-section { background: var(--cream); padding: 100px 48px; border-top: 1px solid rgba(7,15,54,.06); }
+  .why-tof-inner { max-width: 1000px; margin: 0 auto; }
+  .why-tof-header { text-align: center; margin-bottom: 56px; }
+  .why-tof-header .sec-eyebrow { justify-content: center; color: var(--coral); }
+  .why-tof-header .sec-eyebrow::before { background: var(--coral); }
+  .why-tof-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -.03em; color: var(--navy); }
+  .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(7,15,54,.08); border-radius: 8px; overflow: hidden; }
+  .why-item { background: var(--cream); padding: 32px 28px; }
+  .why-item-num { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 12px; }
+  .why-item h3 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -.01em; }
+  .why-item p { font-size: 13px; line-height: 1.6; color: rgba(7,15,54,.6); }
+  @media (max-width: 900px) { .why-tof-section { padding: 64px 20px; } .why-grid { grid-template-columns: 1fr; } }
+
   /* ── PROOF ── */
   .proof { background: var(--peri); text-align: center; border-top: 1px solid rgba(7,15,54,.06); }
   .proof-line { font-size: clamp(18px, 2.5vw, 24px); font-weight: 600; color: var(--navy); margin-bottom: 8px; }
@@ -167,8 +181,11 @@
     h1 br { display: none; }
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
-    .hero { padding: 100px 24px 60px; }
-    .hero h1 { font-size: clamp(32px, 10vw, 52px); }
+    .hero { padding: 96px 20px 56px; }
+    .hero .eyebrow { font-size: 10px; margin-bottom: 22px; letter-spacing: .14em; }
+    .hero h1 { font-size: clamp(32px, 9vw, 44px); margin-bottom: 20px; line-height: 1.0; letter-spacing: -.02em; word-spacing: .04em; }
+    .hero-sub { font-size: 15px; line-height: 1.6; margin: 0 auto 28px; }
+    .hero-cta { font-size: 13px; padding: 14px 36px; }
     section { padding: 64px 20px; }
     .cases-grid { grid-template-columns: 1fr; }
     .cta-section { padding: 80px 20px; }
@@ -177,7 +194,7 @@
   }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Solutions — TOF","url":"https://tof.io/solutions.html","description":"Activate deterministic identity across programmatic, DSP, social, CTV, and direct channels.","isPartOf":{"@type":"WebSite","name":"TOF","url":"https://tof.io"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Solutions — TOF","url":"https://tof.io/solutions.html","description":"TOF for affiliates, advertisers, programmatic, pay-per-call, publishers, and data reactivation. Six buyer types. One identity infrastructure.","isPartOf":{"@type":"WebSite","name":"TOF","url":"https://tof.io"}}
 </script>
 </head>
 <body>
@@ -220,7 +237,7 @@
 <section class="hero" id="main-content">
   <div class="hero-content">
     <p class="eyebrow">Powering precision · Driving revenue</p>
-    <h1>Your funnel.<br>Our infrastructure.</h1>
+    <h1>Your funnel. <br>Our infrastructure.</h1>
     <p class="hero-sub">Tell us what you run. We'll show you what the TOF Identity Spine looks like underneath your funnel — and what it does for your numbers.</p>
     <a href="#" class="hero-cta" data-open-form>Talk to us</a>
   </div>
@@ -236,33 +253,75 @@
   <div class="cases-grid" style="max-width:1000px;">
     <div class="case-card reveal">
       <h3>Affiliates</h3>
-      <p><strong style="color:var(--cream);">Your leads don't convert because your data is stale.</strong> TOF enriches every record against the Identity Spine — appending verified identity, in-market signals, and behavioral data before it hits your funnel. Higher contact rates. Lower CPA. Leads that actually close.</p>
+      <p><strong style="color:var(--cream);">Your leads don't convert because your data is stale.</strong> We enrich every record before it hits your funnel. Higher contact rates. Lower CPA.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Email · SMS · Direct Mail · Direct API · Custom feeds</p>
     </div>
     <div class="case-card reveal">
       <h3>Advertisers</h3>
-      <p><strong style="color:var(--cream);">You're burning budget on impressions that never reach a real buyer.</strong> TOF puts deterministic identity underneath your media spend — 98% U.S. adult coverage matched at the person level, not the device level. Every dollar hits a verified consumer. Frequency capped. Attribution clean.</p>
+      <p><strong style="color:var(--cream);">You're burning budget on impressions that never reach a real buyer.</strong> Person-level identity underneath your media spend. Every dollar hits a verified consumer. Frequency capped. Attribution clean.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Google DV360 · The Trade Desk · Meta · CTV/OTT · Email · SMS</p>
     </div>
     <div class="case-card reveal">
       <h3>Publishers</h3>
-      <p><strong style="color:var(--cream);">Your inventory is undervalued because your audience data is thin.</strong> TOF enriches your first-party data with deterministic identity — turning anonymous impressions into verified, targetable audiences. Higher CPMs. Better fill rates. Advertisers pay more because the data proves who they're reaching.</p>
+      <p><strong style="color:var(--cream);">Your inventory is undervalued because your audience data is thin.</strong> Turn anonymous impressions into verified, targetable audiences. Higher CPMs. Better fill rates.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> LiveRamp · Snowflake · AWS Data Exchange · Direct API</p>
     </div>
     <div class="case-card reveal">
       <h3>Programmatic / DSP</h3>
-      <p><strong style="color:var(--cream);">Your probabilistic segments are wasting 40% of your spend.</strong> TOF Keyword Custom Audiences are built from real consumer search behavior — not modeled, not inferred. 47K+ in-market signal topics delivered directly to your DSP. Refreshed daily. Industry-leading match rates.</p>
+      <p><strong style="color:var(--cream);">Your probabilistic segments are wasting 40% of your spend.</strong> Keyword Custom Audiences from real consumer search behavior. Delivered directly to your DSP. Refreshed daily.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Google DV360 · The Trade Desk · Amazon DSP · StackAdapt · Basis · Yahoo DSP</p>
     </div>
     <div class="case-card reveal">
       <h3>Pay-Per-Call</h3>
-      <p><strong style="color:var(--cream);">Your contact rates are dropping because you're calling dead leads.</strong> TOF identifies who's actively in-market across 70+ verticals and enriches every record with verified identity before the dial. Higher pickup rates. Lower cost per acquisition. Calls that convert because the intent is real.</p>
+      <p><strong style="color:var(--cream);">Your contact rates are dropping because you're calling dead leads.</strong> Verified identity before the dial. Higher pickup rates. Calls that convert because the intent is real.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Call Center · Direct API · Email · SMS</p>
     </div>
     <div class="case-card reveal">
       <h3>Data Reactivation</h3>
-      <p><strong style="color:var(--cream);">Your aged data is a liability, not an asset.</strong> TOF appends fresh deterministic signals from 70+ primary sources against your existing records — turning dead files into live, identity-resolved, in-market consumers. Same list, completely different results.</p>
+      <p><strong style="color:var(--cream);">Your aged data is a liability, not an asset.</strong> Append fresh signals against your existing records. Dead files become live, in-market consumers. Same list, different results.</p>
       <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Email · SMS · Direct Mail · Snowflake · Direct API</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY TOF -->
+<section class="why-tof-section">
+  <div class="why-tof-inner">
+    <div class="why-tof-header reveal">
+      <p class="sec-eyebrow">Why teams choose TOF</p>
+      <h2>Six reasons buyers stay.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 01 ]</p>
+        <h3>Industry-leading match rates</h3>
+        <p>95%+ match on customer lists. The accuracy floor competitors quietly chase.</p>
+      </div>
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 02 ]</p>
+        <h3>Onboard in days, not months</h3>
+        <p>Real-time API access from day one. No multi-quarter integration cycles.</p>
+      </div>
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 03 ]</p>
+        <h3>Daily refresh, not monthly</h3>
+        <p>Every signal updated daily. Stale data never enters your funnel.</p>
+      </div>
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 04 ]</p>
+        <h3>2,000+ identity attributes</h3>
+        <p>Across identity, behavioral, intent, and financial. Filter to exactly your buyer.</p>
+      </div>
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 05 ]</p>
+        <h3>50+ direct integrations</h3>
+        <p>Activate to every platform you already use. No middleware. No re-plumbing.</p>
+      </div>
+      <div class="why-item reveal">
+        <p class="why-item-num">[ 06 ]</p>
+        <h3>CCPA &amp; GDPR compliant</h3>
+        <p>Built-in consent management. Privacy-safe by design, not by patch.</p>
+      </div>
     </div>
   </div>
 </section>
