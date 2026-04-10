@@ -58,8 +58,8 @@
   .hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; }
   @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
   .hero-content { position: relative; z-index: 1; text-align: center; max-width: 960px; }
-  .hero-icon-wrap { margin-bottom: 36px; display: flex; justify-content: center; }
-  #hero-3d { width: 100px; height: 100px; }
+  .tof-3d-wrap { display: flex; justify-content: center; padding: 64px 0 24px; position: relative; z-index: 1; }
+  #hero-3d { width: 220px; height: 220px; }
   .eyebrow { font-size: 11px; color: rgba(221,227,241,.5); letter-spacing: .22em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
   .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(56px, 8.5vw, 110px); font-weight: 700; line-height: 0.92; letter-spacing: -.045em; color: #FCF8F0; margin-bottom: 48px; text-transform: uppercase; }
@@ -377,9 +377,8 @@
 
     /* Hero */
     .hero { padding: 88px 16px 56px; min-height: auto; }
-    #hero-3d { width: 64px; height: 64px; }
-    .hero-icon-svg { width: 60px; height: 75px; }
-    .hero-icon-wrap { margin-bottom: 18px; }
+    #hero-3d { width: 160px; height: 160px; }
+    .tof-3d-wrap { padding: 40px 0 16px; }
     .eyebrow { font-size: 10px; margin-bottom: 24px; letter-spacing: .14em; }
     .hero h1 { font-size: clamp(26px, 7.2vw, 38px); margin-bottom: 24px; line-height: 1.04; letter-spacing: -.025em; word-spacing: .04em; }
     .hero-rule { margin: 0 auto 24px; }
@@ -491,9 +490,6 @@
 <!-- HERO -->
 <section class="hero" id="main-content">
   <div class="hero-content">
-    <div class="hero-icon-wrap" id="hero-icon">
-      <canvas id="hero-3d" width="300" height="300"></canvas>
-    </div>
     <p class="eyebrow" id="hero-eyebrow">Powering precision · Driving revenue</p>
     <h1 class="fade-up" id="hero-headline">The identity layer <br>performance runs on.</h1>
     <div class="hero-rule"></div>
@@ -740,6 +736,9 @@
   <div class="tagline-top">
     <p class="tagline-text">We kept the acronym.<br><span class="fade">Outgrew the name.</span></p>
   </div>
+  <div class="tof-3d-wrap">
+    <canvas id="hero-3d" width="400" height="400"></canvas>
+  </div>
   <div class="brand-story">
     <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
     <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.</p>
@@ -793,7 +792,6 @@
   // ── 3D TOF ICON ── (loaded as module below)
 
   // ── HERO HEADLINE + ENTRANCE ──
-  gsap.set('#hero-icon',       { opacity: 0, scale: 0.7 });
   gsap.set('#hero-eyebrow',   { opacity: 0, x: -20 });
   gsap.set('#hero-headline',  { opacity: 0, y: 24 });
   gsap.set('.hero-rule',      { scaleX: 0, transformOrigin: 'center' });
@@ -801,8 +799,7 @@
   gsap.set('.cta-row',        { opacity: 0, y: 24 });
 
   gsap.timeline({ defaults: { ease: 'power3.out' }, delay: 0.2 })
-    .to('#hero-icon',     { opacity: 1, scale: 1, duration: 0.9 })
-    .to('#hero-eyebrow',  { opacity: 1, x: 0, duration: 0.7 }, '-=0.4')
+    .to('#hero-eyebrow',  { opacity: 1, x: 0, duration: 0.7 })
     .to('#hero-headline', { opacity: 1, y: 0, duration: 0.8 }, '-=0.3')
     .to('.hero-rule',     { scaleX: 1, duration: 0.7, ease: 'power2.inOut' }, '-=0.3')
     .to('#hero-stat',     { opacity: 1, y: 0, duration: 0.7 }, '-=0.4')
@@ -1123,7 +1120,7 @@ import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 const canvas = document.getElementById('hero-3d');
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(300, 300);
+renderer.setSize(400, 400);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.2;
 
