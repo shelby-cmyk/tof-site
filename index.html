@@ -372,6 +372,9 @@
     .nav-links, .nav-cta { display: none; }
     .hamburger { display: flex; }
 
+    /* Calmer grain on mobile — high-DPI screens read it denser */
+    body::after { opacity: 0.012; background-size: 240px 240px; animation: none; }
+
     /* Hero */
     .hero { padding: 88px 16px 56px; min-height: auto; }
     #hero-3d { width: 64px; height: 64px; }

@@ -450,6 +450,9 @@
   @media (max-width: 900px) {
     .funnel-progress { display: flex; position: static; flex-direction: row; gap: 12px; justify-content: center; margin-top: 20px; opacity: 1; }
 
+    /* Calmer grain on mobile — high-DPI screens read it denser */
+    body::after { opacity: 0.012; background-size: 240px 240px; animation: none; }
+
     /* Hero + Funnel */
     .data-hero-inner { padding: 80px 16px; }
     .data-hero h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 28px; line-height: 1.04; letter-spacing: -.025em; word-spacing: .04em; }
