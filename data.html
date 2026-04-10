@@ -19,7 +19,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #070F36;
@@ -54,7 +54,7 @@
     z-index: 1;
   }
   .data-hero h1 {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--f);
     font-size: clamp(36px, 5.5vw, 64px);
     font-weight: 700;
     line-height: 1.0;
@@ -117,7 +117,7 @@
     padding-bottom: 40px;
   }
   .funnel-detail-num {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--f);
     font-size: 40px;
     font-weight: 700;
     letter-spacing: -.04em;
@@ -231,7 +231,7 @@
     padding: 36px 28px;
   }
   .l1-num {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--f);
     font-size: clamp(32px, 3.5vw, 48px);
     font-weight: 700;
     color: var(--navy);
@@ -256,7 +256,7 @@
     margin-bottom: 48px;
   }
   .l2-stat-num {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--f);
     font-size: clamp(52px, 6vw, 80px);
     font-weight: 700;
     color: var(--cream);
@@ -354,7 +354,7 @@
   #layer3 .section-body { margin-left: auto; margin-right: auto; }
   .l3-stat-block { margin: 64px 0 48px; }
   .l3-big-stat {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: var(--f);
     font-size: clamp(80px, 12vw, 140px);
     font-weight: 700;
     color: var(--coral);
@@ -946,7 +946,7 @@
 <section class="data-section layer-deep" id="layer3">
   <p class="section-eyebrow ey-coral reveal">Layer 03 — Bottom funnel</p>
   <h2 class="section-h2 reveal">The closest signal to a buying decision.</h2>
-  <p class="reveal" style="font-family:'Space Grotesk', sans-serif; font-size:clamp(20px, 3vw, 28px); font-weight:700; letter-spacing:-.02em; text-transform:uppercase; margin-bottom:28px; color:var(--coral);">Consumer generated intent. Delivered in real time.</p>
+  <p class="reveal" style="font-family:var(--f); font-size:clamp(20px, 3vw, 28px); font-weight:700; letter-spacing:-.02em; text-transform:uppercase; margin-bottom:28px; color:var(--coral);">Consumer generated intent. Delivered in real time.</p>
   <p class="section-body reveal">Consumers at the exact moment of buying decision — identified, verified, and activated exclusively through the <span class="tof-spine">TOF Identity Spine</span>. Every high-intent signal is enriched against our identity core before delivery. What you receive isn't raw data — it's deterministic, identity-resolved, and ready to activate.</p>
   <div class="l3-stat-block reveal">
     <p class="l3-big-stat" data-count-target="70">70+</p>
