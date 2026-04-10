@@ -1,1 +1,11 @@
 node_modules/
+
+# Local-only / confidential — never commit to public repo
+.claude/
+docs/
+proposals/
+exports/
+creatives/
+build-exports.js
+package.json
+package-lock.json
