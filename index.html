@@ -156,7 +156,8 @@
   /* ── PROBLEM SECTION (two-col, header RIGHT) ── */
   .problem-section { background: #FCF8F0; border-top: 1px solid rgba(7,15,54,.06); }
   .problem-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
-  .problem-right { position: sticky; top: 120px; }
+  .problem-right { position: sticky; top: 120px; order: 2; }
+  .problem-grid { order: 1; }
   .problem-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .problem-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
   .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 8px; padding: 28px 24px; background: transparent; transition: border-color .3s, box-shadow .3s, transform .3s; }
@@ -199,7 +200,8 @@
   /* ── INDUSTRIES (two-col, header RIGHT) ── */
   .industries-section { background: var(--cream); }
   .industries-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
-  .industries-right { position: sticky; top: 120px; }
+  .industries-right { position: sticky; top: 120px; order: 2; }
+  .ind-groups { order: 1; }
   .industries-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .ind-groups { display: flex; flex-direction: column; gap: 40px; }
   .ind-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9DA2B3; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #D3D6E0; }
@@ -430,7 +432,8 @@
     /* Problem */
     .problem-section { padding: 60px 20px; }
     .problem-layout { grid-template-columns: 1fr; gap: 36px; }
-    .problem-right { position: static; order: -1; }
+    .problem-right { position: static; order: 0; }
+    .problem-grid { order: 0; }
     .problem-card { padding: 20px 18px; }
     .problem-q { font-size: 13px; }
     .problem-a { font-size: 11px; }
@@ -448,7 +451,8 @@
     /* Industries */
     .industries-section { padding: 60px 20px; }
     .industries-layout { grid-template-columns: 1fr; gap: 36px; }
-    .industries-right { position: static; order: -1; }
+    .industries-right { position: static; order: 0; }
+    .ind-groups { order: 0; }
 
     /* Tagline */
     .tagline-section { min-height: auto; }
@@ -649,6 +653,11 @@
 <!-- PROBLEM SECTION -->
 <section class="problem-section">
   <div class="problem-layout">
+    <div class="problem-right reveal">
+      <p class="sec-eyebrow coral">Why teams choose TOF</p>
+      <h2 class="sec-h2 dark">Built for the problems that cost you revenue.</h2>
+      <p>Every dollar you spend on bad data is a dollar your competitor spends on verified identity. That's the gap TOF closes.</p>
+    </div>
     <div class="problem-grid">
       <div class="problem-card">
         <p class="problem-q">Your data is stale. Ours isn't.</p>
@@ -666,11 +675,6 @@
         <p class="problem-q">Wasted impressions are eating your margin.</p>
         <p class="problem-a">Verified identity at the top of every funnel means higher match rates, better audience quality, and measurable economic outcomes. Less spend. More conversions.</p>
       </div>
-    </div>
-    <div class="problem-right reveal">
-      <p class="sec-eyebrow coral">Why teams choose TOF</p>
-      <h2 class="sec-h2 dark">Built for the problems that cost you revenue.</h2>
-      <p>Every dollar you spend on bad data is a dollar your competitor spends on verified identity. That's the gap TOF closes.</p>
     </div>
   </div>
 </section>
@@ -701,6 +705,11 @@
 <!-- INDUSTRIES -->
 <section class="industries-section" id="industries">
   <div class="industries-layout">
+    <div class="industries-right reveal">
+      <p class="sec-eyebrow coral">Industries</p>
+      <h2 class="sec-h2 dark">Your vertical. Our infrastructure.</h2>
+      <p>Every industry that runs on consumer data. Every vertical that needs identity at scale.</p>
+    </div>
     <div class="ind-groups">
     <div class="reveal">
       <p class="ind-group-label">Financial &amp; Insurance</p>
@@ -760,11 +769,6 @@
           <p class="ind-item-desc">Device ownership, carrier data, upgrade intent — precision targeting at the subscriber level.</p>
         </div>
       </div>
-    </div>
-    <div class="industries-right reveal">
-      <p class="sec-eyebrow coral">Industries</p>
-      <h2 class="sec-h2 dark">Your vertical. Our infrastructure.</h2>
-      <p>Every industry that runs on consumer data. Every vertical that needs identity at scale.</p>
     </div>
   </div>
 </section>
