@@ -611,7 +611,7 @@
   }
   .funnel-layer-stroke.active { opacity: 1; }
   .funnel-layer-stroke[data-layer="0"] { stroke: #DDE3F1; }
-  .funnel-layer-stroke[data-layer="1"] { stroke: #FF7C7C; stroke-opacity: .5; }
+  .funnel-layer-stroke[data-layer="1"] { stroke: #DDE3F1; }
   .funnel-layer-stroke[data-layer="2"] { stroke: #FF7C7C; }
   .funnel-label {
     font-family: var(--mono);
@@ -740,18 +740,6 @@
               <stop offset="100%" stop-color="#FF7C7C" stop-opacity=".06"/>
             </linearGradient>
             <!-- Active gradients -->
-            <linearGradient id="gPeriA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#DDE3F1" stop-opacity=".7"/>
-              <stop offset="100%" stop-color="#DDE3F1" stop-opacity=".25"/>
-            </linearGradient>
-            <linearGradient id="gBlueA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".35"/>
-              <stop offset="100%" stop-color="#FF7C7C" stop-opacity=".12"/>
-            </linearGradient>
-            <linearGradient id="gCoralA" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#FF7C7C" stop-opacity=".7"/>
-              <stop offset="100%" stop-color="#FF7C7C" stop-opacity=".3"/>
-            </linearGradient>
           </defs>
 
           <!-- Permanent outer outline -->
@@ -759,11 +747,11 @@
                 d="M40,10 L560,10 L480,140 L420,260 L370,370 L230,370 L180,260 L120,140 Z"/>
 
           <!-- Layer fills -->
-          <path class="funnel-layer" data-layer="0" fill="url(#gPeriA)"
+          <path class="funnel-layer" data-layer="0" fill="rgba(221,227,241,.25)"
                 d="M40,10 L560,10 L480,140 L120,140 Z"/>
-          <path class="funnel-layer" data-layer="1" fill="url(#gBlue)"
+          <path class="funnel-layer" data-layer="1" fill="rgba(221,227,241,.06)"
                 d="M120,140 L480,140 L420,260 L180,260 Z"/>
-          <path class="funnel-layer" data-layer="2" fill="url(#gCoral)"
+          <path class="funnel-layer" data-layer="2" fill="rgba(255,124,124,.06)"
                 d="M180,260 L420,260 L370,370 L230,370 Z"/>
 
           <!-- Divider lines -->
@@ -1139,12 +1127,13 @@ window.setLayer = function(index) {
   const strokes = document.querySelectorAll('.funnel-layer-stroke');
   const labels = document.querySelectorAll('.funnel-label');
   const dots = document.querySelectorAll('.funnel-dot');
-  const gradMap = [['gPeri','gPeriA'], ['gBlue','gBlueA'], ['gCoral','gCoralA']];
+  const inactiveColors = ['rgba(221,227,241,.08)', 'rgba(7,15,54,.3)', 'rgba(255,124,124,.06)'];
+  const activeColors   = ['rgba(221,227,241,.25)', 'rgba(7,15,54,.9)', 'rgba(255,124,124,.35)'];
 
   layers.forEach((l, i) => {
     const isActive = i === index;
     l.classList.toggle('active', isActive);
-    l.setAttribute('fill', 'url(#' + (isActive ? gradMap[i][1] : gradMap[i][0]) + ')');
+    l.setAttribute('fill', isActive ? activeColors[i] : inactiveColors[i]);
   });
   strokes.forEach((s, i) => s.classList.toggle('active', i === index));
   labels.forEach((l, i) => l.classList.toggle('active', i === index));
