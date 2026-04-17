@@ -83,13 +83,14 @@
 
   /* ── SOLUTION CARDS ── */
   .cases-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  .case-card { padding: 28px 24px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s, transform .3s, box-shadow .3s; }
+  .case-card { padding: 28px 24px; border: 1px solid rgba(221,227,241,.08); border-radius: 6px; transition: border-color .3s, transform .3s, box-shadow .3s; background: rgba(221,227,241,.03); }
   .case-card:hover { border-color: rgba(221,227,241,.2); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(7,15,54,.2); }
   .case-card h3 { transition: color .25s; }
   .case-card:hover h3 { color: var(--coral); }
-  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
+  .case-tag { font-family: var(--mono); font-size: 9px; color: var(--coral); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+  .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 8px; }
   .case-card p { font-size: 14px; color: #BCBFCC; line-height: 1.7; }
-  .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: #9DA2B3; margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.10); line-height: 1.6; }
+  .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: #9DA2B3; margin-top: 14px !important; padding-top: 12px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
 
   /* ── WHY TOF (two-col) ── */
   .why-tof-section { background: var(--cream); padding: 100px 48px; border-top: 1px solid rgba(7,15,54,.06); }
@@ -255,34 +256,40 @@
     </div>
     <div class="cases-grid">
     <div class="case-card reveal">
+      <p class="case-tag">Lead Gen</p>
       <h3>Affiliates</h3>
       <p><strong style="color:var(--cream);">Your leads don't convert because your data is stale.</strong> We enrich every record before it hits your funnel. Higher contact rates. Lower CPA.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Email · SMS · Direct Mail · Direct API · Custom feeds</p>
+      <p class="card-channels">Email · SMS · Direct Mail · Direct API · Custom feeds</p>
     </div>
     <div class="case-card reveal">
+      <p class="case-tag">Media</p>
       <h3>Advertisers</h3>
       <p><strong style="color:var(--cream);">You're burning budget on impressions that never reach a real buyer.</strong> Person-level identity underneath your media spend. Every dollar hits a verified consumer. Frequency capped. Attribution clean.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Google DV360 · The Trade Desk · Meta · CTV/OTT · Email · SMS</p>
+      <p class="card-channels">Google DV360 · The Trade Desk · Meta · CTV/OTT · Email · SMS</p>
     </div>
     <div class="case-card reveal">
+      <p class="case-tag">Supply</p>
       <h3>Publishers</h3>
       <p><strong style="color:var(--cream);">Your inventory is undervalued because your audience data is thin.</strong> Turn anonymous impressions into verified, targetable audiences. Higher CPMs. Better fill rates.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> LiveRamp · Snowflake · AWS Data Exchange · Direct API</p>
+      <p class="card-channels">LiveRamp · Snowflake · AWS Data Exchange · Direct API</p>
     </div>
     <div class="case-card reveal">
+      <p class="case-tag">Programmatic</p>
       <h3>Programmatic / DSP</h3>
       <p><strong style="color:var(--cream);">Your probabilistic segments are wasting 40% of your spend.</strong> Keyword Custom Audiences from real consumer search behavior. Delivered directly to your DSP. Refreshed daily.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Google DV360 · The Trade Desk · Amazon DSP · StackAdapt · Basis · Yahoo DSP</p>
+      <p class="card-channels">Google DV360 · The Trade Desk · Amazon DSP · StackAdapt · Basis · Yahoo DSP</p>
     </div>
     <div class="case-card reveal">
+      <p class="case-tag">Inbound</p>
       <h3>Pay-Per-Call</h3>
       <p><strong style="color:var(--cream);">Your contact rates are dropping because you're calling dead leads.</strong> Verified identity before the dial. Higher pickup rates. Calls that convert because the intent is real.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Call Center · Direct API · Email · SMS</p>
+      <p class="card-channels">Call Center · Direct API · Email · SMS</p>
     </div>
     <div class="case-card reveal">
+      <p class="case-tag">Enrichment</p>
       <h3>Data Reactivation</h3>
       <p><strong style="color:var(--cream);">Your aged data is a liability, not an asset.</strong> Append fresh signals against your existing records. Dead files become live, in-market consumers. Same list, different results.</p>
-      <p class="card-channels"><span style="color:var(--coral);">Activate via:</span> Email · SMS · Direct Mail · Snowflake · Direct API</p>
+      <p class="card-channels">Email · SMS · Direct Mail · Snowflake · Direct API</p>
     </div>
   </div>
   </div>

@@ -160,9 +160,10 @@
   .problem-grid { order: 1; }
   .problem-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .problem-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 8px; padding: 28px 24px; background: transparent; transition: border-color .3s, box-shadow .3s, transform .3s; }
-  .problem-card:hover { border-color: rgba(7,15,54,.22); box-shadow: 0 6px 28px rgba(7,15,54,.06); transform: translateY(-2px); }
-  .problem-q { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 12px; line-height: 1.3; letter-spacing: -.01em; }
+  .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 6px; padding: 28px 24px; background: rgba(252,248,240,.5); transition: border-color .3s, box-shadow .3s, transform .3s; }
+  .problem-card:hover { border-color: rgba(7,15,54,.18); box-shadow: 0 6px 28px rgba(7,15,54,.06); transform: translateY(-2px); }
+  .problem-tag { font-family: var(--mono); font-size: 9px; color: var(--coral); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
+  .problem-q { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; letter-spacing: -.01em; }
   .problem-a { font-size: 14px; color: #6E7180; line-height: 1.7; }
 
   /* ── DATA ── */
@@ -658,18 +659,22 @@
     </div>
     <div class="problem-grid">
       <div class="problem-card">
+        <p class="problem-tag">Freshness</p>
         <p class="problem-q">Your data is stale. Ours isn't.</p>
         <p class="problem-a">TOF pulls from 70+ authoritative primary sources — continuously updated, continuously verified. No scraped lists. No recycled snapshots. Fresh, validated identity you can actually act on.</p>
       </div>
       <div class="problem-card">
+        <p class="problem-tag">Determinism</p>
         <p class="problem-q">You're spending on modeled assumptions.</p>
         <p class="problem-a">TOF resolves real individuals — not lookalikes, not probabilistic clusters. Real identity, matched across every channel.</p>
       </div>
       <div class="problem-card">
+        <p class="problem-tag">Verification</p>
         <p class="problem-q">Your leads look good on paper. They're not.</p>
         <p class="problem-a">Volume without verification is just cost. TOF resolves real identity before leads enter your funnel — so every record you route, call, or bid on is a verified consumer, not a dead end.</p>
       </div>
       <div class="problem-card">
+        <p class="problem-tag">ROI</p>
         <p class="problem-q">Wasted impressions are eating your margin.</p>
         <p class="problem-a">Verified identity at the top of every funnel means higher match rates, better audience quality, and measurable economic outcomes. Less spend. More conversions.</p>
       </div>
