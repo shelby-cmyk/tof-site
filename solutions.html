@@ -95,12 +95,13 @@
   /* ── WHY TOF (two-col) ── */
   .why-tof-section { background: var(--cream); padding: 100px 48px; border-top: 1px solid rgba(7,15,54,.06); }
   .why-tof-inner { max-width: 1100px; margin: 0 auto; }
-  .why-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
-  .why-left { position: sticky; top: 120px; }
-  .why-left .sec-eyebrow { color: var(--coral); }
-  .why-left .sec-eyebrow::before { background: var(--coral); }
-  .why-left h2 { font-family: var(--f); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -.03em; color: var(--navy); }
-  .why-left p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
+  .why-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: start; }
+  .why-right { position: sticky; top: 120px; order: 2; }
+  .why-grid { order: 1; }
+  .why-right .sec-eyebrow { color: var(--coral); }
+  .why-right .sec-eyebrow::before { background: var(--coral); }
+  .why-right h2 { font-family: var(--f); font-size: clamp(32px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -.03em; color: var(--navy); }
+  .why-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .why-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
   .why-item { padding: 24px 0; border-bottom: 1px solid rgba(7,15,54,.08); }
   .why-item:last-child { border-bottom: none; }
@@ -113,7 +114,8 @@
     .how-left { position: static; }
     .why-tof-section { padding: 64px 20px; }
     .why-layout { grid-template-columns: 1fr; gap: 36px; }
-    .why-left { position: static; }
+    .why-right { position: static; order: 0; }
+    .why-grid { order: 0; }
   }
 
   /* ── PROOF ── */
@@ -286,7 +288,7 @@
 <section class="why-tof-section">
   <div class="why-tof-inner">
     <div class="why-layout">
-      <div class="why-left reveal">
+      <div class="why-right reveal">
         <p class="sec-eyebrow">Why teams choose TOF</p>
         <h2>Six reasons buyers stay.</h2>
         <p>The things that make teams choose TOF — and the things that make them stay.</p>
