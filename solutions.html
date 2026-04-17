@@ -79,7 +79,7 @@
   .how { background: var(--navy); text-align: center; }
   .how-header { margin-bottom: 64px; }
   .how-header .sec-eyebrow { justify-content: center; }
-  .how-header p { font-size: 16px; color: rgba(221,227,241,.5); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
+  .how-header p { font-size: 16px; color: rgba(221,227,241,.7); max-width: 520px; margin: 16px auto 0; line-height: 1.7; }
   .how .cases-grid { max-width: 1000px; margin: 0 auto; }
   .how .case-card { border-color: rgba(221,227,241,.08); }
   .how .case-card h3 { color: var(--cream); }
@@ -93,8 +93,8 @@
   .case-card h3 { transition: color .25s; }
   .case-card:hover h3 { color: var(--coral); }
   .case-card h3 { font-size: 17px; font-weight: 600; color: var(--cream); margin-bottom: 10px; }
-  .case-card p { font-size: 14px; color: rgba(221,227,241,.55); line-height: 1.7; }
-  .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.55); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.08); line-height: 1.6; }
+  .case-card p { font-size: 14px; color: rgba(221,227,241,.72); line-height: 1.7; }
+  .card-channels { font-family: var(--mono); font-size: 10px; letter-spacing: .06em; color: rgba(221,227,241,.6); margin-top: 16px !important; padding-top: 14px; border-top: 1px solid rgba(221,227,241,.10); line-height: 1.6; }
 
   /* ── WHY TOF ── */
   .why-tof-section { background: var(--cream); padding: 100px 48px; border-top: 1px solid rgba(7,15,54,.06); }
@@ -116,11 +116,11 @@
   .proof-sub { font-family: var(--mono); font-size: 11px; color: rgba(7,15,54,.45); letter-spacing: .08em; text-transform: uppercase; }
 
   /* ── CTA ── */
-  .cta-section { background: var(--cream); text-align: center; padding: 120px 48px; border-top: 1px solid rgba(7,15,54,.08); }
-  .cta-section .sec-h2 { margin-left: auto; margin-right: auto; max-width: 600px; color: var(--navy); }
+  .cta-section { background: #040A24; text-align: center; padding: 120px 48px; border-top: 1px solid rgba(221,227,241,.06); }
+  .cta-section .sec-h2 { margin-left: auto; margin-right: auto; max-width: 600px; color: var(--cream); }
   .cta-section .sec-eyebrow { color: var(--coral); }
   .cta-section .sec-eyebrow::before { background: var(--coral); }
-  .cta-sub { font-size: 16px; color: rgba(7,15,54,.55); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
+  .cta-sub { font-size: 16px; color: rgba(221,227,241,.55); max-width: 480px; margin: 0 auto 40px; line-height: 1.7; }
   .cta-btn { display: inline-block; font-size: 14px; font-weight: 600; padding: 16px 48px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; }
   .cta-btn:hover { opacity: .88; }
 
@@ -431,8 +431,8 @@
   let panelTrigger = null;
   panel.setAttribute('role', 'dialog');
   panel.setAttribute('aria-modal', 'true');
-  function openPanel() { panelTrigger = document.activeElement; panelOverlay.classList.add('open'); panel.classList.add('open'); lenis.stop(); const fi = panel.querySelector('input[name="name"]'); if (fi) setTimeout(() => fi.focus(), 100); }
-  function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); lenis.start(); if (panelTrigger) panelTrigger.focus(); }
+  function openPanel() { panelTrigger = document.activeElement; panelOverlay.classList.add('open'); panel.classList.add('open'); if (typeof lenis !== 'undefined') lenis.stop(); const fi = panel.querySelector('input[name="name"]'); if (fi) setTimeout(() => fi.focus(), 100); }
+  function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); if (typeof lenis !== 'undefined') lenis.start(); if (panelTrigger) panelTrigger.focus(); }
   document.querySelectorAll('[data-open-form]').forEach(btn => { btn.addEventListener('click', e => { e.preventDefault(); openPanel(); }); });
   panelClose.addEventListener('click', closePanel);
   panelOverlay.addEventListener('click', closePanel);

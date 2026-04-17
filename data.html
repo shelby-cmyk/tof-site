@@ -1282,8 +1282,8 @@ const panelClose = document.getElementById('form-panel-close');
 let panelTrigger = null;
 panel.setAttribute('role', 'dialog');
 panel.setAttribute('aria-modal', 'true');
-function openPanel() { panelTrigger = document.activeElement; panelOverlay.classList.add('open'); panel.classList.add('open'); lenis.stop(); const fi = panel.querySelector('input[name="name"]'); if (fi) setTimeout(() => fi.focus(), 100); }
-function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); lenis.start(); if (panelTrigger) panelTrigger.focus(); }
+function openPanel() { panelTrigger = document.activeElement; panelOverlay.classList.add('open'); panel.classList.add('open'); if (typeof lenis !== 'undefined') lenis.stop(); const fi = panel.querySelector('input[name="name"]'); if (fi) setTimeout(() => fi.focus(), 100); }
+function closePanel() { panelOverlay.classList.remove('open'); panel.classList.remove('open'); if (typeof lenis !== 'undefined') lenis.start(); if (panelTrigger) panelTrigger.focus(); }
 document.querySelectorAll('[data-open-form]').forEach(btn => {
   btn.addEventListener('click', e => { e.preventDefault(); openPanel(); });
 });
