@@ -123,8 +123,6 @@
     line-height: 1;
     margin-bottom: 12px;
     transition: color .4s;
-    -webkit-text-stroke: 0.5px #FCF8F0;
-    paint-order: stroke fill;
   }
   .funnel-detail-name {
     font-family: var(--f);
@@ -792,7 +790,7 @@
         </svg>
       </div>
       <div class="funnel-detail">
-        <p class="funnel-detail-num" style="color:#DDE3F1;">01</p>
+        <p class="funnel-detail-num" style="color:#FCF8F0;">01</p>
         <p class="funnel-detail-name">In-Market Signals</p>
         <p class="funnel-detail-stat">98% U.S. population · 1.6T monthly events</p>
         <p class="funnel-detail-desc">The source of truth layer. Who is in market, where they are, and what they want.</p>
@@ -1163,9 +1161,9 @@ window.setLayer = function(index) {
 
   // Crossfade detail panel
   const layerData = [
-    { num: '01', name: 'In-Market Signals', stat: '98% U.S. population \u00b7 1.6T monthly events', desc: 'The source of truth layer. Who is in market, where they are, and what they want.', color: '#DDE3F1' },
-    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#070F36' },
-    { num: '03', name: 'High-Intent Data', stat: '70+ verticals \u00b7 Exclusive TOF Identity Spine activation', desc: 'The closest signal to a buying decision available in performance marketing.', color: '#FF7C7C' }
+    { num: '01', name: 'In-Market Signals', stat: '98% U.S. population \u00b7 1.6T monthly events', desc: 'The source of truth layer. Who is in market, where they are, and what they want.', color: '#FCF8F0' },
+    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#FCF8F0' },
+    { num: '03', name: 'High-Intent Data', stat: '70+ verticals \u00b7 Exclusive TOF Identity Spine activation', desc: 'The closest signal to a buying decision available in performance marketing.', color: '#FCF8F0' }
   ];
   const d = layerData[index];
 
