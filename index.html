@@ -88,13 +88,9 @@
   .reveal.in { opacity: 1; transform: translateY(0); }
 
   /* ── PILLAR HOVER ── */
-  .pillar-block { transition: background .3s, transform .3s; }
-  .pillar-block:hover { background: rgba(221,227,241,.06); transform: translateY(-2px); }
-  .pillar-block::after { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity .3s; pointer-events: none; }
-  .pillar-block.acquire::after { background: radial-gradient(ellipse at top left, rgba(255,124,124,.06) 0%, transparent 70%); }
-  .pillar-block.monetize::after { background: radial-gradient(ellipse at top left, rgba(221,227,241,.07) 0%, transparent 70%); }
-  .pillar-block.retain::after { background: radial-gradient(ellipse at top left, rgba(221,227,241,.05) 0%, transparent 70%); }
-  .pillar-block:hover::after { opacity: 1; }
+  .pillar-step { transition: opacity .3s; }
+  .pillar-step:hover .pillar-content { opacity: 1; }
+  .pillar-step:hover .pillar-dot { transform: scale(1.1); transition: transform .25s; }
   .btn-primary { font-size: 13px; font-weight: 600; padding: 13px 30px; border-radius: 3px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; }
   .btn-primary:hover { opacity: .88; }
 
@@ -134,21 +130,28 @@
 
   /* ── THREE PILLARS ── */
   .pillars-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.07); position: relative; overflow: hidden; }
-  .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 0; }
-  .pillar-block { background: rgba(221,227,241,.03); padding: 56px 36px; position: relative; overflow: hidden; border-top: 2px solid transparent; transition: background .35s; }
-  .pillar-block.acquire { border-top-color: var(--coral); }
-  .pillar-block.monetize { border-top-color: var(--peri); }
-  .pillar-block.retain { border-top-color: var(--peri); }
-  .pillar-big-num { font-family: var(--f); font-size: clamp(48px, 5vw, 72px); font-weight: 700; letter-spacing: -.04em; line-height: 1; margin-bottom: 24px; }
-  .pillar-block.acquire .pillar-big-num { color: rgba(255,124,124,.15); }
-  .pillar-block.monetize .pillar-big-num { color: rgba(221,227,241,.2); }
-  .pillar-block.retain .pillar-big-num { color: rgba(221,227,241,.1); }
-  .pillar-num { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 20px; }
-  .pillar-block.acquire .pillar-num { color: var(--coral); }
-  .pillar-block.monetize .pillar-num { color: var(--peri); }
-  .pillar-block.retain .pillar-num { color: var(--peri); opacity: .7; }
-  .pillar-h { font-size: 24px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 16px; line-height: 1.15; }
-  .pillar-body { font-size: 14px; line-height: 1.75; color: rgba(221,227,241,.65); margin-bottom: 0; }
+  .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: center; }
+  .pillars-left { }
+  .pillars-left .sec-eyebrow { margin-bottom: 12px; }
+  .pillars-left .sec-h2 { margin-bottom: 20px; }
+  .pillars-left-body { font-size: 16px; line-height: 1.75; color: rgba(221,227,241,.55); max-width: 420px; }
+  .pillars-steps { position: relative; display: flex; flex-direction: column; gap: 0; }
+  .pillar-step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; position: relative; }
+  .pillar-track { display: flex; flex-direction: column; align-items: center; }
+  .pillar-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; flex-shrink: 0; z-index: 1; }
+  .pillar-step.s1 .pillar-dot { background: rgba(255,124,124,.15); color: var(--coral); }
+  .pillar-step.s2 .pillar-dot { background: rgba(221,227,241,.08); color: var(--peri); }
+  .pillar-step.s3 .pillar-dot { background: rgba(221,227,241,.06); color: rgba(221,227,241,.7); }
+  .pillar-line { width: 1px; flex: 1; background: rgba(221,227,241,.1); }
+  .pillar-step:last-child .pillar-line { display: none; }
+  .pillar-content { padding: 8px 0 40px; }
+  .pillar-step:last-child .pillar-content { padding-bottom: 0; }
+  .pillar-num { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 8px; }
+  .pillar-step.s1 .pillar-num { color: var(--coral); }
+  .pillar-step.s2 .pillar-num { color: var(--peri); }
+  .pillar-step.s3 .pillar-num { color: var(--peri); opacity: .7; }
+  .pillar-h { font-size: 20px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 8px; line-height: 1.2; }
+  .pillar-body { font-size: 14px; line-height: 1.7; color: rgba(221,227,241,.55); }
 
   /* ── PROBLEM SECTION ── */
   .problem-section { background: #FCF8F0; border-top: 1px solid rgba(7,15,54,.06); }
@@ -357,7 +360,7 @@
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
-    .pillars-grid { grid-template-columns: 1fr; }
+    .pillars-layout { grid-template-columns: 1fr; gap: 48px; }
   }
   @media (max-width: 900px) {
     /* Nav */
@@ -395,6 +398,8 @@
 
     /* Pillars */
     .pillars-section { padding: 60px 20px; }
+    .pillars-layout { gap: 36px; }
+    .pillar-content { padding: 6px 0 32px; }
     .pillar-h { font-size: 18px; }
     .pillar-body { font-size: 12px; }
 
@@ -530,26 +535,37 @@
 <!-- THREE PILLARS -->
 <section class="pillars-section" id="solutions">
   <div class="section-grid-line"></div>
-  <p class="sec-eyebrow coral" style="margin-bottom:12px;">What we power</p>
-  <h2 class="sec-h2 light" style="margin-bottom:48px;">One infrastructure.<br>Three revenue outcomes.</h2>
-  <div class="pillars-grid">
-    <div class="pillar-block acquire">
-      <p class="pillar-big-num">01</p>
-      <p class="pillar-num">Identify</p>
-      <h3 class="pillar-h">Know exactly who is in market</h3>
-      <p class="pillar-body">Person-level identity. Not household guesses. The source of truth your funnel runs on.</p>
+  <div class="pillars-layout">
+    <div class="pillars-left">
+      <p class="sec-eyebrow coral">What we power</p>
+      <h2 class="sec-h2 light">One infrastructure.<br>Three revenue outcomes.</h2>
+      <p class="pillars-left-body">The TOF Identity Spine resolves who's in market, activates them across every channel, and closes with the highest-intent signal available — all from one deterministic data layer.</p>
     </div>
-    <div class="pillar-block monetize">
-      <p class="pillar-big-num">02</p>
-      <p class="pillar-num">Reach</p>
-      <h3 class="pillar-h">Activate across every channel</h3>
-      <p class="pillar-body">Keyword Custom Audiences from real search behavior. Activated everywhere your campaigns already run.</p>
-    </div>
-    <div class="pillar-block retain">
-      <p class="pillar-big-num">03</p>
-      <p class="pillar-num">Convert</p>
-      <h3 class="pillar-h">Close with the highest-intent signal available</h3>
-      <p class="pillar-body">Behavioral signals at the exact moment of buying decision. The closest data to a conversion in performance marketing.</p>
+    <div class="pillars-steps">
+      <div class="pillar-step s1 reveal">
+        <div class="pillar-track"><div class="pillar-dot">01</div><div class="pillar-line"></div></div>
+        <div class="pillar-content">
+          <p class="pillar-num">Identify</p>
+          <h3 class="pillar-h">Know exactly who is in market</h3>
+          <p class="pillar-body">Person-level identity. Not household guesses. The source of truth your funnel runs on.</p>
+        </div>
+      </div>
+      <div class="pillar-step s2 reveal">
+        <div class="pillar-track"><div class="pillar-dot">02</div><div class="pillar-line"></div></div>
+        <div class="pillar-content">
+          <p class="pillar-num">Reach</p>
+          <h3 class="pillar-h">Activate across every channel</h3>
+          <p class="pillar-body">Keyword Custom Audiences from real search behavior. Activated everywhere your campaigns already run.</p>
+        </div>
+      </div>
+      <div class="pillar-step s3 reveal">
+        <div class="pillar-track"><div class="pillar-dot">03</div><div class="pillar-line"></div></div>
+        <div class="pillar-content">
+          <p class="pillar-num">Convert</p>
+          <h3 class="pillar-h">Close with the highest-intent signal available</h3>
+          <p class="pillar-body">Behavioral signals at the exact moment of buying decision. The closest data to a conversion in performance marketing.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -816,7 +832,7 @@
       so.unobserve(e.target);
     });
   }, { threshold: .08 });
-  document.querySelectorAll('.pillar-block,.problem-card,.data-row,.partner-name').forEach((el, i) => {
+  document.querySelectorAll('.pillar-step,.problem-card,.data-row,.partner-name').forEach((el, i) => {
     el.style.opacity = '0'; el.style.transform = 'translateY(18px)';
     el.style.transition = `opacity .6s ease ${i*.05}s,transform .6s ease ${i*.05}s`;
     so.observe(el);
@@ -884,17 +900,17 @@
   }, { passive: true });
 
 
-  // ── PILLAR CARDS REVEAL ──
-  const pillarBlocks = document.querySelectorAll('.pillar-block');
-  gsap.set(pillarBlocks, { opacity: 0, y: 40 });
+  // ── PILLAR STEPS REVEAL ──
+  const pillarSteps = document.querySelectorAll('.pillar-step');
+  gsap.set(pillarSteps, { opacity: 0, x: 30 });
   const pillarObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
       pillarObs.unobserve(entry.target);
-      gsap.to(pillarBlocks, { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: 'power3.out' });
+      gsap.to(pillarSteps, { opacity: 1, x: 0, duration: 0.7, stagger: 0.2, ease: 'power3.out' });
     });
   }, { threshold: 0.15 });
-  pillarObs.observe(document.querySelector('.pillars-grid'));
+  pillarObs.observe(document.querySelector('.pillars-steps'));
 
   // ── PROBLEM CARDS REVEAL ──
   const probCards = document.querySelectorAll('.problem-card');
