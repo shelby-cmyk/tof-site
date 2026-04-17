@@ -72,12 +72,11 @@
 
   /* ── CATALOG ── */
   .catalog { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
-  .catalog-layout { display: grid; grid-template-columns: 1.5fr 1fr; gap: 80px; align-items: start; }
-  .catalog-right { position: sticky; top: 120px; order: 2; }
-  .catalog-right .catalog-section-title { margin-bottom: 8px; }
-  .catalog-right h2 { margin-bottom: 16px; }
-  .catalog-right p { font-size: 16px; color: #BCBFCC; line-height: 1.7; max-width: 360px; }
-  .cat-grid-wrap { order: 1; }
+  .catalog-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: start; }
+  .catalog-left { position: sticky; top: 120px; }
+  .catalog-left .catalog-section-title { margin-bottom: 8px; }
+  .catalog-left h2 { margin-bottom: 16px; }
+  .catalog-left p { font-size: 16px; color: #BCBFCC; line-height: 1.7; max-width: 360px; }
   .catalog-section { margin-bottom: 64px; }
   .catalog-section-title { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); margin-bottom: 8px; }
   .catalog-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; margin-bottom: 32px; }
@@ -154,8 +153,7 @@
     .stat-num { font-size: 28px; }
     .catalog { padding: 48px 20px; }
     .catalog-layout { grid-template-columns: 1fr; gap: 36px; }
-    .catalog-right { position: static; order: 0; }
-    .cat-grid-wrap { order: 0; }
+    .catalog-left { position: static; }
     .cat-grid { grid-template-columns: 1fr; }
     .feeds-section { padding: 60px 20px; }
     .feeds-grid { grid-template-columns: 1fr; }
@@ -238,12 +236,12 @@
 <!-- CONSUMER SIGNALS -->
 <div class="catalog">
   <div class="catalog-layout">
-    <div class="catalog-right reveal">
+    <div class="catalog-left reveal">
       <p class="catalog-section-title">Consumer Intent Signals</p>
       <h2 style="color:var(--cream); font-size:clamp(28px, 4vw, 40px); font-weight:700; letter-spacing:-.02em; margin-bottom:16px;">26 categories. 9,400+ signals. Every vertical.</h2>
       <p>Every signal is deterministic, refreshed daily, and built from observed consumer behavior.</p>
     </div>
-    <div class="cat-grid-wrap">
+    <div>
     <div class="cat-grid">
       <div class="cat-card" onclick="this.classList.toggle('open')">
         <p class="cat-card-name">Auto</p>
