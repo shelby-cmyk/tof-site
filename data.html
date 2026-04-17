@@ -611,7 +611,7 @@
   }
   .funnel-layer-stroke.active { opacity: 1; }
   .funnel-layer-stroke[data-layer="0"] { stroke: #DDE3F1; }
-  .funnel-layer-stroke[data-layer="1"] { stroke: #DDE3F1; }
+  .funnel-layer-stroke[data-layer="1"] { stroke: #9DA2B3; }
   .funnel-layer-stroke[data-layer="2"] { stroke: #FF7C7C; }
   .funnel-label {
     font-family: var(--mono);
@@ -648,7 +648,7 @@
   }
   .funnel-dot.active { border-color: var(--cream); background: var(--cream); }
   .funnel-dot[data-layer="0"].active { border-color: #DDE3F1; background: #DDE3F1; }
-  .funnel-dot[data-layer="1"].active { border-color: #DDE3F1; background: #DDE3F1; }
+  .funnel-dot[data-layer="1"].active { border-color: #9DA2B3; background: #9DA2B3; }
   .funnel-dot[data-layer="2"].active { border-color: #FF7C7C; background: #FF7C7C; }
   .funnel-connector {
     width: 1px; height: 24px;
@@ -1153,7 +1153,7 @@ window.setLayer = function(index) {
   // Crossfade detail panel
   const layerData = [
     { num: '01', name: 'In-Market Signals', stat: '98% U.S. population \u00b7 1.6T monthly events', desc: 'The source of truth layer. Who is in market, where they are, and what they want.', color: '#DDE3F1' },
-    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#DDE3F1' },
+    { num: '02', name: 'Keyword Custom Audiences', stat: 'Built from active search behavior \u00b7 Custom or pre-built', desc: 'People actively researching solutions right now \u2014 by vertical, offer, or brand.', color: '#9DA2B3' },
     { num: '03', name: 'High-Intent Data', stat: '70+ verticals \u00b7 Exclusive TOF Identity Spine activation', desc: 'The closest signal to a buying decision available in performance marketing.', color: '#FF7C7C' }
   ];
   const d = layerData[index];
