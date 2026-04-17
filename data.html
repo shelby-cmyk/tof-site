@@ -169,17 +169,11 @@
     border-top: 1px solid rgba(221,227,241,.07);
     position: relative;
   }
-  .layer-mid { background: #070F36; }
-  .layer-mid .section-eyebrow { }
-  .layer-mid .section-h2 { }
-  .layer-mid .section-body { }
+  .layer-mid { background: #070F36; text-align: center; }
+  .layer-mid .section-eyebrow { justify-content: center; }
+  .layer-mid .section-h2 { margin-left: auto; margin-right: auto; }
+  .layer-mid .section-body { margin-left: auto; margin-right: auto; }
   .layer-deep { background: #040A24; }
-  .layer-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
-  .layer-left { position: sticky; top: 120px; }
-  .layer-right { position: sticky; top: 120px; }
-  .layer-layout-flip { grid-template-columns: 1.4fr 1fr; }
-  .layer-layout-flip .layer-right { order: 2; }
-  .layer-layout-flip .layer-content { order: 1; }
   .section-eyebrow {
     font-family: var(--mono);
     font-size: 12px;
@@ -215,11 +209,11 @@
   }
 
   /* ── LAYER 1 CREAM SECTION ── */
-  #layer1 { background: var(--peri); }
-  #layer1 .section-eyebrow { color: var(--navy); }
+  #layer1 { background: var(--peri); text-align: center; }
+  #layer1 .section-eyebrow { color: var(--navy); justify-content: center; }
   #layer1 .section-eyebrow::before { background: var(--navy); }
-  #layer1 .section-h2 { color: var(--navy); }
-  #layer1 .section-body { color: #6E7180; }
+  #layer1 .section-h2 { color: var(--navy); margin-left: auto; margin-right: auto; }
+  #layer1 .section-body { color: #6E7180; margin-left: auto; margin-right: auto; }
 
   /* ── LAYER 1 STAT GRID ── */
   .l1-grid {
@@ -354,10 +348,10 @@
   .l2-custom a { color: var(--coral); text-decoration: none; font-weight: 600; }
 
   /* ── LAYER 3: HIGH-INTENT ── */
-  #layer3 { }
-  #layer3 .section-eyebrow { }
-  #layer3 .section-h2 { }
-  #layer3 .section-body { }
+  #layer3 { text-align: center; }
+  #layer3 .section-eyebrow { justify-content: center; }
+  #layer3 .section-h2 { margin-left: auto; margin-right: auto; }
+  #layer3 .section-body { margin-left: auto; margin-right: auto; }
   .l3-stat-block { margin: 64px 0 48px; }
   .l3-big-stat {
     font-family: var(--f);
@@ -493,11 +487,7 @@
     .verticals-wrap { gap: 6px; }
     .vpill { font-size: 12px; padding: 9px 16px; }
 
-    /* Layer layouts */
-    .layer-layout { grid-template-columns: 1fr; gap: 36px; }
-    .layer-left, .layer-right { position: static; }
-    .layer-layout-flip .layer-right { order: 0; }
-    .layer-layout-flip .layer-content { order: 0; }
+
 
     /* CTA */
     .cta-section { padding: 80px 20px; }
@@ -858,12 +848,9 @@
 
 <!-- LAYER 1: TOP OF FUNNEL -->
 <section class="data-section" id="layer1">
-  <div class="layer-layout">
-  <div class="layer-left">
   <p class="section-eyebrow ey-peri reveal">Layer 01 — Top of funnel</p>
   <h2 class="section-h2 reveal">Know who's in market<br>before you spend.</h2>
   <p class="section-body reveal">The foundation of the <span class="tof-spine">TOF Identity Spine</span>. Person-level identity — not household guesses. 98% of U.S. adults, deterministically matched from 70+ primary sources. Offline-anchored, online-linked, zero inference. The source of truth layer that everything else is built on.</p>
-  </div>
   <div class="l1-grid reveal">
     <div class="l1-stat">
       <p class="l1-num">98%</p>
@@ -894,18 +881,13 @@
       <p class="l1-label">Monthly Consumer Events</p>
     </div>
   </div>
-  </div>
 </section>
 
 <!-- LAYER 2: KEYWORD CUSTOM AUDIENCES -->
 <section class="data-section layer-mid" id="layer2">
-  <div class="layer-layout layer-layout-flip">
-  <div class="layer-right">
   <p class="section-eyebrow ey-blue reveal">Layer 02 — Middle funnel</p>
   <h2 class="section-h2 reveal">Built from real<br>search behavior.</h2>
   <p class="reveal" style="font-family:var(--f); font-size:15px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; margin-bottom:24px; color:var(--coral);">What they search. When they search it. Delivered daily.</p>
-  </div>
-  <div class="layer-content">
   <div class="l2-header reveal">
     <div>
       <p class="l2-stat-num">100+</p>
@@ -954,20 +936,14 @@
   <div class="l2-custom reveal">
     Need a custom feed? <a href="#" data-open-form>Talk to us</a>
   </div>
-  </div>
-  </div>
 </section>
 
 <!-- LAYER 3: HIGH-INTENT BEHAVIORAL SIGNALS -->
 <section class="data-section layer-deep" id="layer3">
-  <div class="layer-layout">
-  <div class="layer-left">
   <p class="section-eyebrow ey-coral reveal">Layer 03 — Bottom funnel</p>
   <h2 class="section-h2 reveal">The closest signal to a buying decision.</h2>
   <p class="reveal" style="font-family:var(--f); font-size:clamp(20px, 3vw, 28px); font-weight:700; letter-spacing:-.02em; text-transform:uppercase; margin-bottom:28px; color:var(--coral);">Consumer generated intent. Delivered in real time.</p>
   <p class="section-body reveal">Consumers at the exact moment of buying decision — identified, verified, and activated exclusively through the <span class="tof-spine">TOF Identity Spine</span>. Every high-intent signal is enriched against our identity core before delivery. What you receive isn't raw data — it's deterministic, identity-resolved, and ready to activate.</p>
-  </div>
-  <div class="layer-content">
   <div class="l3-stat-block reveal">
     <p class="l3-big-stat" data-count-target="70">70+</p>
     <p class="l3-big-label">High-Intent Verticals</p>
@@ -991,8 +967,6 @@
     <p class="l3-close-headline">The data your competitors don't have access to.</p>
     <p class="l3-close-sub"><span style="color:var(--coral); font-weight:600;">Real-time consumer-generated intent</span> — delivered in real time. Direct TOF partnership only.</p>
     <a href="#" class="btn-coral" data-open-form style="font-size:14px;padding:16px 48px;">Talk to us</a>
-  </div>
-  </div>
   </div>
 </section>
 
