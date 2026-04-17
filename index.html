@@ -47,7 +47,7 @@
   nav::after { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 64px; background: linear-gradient(to top, rgba(7,15,54,0), #070F36); pointer-events: none; z-index: 99; }
   .nav-logo img { height: 48px; width: auto; display: block; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { font-size: 15px; color: rgba(221,227,241,.75); text-decoration: none; letter-spacing: .02em; transition: color .2s, border-color .2s; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+  .nav-links a { font-size: 15px; color: #DDE3F1; text-decoration: none; letter-spacing: .02em; transition: color .2s, border-color .2s; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
   .nav-links a:hover { color: var(--peri); border-bottom-color: rgba(221,227,241,.3); }
   .nav-links a.active, .nav-links a[style] { border-bottom-color: var(--peri) !important; }
   .nav-cta { font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .01em; margin-left: 16px; }
@@ -60,12 +60,12 @@
   .hero-content { position: relative; z-index: 1; text-align: center; max-width: 960px; }
   .tof-3d-wrap { display: flex; justify-content: center; padding: 32px 0 56px; position: relative; z-index: 1; }
   #hero-3d { width: 280px !important; height: 280px !important; display: block; }
-  .eyebrow { font-size: 12px; color: rgba(221,227,241,.7); letter-spacing: .2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
+  .eyebrow { font-size: 12px; color: #DDE3F1; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
   .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
   .hero h1 { font-family: var(--f); font-size: clamp(56px, 8.5vw, 110px); font-weight: 1000; line-height: 0.92; letter-spacing: -.045em; color: #FCF8F0; margin-bottom: 48px; text-transform: uppercase; }
   .hero h1 em { color: #DDE3F1; font-style: normal; }
   .hero-rule { width: 48px; height: 2px; background: var(--coral); margin: 0 auto 40px; }
-  .hero-stat { font-family: var(--mono); font-size: 12px; color: rgba(221,227,241,.4); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 56px; }
+  .hero-stat { font-family: var(--mono); font-size: 12px; color: #9DA2B3; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 56px; }
   .hero-stat-num { color: var(--cream); font-weight: 500; }
   .hero-cta { font-size: 14px; padding: 16px 48px; border-radius: 4px; letter-spacing: .02em; }
   .cta-row { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
@@ -99,7 +99,7 @@
   .partners::before, .partners::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
   .partners::before { left: 0; background: linear-gradient(to right, #070F36, transparent); }
   .partners::after { right: 0; background: linear-gradient(to left, #070F36, transparent); }
-  .partners-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(221,227,241,.6); margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .partners-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #9DA2B3; margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); display: inline-block; animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
   .partners-logos { display: flex; align-items: center; width: max-content; animation: partnerScroll 30s linear infinite; }
@@ -124,8 +124,8 @@
   .sec-h2.light { color: var(--cream); }
   .sec-h2.dark { color: var(--navy); }
   .sec-body { font-size: 15px; line-height: 1.75; max-width: 560px; margin-bottom: 48px; font-weight: 400; }
-  .sec-body.light { color: rgba(221,227,241,.80); }
-  .sec-body.dark { color: rgba(7,15,54,.72); }
+  .sec-body.light { color: #DDE3F1; }
+  .sec-body.dark { color: #6E7180; }
   .section-grid-line { position: absolute; top: 0; left: 48px; right: 48px; height: 1px; background: rgba(221,227,241,.06); }
 
   /* ── THREE PILLARS ── */
@@ -134,7 +134,7 @@
   .pillars-left { }
   .pillars-left .sec-eyebrow { margin-bottom: 12px; }
   .pillars-left .sec-h2 { margin-bottom: 20px; }
-  .pillars-left-body { font-size: 16px; line-height: 1.75; color: rgba(221,227,241,.72); max-width: 420px; }
+  .pillars-left-body { font-size: 16px; line-height: 1.75; color: #DDE3F1; max-width: 420px; }
   .pillars-steps { position: relative; display: flex; flex-direction: column; gap: 0; }
   .pillar-step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; position: relative; }
   .pillar-track { display: flex; flex-direction: column; align-items: center; }
@@ -151,7 +151,7 @@
   .pillar-step.s2 .pillar-num { color: var(--peri); }
   .pillar-step.s3 .pillar-num { color: var(--peri); opacity: .7; }
   .pillar-h { font-size: 20px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 8px; line-height: 1.2; }
-  .pillar-body { font-size: 14px; line-height: 1.7; color: rgba(221,227,241,.72); }
+  .pillar-body { font-size: 14px; line-height: 1.7; color: #BCBFCC; }
 
   /* ── PROBLEM SECTION ── */
   .problem-section { background: #FCF8F0; border-top: 1px solid rgba(7,15,54,.06); }
@@ -159,8 +159,8 @@
   .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 8px; padding: 36px 32px; background: transparent; transition: border-color .3s, box-shadow .3s; }
   .problem-card:hover { border-color: rgba(7,15,54,.22); box-shadow: 0 6px 28px rgba(7,15,54,.06); transform: translateY(-2px); }
   .problem-card { transition: border-color .3s, box-shadow .3s, transform .3s; }
-  .problem-q { font-size: 17px; font-weight: 600; color: rgba(7,15,54,.88); margin-bottom: 12px; line-height: 1.3; letter-spacing: -.01em; }
-  .problem-a { font-size: 14px; color: rgba(7,15,54,.72); line-height: 1.7; }
+  .problem-q { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 12px; line-height: 1.3; letter-spacing: -.01em; }
+  .problem-a { font-size: 14px; color: #6E7180; line-height: 1.7; }
 
   /* ── DATA ── */
   .data-section { background: var(--peri); position: relative; padding: 64px 48px; }
@@ -176,7 +176,7 @@
     letter-spacing: -.04em; line-height: 1; margin-bottom: 10px;
   }
   .data-stat-label {
-    font-size: 12px; color: rgba(7,15,54,.65);
+    font-size: 12px; color: #9DA2B3;
     line-height: 1.5;
     letter-spacing: .04em; text-transform: uppercase;
   }
@@ -184,14 +184,14 @@
   /* ── INDUSTRIES ── */
   .industries-section { background: var(--cream); }
   .ind-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 56px; }
-  .ind-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(7,15,54,.6); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(7,15,54,.1); }
+  .ind-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9DA2B3; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #D3D6E0; }
   .ind-group-list { display: flex; flex-direction: column; gap: 0; }
   .ind-group-list > div { padding: 14px 0; border-bottom: 1px solid rgba(7,15,54,.04); transition: padding-left .25s; }
   .ind-group-list > div:last-child { border-bottom: none; }
   .ind-group-list > div:hover { padding-left: 8px; }
   .ind-group-list > div:hover .ind-item-name { color: var(--coral); }
   .ind-item-name { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 4px; letter-spacing: -.01em; transition: color .25s; }
-  .ind-item-desc { font-size: 12px; color: rgba(7,15,54,.7); line-height: 1.6; }
+  .ind-item-desc { font-size: 12px; color: #6E7180; line-height: 1.6; }
 
 
 
@@ -201,7 +201,7 @@
   .tagline-text { font-size: clamp(42px, 5.5vw, 72px); font-weight: 600; letter-spacing: -.03em; color: var(--cream); line-height: 1.05; }
   .tagline-text .fade { color: var(--peri); opacity: .4; display: block; margin-top: 12px; font-size: clamp(56px, 8.5vw, 130px); font-weight: 700; letter-spacing: -.025em; line-height: 0.98; }
   .brand-story { max-width: 640px; margin: 0 auto 48px; text-align: center; }
-  .brand-story p { font-size: 16px; line-height: 1.85; color: rgba(221,227,241,.72); }
+  .brand-story p { font-size: 16px; line-height: 1.85; color: #BCBFCC; }
   .brand-story .spine { font-weight: 600; color: var(--cream); }
   .brand-story .closer { display: block; margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--coral); letter-spacing: -.01em; line-height: 1.5; }
   @media (max-width: 900px) {
@@ -241,9 +241,9 @@
   footer > *:not(svg) { position: relative; z-index: 1; }
   .footer-logo img { height: 13px; width: auto; opacity: 1; }
   .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 11px; color: rgba(7,15,54,.6); text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: rgba(7,15,54,.75); }
-  .footer-right { font-size: 11px; color: rgba(7,15,54,.50); }
+  .footer-links a { font-size: 11px; color: #9DA2B3; text-decoration: none; transition: color .2s; }
+  .footer-links a:hover { color: #6E7180; }
+  .footer-right { font-size: 11px; color: #9DA2B3; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -292,12 +292,12 @@
   .form-panel-overlay.open { opacity: 1; pointer-events: auto; }
   .form-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 460px; max-width: 90vw; background: #070F36; z-index: 9999; transform: translateX(100%); transition: transform .45s cubic-bezier(.4,0,.2,1); padding: 48px 36px; overflow-y: auto; display: flex; flex-direction: column; }
   .form-panel.open { transform: translateX(0); }
-  .form-panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: rgba(221,227,241,.5); font-size: 24px; cursor: pointer; transition: color .2s; line-height: 1; padding: 4px; }
+  .form-panel-close { position: absolute; top: 20px; right: 20px; background: none; border: none; color: #9DA2B3; font-size: 24px; cursor: pointer; transition: color .2s; line-height: 1; padding: 4px; }
   .form-panel-close:hover { color: var(--cream); }
   .form-panel h3 { font-size: clamp(24px, 3vw, 32px); font-weight: 700; color: var(--cream); letter-spacing: -.02em; line-height: 1.1; margin-bottom: 8px; }
-  .form-panel .panel-sub { font-size: 14px; color: rgba(221,227,241,.5); line-height: 1.65; margin-bottom: 32px; }
+  .form-panel .panel-sub { font-size: 14px; color: #9DA2B3; line-height: 1.65; margin-bottom: 32px; }
   .form-panel .form { flex: 1; }
-  .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: rgba(221,227,241,.4); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
+  .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: #6E7180; letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
 
   /* ── SCROLL INDICATOR ── */
   .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; opacity: 0; }
@@ -603,10 +603,10 @@
     </div>
   </div>
   <div style="margin-top:48px;padding-top:40px;border-top:1px solid rgba(7,15,54,.08);text-align:center;">
-    <p style="font-family:var(--mono);font-size:10px;color:rgba(7,15,54,.6);letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;">Activate everywhere</p>
-    <p style="font-size:15px;color:rgba(7,15,54,.5);letter-spacing:-.01em;">Google · Amazon · Meta · TikTok · Yahoo · The Trade Desk · LiveRamp · Snowflake</p>
-    <p style="font-size:17px;font-weight:600;color:rgba(7,15,54,.75);margin-top:28px;letter-spacing:-.01em;">Built on an identity dataset trusted by the largest brands in performance marketing.</p>
-    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(7,15,54,.55);margin-top:8px;">Third-party verified · Independently certified · Deterministic</p>
+    <p style="font-family:var(--mono);font-size:10px;color:#9DA2B3;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px;">Activate everywhere</p>
+    <p style="font-size:15px;color:#9DA2B3;letter-spacing:-.01em;">Google · Amazon · Meta · TikTok · Yahoo · The Trade Desk · LiveRamp · Snowflake</p>
+    <p style="font-size:17px;font-weight:600;color:#6E7180;margin-top:28px;letter-spacing:-.01em;">Built on an identity dataset trusted by the largest brands in performance marketing.</p>
+    <p style="font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9DA2B3;margin-top:8px;">Third-party verified · Independently certified · Deterministic</p>
   </div>
 </section>
 
@@ -658,17 +658,17 @@
   <div style="max-width:800px; margin:0 auto; text-align:center;">
     <p class="sec-eyebrow coral" style="justify-content:center;">Beyond the data</p>
     <h2 class="sec-h2 light" style="margin-left:auto; margin-right:auto;">Data in. Revenue out.</h2>
-    <p style="font-size:16px; color:rgba(221,227,241,.72); max-width:560px; margin:0 auto 48px; line-height:1.75;">Every signal is matched and enriched against the TOF Identity Spine before delivery. What you receive isn't raw data — it's verified, identity-resolved, and ready to activate.</p>
+    <p style="font-size:16px; color:#BCBFCC; max-width:560px; margin:0 auto 48px; line-height:1.75;">Every signal is matched and enriched against the TOF Identity Spine before delivery. What you receive isn't raw data — it's verified, identity-resolved, and ready to activate.</p>
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">Email</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">SMS</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">AI Outreach</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">Call Center</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">Direct Mail</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">Programmatic</span>
-      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:rgba(221,227,241,.65); padding:8px 16px; border:1px solid rgba(221,227,241,.15); border-radius:4px;">CTV / OTT</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">Email</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">SMS</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">AI Outreach</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">Call Center</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">Direct Mail</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">Programmatic</span>
+      <span style="font-family:var(--mono); font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#9DA2B3; padding:8px 16px; border:1px solid #6E7180; border-radius:4px;">CTV / OTT</span>
     </div>
-    <p style="font-family:var(--mono); font-size:10px; color:rgba(221,227,241,.65); letter-spacing:.08em; margin-top:32px;">Appended against the TOF Identity Spine · Industry-leading match rates · Managed from the <a href='https://my.tof.io' style='color:var(--coral); text-decoration:none;'>TOF Command Center</a></p>
+    <p style="font-family:var(--mono); font-size:10px; color:#9DA2B3; letter-spacing:.08em; margin-top:32px;">Appended against the TOF Identity Spine · Industry-leading match rates · Managed from the <a href='https://my.tof.io' style='color:var(--coral); text-decoration:none;'>TOF Command Center</a></p>
   </div>
 </section>
 
@@ -752,7 +752,7 @@
   <div class="brand-story">
     <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
     <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.</p>
-    <p style="margin-top:20px; font-family:var(--mono); font-size:11px; color:rgba(221,227,241,.65); letter-spacing:.06em;">Request data, track deliveries, manage billing — all from the <a href="https://my.tof.io" style="color:var(--coral); text-decoration:none;">TOF Command Center</a>.</p>
+    <p style="margin-top:20px; font-family:var(--mono); font-size:11px; color:#9DA2B3; letter-spacing:.06em;">Request data, track deliveries, manage billing — all from the <a href="https://my.tof.io" style="color:var(--coral); text-decoration:none;">TOF Command Center</a>.</p>
   </div>
   <div style="text-align:center; padding-top:72px; padding-bottom:20px;">
     <a href="#" class="btn-primary" style="font-size:15px; padding:18px 56px;" data-open-form>Talk to us</a>
@@ -857,7 +857,7 @@
     <label for="panel-company" class="sr-only">Company</label><input type="text" id="panel-company" name="company" placeholder="Company" autocomplete="organization">
     <label for="panel-challenge" class="sr-only">What are you trying to solve?</label><input type="text" id="panel-challenge" name="challenge" placeholder="What are you trying to solve?">
     <button type="submit" class="form-submit" style="width:100%;text-align:center;">Talk to us</button>
-    <p style="font-family:var(--mono);font-size:10px;color:rgba(221,227,241,.3);letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
+    <p style="font-family:var(--mono);font-size:10px;color:#6E7180;letter-spacing:.06em;margin-top:10px;text-align:center;">We'll respond within 24 hours.</p>
   </form>
   <p class="panel-trust">Trusted by Retreaver · Kaliper · Brello · Boss Leads · TDTM</p>
 </div>
