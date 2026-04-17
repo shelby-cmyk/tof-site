@@ -609,12 +609,6 @@
     100%{ transform: translate(-2%, 2%); }
   }
 
-  /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
-  #preloader-logo { width: clamp(160px, 22vw, 280px); opacity: 0; animation: preloaderFade 0.5s ease 0.1s forwards; }
-  #preloader-logo img { width: 100%; display: block; }
-  @keyframes preloaderFade { to { opacity: 1; } }
-  @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
 
 
@@ -710,13 +704,6 @@
 </head>
 <body>
 <a href="#main-content" class="sr-only" style="position:absolute;top:-100px;left:0;background:var(--coral);color:var(--navy);padding:8px 16px;z-index:99999;font-size:14px;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
-
-<!-- PRELOADER -->
-<div id="preloader">
-  <div id="preloader-logo">
-    <img src="tof-logo-01.svg" alt="TOF">
-  </div>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -1090,14 +1077,6 @@
 </div>
 
 <script>
-  // ── PRELOADER ──
-  const preloader = document.getElementById('preloader');
-  const preloaderLogo = document.getElementById('preloader-logo');
-  gsap.timeline()
-    .to(preloaderLogo, { opacity: 1, duration: 0.5, ease: 'power3.out' })
-    .to(preloaderLogo, { duration: 0.3 })
-    .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
-
   // ── MOBILE NAV ──
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobile-nav');

@@ -130,12 +130,6 @@
   .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
   .reveal.in { opacity: 1; transform: translateY(0); }
 
-  /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
-  #preloader-logo { width: clamp(160px, 22vw, 280px); animation: preloaderFade 0.5s ease 0.1s forwards; opacity: 0; }
-  #preloader-logo img { width: 100%; display: block; }
-  @keyframes preloaderFade { to { opacity: 1; } }
-  @keyframes preloaderOut { to { opacity: 0; pointer-events: none; } }
 
 
   /* ── RESPONSIVE ── */
@@ -170,12 +164,6 @@
 </script>
 </head>
 <body>
-<!-- PRELOADER -->
-<div id="preloader">
-  <div id="preloader-logo">
-    <img src="tof-logo-01.svg" alt="TOF">
-  </div>
-</div>
 
 <a href="#main-content" class="sr-only" style="position:absolute;top:-100px;left:0;background:var(--coral);color:var(--navy);padding:8px 16px;z-index:99999;font-size:14px;text-decoration:none;" onfocus="this.style.top='0'" onblur="this.style.top='-100px'">Skip to content</a>
 
