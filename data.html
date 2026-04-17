@@ -149,6 +149,7 @@
   }
   .tof-spine { color: var(--cream); font-weight: 600; font-style: normal; }
   #layer1 .tof-spine { color: var(--navy); }
+  #layer3 .tof-spine { color: var(--navy); }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -185,12 +186,16 @@
   .data-section > * { position: relative; z-index: 1; }
   #layer1::after { color: rgba(7,15,54,.06); }
   #layer2::after { color: rgba(221,227,241,.04); }
-  #layer3::after { color: rgba(255,124,124,.04); }
+  #layer3::after { color: rgba(255,124,124,.06); }
   .layer-mid { background: #0A1340; text-align: center; }
   .layer-mid .section-eyebrow { justify-content: center; }
   .layer-mid .section-h2 { margin-left: auto; margin-right: auto; }
   .layer-mid .section-body { margin-left: auto; margin-right: auto; }
-  .layer-deep { background: #120A0E; }
+  .layer-deep { background: #FCF8F0; }
+  #layer3 .section-eyebrow { color: var(--coral); }
+  #layer3 .section-eyebrow::before { background: var(--coral); }
+  #layer3 .section-h2 { color: var(--navy); }
+  #layer3 .section-body { color: #6E7180; }
   .section-eyebrow {
     font-family: var(--mono);
     font-size: 12px;
@@ -382,33 +387,33 @@
   .l3-big-label {
     font-family: var(--mono);
     font-size: 12px;
-    color: #9DA2B3;
+    color: #6E7180;
     letter-spacing: .1em;
     text-transform: uppercase;
   }
   .verticals-wrap { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 700px; margin: 0 auto; }
   .vpill {
     font-size: 13px;
-    color: #9DA2B3;
+    color: #6E7180;
     padding: 11px 20px;
     border-radius: 4px;
-    border: 1px solid rgba(221,227,241,.1);
-    background: rgba(221,227,241,.03);
+    border: 1px solid rgba(7,15,54,.1);
+    background: rgba(7,15,54,.03);
     transition: all .25s;
     line-height: 1;
     cursor: default;
   }
-  .vpill:hover { border-color: rgba(221,227,241,.25); color: var(--cream); background: rgba(221,227,241,.06); }
+  .vpill:hover { border-color: rgba(7,15,54,.2); color: var(--navy); background: rgba(7,15,54,.04); }
   .vpill.more {
     border-style: dashed;
-    color: #6E7180;
-    border-color: rgba(221,227,241,.08);
+    color: #9DA2B3;
+    border-color: rgba(7,15,54,.08);
     background: transparent;
   }
   .l3-close {
     margin-top: 80px;
     padding-top: 56px;
-    border-top: 1px solid rgba(221,227,241,.06);
+    border-top: 1px solid rgba(7,15,54,.08);
     text-align: center;
   }
   .l3-exclusive-tag {
@@ -431,14 +436,14 @@
   .l3-close-headline {
     font-size: clamp(24px, 3vw, 36px);
     font-weight: 700;
-    color: var(--cream);
+    color: var(--navy);
     letter-spacing: -.02em;
     line-height: 1.15;
     margin-bottom: 16px;
   }
   .l3-close-sub {
     font-size: 16px;
-    color: #DDE3F1;
+    color: #6E7180;
     line-height: 1.7;
     max-width: 520px;
     margin: 0 auto 32px;
