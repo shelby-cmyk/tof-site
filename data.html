@@ -43,12 +43,12 @@
   .data-hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; z-index: 0; }
   @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
   .data-hero-inner {
-    min-height: 88vh;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 80px 48px 60px;
+    justify-content: flex-start;
+    padding: 120px 48px 80px;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -98,38 +98,39 @@
     margin-bottom: 48px;
   }
   .funnel-stage {
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 56px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 1200px;
+    max-width: 800px;
+    gap: 0;
   }
   .funnel-visual {
     position: relative;
     width: 100%;
   }
   .funnel-detail {
-    text-align: left;
-    max-width: 440px;
+    text-align: center;
+    max-width: 560px;
     will-change: opacity, transform;
+    margin-top: 32px;
   }
   .funnel-detail-num {
     font-family: var(--f);
-    font-size: 56px;
+    font-size: 48px;
     font-weight: 1000;
     letter-spacing: -.04em;
     line-height: 1;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     transition: color .4s;
   }
   .funnel-detail-name {
     font-family: var(--f);
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: #FCF8F0;
     letter-spacing: -.02em;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
     line-height: 1.2;
   }
   .funnel-detail-stat {
@@ -137,7 +138,7 @@
     font-size: 11px;
     color: #9DA2B3;
     letter-spacing: .06em;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     text-transform: uppercase;
   }
   .funnel-detail-desc {
@@ -456,8 +457,8 @@
     .data-hero h1 { font-size: clamp(26px, 7vw, 38px); margin-bottom: 28px; line-height: 1.04; letter-spacing: -.025em; word-spacing: .04em; }
     .proof-badge { font-size: 14px; }
     .proof-sub { font-size: 10px; }
-    .funnel-stage { grid-template-columns: 1fr; gap: 32px; }
-    .funnel-detail { text-align: center; max-width: 100%; }
+    .funnel-stage { max-width: 100%; }
+    .funnel-detail { max-width: 100%; }
     .funnel-detail-num { font-size: 32px; }
     .funnel-detail-name { font-size: 20px; }
     .funnel-detail-stat { font-size: 10px; }
@@ -722,7 +723,7 @@
     <p class="eyebrow">The TOF Identity Spine · Data architecture</p>
     <h1>Three signal layers. <br>Full funnel coverage.</h1>
     <div style="width:48px;height:2px;background:var(--coral);margin:0 auto 0;"></div>
-    <div class="funnel-stage" style="margin-top:48px;">
+    <div class="funnel-stage" style="margin-top:32px;">
       <div class="funnel-visual">
         <svg class="funnel-svg" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
           <defs>
