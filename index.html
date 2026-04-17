@@ -197,16 +197,14 @@
   .activation-meta { font-family: var(--mono); font-size: 10px; color: #9DA2B3; letter-spacing: .08em; line-height: 1.7; }
   .activation-meta a { color: var(--coral); text-decoration: none; }
 
-  /* ── INDUSTRIES (two-col, header RIGHT) ── */
+  /* ── INDUSTRIES (two-col, header RIGHT, pills LEFT) ── */
   .industries-section { background: var(--cream); }
   .industries-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
   .industries-right { position: sticky; top: 120px; order: 2; }
-  .ind-groups { order: 1; }
   .industries-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
-  .ind-groups { display: flex; flex-direction: column; gap: 40px; }
-  .ind-group-label { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: #9DA2B3; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #D3D6E0; }
-  .ind-group-list { display: flex; flex-direction: column; gap: 0; }
-  .ind-group-list > div { padding: 14px 0; border-bottom: 1px solid rgba(7,15,54,.04); transition: padding-left .25s; }
+  .ind-pills { order: 1; display: flex; flex-wrap: wrap; gap: 10px; align-content: start; }
+  .ind-pill { font-size: 14px; font-weight: 500; color: var(--navy); padding: 12px 20px; border: 1px solid rgba(7,15,54,.1); border-radius: 6px; transition: border-color .25s, transform .25s, box-shadow .25s; }
+  .ind-pill:hover { border-color: rgba(7,15,54,.25); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(7,15,54,.06); }
   .ind-group-list > div:last-child { border-bottom: none; }
   .ind-group-list > div:hover { padding-left: 8px; }
   .ind-group-list > div:hover .ind-item-name { color: var(--coral); }
@@ -452,7 +450,7 @@
     .industries-section { padding: 60px 20px; }
     .industries-layout { grid-template-columns: 1fr; gap: 36px; }
     .industries-right { position: static; order: 0; }
-    .ind-groups { order: 0; }
+    .ind-pills { order: 0; }
 
     /* Tagline */
     .tagline-section { min-height: auto; }
@@ -710,65 +708,18 @@
       <h2 class="sec-h2 dark">Your vertical. Our infrastructure.</h2>
       <p>Every industry that runs on consumer data. Every vertical that needs identity at scale.</p>
     </div>
-    <div class="ind-groups">
-    <div class="reveal">
-      <p class="ind-group-label">Financial &amp; Insurance</p>
-      <div class="ind-group-list">
-        <div>
-          <p class="ind-item-name">Insurance</p>
-          <p class="ind-item-desc">Medicare, ACA, life, auto, final expense — verified in-market consumers at the moment of decision.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Financial Services</p>
-          <p class="ind-item-desc">Debt, lending, credit repair, tax — 97% household financial coverage with deterministic intent signals.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Investments</p>
-          <p class="ind-item-desc">High-net-worth targeting, financial durability scores, accredited investor signals.</p>
-        </div>
-      </div>
-    </div>
-    <div class="reveal">
-      <p class="ind-group-label">Health &amp; Home</p>
-      <div class="ind-group-list">
-        <div>
-          <p class="ind-item-name">Health &amp; Wellness</p>
-          <p class="ind-item-desc">GLP-1, telehealth, wellness, PERS — 1,000+ health conditions mapped to deterministic identity.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Home Services</p>
-          <p class="ind-item-desc">Solar, HVAC, roofing, pest control, windows — live high-intent signals from consumers actively searching.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Real Estate</p>
-          <p class="ind-item-desc">Home buyers, sellers, movers — 170M properties with assessor-grade data linked to consumer identity.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Automotive</p>
-          <p class="ind-item-desc">154M VIN-level records — in-market auto shoppers by make, model, and purchase timeline.</p>
-        </div>
-      </div>
-    </div>
-    <div class="reveal">
-      <p class="ind-group-label">Consumer &amp; Commerce</p>
-      <div class="ind-group-list">
-        <div>
-          <p class="ind-item-name">Retail &amp; eComm</p>
-          <p class="ind-item-desc">Purchase intent, brand affinity, spending power — segments built from real behavior, not modeled assumptions.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Education</p>
-          <p class="ind-item-desc">Online, trade, higher ed — prospective students at the moment of active research.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Travel &amp; Hospitality</p>
-          <p class="ind-item-desc">Travel intent, booking behavior, dining, lodging — local and national activation tied to verified identity.</p>
-        </div>
-        <div>
-          <p class="ind-item-name">Telecommunications</p>
-          <p class="ind-item-desc">Device ownership, carrier data, upgrade intent — precision targeting at the subscriber level.</p>
-        </div>
-      </div>
+    <div class="ind-pills reveal">
+      <span class="ind-pill">Insurance</span>
+      <span class="ind-pill">Financial Services</span>
+      <span class="ind-pill">Investments</span>
+      <span class="ind-pill">Health &amp; Wellness</span>
+      <span class="ind-pill">Home Services</span>
+      <span class="ind-pill">Real Estate</span>
+      <span class="ind-pill">Automotive</span>
+      <span class="ind-pill">Retail &amp; eComm</span>
+      <span class="ind-pill">Education</span>
+      <span class="ind-pill">Travel &amp; Hospitality</span>
+      <span class="ind-pill">Telecommunications</span>
     </div>
   </div>
 </section>
@@ -959,8 +910,8 @@
   if (probSection) probObs.observe(probSection);
 
   // ── INDUSTRIES CARDS REVEAL ──
-  const indCards = document.querySelectorAll('.ind-groups > .reveal');
-  gsap.set(indCards, { opacity: 0, y: 20 });
+  const indCards = document.querySelectorAll('.ind-pills .ind-pill');
+  gsap.set(indCards, { opacity: 0, y: 12 });
   const indObs = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
