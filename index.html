@@ -727,9 +727,9 @@
   <div class="tagline-top">
     <p class="tagline-text">We kept the acronym.<br><span class="fade">Outgrew the name.</span></p>
   </div>
-  <div class="tof-3d-wrap" style="position:relative;">
-    <canvas id="hero-3d" width="400" height="400"></canvas>
-    <img src="tof-icon-02.svg" alt="" id="hero-3d-fallback" width="200" height="200" style="opacity:.15;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:brightness(0) invert(1);">
+  <div class="tof-3d-wrap">
+    <canvas id="hero-3d" width="400" height="400" style="display:none;"></canvas>
+    <img src="tof-icon-02.svg" alt="TOF" id="hero-3d-fallback" width="200" height="200" style="opacity:.15;filter:brightness(0) invert(1);">
   </div>
   <div class="brand-story">
     <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
@@ -1068,18 +1068,11 @@
     }
   });
 </script>
-<script>
-  // Hide canvas after a delay if Three.js module fails to load
-  setTimeout(function() {
-    var c = document.getElementById('hero-3d');
-    if (c && !c.dataset.loaded) c.style.display = 'none';
-  }, 3000);
-</script>
 <script type="module">
 import * as THREE from 'three';
 import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
 
-document.getElementById('hero-3d').dataset.loaded = 'true';
+document.getElementById('hero-3d').style.display = 'block';
 document.getElementById('hero-3d-fallback').style.display = 'none';
 const canvas = document.getElementById('hero-3d');
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
