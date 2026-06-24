@@ -1,0 +1,30 @@
+# Cloudflare Workers Static Assets — exclude from public deployment
+# Same syntax as .gitignore
+
+.git/
+.gitignore
+.gitattributes
+.claude/
+.wrangler/
+.DS_Store
+node_modules/
+
+# Working directories — never publish
+mockups/
+docs/
+exports/
+proposals/
+creatives/
+
+# Build / dev files
+package.json
+package-lock.json
+build-exports.js
+wrangler.jsonc
+wrangler.toml
+README.md
+*.md
+
+# OS / editor
+.vscode/
+.idea/
