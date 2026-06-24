@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <!-- Custom TDTM mark: stacked-stepped platform architecture -->
+
+  <!-- Bottom: data foundation layer (widest, anchored bottom-left) -->
+  <rect x="4" y="56" width="56" height="14" fill="#FFFFFF"/>
+
+  <!-- Middle: platform layer (offset right) -->
+  <rect x="14" y="36" width="56" height="14" fill="#FFFFFF"/>
+
+  <!-- Top: intelligence layer (offset further right, chartreuse) -->
+  <rect x="24" y="16" width="56" height="14" fill="#C8FF00"/>
+
+  <!-- Vertical accent line: connecting/anchoring stack -->
+  <rect x="34" y="4" width="2" height="72" fill="#FFFFFF" opacity=".4"/>
+</svg>

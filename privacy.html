@@ -7,14 +7,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   --navy: #070F36;
-  --cream: #FCF8F0;
-  --peri: #B8C8E8;
+  --cream: #FFFFFF;
+  --peri: #DDE3F1;
   --coral: #FF7C7C;
-  --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --paper: #FAFAFA;
+  --graphite: #6E7180;
+  --f: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --mono: 'IBM Plex Mono', monospace;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -100,15 +102,36 @@ body::after {
   .toc { position: static; width: 100%; }
   footer { padding: 20px 24px; }
 }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .ann-bar { position: relative; z-index: 101; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 24px; background: #020611; border-bottom: 1px solid rgba(255,255,255,.06); text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #FFFFFF; transition: background .2s; }
+  .ann-bar:hover { background: #04081a; }
+  .ann-bar:hover .ann-arrow { transform: translateX(4px); }
+  .ann-badge { background: #DDE3F1; color: #070F36; padding: 3px 8px; font-weight: 600; letter-spacing: .22em; font-size: 9px; border-radius: 1px; }
+  .ann-text { color: #DDE3F1; font-weight: 500; }
+  .ann-arrow { color: #FF7C7C; font-weight: 600; font-size: 13px; transition: transform .2s; }
+  .ann-text-mobile { display: none; }
+  @media (max-width: 700px) {
+    .ann-bar { padding: 10px 14px; gap: 10px; font-size: 10px; letter-spacing: .1em; }
+    .ann-text { display: none; }
+    .ann-text-mobile { display: inline; color: #DDE3F1; font-weight: 500; }
+  }
   </style>
 </head>
 <body>
 
+  <a href="/tdtm" class="ann-bar">
+    <span class="ann-badge">NEW</span>
+    <span class="ann-text">[TDTM] · TALK DATA TO ME · COMING SOON</span>
+    <span class="ann-text-mobile">[TDTM] · COMING SOON</span>
+    <span class="ann-arrow">→</span>
+  </a>
+
   <nav>
-    <a href="index.html" class="nav-logo" aria-label="TOF">
+    <a href="/" class="nav-logo" aria-label="TOF">
       <img src="tof-logo-01.svg" height="28" alt="TOF">
     </a>
-    <a href="index.html" class="nav-back">← Back to home</a>
+    <a href="/" class="nav-back">← Back to home</a>
   </nav>
 
   <div class="legal-hero">
@@ -251,12 +274,12 @@ body::after {
   </section>
 
   <footer>
-    <a href="index.html" class="footer-logo" aria-label="TOF">
+    <a href="/" class="footer-logo" aria-label="TOF">
       <img src="tof-logo-01.svg" height="13" alt="TOF">
     </a>
     <div class="footer-links">
-      <a href="privacy.html">Privacy policy</a>
-      <a href="terms.html">Terms of service</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/terms">Terms of service</a>
       <a href="mailto:go@tof.io">go@tof.io</a>
     </div>
     <span class="footer-right">© 2026 TOF — All rights reserved.</span>

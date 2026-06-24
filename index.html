@@ -19,20 +19,36 @@
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,1000;1,9..40,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #070F36;
     --peri: #DDE3F1;
-    --cream: #FCF8F0;
+    --cream: #FFFFFF;
     --coral: #FF7C7C;
-    --f: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --paper: #FAFAFA;
+    --graphite: #6E7180;
+    --f: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --mono: 'IBM Plex Mono', monospace;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: auto; }
   body { font-family: var(--f); background: #070F36; color: var(--cream); -webkit-font-smoothing: antialiased; }
+
+  /* ── ANNOUNCEMENT BAR ── */
+  .ann-bar { position: relative; z-index: 101; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 11px 24px; background: #020611; border-bottom: 1px solid rgba(255,255,255,.06); text-decoration: none; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--cream); transition: background .2s; }
+  .ann-bar:hover { background: #04081a; }
+  .ann-bar:hover .ann-arrow { transform: translateX(4px); }
+  .ann-badge { background: var(--peri); color: var(--navy); padding: 3px 8px; font-weight: 600; letter-spacing: .22em; font-size: 9px; border-radius: 1px; }
+  .ann-text { color: var(--peri); font-weight: 500; }
+  .ann-arrow { color: var(--coral); font-weight: 600; font-size: 13px; transition: transform .2s; }
+  .ann-text-mobile { display: none; }
+  @media (max-width: 700px) {
+    .ann-bar { padding: 10px 14px; gap: 10px; font-size: 10px; letter-spacing: .1em; }
+    .ann-text { display: none; }
+    .ann-text-mobile { display: inline; color: var(--peri); font-weight: 500; }
+  }
 
   /* ── NAV ── */
   nav {
@@ -47,39 +63,40 @@
   nav::after { content: ''; position: absolute; left: 0; right: 0; bottom: 100%; height: 64px; background: linear-gradient(to top, rgba(7,15,54,0), #070F36); pointer-events: none; z-index: 99; }
   .nav-logo img { height: 48px; width: auto; display: block; }
   .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a { font-size: 15px; color: #DDE3F1; text-decoration: none; letter-spacing: .02em; transition: color .2s, border-color .2s; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; }
-  .nav-links a:hover { color: var(--peri); border-bottom-color: rgba(221,227,241,.3); }
-  .nav-links a.active, .nav-links a[style] { border-bottom-color: var(--peri) !important; }
-  .nav-cta { font-size: 14px; font-weight: 600; padding: 12px 28px; border-radius: 4px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .01em; margin-left: 16px; }
-  .nav-cta:hover { opacity: .85; }
+  .nav-links a { font-size: 13px; color: var(--cream); text-decoration: none; letter-spacing: .12em; transition: color .2s, border-color .2s; font-weight: 500; padding-bottom: 4px; border-bottom: 2px solid transparent; text-transform: uppercase; }
+  .nav-links a:hover { color: var(--coral); border-bottom-color: var(--coral); }
+  .nav-links a.active, .nav-links a[style] { border-bottom-color: var(--coral) !important; }
+  .nav-cta { font-size: 13px; font-weight: 600; padding: 12px 28px; border-radius: 2px; background: var(--coral); color: var(--navy); text-decoration: none; transition: background .15s; letter-spacing: .04em; margin-left: 16px; text-transform: uppercase; }
+  .nav-cta:hover { background: var(--navy); color: var(--coral); }
 
   /* ── HERO ── */
-  .hero { position: relative; overflow: hidden; min-height: 92vh; background: #040A24; display: flex; align-items: center; justify-content: center; padding: 60px 48px; }
-  .hero::before { content: ''; position: absolute; inset: -50%; width: 200%; height: 200%; background: radial-gradient(ellipse at 30% 40%, rgba(33,95,176,.12) 0%, transparent 50%), radial-gradient(ellipse at 70% 60%, rgba(221,227,241,.08) 0%, transparent 45%), radial-gradient(ellipse at 50% 80%, rgba(255,124,124,.04) 0%, transparent 40%); animation: heroBreath 8s ease-in-out infinite alternate; }
-  @keyframes heroBreath { 0% { transform: translate(0%, 0%) scale(1); opacity: .7; } 100% { transform: translate(-3%, -2%) scale(1.05); opacity: 1; } }
+  .hero { position: relative; overflow: hidden; min-height: 60vh; background: var(--cream); display: flex; align-items: center; justify-content: center; padding: 96px 48px 80px; }
+  .hero::before { content: ''; position: absolute; left: 48px; right: 48px; top: 64px; height: 1px; background: var(--navy); opacity: .1; }
+  .hero::after { content: ''; position: absolute; left: 48px; right: 48px; bottom: 64px; height: 1px; background: var(--navy); opacity: .1; }
   .hero-content { position: relative; z-index: 1; text-align: center; max-width: 960px; }
   .tof-3d-wrap { display: flex; justify-content: center; padding: 32px 0 56px; position: relative; z-index: 1; }
   #hero-3d { width: 280px !important; height: 280px !important; display: block; }
-  .eyebrow { font-size: 12px; color: #DDE3F1; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--coral); }
-  .hero h1 { font-family: var(--f); font-size: clamp(56px, 8.5vw, 110px); font-weight: 1000; line-height: 0.92; letter-spacing: -.02em; color: #FCF8F0; margin-bottom: 48px; text-transform: uppercase; }
-  .hero h1 em { color: #DDE3F1; font-style: normal; }
-  .hero-rule { width: 48px; height: 2px; background: var(--coral); margin: 0 auto 40px; }
-  .hero-stat { font-family: var(--mono); font-size: 12px; color: #9DA2B3; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 56px; }
-  .hero-stat-num { color: var(--cream); font-weight: 500; }
-  .hero-cta { font-size: 14px; padding: 16px 48px; border-radius: 4px; letter-spacing: .02em; }
+  .eyebrow { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .26em; text-transform: uppercase; margin-bottom: 40px; display: flex; align-items: center; justify-content: center; gap: 14px; font-weight: 500; }
+  .eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--graphite); }
+  .hero h1 { font-family: var(--f); font-size: clamp(48px, 6.5vw, 84px); font-weight: 700; line-height: 0.95; letter-spacing: -.035em; color: var(--navy); margin-bottom: 36px; text-transform: uppercase; }
+  .hero h1 em { color: var(--graphite); font-style: normal; }
+  .hero-sub { font-family: var(--f); font-size: clamp(18px, 2.2vw, 26px); font-weight: 400; color: var(--graphite); letter-spacing: -.01em; margin-bottom: 36px; line-height: 1.3; }
+  .hero-rule { display: none; }
+  .hero-stat { font-family: var(--mono); font-size: 11px; color: var(--graphite); letter-spacing: .12em; text-transform: uppercase; margin-bottom: 40px; font-weight: 500; }
+  .hero-stat-num { color: var(--navy); font-weight: 600; }
+  .hero-cta { font-size: 14px; padding: 18px 52px; border-radius: 2px; letter-spacing: .04em; text-transform: uppercase; }
   .cta-row { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; }
 
   /* ── MARQUEE ── */
-  .marquee-wrap { overflow: hidden; background: #070F36; border-top: 1px solid rgba(221,227,241,.07); border-bottom: 1px solid rgba(221,227,241,.07); padding: 14px 0; position: relative; }
+  .marquee-wrap { display: none; }
   .marquee-wrap::before, .marquee-wrap::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
   .marquee-wrap::before { left: 0; background: linear-gradient(to right, #070F36, transparent); }
   .marquee-wrap::after { right: 0; background: linear-gradient(to left, #070F36, transparent); }
   .marquee-track { display: flex; width: max-content; animation: marquee 38s linear infinite; }
   .marquee-track:hover { animation-play-state: paused; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  .marquee-item { font-family: var(--mono); font-size: 11px; color: rgba(252,248,240,.72); letter-spacing: .1em; text-transform: uppercase; padding: 0 32px; white-space: nowrap; }
-  .marquee-item.hi { color: var(--coral); }
+  .marquee-item { font-family: var(--mono); font-size: 11px; color: var(--cream); letter-spacing: .18em; text-transform: uppercase; padding: 0 32px; white-space: nowrap; font-weight: 500; }
+  .marquee-item.hi { color: var(--coral); font-weight: 600; }
   .marquee-sep { color: rgba(252,248,240,.2); padding: 0 8px; }
 
 
@@ -91,33 +108,34 @@
   .pillar-step { transition: opacity .3s; }
   .pillar-step:hover .pillar-content { opacity: 1; }
   .pillar-step:hover .pillar-dot { transform: scale(1.1); transition: transform .25s; }
-  .btn-primary { font-size: 13px; font-weight: 600; padding: 13px 30px; border-radius: 3px; background: var(--coral); color: var(--navy); text-decoration: none; transition: opacity .2s; letter-spacing: .02em; }
-  .btn-primary:hover { opacity: .88; }
+  .btn-primary { font-size: 13px; font-weight: 600; padding: 14px 32px; border-radius: 2px; background: var(--coral); color: var(--navy); text-decoration: none; transition: background .15s, color .15s; letter-spacing: .04em; text-transform: uppercase; }
+  .btn-primary:hover { background: var(--navy); color: var(--coral); }
 
   /* ── PARTNERS ── */
   .partners { padding: 80px 48px; position: relative; overflow: hidden; }
   .partners::before, .partners::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
   .partners::before { left: 0; background: linear-gradient(to right, #070F36, transparent); }
   .partners::after { right: 0; background: linear-gradient(to left, #070F36, transparent); }
-  .partners-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #9DA2B3; margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .partners-label { font-family: var(--mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--cream); margin-bottom: 48px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; font-weight: 500; }
   .pulse-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--coral); display: inline-block; animation: pulse 2s ease-in-out infinite; }
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
   .partners-logos { display: flex; align-items: center; width: max-content; animation: partnerScroll 30s linear infinite; }
   .partners-logos:hover { animation-play-state: paused; }
   .partners-logos img { margin: 0 48px; flex-shrink: 0; }
+  .partners-logos img:hover { opacity: 1 !important; }
   @keyframes partnerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   .partner-logo-wrap { display: flex; align-items: center; }
 
   /* ── SECTIONS ── */
   section { padding: 88px 48px; position: relative; }
-  .sec-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
-  .sec-eyebrow::before { content: ''; display: inline-block; width: 16px; height: 1px; }
-  .sec-eyebrow.coral { color: var(--coral); }
-  .sec-eyebrow.coral::before { background: var(--coral); }
+  .sec-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-weight: 500; color: var(--graphite); }
+  .sec-eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--graphite); }
+  .sec-eyebrow.coral { color: var(--graphite); }
+  .sec-eyebrow.coral::before { background: var(--graphite); }
   .sec-eyebrow.peri { color: var(--peri); }
   .sec-eyebrow.peri::before { background: var(--peri); }
 
-  .sec-h2 { font-size: clamp(36px, 5vw, 56px); font-weight: 700; letter-spacing: -.03em; line-height: 1.06; margin-bottom: 20px; }
+  .sec-h2 { font-size: clamp(40px, 5.5vw, 64px); font-weight: 700; letter-spacing: -.035em; line-height: 1.02; margin-bottom: 24px; text-transform: uppercase; }
   .sec-h2.light { color: var(--cream); }
   .sec-h2.dark { color: var(--navy); }
   .sec-body { font-size: 15px; line-height: 1.75; max-width: 560px; margin-bottom: 48px; font-weight: 400; }
@@ -126,95 +144,95 @@
   .section-grid-line { position: absolute; top: 0; left: 48px; right: 48px; height: 1px; background: rgba(221,227,241,.06); }
 
   /* ── THREE PILLARS ── */
-  .pillars-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.07); position: relative; overflow: hidden; }
-  .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: center; }
+  .pillars-section { background: var(--navy); border-top: 1px solid rgba(255,255,255,.06); position: relative; overflow: hidden; }
+  .pillars-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 104px; max-width: 1180px; margin: 0 auto; align-items: center; }
   .pillars-left { }
   .pillars-left .sec-eyebrow { margin-bottom: 12px; }
   .pillars-left .sec-h2 { margin-bottom: 20px; }
-  .pillars-left-body { font-size: 16px; line-height: 1.75; color: #DDE3F1; max-width: 420px; }
+  .pillars-left-body { font-size: 16px; line-height: 1.75; color: var(--cream); max-width: 420px; font-weight: 400; }
   .pillars-steps { position: relative; display: flex; flex-direction: column; gap: 0; }
   .pillar-step { display: grid; grid-template-columns: 56px 1fr; gap: 20px; position: relative; }
   .pillar-track { display: flex; flex-direction: column; align-items: center; }
-  .pillar-dot { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .08em; flex-shrink: 0; z-index: 1; }
-  .pillar-step.s1 .pillar-dot { background: rgba(255,124,124,.15); color: var(--coral); }
-  .pillar-step.s2 .pillar-dot { background: rgba(255,124,124,.1); color: var(--coral); }
-  .pillar-step.s3 .pillar-dot { background: rgba(255,124,124,.08); color: var(--coral); }
-  .pillar-line { width: 1px; flex: 1; background: rgba(221,227,241,.1); }
+  .pillar-dot { width: 48px; height: 48px; border-radius: 2px; display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: .08em; flex-shrink: 0; z-index: 1; border: 1px solid rgba(255,255,255,.2); background: transparent; color: var(--cream); }
+  .pillar-line { width: 1px; flex: 1; background: rgba(255,255,255,.15); }
   .pillar-step:last-child .pillar-line { display: none; }
   .pillar-content { padding: 8px 0 40px; }
   .pillar-step:last-child .pillar-content { padding-bottom: 0; }
-  .pillar-num { font-family: var(--mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 8px; }
-  .pillar-step.s1 .pillar-num { color: var(--coral); }
-  .pillar-step.s2 .pillar-num { color: var(--coral); }
-  .pillar-step.s3 .pillar-num { color: var(--coral); }
-  .pillar-h { font-size: 20px; font-weight: 600; color: var(--cream); letter-spacing: -.02em; margin-bottom: 8px; line-height: 1.2; }
+  .pillar-num { font-family: var(--mono); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; color: var(--peri); }
+  .pillar-h { font-size: 22px; font-weight: 700; color: var(--cream); letter-spacing: -.025em; margin-bottom: 10px; line-height: 1.15; }
   .pillar-body { font-size: 14px; line-height: 1.7; color: #BCBFCC; }
 
   /* ── PROBLEM SECTION (two-col, header RIGHT) ── */
-  .problem-section { background: #FCF8F0; border-top: 1px solid rgba(7,15,54,.06); }
-  .problem-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .problem-section { background: #FFFFFF; border-top: 1px solid rgba(7,15,54,.06); }
+  .problem-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 104px; max-width: 1180px; margin: 0 auto; align-items: start; }
   .problem-right { position: sticky; top: 120px; order: 2; }
   .problem-grid { order: 1; }
   .problem-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .problem-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
-  .problem-card { border: 1px solid rgba(7,15,54,.08); border-radius: 6px; padding: 28px 24px; background: rgba(252,248,240,.5); transition: border-color .3s, box-shadow .3s, transform .3s; }
-  .problem-card:hover { border-color: rgba(7,15,54,.18); box-shadow: 0 6px 28px rgba(7,15,54,.06); transform: translateY(-2px); }
-  .problem-tag { font-family: var(--mono); font-size: 9px; color: var(--coral); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 10px; display: inline-block; }
-  .problem-q { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; line-height: 1.3; letter-spacing: -.01em; }
+  .problem-card { border: 1px solid rgba(7,15,54,.16); border-radius: 0; padding: 32px 28px; background: var(--paper); transition: border-color .3s, transform .3s; }
+  .problem-card:hover { border-color: var(--navy); transform: translateY(-3px); }
+  .problem-tag { font-family: var(--mono); font-size: 10px; color: var(--graphite); letter-spacing: .16em; text-transform: uppercase; margin-bottom: 12px; display: inline-block; font-weight: 500; }
+  .problem-q { font-size: 19px; font-weight: 700; color: var(--navy); margin-bottom: 10px; line-height: 1.25; letter-spacing: -.015em; }
   .problem-a { font-size: 14px; color: #6E7180; line-height: 1.7; }
 
   /* ── DATA ── */
-  .data-section { background: var(--peri); position: relative; padding: 64px 48px; }
+  .data-section { background: var(--paper); position: relative; padding: 88px 48px; border-top: 1px solid rgba(7,15,54,.12); border-bottom: 1px solid rgba(7,15,54,.12); }
   .data-header { margin-bottom: 24px; }
-  .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(7,15,54,.08); }
+  .data-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--navy); }
   .data-stat {
-    background: var(--peri);
-    padding: 40px 32px;
+    background: var(--cream);
+    padding: 56px 32px;
   }
   .data-stat-num {
-    font-family: var(--f); font-size: clamp(36px, 4vw, 52px);
+    font-family: var(--f); font-size: clamp(72px, 9vw, 140px);
     font-weight: 700; color: var(--navy);
-    letter-spacing: -.04em; line-height: 1; margin-bottom: 10px;
+    letter-spacing: -.055em; line-height: 0.92; margin-bottom: 16px;
   }
   .data-stat-label {
-    font-size: 12px; color: #9DA2B3;
+    font-family: var(--mono); font-size: 11px; color: var(--navy);
     line-height: 1.5;
-    letter-spacing: .04em; text-transform: uppercase;
+    letter-spacing: .16em; text-transform: uppercase; font-weight: 500;
+    opacity: .7;
   }
 
   /* ── INDUSTRIES ── */
   /* ── ACTIVATION (two-col, header LEFT) ── */
-  .activation-section { background: #070F36; border-top: 1px solid rgba(221,227,241,.06); }
-  .activation-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .activation-section { background: var(--navy); border-top: 1px solid rgba(255,255,255,.06); }
+  .activation-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 104px; max-width: 1180px; margin: 0 auto; align-items: start; }
   .activation-left { position: sticky; top: 120px; }
   .activation-left .sec-h2 { margin-bottom: 16px; }
   .activation-left p { font-size: 16px; color: #BCBFCC; margin-top: 0; line-height: 1.75; max-width: 380px; }
   .activation-right { }
   .activation-channels { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
-  .activation-pill { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #9DA2B3; padding: 8px 16px; border: 1px solid #6E7180; border-radius: 4px; }
-  .activation-meta { font-family: var(--mono); font-size: 10px; color: #9DA2B3; letter-spacing: .08em; line-height: 1.7; }
-  .activation-meta a { color: var(--coral); text-decoration: none; }
+  .activation-pill { font-family: var(--mono); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--cream); padding: 10px 16px; border: 1px solid rgba(255,255,255,.2); border-radius: 0; font-weight: 500; transition: border-color .25s; }
+  .activation-pill:hover { border-color: var(--peri); }
+  .activation-meta { font-family: var(--mono); font-size: 11px; color: var(--peri); letter-spacing: .14em; line-height: 1.7; text-transform: uppercase; font-weight: 500; }
+  .activation-meta a { color: var(--cream); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); }
 
   /* ── INDUSTRIES (two-col, header RIGHT, pills LEFT) ── */
   .industries-section { background: var(--cream); }
-  .industries-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .industries-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: 104px; max-width: 1180px; margin: 0 auto; align-items: start; }
   .industries-right { position: sticky; top: 120px; order: 2; }
   .industries-right p { font-size: 16px; color: #6E7180; margin-top: 16px; line-height: 1.7; max-width: 360px; }
   .ind-pills { order: 1; display: flex; flex-wrap: wrap; gap: 10px; align-content: start; }
-  .ind-pill { font-size: 14px; font-weight: 500; color: var(--navy); padding: 12px 20px; border: 1px solid rgba(7,15,54,.1); border-radius: 6px; transition: border-color .25s, transform .25s, box-shadow .25s; }
-  .ind-pill:hover { border-color: rgba(7,15,54,.25); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(7,15,54,.06); }
+  .ind-pill { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--navy); padding: 14px 20px; border: 1px solid rgba(7,15,54,.18); border-radius: 0; transition: border-color .25s, background .25s; letter-spacing: .04em; text-transform: uppercase; }
+  .ind-pill:hover { border-color: var(--navy); background: var(--paper); }
 
 
 
   /* ── TAGLINE ── */
-  .tagline-section { background: #040A24; padding: 100px 48px 88px; position: relative; overflow: hidden; }
+  .tagline-section { background: #040A24; padding: 100px 48px 88px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); }
   .tagline-top { text-align: center; margin-bottom: 64px; }
-  .tagline-text { font-size: clamp(42px, 5.5vw, 72px); font-weight: 600; letter-spacing: -.03em; color: var(--cream); line-height: 1.05; }
-  .tagline-text .fade { color: var(--peri); opacity: .4; display: block; margin-top: 12px; font-size: clamp(56px, 8.5vw, 130px); font-weight: 700; letter-spacing: -.025em; line-height: 0.98; }
-  .brand-story { max-width: 640px; margin: 0 auto 48px; text-align: center; }
-  .brand-story p { font-size: 16px; line-height: 1.85; color: #BCBFCC; }
-  .brand-story .spine { font-weight: 600; color: var(--cream); }
-  .brand-story .closer { display: block; margin-top: 24px; font-size: 18px; font-weight: 600; color: var(--coral); letter-spacing: -.01em; line-height: 1.5; }
+  .tagline-text { font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; letter-spacing: -.035em; color: var(--cream); line-height: 1.05; text-transform: uppercase; margin-bottom: 24px; }
+  .close-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .close-left { max-width: 480px; }
+  .close-body { font-size: 16px; line-height: 1.7; color: var(--peri); }
+  .close-right .sec-eyebrow { margin-bottom: 24px; }
+  .spec-list { list-style: none; padding: 0; margin: 0; border-top: 1px solid rgba(255,255,255,.1); }
+  .spec-list li { display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; }
+  .spec-list .spec-key { color: var(--graphite); font-weight: 500; }
+  .spec-list .spec-val { color: var(--cream); font-weight: 500; }
+  @media (max-width: 900px) { .close-grid { grid-template-columns: 1fr; gap: 48px; padding: 0 4px; } .spec-list li { grid-template-columns: 1fr; gap: 4px; padding: 12px 0; } .spec-list .spec-val { font-size: 12px; } }
   @media (max-width: 900px) {
     .tagline-section { padding: 72px 20px 64px; }
     .tagline-top { margin-bottom: 40px; }
@@ -224,7 +242,7 @@
   }
 
   /* ── CONTACT ── */
-  .contact-left h2 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; color: #FCF8F0; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 20px; }
+  .contact-left h2 { font-size: clamp(32px, 4.5vw, 56px); font-weight: 700; color: #FFFFFF; letter-spacing: -.03em; line-height: 1.05; margin-bottom: 20px; }
   .contact-left p { font-size: 14px; color: rgba(252,248,240,.65); line-height: 1.72; margin-bottom: 32px; }
   .contact-detail { display: flex; flex-direction: column; gap: 10px; }
   .contact-detail-item { font-size: 13px; color: rgba(252,248,240,.50); }
@@ -248,13 +266,13 @@
   .wm-footer { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; opacity: .025; }
 
   /* ── FOOTER ── */
-  footer { padding: 22px 48px; background: #FCF8F0; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(7,15,54,.08); flex-wrap: wrap; gap: 16px; position: relative; overflow: hidden; z-index: 101; }
+  footer { padding: 22px 48px; background: #FFFFFF; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(7,15,54,.08); flex-wrap: wrap; gap: 16px; position: relative; overflow: hidden; z-index: 101; }
   footer > *:not(svg) { position: relative; z-index: 1; }
   .footer-logo img { height: 13px; width: auto; opacity: 1; }
   .footer-links { display: flex; gap: 24px; }
-  .footer-links a { font-size: 11px; color: #9DA2B3; text-decoration: none; transition: color .2s; }
-  .footer-links a:hover { color: #6E7180; }
-  .footer-right { font-size: 11px; color: #9DA2B3; }
+  .footer-links a { font-family: var(--mono); font-size: 11px; color: var(--navy); text-decoration: none; transition: color .2s; letter-spacing: .04em; font-weight: 500; }
+  .footer-links a:hover { color: var(--coral); }
+  .footer-right { font-family: var(--mono); font-size: 11px; color: #6E7180; letter-spacing: .04em; }
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
@@ -311,7 +329,8 @@
   .form-panel .panel-trust { font-family: var(--mono); font-size: 9px; color: #6E7180; letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; text-align: center; }
 
   /* ── SCROLL INDICATOR ── */
-  .scroll-cue { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; opacity: 0; }
+  .scroll-cue { display: none; }
+  .scroll-cue-hidden { position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 2; opacity: 0; }
   .scroll-cue span { font-family: var(--mono); font-size: 9px; letter-spacing: .18em; text-transform: uppercase; color: rgba(221,227,241,.35); }
   .scroll-cue-line { width: 1px; height: 32px; position: relative; overflow: hidden; }
   .scroll-cue-line::after { content: ''; position: absolute; top: -100%; left: 0; width: 1px; height: 100%; background: var(--coral); animation: scrollLine 1.8s ease-in-out infinite; }
@@ -329,7 +348,8 @@
   .btn-primary, .form-submit, .nav-cta { will-change: transform; }
 
   /* ── PRELOADER ── */
-  #preloader { position: fixed; inset: 0; background: #FCF8F0; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
+  #preloader { display: none; }
+  #preloader-hidden { position: fixed; inset: 0; background: #FFFFFF; z-index: 99995; display: flex; align-items: center; justify-content: center; animation: preloaderOut 0.6s ease 1.2s forwards; }
   #preloader-logo { width: clamp(160px, 22vw, 280px); animation: preloaderFade 0.5s ease 0.1s forwards; opacity: 0; }
   #preloader-logo img { width: 100%; display: block; }
   @keyframes preloaderFade { to { opacity: 1; } }
@@ -433,7 +453,8 @@
     .data-section { padding: 60px 20px; }
     .data-grid { grid-template-columns: repeat(2, 1fr); }
     .data-stat { padding: 28px 20px; }
-    .data-stat-num { font-size: 32px; }
+    .data-stat-num { font-size: clamp(36px, 9vw, 56px); letter-spacing: -.04em; margin-bottom: 10px; }
+    .data-stat-label { font-size: 9px; letter-spacing: .12em; }
 
     /* Activation */
     .activation-layout { grid-template-columns: 1fr; gap: 36px; }
@@ -480,16 +501,24 @@
   </div>
 </div>
 
+<!-- ANNOUNCEMENT BAR -->
+<a href="/tdtm" class="ann-bar">
+  <span class="ann-badge">NEW</span>
+  <span class="ann-text">[TDTM] · TALK DATA TO ME · COMING SOON</span>
+  <span class="ann-text-mobile">[TDTM] · COMING SOON</span>
+  <span class="ann-arrow">→</span>
+</a>
+
 <!-- NAV -->
 <nav>
-  <a href="index.html" class="nav-logo" aria-label="TOF">
+  <a href="/" class="nav-logo" aria-label="TOF">
     <img src="tof-logo-02.svg" height="48" alt="TOF">
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="use-cases.html">Use Cases</a></li>
-    <li><a href="data.html">Data</a></li>
-    <li><a href="the-spine.html">The Spine</a></li>
+    <li><a href="/">Home</a></li>
+    <li><a href="/use-cases">Use Cases</a></li>
+    <li><a href="/data">Data</a></li>
+    <li><a href="/the-spine">The Spine</a></li>
     <li><a href="#" data-open-form>Contact</a></li>
   </ul>
   <a href="#" class="nav-cta" data-open-form>Talk to us</a>
@@ -498,10 +527,10 @@
 
 <!-- MOBILE NAV -->
 <div class="mobile-nav-overlay" id="mobile-nav">
-  <a href="index.html">Home</a>
-  <a href="use-cases.html">Use Cases</a>
-  <a href="data.html">Data</a>
-  <a href="the-spine.html">The Spine</a>
+  <a href="/">Home</a>
+  <a href="/use-cases">Use Cases</a>
+  <a href="/data">Data</a>
+  <a href="/the-spine">The Spine</a>
   <a href="#" data-open-form>Contact</a>
   <a href="#" class="mobile-cta" data-open-form>Talk to us</a>
 </div>
@@ -509,10 +538,11 @@
 <!-- HERO -->
 <section class="hero" id="main-content">
   <div class="hero-content">
-    <p class="eyebrow" id="hero-eyebrow">Powering precision · Driving revenue</p>
-    <h1 class="fade-up" id="hero-headline">The identity layer <br>performance runs on.</h1>
+    <p class="eyebrow" id="hero-eyebrow">TOF / IDENTITY INFRASTRUCTURE</p>
+    <h1 class="fade-up" id="hero-headline">The identity layer <br>your stack runs on.</h1>
+    <p class="hero-sub" id="hero-sub">Built for performance marketing.</p>
     <div class="hero-rule"></div>
-    <p class="hero-stat" id="hero-stat">Deterministic identity. Every channel. Full funnel.</p>
+    <p class="hero-stat" id="hero-stat">98% <span class="hero-stat-num">U.S. adult coverage</span> · 1.6T <span class="hero-stat-num">monthly events</span> · 16 identity layers</p>
     <div class="cta-row">
       <a href="#" class="btn-primary hero-cta" data-open-form>Talk to us</a>
     </div>
@@ -556,9 +586,9 @@
   <div class="section-grid-line"></div>
   <div class="pillars-layout">
     <div class="pillars-left">
-      <p class="sec-eyebrow coral">What we power</p>
-      <h2 class="sec-h2 light">One infrastructure.<br>Three revenue outcomes.</h2>
-      <p class="pillars-left-body">The TOF Identity Spine resolves who's in market, activates them across every channel, and closes with the highest-intent signal available — all from one deterministic data layer.</p>
+      <p class="sec-eyebrow">01 / ARCHITECTURE</p>
+      <h2 class="sec-h2 light">Identify. Reach. Convert.</h2>
+      <p class="pillars-left-body">Three-stage identity pipeline. One deterministic data layer. Production-ready integration to your existing stack.</p>
     </div>
     <div class="pillars-steps">
       <div class="pillar-step s1 reveal">
@@ -592,8 +622,8 @@
 <!-- DATA -->
 <section class="data-section" id="data">
   <div class="data-header">
-    <p class="sec-eyebrow peri">The data layer</p>
-    <h2 class="sec-h2 dark">Curated from 70+ sources.<br>Built for precision.</h2>
+    <p class="sec-eyebrow">02 / DATA LAYER</p>
+    <h2 class="sec-h2 dark">Specifications.</h2>
   </div>
   <div class="data-grid">
     <div class="data-stat">
@@ -614,7 +644,7 @@
     </div>
     <div class="data-stat">
       <p class="data-stat-num" data-count="70" data-suffix="+">70+</p>
-      <p class="data-stat-label">High-Intent Verticals</p>
+      <p class="data-stat-label">Phone Responder Verticals</p>
     </div>
     <div class="data-stat">
       <p class="data-stat-num" data-count="1.6" data-suffix="T">1.6T</p>
@@ -625,21 +655,21 @@
 
 <!-- PARTNERS -->
 <div class="partners">
-  <p class="partners-label"><span class="pulse-dot"></span>Trusted by data-driven teams<span class="pulse-dot"></span></p>
+  <p class="partners-label">DEPLOYED IN PRODUCTION</p>
   <div class="partners-logos">
-    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.5;">
-    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="HQ logo.png" alt="HQ" height="38" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.72;transition:opacity .3s;">
+    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="HQ logo.png" alt="HQ" height="38" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
     <!-- Duplicate for seamless loop -->
-    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.5;">
-    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.5;filter:brightness(0) invert(1);">
-    <img src="HQ logo.png" alt="HQ" height="38" style="opacity:.5;filter:brightness(0) invert(1);">
+    <img src="retreaver-logo.svg" alt="Retreaver" height="16" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="kaliper-logo-white.svg" alt="Kaliper" height="36" style="opacity:.72;transition:opacity .3s;">
+    <img src="brello-logo.png" alt="Brello" height="32" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="bossleads-logo-h.svg" alt="Boss Leads" height="42" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="tdtm-logo.png" alt="TDTM" height="44" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
+    <img src="HQ logo.png" alt="HQ" height="38" style="opacity:.72;filter:brightness(0) invert(1);transition:opacity .3s;">
   </div>
 </div>
 
@@ -647,8 +677,8 @@
 <section class="problem-section">
   <div class="problem-layout">
     <div class="problem-right reveal">
-      <p class="sec-eyebrow coral">Why teams choose TOF</p>
-      <h2 class="sec-h2 dark">Built for the problems that cost you revenue.</h2>
+      <p class="sec-eyebrow">03 / WHY TOF</p>
+      <h2 class="sec-h2 dark">What's broken about your current data.</h2>
       <p>Every dollar you spend on bad data is a dollar your competitor spends on verified identity. That's the gap TOF closes.</p>
     </div>
     <div class="problem-grid">
@@ -679,8 +709,8 @@
 <!-- ACTIVATION -->
 <section class="activation-section" style="text-align:center;">
   <div style="max-width:800px; margin:0 auto;">
-    <p class="sec-eyebrow coral reveal" style="justify-content:center;">Beyond the data</p>
-    <h2 class="sec-h2 light reveal" style="margin-left:auto; margin-right:auto;">Data in. <br>Revenue out.</h2>
+    <p class="sec-eyebrow reveal" style="justify-content:center;">04 / ACTIVATION</p>
+    <h2 class="sec-h2 light reveal" style="margin-left:auto; margin-right:auto;">Every channel. One spine.</h2>
     <p class="reveal" style="font-size:16px; color:#BCBFCC; max-width:560px; margin:0 auto 40px; line-height:1.75;">Every signal is matched and enriched against the TOF Identity Spine before delivery. What you receive isn't raw data — it's verified, identity-resolved, and ready to activate.</p>
     <div class="activation-channels" style="justify-content:center; margin-bottom:20px;">
       <span class="activation-pill">Email</span>
@@ -701,8 +731,8 @@
 <section class="industries-section" id="industries">
   <div class="industries-layout">
     <div class="industries-right reveal">
-      <p class="sec-eyebrow coral">Industries</p>
-      <h2 class="sec-h2 dark">Your vertical. Our infrastructure.</h2>
+      <p class="sec-eyebrow">05 / VERTICALS</p>
+      <h2 class="sec-h2 dark">Deployed across.</h2>
       <p>Every industry that runs on consumer data. Every vertical that needs identity at scale.</p>
     </div>
     <div class="ind-pills reveal">
@@ -722,23 +752,30 @@
 </section>
 
 <!-- CLOSE -->
-<section class="tagline-section" id="contact" style="position:relative;">
-  <img src="tof-icon-02.svg" alt="" aria-hidden="true" style="position:absolute; top:50%; right:-15%; transform:translateY(-50%); width:clamp(500px, 55vw, 800px); opacity:.04; pointer-events:none; z-index:0;">
-  <div class="tagline-top">
-    <p class="tagline-text">We kept the acronym.<br><span class="fade">Outgrew the name.</span></p>
-  </div>
-  <div class="tof-3d-wrap">
-    <canvas id="hero-3d" width="400" height="400" style="display:none;"></canvas>
-    <img src="tof-icon-02.svg" alt="TOF" id="hero-3d-fallback" width="200" height="200" style="opacity:.15;filter:brightness(0) invert(1);">
-  </div>
-  <div class="brand-story">
-    <p>TOF started as Top of Funnel — built to solve one problem: finding the right audience before the spend. Then the data got bigger. And so did we.</p>
-    <p style="margin-top:20px;"><span class="spine">TOF Identity Spine</span> — the deterministic data infrastructure underneath your acquisition, monetization, and retention.</p>
-    <p style="margin-top:20px; font-family:var(--mono); font-size:11px; color:#9DA2B3; letter-spacing:.06em;">Request data, track deliveries, manage billing — all from the <a href="https://my.tof.io" style="color:var(--coral); text-decoration:none;">TOF Command Center</a>.</p>
-  </div>
-  <div style="text-align:center; padding-top:72px; padding-bottom:20px;">
-    <a href="#" class="btn-primary" style="font-size:15px; padding:18px 56px;" data-open-form>Talk to us</a>
-    <p class="contact-detail-item" style="margin-top:24px;">or email us directly: <a href="mailto:go@tof.io">go@tof.io</a></p>
+<section class="tagline-section" id="contact">
+  <div class="close-grid">
+    <div class="close-left">
+      <p class="sec-eyebrow" style="color:var(--peri);"><span style="background:var(--peri);"></span>GET STARTED</p>
+      <h2 class="tagline-text">Deploy the TOF Identity Spine.</h2>
+      <p class="close-body">Identity infrastructure for performance marketing — deterministic, real-time, refreshed daily. Production-ready integration in minutes.</p>
+      <div style="margin-top:40px;">
+        <a href="#" class="btn-primary" data-open-form>Talk to us</a>
+        <p style="margin-top:24px; font-family:var(--mono); font-size:11px; color:var(--peri); letter-spacing:.08em;">SALES: <a href="mailto:go@tof.io" style="color:var(--cream); text-decoration:none; border-bottom:1px solid rgba(255,255,255,.2);">go@tof.io</a></p>
+      </div>
+    </div>
+    <div class="close-right">
+      <p class="sec-eyebrow" style="color:var(--peri);"><span style="background:var(--peri);"></span>SPECIFICATIONS</p>
+      <ul class="spec-list">
+        <li><span class="spec-key">COVERAGE</span><span class="spec-val">98% U.S. ADULTS</span></li>
+        <li><span class="spec-key">SOURCES</span><span class="spec-val">70+ PRIMARY</span></li>
+        <li><span class="spec-key">EVENTS / MO</span><span class="spec-val">1.6 TRILLION</span></li>
+        <li><span class="spec-key">SIGNAL TOPICS</span><span class="spec-val">47,000+</span></li>
+        <li><span class="spec-key">REFRESH RATE</span><span class="spec-val">REAL-TIME / DAILY</span></li>
+        <li><span class="spec-key">DELIVERY</span><span class="spec-val">API · SNOWFLAKE · FLAT</span></li>
+        <li><span class="spec-key">COMPLIANCE</span><span class="spec-val">CCPA · GDPR</span></li>
+        <li><span class="spec-key">CLIENT PORTAL</span><span class="spec-val"><a href="https://my.tof.io" style="color:var(--coral); text-decoration:none;">MY.TOF.IO →</a></span></li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -749,12 +786,12 @@
     <path fill="#070F36" d="M885.8,187.62v27.51c0,12.54-10.13,22.67-22.64,22.67h-98.44c-8.59,0-16.07,4.78-19.91,11.83-1.73,3.21-2.73,6.89-2.73,10.81v76.9c0,12.44-10.2,22.64-22.67,22.64h-27.64c-12.51,0-22.67-10.13-22.67-22.64v-77.63c0-12.51,10.16-22.64,22.67-22.64h27.64c12.54,0,22.67-10.13,22.67-22.67v-26.49c0-12.63-10.33-22.83-22.96-22.67l-33.13.45c-9.33,0-16.9-7.57-16.9-16.9v-73.02c0-12.51,10.16-22.64,22.67-22.64h40.05c16.1,0,30.17-13.21,28.92-29.6-.99-12.92,9.65-23.54,22.61-23.54h86.58c3.94,0,7.66,1.48,10.39,4.3,2.82,2.69,4.26,6.41,4.26,10.39v34.05c0,12.51-10.13,22.67-22.64,22.67h-97.23c-5.48,0-10.49,1.92-14.4,5.16-5.03,4.17-8.24,10.45-8.24,17.48v48.26c0,3.91.99,7.6,2.73,10.81,3.85,7.05,11.32,11.83,19.91,11.83h98.44c12.51,0,22.64,10.17,22.64,22.67"/>
     <path fill="#070F36" d="M286.32,0h-70.77c-12.19,0-22.03,9.88-22.03,22.03v.29c0,12.63-10.33,14.76-22.96,14.76h-32.13c-12.63,0-22.96-2.13-22.96-14.76v-.29c0-12.15-9.84-22.03-22.03-22.03H22.67C10.13,0,0,10.13,0,22.64v27.58c0,12.51,10.13,22.64,22.67,22.64h61.47c5.26,0,10.23,1.19,14.65,3.33,11.38,5.48,19.21,17.09,19.21,30.53v228.89c0,12.51,10.13,22.64,22.64,22.64h27.71c12.51,0,22.64-10.13,22.64-22.64V106.72c0-13.44,7.82-25.04,19.21-30.53,4.43-2.15,9.4-3.33,14.65-3.33h61.47c12.54,0,22.67-10.13,22.67-22.64v-27.58c0-12.51-10.13-22.64-22.67-22.64"/>
   </svg>
-  <a href="index.html" class="footer-logo" aria-label="TOF">
+  <a href="/" class="footer-logo" aria-label="TOF">
     <img src="tof-logo-01.svg" height="13" alt="TOF">
   </a>
   <div class="footer-links">
-    <a href="privacy.html">Privacy policy</a>
-    <a href="terms.html">Terms of service</a>
+    <a href="/privacy">Privacy policy</a>
+    <a href="/terms">Terms of service</a>
     <a href="https://my.tof.io" target="_blank">Client portal</a>
     <a href="mailto:go@tof.io">go@tof.io</a>
     <a href="https://www.linkedin.com/company/tof-audiences" target="_blank" rel="noopener" aria-label="LinkedIn" style="display:inline-flex;align-items:center;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#9DA2B3" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
@@ -992,20 +1029,7 @@
     .to(preloaderLogo, { duration: 0.3 })
     .to(preloader, { opacity: 0, duration: 0.6, ease: 'power2.inOut', onComplete: () => preloader.remove() });
 
-  // ── MAGNETIC BUTTONS ──
-  if (window.matchMedia('(pointer: fine)').matches) {
-    document.querySelectorAll('.btn-primary, .form-submit, .nav-cta').forEach(btn => {
-      btn.addEventListener('mousemove', e => {
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - (r.left + r.width / 2);
-        const y = e.clientY - (r.top + r.height / 2);
-        gsap.to(btn, { x: x * 0.28, y: y * 0.22, duration: 0.4, ease: 'power3.out' });
-      });
-      btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
-      });
-    });
-  }
+  // Magnetic bounce removed — enterprise CTAs stay static
 
   // ── STAT COUNTERS ──
   const countEls = document.querySelectorAll('[data-count]');
