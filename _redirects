@@ -2,6 +2,7 @@
 /use-cases    /use-cases.html    200
 /data         /data.html         200
 /the-spine    /the-spine.html    200
+/pixel        /pixel.html        200
 /privacy      /privacy.html      200
 /terms        /terms.html        200
 
@@ -9,5 +10,6 @@
 /use-cases.html    /use-cases    301
 /data.html         /data         301
 /the-spine.html    /the-spine    301
+/pixel.html        /pixel        301
 /privacy.html      /privacy      301
 /terms.html        /terms        301
