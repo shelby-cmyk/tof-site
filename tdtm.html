@@ -3,30 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TDTM — Talk Data To Me. AI-native interface for performance marketing data. Coming soon.">
-<meta property="og:title" content="TDTM — Talk Data To Me · v0.1 · Preview">
-<meta property="og:description" content="AI-native interface for performance marketing data. Coming soon.">
+<meta name="description" content="TDTM — Talk Data To Me. Find your next customers. Just ask. Build audiences, deploy an identity pixel, and resolve identities in real time — all through chat.">
+<meta property="og:title" content="TDTM — Talk Data To Me · Find your next customers. Just ask.">
+<meta property="og:description" content="Tell the chatbot who you want to reach. It finds the data, shows the count and the price, then sets you up — a data feed, a website pixel, or the identity API.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://tof.io/tdtm">
+<meta property="og:image" content="https://tof.io/tdtm-linkedin-banner.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TDTM — Talk Data To Me · Find your next customers. Just ask.">
+<meta name="twitter:description" content="Tell the chatbot who you want to reach. It finds the data, shows the count and the price, then sets you up.">
+<meta name="twitter:image" content="https://tof.io/tdtm-linkedin-banner.png">
 <meta name="robots" content="noindex,nofollow">
 <link rel="canonical" href="https://tof.io/tdtm">
-<title>TDTM // Talk Data To Me · v0.1</title>
+<title>TDTM // Talk Data To Me · Find your next customers. Just ask.</title>
 <link rel="icon" type="image/svg+xml" href="tdtm-mark.svg">
+<link rel="apple-touch-icon" href="tdtm-brand/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #000000;
-    --bg-2: #0A0A0A;
-    --fg: #FFFFFF;
+    --bg: #0C0C0E;
+    --bg-2: #131316;
+    --fg: #F2F3F7;
     --dim: #555555;
+    --mid: #888888;
     --line: #1A1A1A;
     --accent: #C8FF00;
     --f: 'JetBrains Mono', ui-monospace, SF Mono, monospace;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); color: var(--fg); }
+  html, body { background: var(--bg); color: var(--fg); scroll-behavior: smooth; }
   body { font-family: var(--f); font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; display: flex; flex-direction: column; overflow-x: hidden; }
   body::before {
     content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 10;
@@ -36,10 +43,13 @@
   ::selection { background: var(--accent); color: var(--bg); }
 
   /* ── HEADER ── */
-  header { display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
+  header { position: sticky; top: 0; z-index: 20; background: var(--bg); display: flex; justify-content: space-between; align-items: center; padding: 14px 28px; border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; }
   header a { color: var(--dim); transition: color .15s; }
   header a:hover { color: var(--accent); }
-  header .meta { color: var(--dim); display: flex; gap: 24px; align-items: center; }
+  header .meta { color: var(--dim); display: flex; gap: 20px; align-items: center; }
+  header .nav { display: flex; gap: 20px; align-items: center; }
+  header .nav .cta { color: var(--bg); background: var(--accent); padding: 6px 12px; font-weight: 700; }
+  header .nav .cta:hover { filter: brightness(.85); color: var(--bg); }
   header .blip { display: inline-block; width: 8px; height: 8px; background: var(--accent); margin-right: 8px; vertical-align: middle; animation: blip 1.2s steps(2) infinite; }
   .header-left { display: flex; align-items: center; gap: 16px; }
   .header-mark { width: 28px; height: 28px; flex-shrink: 0; }
@@ -52,14 +62,16 @@
   main { flex: 1; display: grid; grid-template-columns: 280px 1fr; max-width: 1280px; width: 100%; margin: 0 auto; border-left: 1px solid var(--line); border-right: 1px solid var(--line); }
 
   /* ── SIDE RAIL ── */
-  .rail { border-right: 1px solid var(--line); padding: 32px 24px; display: flex; flex-direction: column; gap: 40px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
+  .rail { border-right: 1px solid var(--line); padding: 32px 24px; display: flex; flex-direction: column; gap: 40px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; position: sticky; top: 49px; align-self: start; }
   .rail-block { display: flex; flex-direction: column; gap: 8px; }
   .rail-label { color: var(--dim); font-weight: 500; }
   .rail-val { color: var(--fg); font-weight: 600; }
   .rail-val .dot { color: var(--accent); }
 
   /* ── CONTENT ── */
-  .content { padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 48px; }
+  .content { padding: 56px 40px 80px; display: flex; flex-direction: column; gap: 72px; min-width: 0; }
+  .section-label { font-size: 11px; color: var(--dim); letter-spacing: .2em; text-transform: uppercase; font-weight: 600; margin-bottom: 24px; }
+  .section-label .accent { color: var(--accent); }
 
   /* ── PROMPT ── */
   .prompt { font-size: 13px; color: var(--dim); display: flex; align-items: center; gap: 10px; letter-spacing: .04em; }
@@ -67,23 +79,20 @@
   .prompt .cmd { color: var(--fg); }
   .prompt .cursor { display: inline-block; width: 9px; height: 16px; background: var(--accent); margin-left: 6px; vertical-align: middle; animation: blip 1.05s steps(2) infinite; }
 
-  /* ── LOGO ── */
-  .logo-block { display: flex; flex-direction: column; gap: 20px; }
-  .logo-lockup { display: flex; align-items: center; gap: clamp(20px, 3vw, 40px); }
-  .logo-mark { width: clamp(72px, 11vw, 144px); height: clamp(72px, 11vw, 144px); flex-shrink: 0; }
-  .logo-wordmark { font-family: var(--f); font-size: clamp(64px, 12vw, 160px); font-weight: 800; letter-spacing: -.06em; line-height: .82; color: var(--fg); }
-  .logo-wordmark .br { color: var(--dim); font-weight: 500; }
+  /* ── HERO ── */
+  .hero { display: flex; flex-direction: column; gap: 28px; }
+  .logo-img { width: clamp(260px, 40vw, 440px); height: auto; }
   .logo-subname { font-size: 12px; color: var(--dim); letter-spacing: .42em; text-transform: uppercase; font-weight: 500; }
-  @media (max-width: 700px) {
-    .logo-lockup { flex-direction: column; align-items: flex-start; gap: 18px; }
-    .logo-mark { width: 64px; height: 64px; }
-  }
-
-  /* ── HEADLINE ── */
-  .headline { font-family: var(--f); font-size: clamp(24px, 3.5vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -.025em; color: var(--fg); max-width: 720px; text-transform: uppercase; }
+  .headline { font-family: var(--f); font-size: clamp(30px, 5vw, 60px); font-weight: 800; line-height: 1.02; letter-spacing: -.035em; color: var(--fg); max-width: 780px; text-transform: uppercase; }
   .headline .accent { color: var(--accent); }
-  .desc { font-size: 14px; color: #888; line-height: 1.7; max-width: 580px; letter-spacing: .02em; }
-  .desc strong { color: var(--fg); font-weight: 600; }
+  .lead { font-size: 15px; color: var(--mid); line-height: 1.75; max-width: 640px; letter-spacing: .01em; }
+  .lead strong { color: var(--fg); font-weight: 600; }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn { font-family: var(--f); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; padding: 14px 24px; cursor: pointer; transition: filter .15s, background .15s, color .15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); }
+  .btn-primary:hover { filter: brightness(.85); }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--line); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
   /* ── CHAT MOCKUP ── */
   .chat { border: 1px solid var(--line); padding: 0; max-width: 720px; }
@@ -96,6 +105,51 @@
   .chat-msg .body { color: var(--fg); line-height: 1.7; flex: 1; }
   .chat-msg.ai .body strong { color: var(--accent); }
   .chat-msg .typing { color: var(--accent); }
+
+  /* ── STEPS ── */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .step { background: var(--bg); padding: 28px 24px; display: flex; flex-direction: column; gap: 14px; }
+  .step-num { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .16em; }
+  .step-title { font-size: 15px; font-weight: 700; color: var(--fg); letter-spacing: -.01em; }
+  .step-desc { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+  /* ── PRODUCTS ── */
+  .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .product { background: var(--bg); padding: 28px 24px; display: flex; flex-direction: column; gap: 12px; }
+  .product-name { font-size: 15px; font-weight: 700; color: var(--fg); }
+  .product-price { font-size: 12px; font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+  .product-desc { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+  /* ── FEATURES ── */
+  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .feature { background: var(--bg); padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .feature-title { font-size: 14px; font-weight: 700; color: var(--fg); display: flex; align-items: baseline; gap: 8px; }
+  .feature-title::before { content: '//'; color: var(--accent); font-size: 12px; }
+  .feature-desc { font-size: 13px; color: var(--mid); line-height: 1.7; }
+
+  /* ── PRICING ── */
+  .pricing { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); max-width: 860px; }
+  .plan { background: var(--bg); padding: 32px 28px; display: flex; flex-direction: column; gap: 20px; }
+  .plan.featured { background: var(--bg-2); }
+  .plan-name { font-size: 12px; font-weight: 700; color: var(--dim); letter-spacing: .2em; text-transform: uppercase; }
+  .plan.featured .plan-name { color: var(--accent); }
+  .plan-price { font-size: 34px; font-weight: 800; color: var(--fg); letter-spacing: -.03em; }
+  .plan-price span { font-size: 13px; color: var(--dim); font-weight: 500; letter-spacing: 0; }
+  .plan-list { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .plan-list li { font-size: 13px; color: var(--mid); line-height: 1.5; display: flex; gap: 10px; }
+  .plan-list li::before { content: '›'; color: var(--accent); font-weight: 700; }
+  .plan .btn { justify-content: center; }
+
+  /* ── FAQ ── */
+  .faq { border: 1px solid var(--line); max-width: 860px; }
+  .faq-item { border-bottom: 1px solid var(--line); }
+  .faq-item:last-child { border-bottom: 0; }
+  .faq-item summary { padding: 18px 20px; font-size: 14px; font-weight: 600; color: var(--fg); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; transition: color .15s; }
+  .faq-item summary:hover { color: var(--accent); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-weight: 700; font-size: 18px; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '−'; }
+  .faq-answer { padding: 0 20px 20px; font-size: 13px; color: var(--mid); line-height: 1.75; max-width: 640px; }
 
   /* ── FORM ── */
   .form-block { border: 1px solid var(--line); padding: 0; max-width: 720px; }
@@ -115,20 +169,24 @@
   .form-block.done .submitted-msg { display: block; }
 
   /* ── FOOTER ── */
-  footer { border-top: 1px solid var(--line); padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--dim); letter-spacing: .18em; text-transform: uppercase; }
-  footer a { color: var(--fg); border-bottom: 1px solid var(--line); }
-  footer a:hover { color: var(--accent); border-color: var(--accent); }
+  footer { border-top: 1px solid var(--line); padding: 32px 28px; max-width: 1280px; width: 100%; margin: 0 auto; border-left: 1px solid var(--line); border-right: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 11px; }
+  .foot-col { display: flex; flex-direction: column; gap: 10px; }
+  .foot-col .foot-label { color: var(--dim); letter-spacing: .18em; text-transform: uppercase; font-weight: 600; margin-bottom: 4px; }
+  .foot-col a { color: var(--mid); }
+  .foot-col a:hover { color: var(--accent); }
+  .foot-legal { width: 100%; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 8px; display: flex; justify-content: space-between; font-size: 10px; color: var(--dim); letter-spacing: .18em; text-transform: uppercase; }
+  .foot-legal a { color: var(--fg); border-bottom: 1px solid var(--line); }
+  .foot-legal a:hover { color: var(--accent); border-color: var(--accent); }
 
   @media (max-width: 900px) {
     main { grid-template-columns: 1fr; }
-    .rail { border-right: 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; padding: 20px 24px; }
+    .rail { border-right: 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 1fr 1fr; gap: 18px 24px; padding: 20px 24px; position: static; }
     .rail-block { min-width: 0; }
-    .content { padding: 40px 24px 64px; gap: 36px; }
-    .logo-lockup { gap: 18px; }
-    .logo-mark { width: 56px !important; height: 56px !important; }
-    .logo-wordmark { font-size: clamp(56px, 18vw, 96px); }
+    .content { padding: 40px 24px 64px; gap: 56px; }
+    .steps, .products, .features, .pricing { grid-template-columns: 1fr; }
     header { padding: 14px 20px; font-size: 9px; gap: 10px; }
-    header .meta { gap: 16px; }
+    header .nav { display: none; }
+    header .meta { gap: 14px; }
     .header-name { font-size: 11px; }
     .header-mark { width: 22px; height: 22px; }
     .form-row { flex-direction: column; }
@@ -136,11 +194,12 @@
     .form-row button { padding: 18px; }
     .chat-msg { padding: 14px 14px; font-size: 12px; }
     .chat-msg .by { min-width: 44px; font-size: 9px; }
-    footer { padding: 16px 20px; flex-direction: column; gap: 8px; }
+    footer { padding: 28px 20px; gap: 24px; }
   }
   @media (max-width: 480px) {
     .rail { grid-template-columns: 1fr; }
-    .logo-wordmark { font-size: clamp(44px, 16vw, 72px); }
+    .btn { width: 100%; justify-content: center; }
+    .cta-row { flex-direction: column; align-items: stretch; }
   }
 </style>
 </head>
@@ -148,18 +207,25 @@
 
 <header>
   <div class="header-left">
-    <svg class="header-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="TDTM">
-      <rect x="4" y="56" width="56" height="14" fill="#FFFFFF"/>
-      <rect x="14" y="36" width="56" height="14" fill="#FFFFFF"/>
-      <rect x="24" y="16" width="56" height="14" fill="#C8FF00"/>
-      <rect x="34" y="4" width="2" height="72" fill="#FFFFFF" opacity=".4"/>
+    <svg class="header-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="TDTM">
+      <path d="M40 20 H24 V80 H40" stroke="#F2F3F7" stroke-width="9" stroke-linejoin="bevel" stroke-linecap="butt" fill="none"/>
+      <path d="M60 20 H76 V80 H60" stroke="#F2F3F7" stroke-width="9" stroke-linejoin="bevel" stroke-linecap="butt" fill="none"/>
+      <path d="M37 33 h26 l-3 8 h-23 z" fill="#C8FF00"/>
+      <path d="M37 46 h20 l-3 8 h-17 z" fill="#F2F3F7"/>
+      <path d="M37 59 h14 l-3 8 h-11 z" fill="#F2F3F7"/>
     </svg>
     <span class="header-name"><span class="br">[</span>TDTM<span class="br">]</span></span>
     <a href="/" class="header-back">← TOF</a>
   </div>
+  <nav class="nav">
+    <a href="#how">How it works</a>
+    <a href="#products">Products</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://talkdatatome.online" class="cta">Get started</a>
+  </nav>
   <div class="meta">
     <span><span class="blip"></span>v0.1 // PREVIEW</span>
-    <span>BUILD <span style="color:var(--accent);">2026.06</span></span>
   </div>
 </header>
 
@@ -195,24 +261,19 @@
 
     <p class="prompt"><span class="arrow">&gt;</span> <span class="cmd">init tdtm --preview</span><span class="cursor"></span></p>
 
-    <div class="logo-block">
-      <div class="logo-lockup">
-        <svg class="logo-mark" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" fill="none" aria-label="TDTM">
-          <rect x="4" y="56" width="56" height="14" fill="#FFFFFF"/>
-          <rect x="14" y="36" width="56" height="14" fill="#FFFFFF"/>
-          <rect x="24" y="16" width="56" height="14" fill="#C8FF00"/>
-          <rect x="34" y="4" width="2" height="72" fill="#FFFFFF" opacity=".4"/>
-        </svg>
-        <div class="logo-wordmark"><span class="br">[</span><span>TDTM</span><span class="br">]</span></div>
-      </div>
+    <!-- ── HERO ── -->
+    <div class="hero">
+      <img class="logo-img" src="tdtm-brand/logo.svg" alt="TDTM — Talk Data To Me">
       <p class="logo-subname">TALK · DATA · TO · ME</p>
+      <h1 class="headline">Find your next customers.<br><span class="accent">Just ask.</span></h1>
+      <p class="lead">Tell the chatbot who you want to reach or what you're trying to do. It finds the data, shows you the count and the price, then sets you up: a recurring data feed, a website pixel that turns your traffic into contacts, or the identity API for real-time lookups. <strong>No SQL, no forms, no sales call.</strong></p>
+      <div class="cta-row">
+        <a href="https://talkdatatome.online" class="btn btn-primary">Get started free →</a>
+        <a href="#pricing" class="btn btn-ghost">See pricing</a>
+      </div>
     </div>
 
-    <div>
-      <h1 class="headline">An <span class="accent">AI-native interface</span><br>for performance marketing data.</h1>
-      <p class="desc" style="margin-top:24px;">Build audiences. Deploy identity resolution pixels. Configure real-time ping-post. Subscribe to data plans. Run linear regression on your own data. <strong>All through chat.</strong></p>
-    </div>
-
+    <!-- ── CHAT DEMO ── -->
     <div class="chat">
       <div class="chat-header">
         <span>// TDTM CHAT</span>
@@ -220,23 +281,168 @@
       </div>
       <div class="chat-msg">
         <span class="by">YOU</span>
-        <span class="body">Build me an audience of 35–55 year-old homeowners actively shopping for solar in TX, CA, FL. Refresh daily.</span>
+        <span class="body">Homeowners in the Dallas metro, age 55+, $400k+ home value, mobile numbers only.</span>
       </div>
       <div class="chat-msg ai">
         <span class="by">TDTM</span>
-        <span class="body">Building from the TOF Identity Spine.<br><br><strong>HOMEOWNERS_SOLAR_INTENT_TX_CA_FL_V1</strong><br>2.4M deterministic IDs · refresh: 24h · activation: ready<br><br>Push to your DSP?</span>
+        <span class="body">Matched against the TOF Identity Spine.<br><br><strong>34,812 deliverable records</strong><br>DNC-scrubbed · mobile-only · refresh: monthly<br><br>Take it as a feed, a pixel, or the API?</span>
       </div>
       <div class="chat-msg">
         <span class="by">YOU</span>
-        <span class="body">Push to Trade Desk. Set ping-post for new entries in real time.</span>
+        <span class="body">Recurring feed. Net-new only, weekly, drop it to S3.</span>
       </div>
       <div class="chat-msg ai">
         <span class="by">TDTM</span>
-        <span class="body"><span class="typing">█ configuring...</span></span>
+        <span class="body"><span class="typing">█ configuring feed...</span></span>
       </div>
     </div>
 
-    <form class="form-block" id="tdtm-form" action="https://formspree.io/f/xpqojbny" method="POST">
+    <!-- ── HOW IT WORKS ── -->
+    <div id="how">
+      <p class="section-label">// HOW IT <span class="accent">WORKS</span></p>
+      <div class="steps">
+        <div class="step">
+          <span class="step-num">01</span>
+          <span class="step-title">Describe your audience</span>
+          <span class="step-desc">Tell the chatbot what you sell or exactly who you want to reach. Plain English, no SQL, no filter menus to learn.</span>
+        </div>
+        <div class="step">
+          <span class="step-num">02</span>
+          <span class="step-title">See the count, refine</span>
+          <span class="step-desc">It picks the right filters and shows a live record count. Narrow by geography, age, home value, phone type until the number looks right.</span>
+        </div>
+        <div class="step">
+          <span class="step-num">03</span>
+          <span class="step-title">Pick how you get it</span>
+          <span class="step-desc">Take it as a one-time or recurring data feed, a website pixel that turns traffic into contacts, or the identity API for real-time lookups. The chat sets it up.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PRODUCTS ── -->
+    <div id="products">
+      <p class="section-label">// THREE WAYS TO <span class="accent">ACTIVATE</span></p>
+      <div class="products">
+        <div class="product">
+          <span class="product-name">Data feeds</span>
+          <span class="product-price">from $600/mo</span>
+          <span class="product-desc">Recurring net-new records delivered to email, a webhook, S3, or straight into Facebook and Vibe.</span>
+        </div>
+        <div class="product">
+          <span class="product-name">Website pixel</span>
+          <span class="product-price">from $400/mo</span>
+          <span class="product-desc">Turn your anonymous website traffic into known, contactable people (and into lookalikes).</span>
+        </div>
+        <div class="product">
+          <span class="product-name">Identity API</span>
+          <span class="product-price">from $0.03/match</span>
+          <span class="product-desc">Resolve, enrich, and append phone in real time. Pay only for the matches you get.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURES ── -->
+    <div id="features">
+      <p class="section-label">// WHAT'S <span class="accent">INSIDE</span></p>
+      <div class="features">
+        <div class="feature">
+          <span class="feature-title">Conversational builder</span>
+          <span class="feature-desc">Tell the chatbot what you sell or who you're trying to reach. It picks the right filters and shows a live count before you commit.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Lookalike audiences</span>
+          <span class="feature-desc">Upload your converters. Get a plain-English profile (age, income, home value, tenure) plus filter ranges that find more of them. Included on every plan.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Smart suppression</span>
+          <span class="feature-desc">Drop in a CSV of phones or addresses you've already worked. AI-aided column matching handles weird headers, so you don't have to clean the file first.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Email-delivered CSV</span>
+          <span class="feature-desc">No portal exports, no "wait 24 hours." Pulls run in the background and the CSV lands in your inbox in 1 to 5 minutes.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Live usage ticker</span>
+          <span class="feature-desc">See how many records you have left this month, every time you log in. No surprise overage bills, and admin can configure how overage works for your account.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Per-record honesty</span>
+          <span class="feature-desc">No "lifetime database access" nonsense. You see exactly what you got, when you got it — suppression hits, cap truncations, and source filters reported with every CSV.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">National coverage</span>
+          <span class="feature-desc">Demographics, property attributes, lifestyle and intent signals, all keyed to a single national identity graph spanning hundreds of audience categories.</span>
+        </div>
+        <div class="feature">
+          <span class="feature-title">Enterprise welcome</span>
+          <span class="feature-desc">Above 1M / month? Per-record pricing instead of a monthly cap? Multi-vertical setups? We'll set your caps or run you unlimited. Request access below.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── PRICING ── -->
+    <div id="pricing">
+      <p class="section-label">// PRICING</p>
+      <div class="pricing">
+        <div class="plan">
+          <span class="plan-name">Free</span>
+          <span class="plan-price">$0<span> / mo</span></span>
+          <ul class="plan-list">
+            <li>1,000 records / month</li>
+            <li>1 lookalike audience / month</li>
+            <li>Chat + Lookalikes</li>
+            <li>Suppression upload</li>
+          </ul>
+          <a href="https://talkdatatome.online" class="btn btn-primary">Get started free</a>
+        </div>
+        <div class="plan featured">
+          <span class="plan-name">Enterprise</span>
+          <span class="plan-price">Custom<span> / mo</span></span>
+          <ul class="plan-list">
+            <li>Custom or unlimited records / month</li>
+            <li>Invoiced billing: Stripe invoice, card on file, or manual</li>
+            <li>Unlimited feeds + inbound campaigns</li>
+            <li>Partner API keys + white-glove setup</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#early-access" class="btn btn-ghost">Request access</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FAQ ── -->
+    <div id="faq">
+      <p class="section-label">// <span class="accent">FAQ</span></p>
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Where does the data come from?</summary>
+          <div class="faq-answer">We license a national identity-graph dataset that spans hundreds of audience categories (demographics, property attributes, life events, intent signals) and apply our own filters, suppression, and AI matching on top. Same quality you'd see from any major B2C data provider. We just hide the plumbing.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How fresh is the data?</summary>
+          <div class="faq-answer">Identity records refresh continuously. Property and demographic attributes refresh monthly. Phone DNC status checks at pull time.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What's a lookalike audience?</summary>
+          <div class="faq-answer">You upload a CSV of customers who converted. We match them to the identity graph, run a regression against a control sample, and tell you what makes them different: age, home value, tenure, income, etc. Then you can pull more people who look like them. Included on every plan.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can I suppress my existing customers?</summary>
+          <div class="faq-answer">Yes — drop a CSV into the chat at any point and the bot will dedupe against it before sending you the file. Phones or last-name + address + ZIP both work. We never store the raw file, only the normalized signatures, with 24-hour auto-delete.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What happens if I blow past my monthly cap?</summary>
+          <div class="faq-answer">By default, additional pulls are blocked until your next billing period. If you have overage billing enabled on your account, we'll charge per-record above the cap and keep delivering.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you support DNC compliance?</summary>
+          <div class="faq-answer">Cell DNC flags are filtered at pull time. Landlines are returned as-is. DNC obligations there vary by use case and jurisdiction, so we don't make that decision for you.</div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── EARLY ACCESS ── -->
+    <form id="early-access" class="form-block" action="https://formspree.io/f/xpqojbny" method="POST">
       <input type="hidden" name="_subject" value="TDTM Early Access Request">
       <input type="hidden" name="_source" value="tdtm-preview">
       <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true">
@@ -258,12 +464,32 @@
 </main>
 
 <footer>
-  <span>// A NEW PRODUCT FROM <a href="/">TOF</a></span>
-  <span>// © 2026 TDTM</span>
+  <div class="foot-col">
+    <span class="foot-label">Product</span>
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="foot-col">
+    <span class="foot-label">Account</span>
+    <a href="https://talkdatatome.online">Get started</a>
+    <a href="https://talkdatatome.online">Open chat</a>
+    <a href="#early-access">Early access</a>
+  </div>
+  <div class="foot-col">
+    <span class="foot-label">Legal</span>
+    <a href="/terms.html">Terms</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="mailto:hello@tof.io">Contact</a>
+  </div>
+  <div class="foot-legal">
+    <span>// A PRODUCT FROM <a href="/">TOF</a></span>
+    <span>// © 2026 TDTM</span>
+  </div>
 </footer>
 
 <script>
-  const form = document.getElementById('tdtm-form');
+  const form = document.getElementById('early-access');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     fetch(form.action, {
